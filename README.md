@@ -1,10 +1,9 @@
 # [pyDNMFk: Python Distributed Non Negative Matrix Factorization with determination of hidden features](https://github.com/lanl/pyDNMFk)
 
 
-<div>
-    <img src="https://github.com/lanl/pyDNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main"></img>
-    <img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg"></img>
-    <img src="https://img.shields.io/badge/python-v3.7.1-blue"></img></div>
+<img src="https://github.com/lanl/pyDNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main"></img>
+<img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg"></img>
+<img src="https://img.shields.io/badge/python-v3.7.1-blue"></img>
 
 
 
