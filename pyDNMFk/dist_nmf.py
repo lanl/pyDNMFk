@@ -1,7 +1,6 @@
 # @author: Manish Bhattarai
 from numpy import matlib
 
-from .nnls import nnlsm_blockpivot
 from .utils import *
 
 
@@ -63,10 +62,8 @@ class nmf_algorithms_2D():
                 self.FRO_HALS_update(self.W_update)
             elif self.method.upper() == 'BCD':
                 self.FRO_BCD_update(self.W_update, itr=self.params.itr)
-            elif self.method.upper() == 'BPP':
-                self.FRO_BPP_update(self.W_update)
             else:
-                raise Exception('Not a valid method: Choose (mu/hals/bcd/bpp)')
+                raise Exception('Not a valid method: Choose (mu/hals/bcd)')
         elif self.norm.upper() == 'KL':
             if self.method.upper() == 'MU':
                 self.KL_MU_update(self.W_update)
@@ -454,63 +451,6 @@ class nmf_algorithms_2D():
             self.FRO_HALS_update_W()
         self.FRO_HALS_update_H()
 
-    '''Functions for NNLS BPP NMF update'''
-
-    def FRO_BPP_update_W(self):
-        r"""
-        Frobenius norm minimization based BPP update of W  parameter
-        Function computes updated W parameter for each mpi rank
-
-        Parameters
-        ----------
-        self : object
-
-        Returns
-        -------
-        self.W_ij : ndarray (m/p X k)
-        """
-        HHT = self.global_gram(self.H_ij.T)
-        AH = self.AH_glob()
-        Sol, info = nnlsm_blockpivot(HHT, AH.T, init=self.W_ij.T, is_input_prod=True)
-        self.comm1.barrier()
-        self.W_ij = Sol.T.astype(self.A_ij.dtype)
-
-    def FRO_BPP_update_H(self):
-        r"""
-        Frobenius norm minimization based BPP update of H  parameter
-        Function computes updated H parameter for each mpi rank
-
-        Parameters
-        ----------
-        self : object
-
-        Returns
-        -------
-        self.H_ij : ndarray ( k X n/p)
-        """
-        WTW = self.global_gram(self.W_ij)
-        AtW = self.ATW_glob()
-        Sol, info = nnlsm_blockpivot(WTW, AtW, init=self.H_ij, is_input_prod=True)
-        self.H_ij = Sol.astype(self.A_ij.dtype)
-
-    def FRO_BPP_update(self, W_update=True):
-        r"""
-        Frobenius norm minimization based BPP update of W  and H parameter
-        Function computes updated W and H parameter for each mpi rank
-
-        Parameters
-        ----------
-        self : object
-
-        Returns
-        -------
-        self.W_ij : ndarray (m/p X k)
-        self.H_ij : ndarray (k X n/p)
-        """
-        if W_update == True:
-            self.FRO_BPP_update_W()
-        self.FRO_BPP_update_H()
-
     '''Functions for FRO BCD NMF update'''
 
     @comm_timing()
@@ -672,10 +612,8 @@ class nmf_algorithms_1D():
                 self.FRO_HALS_update(self.W_update)
             elif self.method.upper() == 'BCD':
                 self.FRO_BCD_update(self.W_update, itr=self.params.itr)
-            elif self.method.upper() == 'BPP':
-                self.FRO_BPP_update(self.W_update)
             else:
-                raise Exception('Not a valid method: Choose (mu/hals/bcd/bpp)')
+                raise Exception('Not a valid method: Choose (mu/hals/bcd)')
         elif self.norm.upper() == 'KL':
             if self.method.upper() == 'MU':
                 self.KL_MU_update(self.W_update)
@@ -958,63 +896,6 @@ class nmf_algorithms_1D():
             self.FRO_HALS_update_W()
         self.FRO_HALS_update_H()
 
-    '''Functions for NNLS BPP NMF update'''
-
-    def FRO_BPP_update_W(self):
-        r"""
-        Frobenius norm minimization based BPP update of W  parameter
-        Function computes updated W parameter for each mpi rank
-
-        Parameters
-        ----------
-        self : object
-
-        Returns
-        -------
-        self.W_i : ndarray (m/p_r X k)
-        """
-        HHT = self.global_gram(self.H_j.T, p=self.p_c)
-        AH = self.global_mm(self.A_ij, self.H_j.T, p=self.p_c)
-        Sol, info = nnlsm_blockpivot(HHT, AH.T, is_input_prod=True, init=self.W_i.T)
-        self.W_i = Sol.T
-
-    def FRO_BPP_update_H(self):
-        r"""
-        Frobenius norm minimization based BPP update of H  parameter
-        Function computes updated H parameter for each mpi rank
-
-        Parameters
-        ----------
-        self : object
-
-        Returns
-        -------
-        self.H_ij : ndarray ( k X n/p_c)
-        """
-
-        WTW = self.global_gram(self.W_i, p=self.p_r)
-        AtW = self.global_mm(self.W_i.T, self.A_ij, p=self.p_r)
-        Sol, info = nnlsm_blockpivot(WTW, AtW, is_input_prod=True, init=self.H_j)
-        self.H_j = Sol
-
-    def FRO_BPP_update(self, W_update=True):
-        r"""
-        Frobenius norm minimization based BPP update of W  and H parameter
-        Function computes updated W and H parameter for each mpi rank
-
-        Parameters
-        ----------
-        W_update : bool
-            Flag to enable/disable W update
-
-        Returns
-        -------
-        self.W_ij : ndarray (m/p X k)
-        self.H_ij : ndarray (k X n/p)"""
-
-        if W_update == True:
-            self.FRO_BPP_update_W()
-        self.FRO_BPP_update_H()
 
     '''Functions for FRO BCD NMF update'''
 

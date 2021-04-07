@@ -21,7 +21,7 @@ def parser_pyNMF(parser):
     parser.add_argument('--init', type=str, default='rand', help='NMF initializations: rand/nnsvd')
     parser.add_argument('--itr', type=int, default=5000, help='NMF iterations, default:1000')
     parser.add_argument('--norm', type=str, default='kl', help='Reconstruction Norm for NMF to optimize:KL/FRO')
-    parser.add_argument('--method', type=str, default='mu', help='NMF update method:MU/BPP/BCD/HALS')
+    parser.add_argument('--method', type=str, default='mu', help='NMF update method:MU/BCD/HALS')
     parser.add_argument('--verbose', type=str2bool, default=False)
     parser.add_argument('--results_path', type=str, default='../Results/', help='Path for saving results')
     parser.add_argument('--timing_stats', type=str2bool, default=False, help='Switch to turn on/off benchmarking.')

@@ -34,7 +34,7 @@ def test_dist_nmf_1d():
         dtr_blk_shp = determine_block_params(rank, (p_r, p_c), A.shape)
         blk_indices = dtr_blk_shp.determine_block_index_range_asymm()
         A_ij = A[blk_indices[0][0]:blk_indices[1][0] + 1, blk_indices[0][1]:blk_indices[1][1] + 1]
-        for mthd in ['mu', 'bpp', 'bcd', 'hals']:  # Frobenius norm, KL divergence, BPP and BCD implementation
+        for mthd in ['mu',  'bcd', 'hals']:  # Frobenius norm, KL divergence,  and BCD implementation
             for norm in ['fro', 'kl']:
                 args.method, args.norm = mthd, norm
                 if norm == 'kl' and mthd != 'mu':

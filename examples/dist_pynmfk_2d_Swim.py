@@ -1,4 +1,4 @@
-#To run this code please run `mpirun -n 4 python dist_pynmfk_2d_swim` in command line.
+#To run this code please run `mpirun -n 4 python dist_pynmfk_2d_swim.py` in command line.
 
 
 
