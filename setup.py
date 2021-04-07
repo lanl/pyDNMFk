@@ -20,7 +20,7 @@ setup(
     author='Manish Bhattarai, Erik Skau, Ben Nebgen, Boian Alexandrov',
     author_email='ceodspspectrum@lanl.gov',
     long_description=LONG_DESCRIPTION,
-    url='https://gitlab.lanl.gov/TensorNetworks/dist_pynmfk',  # change this to GitHub once published
+    url='https://github.com/lanl/pyDNMFk',  # change this to GitHub once published
     description='Distributed Nonnegative Matrix Factorization with Custom Clustering',
     setup_requires=['numpy', 'scipy', 'matplotlib', 'h5py', 'mpi4py', 'pytest-mpi', 'pytest'],
     install_requires=INSTALL_REQUIRES,
