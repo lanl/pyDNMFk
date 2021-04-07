@@ -1,4 +1,4 @@
-#To run this code please run `mpirun -n 4 python dist_pynmfk_1d_wtsi` in command line.
+#To run this code please run `mpirun -n 4 python dist_pynmfk_1d_wtsi.py` in command line.
 
 
 import sys
