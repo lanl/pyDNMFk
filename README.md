@@ -103,6 +103,7 @@ See the resources for more use cases.
 * [Manish Bhattarai](mailto:ceodspspectrum@lanl.gov) - Los Alamos National Laboratory
 * [Ben Nebgen](mailto:bnebgen@lanl.gov) - Los Alamos National Laboratory
 * [Erik Skau](mailto:ewskau@lanl.gov) - Los Alamos Natioanl Laboratory
+* [Maksim Eren](mailto:maksim@lanl.gov) - Los Alamos Natioanl Laboratory
 * [Boian Alexandrov](mailto:boian@lanl.gov) - Los Alamos Natioanl Laboratory
 
 ## Citation:
