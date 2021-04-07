@@ -16,7 +16,7 @@
 * Distributed NNSVD and SVD initiaizations.
 * Distributed Custom Clustering algorithm for estimating automated latent feature number (k) determination.
 * Objective of minimization of KL divergence/Frobenius norm. 
-* Optimization with multiplicative updates, BCD, BPP and HALS. 
+* Optimization with multiplicative updates, BCD, and HALS. 
 
 ## Installation:
 
