@@ -2,7 +2,7 @@
 
 
 <div align="center", style="font-size: 50px">
-    <img src="https://github.com/lanl/Distributed_pyNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main"></img>
+    <img src="https://github.com/lanl/pyDNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main"></img>
     <img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg"></img>
     <img src="https://img.shields.io/badge/python-v3.7.1-blue"></img>
 </div>
@@ -24,7 +24,7 @@
 ## Installation:
 
 ```
-git clone https://github.com/lanl/pynmfk.git
+git clone https://github.com/lanl/pyDNMFk.git
 cd pynmfk
 conda create --name pyDNMFk python=3.7.1 mpi4py
 source activate pyDNMFk
