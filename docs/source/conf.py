@@ -10,16 +10,19 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path += ["../../pyDNMFk"]
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'pynmfk'
-copyright = '2021, LANL'
-author = 'LANL'
+project = 'pyDNMFk'
+copyright = '2021, Manish Bhattarai, Ben Nebgen, Erik Skau, Boian Alexandrov'
+author = 'Manish Bhattarai, Ben Nebgen, Erik Skau, Boian Alexandrov'
+
+# The full version, including alpha/beta/rc tags
+release = '1.0.0'
 
 
 # -- General configuration ---------------------------------------------------

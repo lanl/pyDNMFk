@@ -1,7 +1,7 @@
-pynmfk
-======
+pyDNMFk
+=======
 
 .. toctree::
    :maxdepth: 4
 
-   pynmfk
+   pyDNMFk
