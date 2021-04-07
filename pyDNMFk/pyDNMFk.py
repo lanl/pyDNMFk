@@ -2,7 +2,7 @@
 from scipy.stats import wilcoxon
 from . import config
 from .dist_clustering import *
-from .pyNMF import *
+from .pyDNMF import *
 from .plot_results import *
 
 class sample():
