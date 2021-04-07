@@ -23,7 +23,7 @@
 ```
 git clone https://github.com/lanl/pyDNMFk.git
 cd pyDNMFk
-conda create --name pyDNMFk python=3.7.1 mpi4py
+conda create --name pyDNMFk python=3.7.1 openmpi mpi4py
 source activate pyDNMFk
 python setup.py install
 ```
