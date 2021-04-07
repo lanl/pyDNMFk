@@ -1,7 +1,8 @@
 import sys
 import pytest
 
-sys.path.append("..")
+import os
+os.environ["OMP_NUM_THREADS"] = "1"
 import pyDNMFk.config as config
 
 config.init(0)
