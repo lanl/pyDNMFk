@@ -1,0 +1,1986 @@
+
+<!DOCTYPE html>
+
+<html lang="Python">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>pynmfk package &#8212; pynmfk  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="pynmfk" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="pynmfk-package">
+<h1>pynmfk package<a class="headerlink" href="#pynmfk-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-pynmfk.config">
+<span id="pynmfk-config-module"></span><h2>pynmfk.config module<a class="headerlink" href="#module-pynmfk.config" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pynmfk.config.init">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.config.</span></code><code class="sig-name descname"><span class="pre">init</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.config.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Global variables declaration here. The variables declared within this function in this file are shared across other files and functions during import.</p>
+</dd></dl>
+
+</section>
+<section id="module-pynmfk.data_generator">
+<span id="pynmfk-data-generator-module"></span><h2>pynmfk.data_generator module<a class="headerlink" href="#module-pynmfk.data_generator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pynmfk.data_generator.data_generator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.data_generator.</span></code><code class="sig-name descname"><span class="pre">data_generator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_generator.data_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generates synthetic data in distributed manner where each MPI process generates a chunk from the data parallelly.
+The W matrix is generated with gaussian distribution whereas the H matrix is random.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>class</em>) -- Class which comprises following attributes</p></li>
+<li><p><strong>fpath</strong> (<em>str</em>) -- Directory path of file to be stored</p></li>
+<li><p><strong>p_r</strong> (<em>int</em>) -- Count of row processor in the cartesian grid</p></li>
+<li><p><strong>p_c</strong> (<em>int</em>) -- Count of column processor in the cartesian grid</p></li>
+<li><p><strong>m</strong> (<em>int</em>) -- row dimension of the data</p></li>
+<li><p><strong>n</strong> (<em>int</em>) -- Column dimension of the data</p></li>
+<li><p><strong>k</strong> (<em>int</em>) -- Feature count</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.data_generator.data_generator.create_folder_dir">
+<code class="sig-name descname"><span class="pre">create_folder_dir</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_generator.data_generator.create_folder_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a folder if doesn't exist</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_generator.data_generator.determine_block_index_range_asymm">
+<code class="sig-name descname"><span class="pre">determine_block_index_range_asymm</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_generator.data_generator.determine_block_index_range_asymm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the start and end indices for the Data block for each rank</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_generator.data_generator.determine_block_shape_asymm">
+<code class="sig-name descname"><span class="pre">determine_block_shape_asymm</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_generator.data_generator.determine_block_shape_asymm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the shape for the Data block for each rank</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_generator.data_generator.dist_fromfunction">
+<code class="sig-name descname"><span class="pre">dist_fromfunction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func</span></em>, <em class="sig-param"><span class="pre">shape</span></em>, <em class="sig-param"><span class="pre">pgrid</span></em>, <em class="sig-param"><span class="pre">*args</span></em>, <em class="sig-param"><span class="pre">unravel_index=&lt;function</span> <span class="pre">unravel_index&gt;</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_generator.data_generator.dist_fromfunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>produces X_{i,j} = func(i,j) in a distributed manner, so that each processor has an array_split section of X according to the grid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_generator.data_generator.fit">
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_generator.data_generator.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>generates and save factors</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_generator.data_generator.gauss_matrix_generator">
+<code class="sig-name descname"><span class="pre">gauss_matrix_generator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_generator.data_generator.gauss_matrix_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a matrix of dimensions n by k where the ith column is a Gaussian kernel corresponding to approximately N(i*n/k, 0.01*n^2)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<em>int</em>) -- the ambient space dimension</p></li>
+<li><p><strong>k</strong> (<em>int</em>) -- the latent space diemnsion</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>W</strong> -- A matrix with Gaussian kernel columns of size n x k.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_generator.data_generator.generate_factors_data">
+<code class="sig-name descname"><span class="pre">generate_factors_data</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_generator.data_generator.generate_factors_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the chunk of factors W,H and data X for each MPI process</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_generator.data_generator.random_matrix_generator">
+<code class="sig-name descname"><span class="pre">random_matrix_generator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_generator.data_generator.random_matrix_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator for random matric with given seed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_generator.data_generator.unravel_column">
+<code class="sig-name descname"><span class="pre">unravel_column</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_generator.data_generator.unravel_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>finds the column rank for 2d grid</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_generator.data_generator.unravel_row">
+<code class="sig-name descname"><span class="pre">unravel_row</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_generator.data_generator.unravel_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>finds the row rank for 2d grid</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="pynmfk.data_generator.parser">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.data_generator.</span></code><code class="sig-name descname"><span class="pre">parser</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_generator.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the input arguments from the user and parses the parameters to the data generator module.</p>
+</dd></dl>
+
+</section>
+<section id="module-pynmfk.data_io">
+<span id="pynmfk-data-io-module"></span><h2>pynmfk.data_io module<a class="headerlink" href="#module-pynmfk.data_io" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pynmfk.data_io.data_read">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.data_io.</span></code><code class="sig-name descname"><span class="pre">data_read</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.data_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for reading data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>class</em>) -- Class which comprises following attributes</p></li>
+<li><p><strong>fpath</strong> (<em>str</em>) -- Directory path of file to be read</p></li>
+<li><p><strong>pgrid</strong> (<em>tuple</em>) -- Cartesian grid configuration</p></li>
+<li><p><strong>ftype</strong> (<em>str</em>) -- Type of data to read(mat/npy/csv/folder)</p></li>
+<li><p><strong>fname</strong> (<em>str</em>) -- Name of the file to read</p></li>
+<li><p><strong>comm</strong> (<em>object</em>) -- comm object for distributed read</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.data_io.data_read.data_partition">
+<code class="sig-name descname"><span class="pre">data_partition</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.data_read.data_partition" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function divides the input matrix into chunks as specified by grid configuration.</p>
+<p>Return n array of shape (nrows_i, ncols_i) where i is the index of each chunk.
+Sum_i^n ( nrows_i * ncols_i )  = arr.size</p>
+<p>If arr is a 2D array, the returned array should look like n subblocks with
+each subblock preserving the &quot;physical&quot; layout of arr.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_io.data_read.read">
+<code class="sig-name descname"><span class="pre">read</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.data_read.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data read function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_io.data_read.read_dat">
+<code class="sig-name descname"><span class="pre">read_dat</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.data_read.read_dat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for reading the data and split into  chunks to be reach by each MPI rank</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_io.data_read.read_file_csv">
+<code class="sig-name descname"><span class="pre">read_file_csv</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.data_read.read_file_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>CSV data read function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_io.data_read.read_file_mat">
+<code class="sig-name descname"><span class="pre">read_file_mat</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.data_read.read_file_mat" title="Permalink to this definition">¶</a></dt>
+<dd><p>mat file read function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_io.data_read.read_file_npy">
+<code class="sig-name descname"><span class="pre">read_file_npy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.data_read.read_file_npy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Numpy data read function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_io.data_read.save_data_to_file">
+<code class="sig-name descname"><span class="pre">save_data_to_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.data_read.save_data_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function saves the splitted data to numpy array indexed with chunk number</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pynmfk.data_io.data_write">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.data_io.</span></code><code class="sig-name descname"><span class="pre">data_write</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.data_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for writing data/results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>class</em>) -- class which comprises following attributes</p></li>
+<li><p><strong>results_path</strong> (<em>str</em>) -- Directory path of file to write</p></li>
+<li><p><strong>pgrid</strong> (<em>tuple</em>) -- Cartesian grid configuration</p></li>
+<li><p><strong>ftype</strong> (<em>str</em>) -- Type of data to read(mat/npy/csv/folder)</p></li>
+<li><p><strong>comm</strong> (<em>object</em>) -- comm object for distributed read</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.data_io.data_write.create_folder_dir">
+<code class="sig-name descname"><span class="pre">create_folder_dir</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.data_write.create_folder_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create directory if not present</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_io.data_write.save_cluster_results">
+<code class="sig-name descname"><span class="pre">save_cluster_results</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.data_write.save_cluster_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save cluster results to a h5 file with rank 0</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_io.data_write.save_factors">
+<code class="sig-name descname"><span class="pre">save_factors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.data_write.save_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the W and H factors for each MPI process</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pynmfk.data_io.read_factors">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.data_io.</span></code><code class="sig-name descname"><span class="pre">read_factors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factors_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pgrid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.read_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for reading saved factors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>factors_path</strong> (<em>str</em>) -- Directory path of factors to read from</p></li>
+<li><p><strong>pgrid</strong> (<em>tuple</em>) -- Cartesian grid configuration</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.data_io.read_factors.custom_read_npy">
+<code class="sig-name descname"><span class="pre">custom_read_npy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.read_factors.custom_read_npy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read numpy files</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_io.read_factors.load_factors">
+<code class="sig-name descname"><span class="pre">load_factors</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.read_factors.load_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the final stacked factors for visualization</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_io.read_factors.read_factor">
+<code class="sig-name descname"><span class="pre">read_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.read_factors.read_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read factors as chunks and stack them</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pynmfk.data_io.split_files_save">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.data_io.</span></code><code class="sig-name descname"><span class="pre">split_files_save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pgrid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.split_files_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Rank 0 based data read, split and save</p>
+<dl class="py method">
+<dt id="pynmfk.data_io.split_files_save.save_data_to_file">
+<code class="sig-name descname"><span class="pre">save_data_to_file</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.split_files_save.save_data_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to save the chunks into numpy files</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.data_io.split_files_save.split_files">
+<code class="sig-name descname"><span class="pre">split_files</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.data_io.split_files_save.split_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the index range for each block and partition the data as per the chunk</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pynmfk.dist_clustering">
+<span id="pynmfk-dist-clustering-module"></span><h2>pynmfk.dist_clustering module<a class="headerlink" href="#module-pynmfk.dist_clustering" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pynmfk.dist_clustering.custom_clustering">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.dist_clustering.</span></code><code class="sig-name descname"><span class="pre">custom_clustering</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Wall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Hall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_clustering.custom_clustering" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Greedy algorithm to approximate a quadratic assignment problem to cluster vectors. Given p groups of k vectors, construct k clusters, each cluster containing a single vector from each of the p groups. This clustering approximation uses cos distances and mean centroids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>W_all</strong> (<em>ndarray</em>) -- Order three tensor of shape m by k by p, where m is the ambient dimension of the vectors, k is the number of vectors in each group, and p is the number of groups of vectors.</p></li>
+<li><p><strong>H_all</strong> (<em>ndarray</em>) -- Order three tensor of shape n by k by p, where n is the ambient dimension of the vectors, k is the number of vectors in each group, and p is the number of groups of vectors.</p></li>
+<li><p><strong>params</strong> (<em>class</em>) -- Class object with communication parameters which comprises of grid information (p_r,p_c) , commincator (comm) and epsilon (eps).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.dist_clustering.custom_clustering.change_order">
+<code class="sig-name descname"><span class="pre">change_order</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tens</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_clustering.custom_clustering.change_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>change the order of features</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_clustering.custom_clustering.dist_custom_clustering">
+<code class="sig-name descname"><span class="pre">dist_custom_clustering</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">centroids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_clustering.custom_clustering.dist_custom_clustering" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the distributed custom clustering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>centroids</strong> (<em>ndarray</em><em>, </em><em>optional</em>) -- The m by k initialization of the centroids of the clusters. None corresponds to using the first slice, W_all[:,:,0], as the initial centroids. Defaults to None.</p></li>
+<li><p><strong>vb</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Verbose to display intermediate results</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>centroids</strong> (<em>ndarray</em>) -- The m by k centroids of the clusters</p></li>
+<li><p><strong>W_all</strong> (<em>ndarray</em>) -- Clustered organization of the vectors W_all</p></li>
+<li><p><strong>H_all</strong> (<em>ndarray</em>) -- Clustered organization of the vectors H_all</p></li>
+<li><p><strong>permute_order</strong> (<em>list</em>) -- Indices of the permuted features</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_clustering.custom_clustering.dist_feature_ordering">
+<code class="sig-name descname"><span class="pre">dist_feature_ordering</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">centroids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_sub</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_clustering.custom_clustering.dist_feature_ordering" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the features in proper order</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_clustering.custom_clustering.dist_silhouettes">
+<code class="sig-name descname"><span class="pre">dist_silhouettes</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_clustering.custom_clustering.dist_silhouettes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the cosine distances silhouettes of a distributed clustering of vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>sils</strong> -- The k by p array of silhouettes where sils[i,j] is the silhouette measure for the vector W_all[:,i,j]</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_clustering.custom_clustering.fit">
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_clustering.custom_clustering.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the sub routines to perform distributed custom clustering and  compute silhouettes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>centroids</strong> (<em>ndarray</em>) -- The m by k centroids of the clusters</p></li>
+<li><p><strong>CentStd</strong> (<em>ndarray</em>) -- Absolute deviation of the features from the centroid</p></li>
+<li><p><strong>W_all</strong> (<em>ndarray</em>) -- Clustered organization of the vectors W_all</p></li>
+<li><p><strong>H_all</strong> (<em>ndarray</em>) -- Clustered organization of the vectors H_all</p></li>
+<li><p><strong>S_avg</strong> (<em>ndarray</em>) -- mean Silhouette score</p></li>
+<li><p><strong>permute_order</strong> (<em>list</em>) -- Indices of the permuted features</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_clustering.custom_clustering.greedy_lsa">
+<code class="sig-name descname"><span class="pre">greedy_lsa</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_clustering.custom_clustering.greedy_lsa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the permutation order</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_clustering.custom_clustering.mad">
+<code class="sig-name descname"><span class="pre">mad</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_clustering.custom_clustering.mad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the median/mean absolute deviation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_clustering.custom_clustering.normalize_by_W">
+<code class="sig-name descname"><span class="pre">normalize_by_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_clustering.custom_clustering.normalize_by_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize the factors W and H</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pynmfk.dist_comm">
+<span id="pynmfk-dist-comm-module"></span><h2>pynmfk.dist_comm module<a class="headerlink" href="#module-pynmfk.dist_comm" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pynmfk.dist_comm.MPI_comm">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.dist_comm.</span></code><code class="sig-name descname"><span class="pre">MPI_comm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_comm.MPI_comm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Initialization of MPI communicator to construct the cartesian topology and sub communicators</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>comm</strong> (<em>object</em>) -- MPI communicator object</p></li>
+<li><p><strong>p_r</strong> (<em>int</em>) -- row processors count</p></li>
+<li><p><strong>p_c</strong> (<em>int</em>) -- column processors count</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.dist_comm.MPI_comm.Free">
+<code class="sig-name descname"><span class="pre">Free</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_comm.MPI_comm.Free" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frees the sub communicators</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_comm.MPI_comm.cart_1d_column">
+<code class="sig-name descname"><span class="pre">cart_1d_column</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_comm.MPI_comm.cart_1d_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a cartesian column communicator through construction of a sub communicator across columns</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>cartesian1d_column</strong> -- Sub Communicator object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_comm.MPI_comm.cart_1d_row">
+<code class="sig-name descname"><span class="pre">cart_1d_row</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_comm.MPI_comm.cart_1d_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a cartesian row communicator through construction of a sub communicator across rows</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>cartesian1d_row</strong> -- Sub Communicator object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pynmfk.dist_nmf">
+<span id="pynmfk-dist-nmf-module"></span><h2>pynmfk.dist_nmf module<a class="headerlink" href="#module-pynmfk.dist_nmf" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.dist_nmf.</span></code><code class="sig-name descname"><span class="pre">nmf_algorithms_1D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">H_j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Performs the distributed NMF operation along 1D cartesian grid</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A_ij</strong> (<em>ndarray</em>) -- Distributed Data</p></li>
+<li><p><strong>W_i</strong> (<em>ndarray</em>) -- Distributed factor W</p></li>
+<li><p><strong>H_j</strong> (<em>ndarray</em>) -- Distributed factor H</p></li>
+<li><p><strong>params</strong> (<em>class</em>) -- Class which comprises following attributes</p></li>
+<li><p><strong>params.comm1</strong> (<em>object</em>) -- Global Communicator</p></li>
+<li><p><strong>params.k</strong> (<em>int</em>) -- Rank for decomposition</p></li>
+<li><p><strong>params.m</strong> (<em>int</em>) -- Global dimensions m</p></li>
+<li><p><strong>params.n</strong> (<em>int</em>) -- Global dimensions n</p></li>
+<li><p><strong>params.p_r</strong> (<em>int</em>) -- Cartesian grid row count</p></li>
+<li><p><strong>params.p_c</strong> (<em>int</em>) -- Cartesian grid column count</p></li>
+<li><p><strong>params.W_update</strong> (<em>bool</em>) -- flag to set W update True/False</p></li>
+<li><p><strong>params.norm</strong> (<em>str</em>) -- NMF norm to be minimized</p></li>
+<li><p><strong>params.method</strong> (<em>str</em>) -- NMF optimization method</p></li>
+<li><p><strong>params.eps</strong> (<em>float</em>) -- Epsilon value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.FRO_BCD_update">
+<code class="sig-name descname"><span class="pre">FRO_BCD_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">itr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.FRO_BCD_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based BCD update of W  and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>W_update</strong> (<em>bool</em>) -- flag to enable/disable W update</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self.W_i</strong> (<em>ndarray (m/p_r X k)</em>)</p></li>
+<li><p><strong>self.H_j</strong> (<em>ndarray (k X n/p_c)</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.FRO_BPP_update">
+<code class="sig-name descname"><span class="pre">FRO_BPP_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.FRO_BPP_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based BPP update of W  and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>W_update</strong> (<em>bool</em>) -- Flag to enable/disable W update</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self.W_ij</strong> (<em>ndarray (m/p X k)</em>)</p></li>
+<li><p><strong>self.H_ij</strong> (<em>ndarray (k X n/p)</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.FRO_BPP_update_H">
+<code class="sig-name descname"><span class="pre">FRO_BPP_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.FRO_BPP_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based BPP update of H  parameter
+Function computes updated H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.H_ij</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray ( k X n/p_c)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.FRO_BPP_update_W">
+<code class="sig-name descname"><span class="pre">FRO_BPP_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.FRO_BPP_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based BPP update of W  parameter
+Function computes updated W parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.W_i</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray (m/p_r X k)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update">
+<code class="sig-name descname"><span class="pre">FRO_HALS_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimizatio based HALS update of W and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>W_update</strong> (<em>bool</em>) -- Flag to enable/disable W_update</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self.H_j</strong> (<em>ndarray (k X n/p_r)</em>)</p></li>
+<li><p><strong>self.W_i</strong> (<em>ndarray (m/p_c X k)</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update_H">
+<code class="sig-name descname"><span class="pre">FRO_HALS_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based HALS update of H  parameter
+Function computes updated H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.H_j</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray ( k X n/p_c)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update_W">
+<code class="sig-name descname"><span class="pre">FRO_HALS_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based HALS update of W  parameter
+Function computes updated W parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.W_i</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray (m/p_r X k)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.Fro_MU_update">
+<code class="sig-name descname"><span class="pre">Fro_MU_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.Fro_MU_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of W and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self.H_ij</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>self.W_ij</strong> (<em>ndarray</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.Fro_MU_update_H">
+<code class="sig-name descname"><span class="pre">Fro_MU_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.Fro_MU_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of H parameter
+Function computes updated H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.H_j</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.Fro_MU_update_W">
+<code class="sig-name descname"><span class="pre">Fro_MU_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.Fro_MU_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of W parameter
+Function computes updated H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.W_i</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.KL_MU_update">
+<code class="sig-name descname"><span class="pre">KL_MU_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.KL_MU_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>KL divergence based multiplicative update of W and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>W_update</strong> (<em>bool</em>) -- Flag to enable/disable W_update</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self.H_j</strong> (<em>ndarray (k X n/p_r)</em>)</p></li>
+<li><p><strong>self.W_i</strong> (<em>ndarray (m/p_c X k)</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.KL_MU_update_H">
+<code class="sig-name descname"><span class="pre">KL_MU_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.KL_MU_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>KL divergence based multiplicative update of H parameter
+Function computes updated H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.H_j</strong> -- Distributed factor H of shape  k X n/p_c</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.KL_MU_update_W">
+<code class="sig-name descname"><span class="pre">KL_MU_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.KL_MU_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>KL divergence based multiplicative update of W parameter
+Function computes updated W parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.W_i</strong> -- Distributed factor W of shape m/p_r X k</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.glob_UX">
+<code class="sig-name descname"><span class="pre">glob_UX</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.glob_UX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a global operation UX for W and H update with KL</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.globalSqNorm">
+<code class="sig-name descname"><span class="pre">globalSqNorm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.globalSqNorm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calc global squared norm of any matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.global_gram">
+<code class="sig-name descname"><span class="pre">global_gram</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.global_gram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed gram computation</p>
+<p>Computes the global gram operation of matrix A
+.. math:: A^TA</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>ndarray</em>) -- </p></li>
+<li><p><strong>p</strong> (<em>Processor count</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>A_TA_glob</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.global_mm">
+<code class="sig-name descname"><span class="pre">global_mm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.global_mm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed matrix multiplication</p>
+<p>Computes the global matrix multiplication of matrix A and B
+.. math:: AB</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>ndarray</em>) -- </p></li>
+<li><p><strong>B</strong> (<em>ndarray</em>) -- </p></li>
+<li><p><strong>p</strong> (<em>processor count</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>AB_glob</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.initWandH">
+<code class="sig-name descname"><span class="pre">initWandH</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.initWandH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the parameters for BCD updates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.sum_along_axis">
+<code class="sig-name descname"><span class="pre">sum_along_axis</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.sum_along_axis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs sum of the matrix along given axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>ndarray</em>) -- Data</p></li>
+<li><p><strong>p</strong> (<em>int</em>) -- Processor count</p></li>
+<li><p><strong>axis</strong> (<em>int</em>) -- Axis along which the sum is to be performed</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>global_axis_sum</strong> -- Vector array after summation operation along axis</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_1D.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_1D.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs 1 step Update for factors W and H based on NMF method and corresponding norm minimization</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>W_i</strong> (<em>ndarray</em>) -- The m/p_r X k distributed factor W</p></li>
+<li><p><strong>H_j</strong> (<em>ndarray</em>) -- The k X n/p_c distributed factor H</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.dist_nmf.</span></code><code class="sig-name descname"><span class="pre">nmf_algorithms_2D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">H_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Performs the distributed NMF operation along 2D cartesian grid</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A_ij</strong> (<em>ndarray</em>) -- Distributed Data</p></li>
+<li><p><strong>W_ij</strong> (<em>ndarray</em>) -- Distributed factor W</p></li>
+<li><p><strong>H_ij</strong> (<em>ndarray</em>) -- Distributed factor H</p></li>
+<li><p><strong>params</strong> (<em>class</em>) -- Class which comprises following attributes</p></li>
+<li><p><strong>params.comm1</strong> (<em>object</em>) -- Global Communicator</p></li>
+<li><p><strong>params.comm</strong> (<em>object</em>) -- Modified communicator object</p></li>
+<li><p><strong>params.k</strong> (<em>int</em>) -- Rank for decomposition</p></li>
+<li><p><strong>params.m</strong> (<em>int</em>) -- Global dimensions m</p></li>
+<li><p><strong>params.n</strong> (<em>int</em>) -- Global dimensions n</p></li>
+<li><p><strong>params.p_r</strong> (<em>int</em>) -- Cartesian grid row count</p></li>
+<li><p><strong>params.p_c</strong> (<em>int</em>) -- Cartesian grid column count</p></li>
+<li><p><strong>params.row_comm</strong> (<em>object</em>) -- Sub communicator along row</p></li>
+<li><p><strong>params.col_comm</strong> (<em>object</em>) -- Sub communicator along columns</p></li>
+<li><p><strong>params.W_update</strong> (<em>bool</em>) -- flag to set W update True/False</p></li>
+<li><p><strong>params.norm</strong> (<em>str</em>) -- NMF norm to be minimized</p></li>
+<li><p><strong>params.method</strong> (<em>str</em>) -- NMF optimization method</p></li>
+<li><p><strong>params.eps</strong> (<em>float</em>) -- Epsilon value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.AH_glob">
+<code class="sig-name descname"><span class="pre">AH_glob</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">H_ij</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.AH_glob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed computation of AH^T</p>
+<p>Computes the global matrix multiplication of matrix A and H
+.. math:: AH^T</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>ndarray</em>) -- </p></li>
+<li><p><strong>H</strong> (<em>ndarray</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>AH</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.ATW_glob">
+<code class="sig-name descname"><span class="pre">ATW_glob</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.ATW_glob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed computation of W^TA</p>
+<p>Computes the global matrix multiplication of matrix W and A
+.. math:: W^TA</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>W</strong> (<em>ndarray</em>) -- </p></li>
+<li><p><strong>A</strong> (<em>ndarray</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>Atw</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.FRO_BCD_update">
+<code class="sig-name descname"><span class="pre">FRO_BCD_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">itr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.FRO_BCD_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based BCD update of W  and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self.W_ij</strong> (<em>ndarray (m/p X k)</em>)</p></li>
+<li><p><strong>self.H_ij</strong> (<em>ndarray (k X n/p)</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.FRO_BPP_update">
+<code class="sig-name descname"><span class="pre">FRO_BPP_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.FRO_BPP_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based BPP update of W  and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self.W_ij</strong> (<em>ndarray (m/p X k)</em>)</p></li>
+<li><p><strong>self.H_ij</strong> (<em>ndarray (k X n/p)</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.FRO_BPP_update_H">
+<code class="sig-name descname"><span class="pre">FRO_BPP_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.FRO_BPP_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based BPP update of H  parameter
+Function computes updated H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.H_ij</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray ( k X n/p)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.FRO_BPP_update_W">
+<code class="sig-name descname"><span class="pre">FRO_BPP_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.FRO_BPP_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based BPP update of W  parameter
+Function computes updated W parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.W_ij</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray (m/p X k)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update">
+<code class="sig-name descname"><span class="pre">FRO_HALS_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based HALS update of W  and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self.W_ij</strong> (<em>ndarray (m/p X k)</em>)</p></li>
+<li><p><strong>self.H_ij</strong> (<em>ndarray (k X n/p)</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update_H">
+<code class="sig-name descname"><span class="pre">FRO_HALS_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based HALS update of H  parameter
+Function computes updated H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.H_ij</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray ( k X n/p)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update_W">
+<code class="sig-name descname"><span class="pre">FRO_HALS_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based HALS update of W  parameter
+Function computes updated W parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.W_ij</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray (m/p X k)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.Fro_MU_update">
+<code class="sig-name descname"><span class="pre">Fro_MU_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.Fro_MU_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of W and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self.H_ij</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>self.W_ij</strong> (<em>ndarray</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.Fro_MU_update_H">
+<code class="sig-name descname"><span class="pre">Fro_MU_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.Fro_MU_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of H parameter
+Function computes updated H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.H_ij</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.Fro_MU_update_W">
+<code class="sig-name descname"><span class="pre">Fro_MU_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.Fro_MU_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of W parameter
+Function computes updated H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.W_ij</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.KL_MU_update">
+<code class="sig-name descname"><span class="pre">KL_MU_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.KL_MU_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>KL divergence based multiplicative update of W and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self.H_ij</strong> (<em>ndarray (k X n/p)</em>)</p></li>
+<li><p><strong>self.W_ij</strong> (<em>ndarray (m/p X k)</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.KL_MU_update_H">
+<code class="sig-name descname"><span class="pre">KL_MU_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.KL_MU_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of H parameter
+Function computes updated H parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.H_ij</strong> -- Distributed factor H of shape  k X n/p</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.KL_MU_update_W">
+<code class="sig-name descname"><span class="pre">KL_MU_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.KL_MU_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>KL divergence based multiplicative update of W parameter
+Function computes updated W parameter for each mpi rank</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> (<em>object</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self.W_ij</strong> -- Distributed factor W of shape m/p X k</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.UHT_glob">
+<code class="sig-name descname"><span class="pre">UHT_glob</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.UHT_glob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed computation of UH^T</p>
+<p>Computes the global matrix multiplication of matrix W and U for KL
+.. math:: UH^T</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>W</strong> (<em>ndarray</em>) -- </p></li>
+<li><p><strong>H</strong> (<em>ndarray</em>) -- </p></li>
+<li><p><strong>A</strong> (<em>ndarray</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>UHT</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.WTU_glob">
+<code class="sig-name descname"><span class="pre">WTU_glob</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.WTU_glob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed computation of W^TU</p>
+<p>Computes the global matrix multiplication of matrix W and U for KL
+.. math:: W^TU</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>W</strong> (<em>ndarray</em>) -- </p></li>
+<li><p><strong>H</strong> (<em>ndarray</em>) -- </p></li>
+<li><p><strong>A</strong> (<em>ndarray</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>WTU</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.gather_W_H">
+<code class="sig-name descname"><span class="pre">gather_W_H</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gW</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.gather_W_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gathers W and H factors across cartesian groups
+i.e H_ij -&gt; H_j if gH=True and W_ij -&gt; W_i and gW=True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gW</strong> (<em>boolen</em>) -- </p></li>
+<li><p><strong>gH</strong> (<em>boolen</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>self.H_j</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>self.W_i</strong> (<em>ndarray</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.globalSqNorm">
+<code class="sig-name descname"><span class="pre">globalSqNorm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.globalSqNorm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calc global squared norm of any matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.global_gram">
+<code class="sig-name descname"><span class="pre">global_gram</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.global_gram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed gram computation</p>
+<p>Computes the global gram operation of matrix A
+.. math:: A^TA</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>A</strong> (<em>ndarray</em>) -- </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>A_TA_glob</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.global_mm">
+<code class="sig-name descname"><span class="pre">global_mm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.global_mm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed matrix multiplication</p>
+<p>Computes the global matrix multiplication of matrix A and B
+.. math:: AB</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>ndarray</em>) -- </p></li>
+<li><p><strong>B</strong> (<em>ndarray</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>AB_glob</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.initWandH">
+<code class="sig-name descname"><span class="pre">initWandH</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.initWandH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the parameters for BCD updates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.sum_axis">
+<code class="sig-name descname"><span class="pre">sum_axis</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.sum_axis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_nmf.nmf_algorithms_2D.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_nmf.nmf_algorithms_2D.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs 1 step Update for factors W and H based on NMF method and corresponding norm minimization</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>W_ij</strong> (<em>ndarray</em>) -- The m/p X k distributed factor W</p></li>
+<li><p><strong>H_ij</strong> (<em>ndarray</em>) -- The k X n/p distributed factor H</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pynmfk.dist_svd">
+<span id="pynmfk-dist-svd-module"></span><h2>pynmfk.dist_svd module<a class="headerlink" href="#module-pynmfk.dist_svd" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pynmfk.dist_svd.DistSVD">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.dist_svd.</span></code><code class="sig-name descname"><span class="pre">DistSVD</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_svd.DistSVD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Distributed Computation of SVD along 1D distribution of the data. Only U or V is distributed based on data size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>ndarray</em>) -- Distributed Data</p></li>
+<li><p><strong>args</strong> (<em>class</em>) -- Class which comprises following attributes</p></li>
+<li><p><strong>args.globalm</strong> (<em>int</em>) -- Global row dimensions of A</p></li>
+<li><p><strong>args.globaln</strong> (<em>int</em>) -- Global column dimension of A</p></li>
+<li><p><strong>args.k</strong> (<em>int</em>) -- Rank for decomposition</p></li>
+<li><p><strong>args.p_r</strong> (<em>int</em>) -- Cartesian grid row count</p></li>
+<li><p><strong>args.p_c</strong> (<em>int</em>) -- Cartesian grid column count</p></li>
+<li><p><strong>args.seed</strong> (<em>int</em>) -- Set the random seed</p></li>
+<li><p><strong>args.comm</strong> (<em>object</em>) -- comm object for distributed read</p></li>
+<li><p><strong>args.eps</strong> (<em>float</em>) -- Epsilon value</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.dist_svd.DistSVD.calc_norm">
+<code class="sig-name descname"><span class="pre">calc_norm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_svd.DistSVD.calc_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the norm of vector</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_svd.DistSVD.globalGram">
+<code class="sig-name descname"><span class="pre">globalGram</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_svd.DistSVD.globalGram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the global gram betwee X and Y</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_svd.DistSVD.nnsvd">
+<code class="sig-name descname"><span class="pre">nnsvd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_svd.DistSVD.nnsvd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the distributed Non-Negative SVD(NNSVD) components from the computed SVD factors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flag</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Computes nnSVD factors with different configurations</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) -- Verbose to set returned errors. If true returns SVD and NNSVD reconstruction errors.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>W</strong> (<em>ndarray</em>) -- Non-negative factor W  of shape (m/p_r,k)</p></li>
+<li><p><strong>H</strong> (<em>ndarray</em>) -- Non-negative factor H  of shape (k,n/p_c)</p></li>
+<li><p><strong>error</strong> (<em>dictionary (optional)</em>) -- Dictinoary of reconstruction error for svd and nnsvd</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_svd.DistSVD.normalize_by_W">
+<code class="sig-name descname"><span class="pre">normalize_by_W</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Wall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Hall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comm1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_svd.DistSVD.normalize_by_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize the factors W and H</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_svd.DistSVD.randomUnitVector">
+<code class="sig-name descname"><span class="pre">randomUnitVector</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_svd.DistSVD.randomUnitVector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construnct a rondom unit vector</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_svd.DistSVD.rel_error">
+<code class="sig-name descname"><span class="pre">rel_error</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_svd.DistSVD.rel_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the relative error between the reconstructed data with factors vs original data</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_svd.DistSVD.svd">
+<code class="sig-name descname"><span class="pre">svd</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_svd.DistSVD.svd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the SVD for a given matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>singularValues</strong> (<em>list</em>) -- List of singular values of length k</p></li>
+<li><p><strong>Us</strong> (<em>ndarray</em>) -- Factor Us of shape (m/p_r,k)</p></li>
+<li><p><strong>Vs</strong> (<em>ndarray</em>) -- Factor Vs of shape (k,n/p_c)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.dist_svd.DistSVD.svd1D">
+<code class="sig-name descname"><span class="pre">svd1D</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.dist_svd.DistSVD.svd1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>One dimensional SVD</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pynmfk.nnls">
+<span id="pynmfk-nnls-module"></span><h2>pynmfk.nnls module<a class="headerlink" href="#module-pynmfk.nnls" title="Permalink to this headline">¶</a></h2>
+<p>Based on the implementation from <a class="reference external" href="https://github.com/kimjingu/nonnegfac-python/blob/master/nonnegfac/nnls.py">https://github.com/kimjingu/nonnegfac-python/blob/master/nonnegfac/nnls.py</a></p>
+<dl class="py function">
+<dt id="pynmfk.nnls.column_group_sub">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.nnls.</span></code><code class="sig-name descname"><span class="pre">column_group_sub</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.nnls.column_group_sub" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="pynmfk.nnls.nnlsm_activeset">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.nnls.</span></code><code class="sig-name descname"><span class="pre">nnlsm_activeset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_input_prod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.nnls.nnlsm_activeset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nonnegativity-constrained least squares with active-set method and column grouping</p>
+<p>Solves min ||AX-B||_2^2 s.t. X &gt;= 0 element-wise.</p>
+<p>Algorithm of this routine is close to the one presented in the following paper but
+is different in organising inner- and outer-loops:
+M. H. Van Benthem and M. R. Keenan, J. Chemometrics 2004; 18: 441-450</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>numpy.array</em><em>, </em><em>shape</em><em> (</em><em>m</em><em>,</em><em>n</em><em>)</em>) -- </p></li>
+<li><p><strong>B</strong> (<em>numpy.array</em><em> or </em><em>scipy.sparse matrix</em><em>, </em><em>shape</em><em> (</em><em>m</em><em>,</em><em>k</em><em>)</em>) -- </p></li>
+<li><p><strong>Parameters</strong> (<em>Optional</em>) -- </p></li>
+<li><p><strong>-------------------</strong> -- </p></li>
+<li><p><strong>is_input_prod</strong> (<em>True/False. -  If True</em><em>, </em><em>the A and B arguments are interpreted as</em>) -- AtA and AtB, respectively. Default is False.</p></li>
+<li><p><strong>init</strong> (<em>numpy.array</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>k</em><em>)</em><em> - If provided</em><em>, </em><em>init is used as an initial value for the algorithm.</em>) -- Default is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>X, (success, Y, num_cholesky, num_eq, num_backup)</em></p></li>
+<li><p><strong>X</strong> (<em>numpy.array, shape (n,k) - solution</em>)</p></li>
+<li><p><strong>success</strong> (<em>True/False - True if the solution is found. False if the algorithm did not terminate</em>) -- due to numerical errors.</p></li>
+<li><p><strong>Y</strong> (<em>numpy.array, shape (n,k) - Y = A.T * A * X - A.T * B</em>)</p></li>
+<li><p><strong>num_cholesky</strong> (<em>int - the number of Cholesky factorizations needed</em>)</p></li>
+<li><p><strong>num_eq</strong> (<em>int - the number of linear systems of equations needed to be solved</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pynmfk.nnls.nnlsm_blockpivot">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.nnls.</span></code><code class="sig-name descname"><span class="pre">nnlsm_blockpivot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_input_prod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.nnls.nnlsm_blockpivot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nonnegativity-constrained least squares with block principal pivoting method and column grouping</p>
+<p>Solves min ||AX-B||_2^2 s.t. X &gt;= 0 element-wise.</p>
+<p>J. Kim and H. Park, Fast nonnegative matrix factorization: An active-set-like method and comparisons,
+SIAM Journal on Scientific Computing,
+vol. 33, no. 6, pp. 3261-3281, 2011.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>numpy.array</em><em>, </em><em>shape</em><em> (</em><em>m</em><em>,</em><em>n</em><em>)</em>) -- </p></li>
+<li><p><strong>B</strong> (<em>numpy.array</em><em> or </em><em>scipy.sparse matrix</em><em>, </em><em>shape</em><em> (</em><em>m</em><em>,</em><em>k</em><em>)</em>) -- </p></li>
+<li><p><strong>Parameters</strong> (<em>Optional</em>) -- </p></li>
+<li><p><strong>-------------------</strong> -- </p></li>
+<li><p><strong>is_input_prod</strong> (<em>True/False. -  If True</em><em>, </em><em>the A and B arguments are interpreted as</em>) -- AtA and AtB, respectively. Default is False.</p></li>
+<li><p><strong>init</strong> (<em>numpy.array</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>k</em><em>)</em><em> - If provided</em><em>, </em><em>init is used as an initial value for the algorithm.</em>) -- Default is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>X, (success, Y, num_cholesky, num_eq, num_backup)</em></p></li>
+<li><p><strong>X</strong> (<em>numpy.array, shape (n,k) - solution</em>)</p></li>
+<li><p><strong>success</strong> (<em>True/False - True if the solution is found. False if the algorithm did not terminate</em>) -- due to numerical errors.</p></li>
+<li><p><strong>Y</strong> (<em>numpy.array, shape (n,k) - Y = A.T * A * X - A.T * B</em>)</p></li>
+<li><p><strong>num_cholesky</strong> (<em>int - the number of Cholesky factorizations needed</em>)</p></li>
+<li><p><strong>num_eq</strong> (<em>int - the number of linear systems of equations needed to be solved</em>)</p></li>
+<li><p><strong>num_backup</strong> (<em>int - the number of appearances of the back-up rule. See SISC paper for details.</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pynmfk.nnls.normal_eq_comb">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.nnls.</span></code><code class="sig-name descname"><span class="pre">normal_eq_comb</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">AtA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AtB</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PassSet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.nnls.normal_eq_comb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Solve many systems of linear equations using combinatorial grouping.</p>
+<ol class="upperalpha simple" start="13">
+<li><ol class="upperalpha simple" start="8">
+<li><p>Van Benthem and M. R. Keenan, J. Chemometrics 2004; 18: 441-450</p></li>
+</ol>
+</li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>AtA</strong> (<em>numpy.array</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>n</em><em>)</em>) -- </p></li>
+<li><p><strong>AtB</strong> (<em>numpy.array</em><em>, </em><em>shape</em><em> (</em><em>n</em><em>,</em><em>k</em><em>)</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>(Z,num_cholesky,num_eq)</em></p></li>
+<li><p><strong>Z</strong> (<em>numpy.array, shape (n,k) - solution</em>)</p></li>
+<li><p><strong>num_cholesky</strong> (<em>int - the number of unique cholesky decompositions done</em>)</p></li>
+<li><p><strong>num_eq</strong> (<em>int - the number of systems of linear equations solved</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-pynmfk.plot_results">
+<span id="pynmfk-plot-results-module"></span><h2>pynmfk.plot_results module<a class="headerlink" href="#module-pynmfk.plot_results" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pynmfk.plot_results.box_plot">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.plot_results.</span></code><code class="sig-name descname"><span class="pre">box_plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">respath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.plot_results.box_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the boxplot from the given data and saves the results</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pynmfk.plot_results.plot_W">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.plot_results.</span></code><code class="sig-name descname"><span class="pre">plot_W</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.plot_results.plot_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a factor and plots into subplots for each component</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pynmfk.plot_results.plot_err">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.plot_results.</span></code><code class="sig-name descname"><span class="pre">plot_err</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.plot_results.plot_err" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the relative error for NMF decomposition as a function of number of iterations</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pynmfk.plot_results.plot_results">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.plot_results.</span></code><code class="sig-name descname"><span class="pre">plot_results</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">startProcess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endProcess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RECON</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RECON1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SILL_MIN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_put</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.plot_results.plot_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the relative error and Silhouette results for estimation of k</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pynmfk.plot_results.plot_timing_stats">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.plot_results.</span></code><code class="sig-name descname"><span class="pre">plot_timing_stats</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">respath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.plot_results.plot_timing_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the timing stats for the MPI operation.
+fpath: Stats data path
+respath: Path to save graph</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pynmfk.plot_results.read_plot_factors">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.plot_results.</span></code><code class="sig-name descname"><span class="pre">read_plot_factors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factors_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pgrid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.plot_results.read_plot_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the factors W and H and Plots them</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pynmfk.plot_results.timing_stats">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.plot_results.</span></code><code class="sig-name descname"><span class="pre">timing_stats</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.plot_results.timing_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the timing stats dictionary from the stored file and parses the data.</p>
+</dd></dl>
+
+</section>
+<section id="module-pynmfk.pyNMF">
+<span id="pynmfk-pynmf-module"></span><h2>pynmfk.pyNMF module<a class="headerlink" href="#module-pynmfk.pyNMF" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pynmfk.pyNMF.PyNMF">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.pyNMF.</span></code><code class="sig-name descname"><span class="pre">PyNMF</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_factors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMF.PyNMF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Performs the distributed NMF decomposition of given matrix X into factors W and H</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A_ij</strong> (<em>ndarray</em>) -- Distributed Data</p></li>
+<li><p><strong>factors</strong> (<em>tuple</em>) -- Distributed factors W and H</p></li>
+<li><p><strong>params</strong> (<em>class</em>) -- Class which comprises following attributes</p></li>
+<li><p><strong>params.init</strong> (<em>str</em>) -- NMF initialization(rand/nnsvd)</p></li>
+<li><p><strong>params.comm1</strong> (<em>object</em>) -- Global Communicator</p></li>
+<li><p><strong>params.comm</strong> (<em>object</em>) -- Modified communicator object</p></li>
+<li><p><strong>params.k</strong> (<em>int</em>) -- Rank for decomposition</p></li>
+<li><p><strong>params.m</strong> (<em>int</em>) -- Global dimensions m</p></li>
+<li><p><strong>params.n</strong> (<em>int</em>) -- Global dimensions n</p></li>
+<li><p><strong>params.p_r</strong> (<em>int</em>) -- Cartesian grid row count</p></li>
+<li><p><strong>params.p_c</strong> (<em>int</em>) -- Cartesian grid column count</p></li>
+<li><p><strong>params.row_comm</strong> (<em>object</em>) -- Sub communicator along row</p></li>
+<li><p><strong>params.col_comm</strong> (<em>object</em>) -- Sub communicator along columns</p></li>
+<li><p><strong>params.W_update</strong> (<em>bool</em>) -- flag to set W update True/False</p></li>
+<li><p><strong>params.norm</strong> (<em>str</em>) -- NMF norm to be minimized</p></li>
+<li><p><strong>params.method</strong> (<em>str</em>) -- NMF optimization method</p></li>
+<li><p><strong>params.eps</strong> (<em>float</em>) -- Epsilon value</p></li>
+<li><p><strong>params.verbose</strong> (<em>bool</em>) -- Flag to enable/disable display results</p></li>
+<li><p><strong>params.save_factors</strong> (<em>bool</em>) -- Flag to enable/disable saving computed factors</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.pyNMF.PyNMF.cart_2d_collect_factors">
+<code class="sig-name descname"><span class="pre">cart_2d_collect_factors</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMF.PyNMF.cart_2d_collect_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collects factors along each sub communicators</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.pyNMF.PyNMF.column_err">
+<code class="sig-name descname"><span class="pre">column_err</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMF.PyNMF.column_err" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the distributed column wise norm</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.pyNMF.PyNMF.compute_global_dim">
+<code class="sig-name descname"><span class="pre">compute_global_dim</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMF.PyNMF.compute_global_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes global dimensions m and n from given chunk sizes for any grid configuration</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.pyNMF.PyNMF.dist_norm">
+<code class="sig-name descname"><span class="pre">dist_norm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fro'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMF.PyNMF.dist_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the distributed norm</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.pyNMF.PyNMF.fit">
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMF.PyNMF.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the sub routines to perform distributed NMF decomposition with initialization for a given norm minimization and update method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>W_i</strong> (<em>ndarray</em>) -- Factor W of shape m/p_r * k</p></li>
+<li><p><strong>H_j</strong> (<em>ndarray</em>) -- Factor H of shape k * n/p_c</p></li>
+<li><p><strong>recon_err</strong> (<em>float</em>) -- Reconstruction error for NMF decomposition</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.pyNMF.PyNMF.init_factors">
+<code class="sig-name descname"><span class="pre">init_factors</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMF.PyNMF.init_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes NMF factors with rand/nnsvd method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.pyNMF.PyNMF.normalize_features">
+<code class="sig-name descname"><span class="pre">normalize_features</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Wall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Hall</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMF.PyNMF.normalize_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalizes features Wall and Hall</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.pyNMF.PyNMF.relative_err">
+<code class="sig-name descname"><span class="pre">relative_err</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMF.PyNMF.relative_err" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the relative error for NMF decomposition</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pynmfk.pyNMFk">
+<span id="pynmfk-pynmfk-module"></span><h2>pynmfk.pyNMFk module<a class="headerlink" href="#module-pynmfk.pyNMFk" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pynmfk.pyNMFk.PyNMFk">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.pyNMFk.</span></code><code class="sig-name descname"><span class="pre">PyNMFk</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMFk.PyNMFk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Performs the distributed NMF decomposition with custom clustering for estimating hidden factors k</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A_ij</strong> (<em>ndarray</em>) -- Distributed Data</p></li>
+<li><p><strong>factors</strong> (<em>tuple</em>) -- Distributed factors W and H</p></li>
+<li><p><strong>params</strong> (<em>class</em>) -- Class which comprises following attributes</p></li>
+<li><p><strong>params.init</strong> (<em>str</em>) -- NMF initialization(rand/nnsvd)</p></li>
+<li><p><strong>params.comm1</strong> (<em>object</em>) -- Global Communicator</p></li>
+<li><p><strong>params.comm</strong> (<em>object</em>) -- Modified communicator object</p></li>
+<li><p><strong>params.k</strong> (<em>int</em>) -- Rank for decomposition</p></li>
+<li><p><strong>params.m</strong> (<em>int</em>) -- Global dimensions m</p></li>
+<li><p><strong>params.n</strong> (<em>int</em>) -- Global dimensions n</p></li>
+<li><p><strong>params.p_r</strong> (<em>int</em>) -- Cartesian grid row count</p></li>
+<li><p><strong>params.p_c</strong> (<em>int</em>) -- Cartesian grid column count</p></li>
+<li><p><strong>params.row_comm</strong> (<em>object</em>) -- Sub communicator along row</p></li>
+<li><p><strong>params.col_comm</strong> (<em>object</em>) -- Sub communicator along columns</p></li>
+<li><p><strong>params.W_update</strong> (<em>bool</em>) -- flag to set W update True/False</p></li>
+<li><p><strong>params.norm</strong> (<em>str</em>) -- NMF norm to be minimized</p></li>
+<li><p><strong>params.method</strong> (<em>str</em>) -- NMF optimization method</p></li>
+<li><p><strong>params.eps</strong> (<em>float</em>) -- Epsilon value</p></li>
+<li><p><strong>params.verbose</strong> (<em>bool</em>) -- Flag to enable/disable display results</p></li>
+<li><p><strong>params.save_factors</strong> (<em>bool</em>) -- Flag to enable/disable saving computed factors</p></li>
+<li><p><strong>params.perturbations</strong> (<em>int</em>) -- Number of Perturbations for clustering</p></li>
+<li><p><strong>params.noise_var</strong> (<em>float</em>) -- Set noise variance for perturbing the data</p></li>
+<li><p><strong>params.sill_thr</strong> (<em>float</em>) -- Set the sillhouette threshold for estimating K with p-test</p></li>
+<li><p><strong>params.start_k</strong> (<em>int</em>) -- Starting range for Feature search K</p></li>
+<li><p><strong>params.end_k</strong> (<em>int</em>) -- Ending range for Feature search K</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.pyNMFk.PyNMFk.fit">
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMFk.PyNMFk.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the sub routines to perform distributed NMF decomposition and then custom clustering to estimate k</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>nopt</strong> -- Estimated value of latent features</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.pyNMFk.PyNMFk.pvalueAnalysis">
+<code class="sig-name descname"><span class="pre">pvalueAnalysis</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">errRegres</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SILL_MIN</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMFk.PyNMFk.pvalueAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates nopt by analysing the errors distributions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>errRegres</strong> (<em>array</em>) -- array for storing the distributions of errors</p></li>
+<li><p><strong>SILL_MIN</strong> (<em>float</em>) -- Minimum of silhouette score</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.pyNMFk.PyNMFk.pynmfk_per_k">
+<code class="sig-name descname"><span class="pre">pynmfk_per_k</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMFk.PyNMFk.pynmfk_per_k" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs NMF decomposition and clustering for each k to estimate silhouette statistics</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pynmfk.pyNMFk.sample">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.pyNMFk.</span></code><code class="sig-name descname"><span class="pre">sample</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMFk.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generates perturbed version of data based on sampling distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>ndarray</em><em>, </em><em>sparse matrix</em>) -- Array of which to find a perturbation.</p></li>
+<li><p><strong>noise_var</strong> (<em>float</em>) -- The perturbation amount.</p></li>
+<li><p><strong>method</strong> (<em>str</em>) -- Method for sampling (uniform/poisson)</p></li>
+<li><p><strong>seed</strong> (<em>float</em>) -- Set seed for random data generation</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.pyNMFk.sample.fit">
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMFk.sample.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the sub routines to perform resampling on data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>X_per</strong> -- Perturbed version of data</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ndarry</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.pyNMFk.sample.poisson">
+<code class="sig-name descname"><span class="pre">poisson</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMFk.sample.poisson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resamples each element of a matrix from a Poisson distribution with the mean set by that element. Y_{i,j} = Poisson(X_{i,j}</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.pyNMFk.sample.randM">
+<code class="sig-name descname"><span class="pre">randM</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.pyNMFk.sample.randM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiplies each element of X by a uniform random number in (1-epsilon, 1+epsilon).</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pynmfk.utils">
+<span id="pynmfk-utils-module"></span><h2>pynmfk.utils module<a class="headerlink" href="#module-pynmfk.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pynmfk.utils.comm_timing">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.utils.</span></code><code class="sig-name descname"><span class="pre">comm_timing</span></code><a class="headerlink" href="#pynmfk.utils.comm_timing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Decorator class for computing timing for MPI operations. The class uses the global
+variables flag and time initialized in config file and updates them for each call dynamically.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flag</strong> (<em>bool</em>) -- if Set true, enables the decorator to compute the timings.</p></li>
+<li><p><strong>time</strong> (<em>dict</em>) -- Dictionary to store timing for each function calls</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pynmfk.utils.data_operations">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.utils.</span></code><code class="sig-name descname"><span class="pre">data_operations</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.data_operations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Performs various operations on the data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>ndarray</em>) -- Data to operate on</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.utils.data_operations.commonFactors">
+<code class="sig-name descname"><span class="pre">commonFactors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intList</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.data_operations.commonFactors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.utils.data_operations.cutZero">
+<code class="sig-name descname"><span class="pre">cutZero</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.data_operations.cutZero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prunes zero columns from the data</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.utils.data_operations.desampleT">
+<code class="sig-name descname"><span class="pre">desampleT</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.data_operations.desampleT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.utils.data_operations.matSplit">
+<code class="sig-name descname"><span class="pre">matSplit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'npy'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.data_operations.matSplit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.utils.data_operations.primeFactors">
+<code class="sig-name descname"><span class="pre">primeFactors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.data_operations.primeFactors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.utils.data_operations.recZero">
+<code class="sig-name descname"><span class="pre">recZero</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indexList</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.data_operations.recZero" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.utils.data_operations.remove_bad_factors">
+<code class="sig-name descname"><span class="pre">remove_bad_factors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Wall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Hall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ErrTol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.data_operations.remove_bad_factors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pynmfk.utils.determine_block_params">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.utils.</span></code><code class="sig-name descname"><span class="pre">determine_block_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pgrid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.determine_block_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Computes the parameters  for each chunk to be read by MPI process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>comm</strong> (<em>object</em>) -- MPI communicator object</p></li>
+<li><p><strong>pgrid</strong> (<em>tuple</em>) -- Cartesian grid configuration</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em>) -- Data shape</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pynmfk.utils.determine_block_params.determine_block_index_range_asymm">
+<code class="sig-name descname"><span class="pre">determine_block_index_range_asymm</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.determine_block_params.determine_block_index_range_asymm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the start and end indices for the Data block for each rank</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.utils.determine_block_params.determine_block_shape_asymm">
+<code class="sig-name descname"><span class="pre">determine_block_shape_asymm</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.determine_block_params.determine_block_shape_asymm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the shape for the Data block for each rank</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="pynmfk.utils.norm">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.utils.</span></code><code class="sig-name descname"><span class="pre">norm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the data norm</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>ndarray</em>) -- Data to operate on</p></li>
+<li><p><strong>comm</strong> (<em>object</em>) -- MPI communicator object</p></li>
+<li><p><strong>norm</strong> (<em>int</em>) -- type of norm to be computed</p></li>
+<li><p><strong>axis</strong> (<em>int</em>) -- axis of array for the norm to be computed along</p></li>
+<li><p><strong>p</strong> (<em>int</em>) -- Processor count</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>norm</strong> -- Norm of the given data X</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pynmfk.utils.parse">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.utils.</span></code><code class="sig-name descname"><span class="pre">parse</span></code><a class="headerlink" href="#pynmfk.utils.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Define a class parse which is used for adding attributes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pynmfk.utils.str2bool">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.utils.</span></code><code class="sig-name descname"><span class="pre">str2bool</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.str2bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns instance of string parameter to bool type</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pynmfk.utils.transform_H_index">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pynmfk.utils.</span></code><code class="sig-name descname"><span class="pre">transform_H_index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.transform_H_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Collected H factors after MPI operation aren't aligned. This operation performs careful reordering of H factors
+such that the collected factors are aligned</p>
+<dl class="py method">
+<dt id="pynmfk.utils.transform_H_index.rankidx2blkidx">
+<code class="sig-name descname"><span class="pre">rankidx2blkidx</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.transform_H_index.rankidx2blkidx" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is to transform the column index to rank index for H</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pynmfk.utils.transform_H_index.transform_H_idx">
+<code class="sig-name descname"><span class="pre">transform_H_idx</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rank</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.transform_H_index.transform_H_idx" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is to transform H based on new index</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="pynmfk.utils.var_init">
+<code class="sig-prename descclassname"><span class="pre">pynmfk.utils.</span></code><code class="sig-name descname"><span class="pre">var_init</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pynmfk.utils.var_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if class attribute is present and if not, intializes the attribute with given default value</p>
+</dd></dl>
+
+</section>
+<section id="module-pynmfk">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pynmfk" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">pynmfk</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pynmfk</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pynmfk package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">pynmfk</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">pynmfk</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, LANL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/pynmfk.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
