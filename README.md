@@ -50,6 +50,11 @@ python setup.py install
 * scipy
 * h5py
 
+## Documentation
+
+You can find the documentation [here](lanl.github.io/pydnmfk/). 
+
+
 ## Usage
 We provide a sample dataset that can be used for estimation of k:
 ```python
