@@ -52,7 +52,7 @@ python setup.py install
 
 ## Documentation
 
-You can find the documentation [here](lanl.github.io/pydnmfk/). 
+You can find the documentation [here](https://lanl.github.io/pyDNMFk/). 
 
 
 ## Usage
