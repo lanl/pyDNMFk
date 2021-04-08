@@ -28,7 +28,9 @@ conda create --name pyDNMFk python=3.7.1 openmpi mpi4py
 source activate pyDNMFk
 python setup.py install
 ```
+
 <hr/>
+
 On a server
 ```
 git clone https://github.com/lanl/pyDNMFk.git
