@@ -30,7 +30,7 @@ jobs:
       - name: Test test_dist_nmf_1d_nnsvd_init
         timeout-minutes: 2   
         run: |
-          cd tests && timeout --preserve-status {$TIME_OUT}m mpirun -n 2 python -m pytest test_dist_nmf_1d_nnsvd_init.py --with-mpi
+          cd tests && timeout --preserve-status '$TIME_OUT'm mpirun -n 2 python -m pytest test_dist_nmf_1d_nnsvd_init.py --with-mpi
       
       - name: Test test_dist_nmf_2d
         timeout-minutes: 2
