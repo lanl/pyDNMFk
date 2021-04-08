@@ -12,12 +12,18 @@ from .utils import *
 class data_read():
     r"""Class for reading data.
 
-    Parameters:
-        args (class): Class which comprises following attributes
-        fpath (str): Directory path of file to be read
-        pgrid (tuple): Cartesian grid configuration
-        ftype (str): Type of data to read(mat/npy/csv/folder)
-        fname (str): Name of the file to read
+    Parameters
+    ----------
+        args : class
+            Class which comprises following attributes
+        fpath : str
+            Directory path of file to be read
+        pgrid : tuple
+            Cartesian grid configuration
+        ftype : str
+            Type of data to read(mat/npy/csv/folder)
+        fname : str
+            Name of the file to read
         comm (object): comm object for distributed read
 
         """
@@ -129,7 +135,8 @@ class split_files_save():
 class data_write():
     r"""Class for writing data/results.
 
-    Parameters:
+    Parameters
+    ----------
         args (class): class which comprises following attributes
         results_path (str): Directory path of file to write
         pgrid (tuple): Cartesian grid configuration
@@ -196,9 +203,12 @@ class data_write():
 class read_factors():
     r"""Class for reading saved factors.
 
-    Args:
-        factors_path (str): Directory path of factors to read from
-        pgrid (tuple): Cartesian grid configuration
+    Parameters
+    ----------
+        factors_path : str
+            Directory path of factors to read from
+        pgrid : tuple
+            Cartesian grid configuration
 
         """
     @comm_timing()

@@ -10,26 +10,46 @@ class PyNMF():
     r"""
     Performs the distributed NMF decomposition of given matrix X into factors W and H
 
-    Parameters:
-        A_ij (ndarray) : Distributed Data
-        factors (tuple), optional : Distributed factors W and H
-        params (class): Class which comprises following attributes
-        params.init (str) : NMF initialization(rand/nnsvd)
-        params.comm1 (object): Global Communicator
-        params.comm (object): Modified communicator object
-        params.k (int) : Rank for decomposition
-        params.m (int) : Global dimensions m
-        params.n (int) : Global dimensions n
-        params.p_r  (int): Cartesian grid row count
-        params.p_c  (int): Cartesian grid column count
-        params.row_comm (object) : Sub communicator along row
-        params.col_comm (object) : Sub communicator along columns
-        params.W_update (bool) : flag to set W update True/False
-        params.norm (str): NMF norm to be minimized
-        params.method(str): NMF optimization method
-        params.eps (float) : Epsilon value
-        params.verbose(bool) : Flag to enable/disable display results
-        params.save_factors(bool) : Flag to enable/disable saving computed factors"""
+    Parameters
+    ----------
+        A_ij : ndarray
+            Distributed Data
+        factors : tuple (optional)
+            Distributed factors W and H
+        params : class
+            Class which comprises following attributes
+        params.init : str
+            NMF initialization(rand/nnsvd)
+        params.comm1 : object
+            Global Communicator
+        params.comm : object
+            Modified communicator object
+        params.k : int
+            Rank for decomposition
+        params.m : int
+            Global dimensions m
+        params.n : int
+            Global dimensions n
+        params.p_r : int
+            Cartesian grid row count
+        params.p_c  : int
+            Cartesian grid column count
+        params.row_comm : object
+            Sub communicator along row
+        params.col_comm : object
+            Sub communicator along columns
+        params.W_update : bool
+            flag to set W update True/False
+        params.norm : str
+            NMF norm to be minimized
+        params.method : str
+            NMF optimization method
+        params.eps : float
+            Epsilon value
+        params.verbose : bool
+            Flag to enable/disable display results
+        params.save_factors : bool
+            Flag to enable/disable saving computed factors"""
 
     @comm_timing()
     def __init__(self, A_ij, factors=None, save_factors=False, params=None):

@@ -9,11 +9,16 @@ class sample():
     """
     Generates perturbed version of data based on sampling distribution.
 
-    Args:
-        data (ndarray, sparse matrix): Array of which to find a perturbation.
-        noise_var (float): The perturbation amount.
-        method (str) : Method for sampling (uniform/poisson)
-        seed (float),optional : Set seed for random data generation
+    Parameters
+    ----------
+        data : ndarray
+            Array of which to find a perturbation.
+        noise_var : float
+            The perturbation amount.
+        method : str
+            Method for sampling (uniform/poisson)
+        seed : float(optional)
+            Set seed for random data generation
     """
 
 
@@ -66,31 +71,56 @@ class PyNMFk():
     r"""
     Performs the distributed NMF decomposition with custom clustering for estimating hidden factors k
 
-    Parameters:
-        A_ij (ndarray) : Distributed Data
-        factors (tuple), optional : Distributed factors W and H
-        params (class): Class which comprises following attributes
-        params.init (str) : NMF initialization(rand/nnsvd)
-        params.comm1 (object): Global Communicator
-        params.comm (object): Modified communicator object
-        params.k (int) : Rank for decomposition
-        params.m (int) : Global dimensions m
-        params.n (int) : Global dimensions n
-        params.p_r  (int): Cartesian grid row count
-        params.p_c  (int): Cartesian grid column count
-        params.row_comm (object) : Sub communicator along row
-        params.col_comm (object) : Sub communicator along columns
-        params.W_update (bool) : flag to set W update True/False
-        params.norm (str): NMF norm to be minimized
-        params.method(str): NMF optimization method
-        params.eps (float) : Epsilon value
-        params.verbose (bool) : Flag to enable/disable display results
-        params.save_factors (bool) : Flag to enable/disable saving computed factors
-        params.perturbations (int) : Number of Perturbations for clustering
-        params.noise_var (float) : Set noise variance for perturbing the data
-        params.sill_thr (float) : Set the sillhouette threshold for estimating K with p-test
-        params.start_k (int) : Starting range for Feature search K
-        params.end_k (int) : Ending range for Feature search K"""
+    Parameters
+    ----------
+        A_ij : ndarray
+            Distributed Data
+        factors : tuple (optional)
+            Distributed factors W and H
+        params : class
+            Class which comprises following attributes
+        params.init : str
+            NMF initialization(rand/nnsvd)
+        params.comm1 : object
+            Global Communicator
+        params.comm : object
+            Modified communicator object
+        params.k : int
+            Rank for decomposition
+        params.m : int
+            Global dimensions m
+        params.n : int
+            Global dimensions n
+        params.p_r : int
+            Cartesian grid row count
+        params.p_c  : int
+            Cartesian grid column count
+        params.row_comm : object
+            Sub communicator along row
+        params.col_comm : object
+            Sub communicator along columns
+        params.W_update : bool
+            flag to set W update True/False
+        params.norm : str
+            NMF norm to be minimized
+        params.method : str
+            NMF optimization method
+        params.eps : float
+            Epsilon value
+        params.verbose : bool
+            Flag to enable/disable display results
+        params.save_factors : bool
+            Flag to enable/disable saving computed factors
+        params.perturbations : int
+            Number of Perturbations for clustering
+        params.noise_var : float
+            Set noise variance for perturbing the data
+        params.sill_thr : float
+            Set the sillhouette threshold for estimating K with p-test
+        params.start_k : int
+            Starting range for Feature search K
+        params.end_k : int
+            Ending range for Feature search K"""
 
     @comm_timing()
     def __init__(self, A_ij, factors=None, params=None):

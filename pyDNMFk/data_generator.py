@@ -26,14 +26,22 @@ class data_generator():
     Generates synthetic data in distributed manner where each MPI process generates a chunk from the data parallelly.
     The W matrix is generated with gaussian distribution whereas the H matrix is random.
 
-    Parameters:
-        args (class): Class which comprises following attributes
-        fpath (str): Directory path of file to be stored
-        p_r (int): Count of row processor in the cartesian grid
-        p_c (int): Count of column processor in the cartesian grid
-        m (int):  row dimension of the data
-        n (int):  Column dimension of the data
-        k (int): Feature count
+    Parameters
+    ----------
+        args : class
+            Class which comprises following attributes
+        fpath : str
+            Directory path of file to be stored
+        p_r : int
+            Count of row processor in the cartesian grid
+        p_c  : int
+            Count of column processor in the cartesian grid
+        m : int
+            row dimension of the data
+        n : int
+            Column dimension of the data
+        k : int
+            Feature count
 
     """
     def __init__(self, args):

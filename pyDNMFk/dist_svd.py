@@ -10,17 +10,28 @@ class DistSVD():
     r"""
     Distributed Computation of SVD along 1D distribution of the data. Only U or V is distributed based on data size.
 
-    Parameters:
-        A (ndarray) : Distributed Data
-        args (class): Class which comprises following attributes
-        args.globalm (int): Global row dimensions of A
-        args.globaln (int): Global column dimension of A
-        args.k (int) , optional: Rank for decomposition
-        args.p_r  (int): Cartesian grid row count
-        args.p_c  (int): Cartesian grid column count
-        args.seed (int), optional: Set the random seed
-        args.comm (object): comm object for distributed read
-        args.eps (float) : Epsilon value"""
+    Parameters
+    ----------
+        A : ndarray
+            Distributed Data
+        args : class
+            Class which comprises following attributes
+        args.globalm : int
+            Global row dimensions of A
+        args.globaln : int
+            Global column dimension of A
+        args.k : int(optional)
+            Rank for decomposition
+        args.p_r : int
+            Cartesian grid row count
+        args.p_c  : int
+            Cartesian grid column count
+        args.seed : int(optional)
+            Set the random seed
+        args.comm : object
+            comm object for distributed read
+        args.eps : float
+            Epsilon value"""
 
     @comm_timing()
     def __init__(self, args, A):

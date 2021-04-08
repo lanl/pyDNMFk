@@ -60,14 +60,6 @@ pyDNMFk.dist\_svd module
    :undoc-members:
    :show-inheritance:
 
-pyDNMFk.nnls module
--------------------
-
-.. automodule:: pyDNMFk.nnls
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 pyDNMFk.plot\_results module
 ----------------------------
 
