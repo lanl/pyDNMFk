@@ -28,40 +28,40 @@ jobs:
           python setup.py install
           
       - name: Test test_dist_nmf_1d_nnsvd_init
-        timeout-minutes: 5
+        timeout-minutes: 2
          
         run: |
-          cd tests && timeout 1m mpirun -n 2 python -m pytest test_dist_nmf_1d_nnsvd_init.py --with-mpi
+          cd tests && timeout --preserve-status 1m mpirun -n 2 python -m pytest test_dist_nmf_1d_nnsvd_init.py --with-mpi
       
       - name: Test test_dist_nmf_2d
-        timeout-minutes: 5
+        timeout-minutes: 2
         
         run: |
-          cd tests && timeout 1m mpirun -n 2 python -m pytest test_dist_nmf_2d.py --with-mpi
+          cd tests && timeout --preserve-status 1m mpirun -n 2 python -m pytest test_dist_nmf_2d.py --with-mpi
           
       - name: Test test_dist_nmf_1d
-        timeout-minutes: 5
+        timeout-minutes: 2
         
         run: |
-          cd tests && timeout 1m mpirun -n 2 python -m pytest test_dist_nmf_1d.py --with-mpi
+          cd tests && timeout --preserve-status 1m mpirun -n 2 python -m pytest test_dist_nmf_1d.py --with-mpi
           
       - name: Test test_dist_nnsvd
-        timeout-minutes: 5
+        timeout-minutes: 2
         
         run: |
-          cd tests && timeout 1m mpirun -n 2 python -m pytest test_dist_nnsvd.py --with-mpi
+          cd tests && timeout --preserve-status 1m mpirun -n 2 python -m pytest test_dist_nnsvd.py --with-mpi
       
       - name: Test test_dist_clustering
-        timeout-minutes: 5
+        timeout-minutes: 2
         
         run: |
-          cd tests && timeout 1m mpirun -n 2 python -m pytest test_dist_clustering.py --with-mpi
+          cd tests && timeout --preserve-status 1m mpirun -n 2 python -m pytest test_dist_clustering.py --with-mpi
           
       - name: Test test_dist_file_split
-        timeout-minutes: 5
+        timeout-minutes: 2
         
         run: |
-          cd tests && timeout 1m mpirun -n 2 python -m pytest test_dist_file_split.py --with-mpi
+          cd tests && timeout --preserve-status 1m mpirun -n 2 python -m pytest test_dist_file_split.py --with-mpi
       
         env:
           OMPI_ALLOW_RUN_AS_ROOT: '1'
