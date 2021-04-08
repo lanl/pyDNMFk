@@ -118,6 +118,11 @@ See the resources for more use cases.
 * [Ben Nebgen](mailto:bnebgen@lanl.gov) - Los Alamos National Laboratory
 * [Erik Skau](mailto:ewskau@lanl.gov) - Los Alamos National Laboratory
 * [Maksim Eren](mailto:maksim@lanl.gov) - Los Alamos National Laboratory
+* [Gopinath Chennupati](mailto:gchennupati@lanl.gov) - Los Alamos National Laboratory
+* [Raviteja Vangara](mailto:rvangara@lanl.gov) - Los Alamos National Laboratory
+* [Hristo Djidjev](mailto:djidjev@lanl.gov) - Los Alamos National Laboratory
+* [John Patchett](mailto:patchett@lanl.gov) - Los Alamos National Laboratory
+* [Jim Ahrens](mailto:ahrens@lanl.gov) - Los Alamos National Laboratory
 * [Boian Alexandrov](mailto:boian@lanl.gov) - Los Alamos National Laboratory
 
 ## Citation:
