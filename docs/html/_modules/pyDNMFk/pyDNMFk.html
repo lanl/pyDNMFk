@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pyDNMFk.pyDNMFk &mdash; pyDNMFk 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> pyDNMFk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">pyDNMFk</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyDNMFk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>pyDNMFk.pyDNMFk</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pyDNMFk.pyDNMFk</h1><div class="highlight"><pre>
+<span></span><span class="c1">#@author: Manish Bhattarai</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">wilcoxon</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">.dist_clustering</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.pyDNMF</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.plot_results</span> <span class="kn">import</span> <span class="o">*</span>
+
+<div class="viewcode-block" id="sample"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.sample">[docs]</a><span class="k">class</span> <span class="nc">sample</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates perturbed version of data based on sampling distribution.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        data : ndarray</span>
+<span class="sd">            Array of which to find a perturbation.</span>
+<span class="sd">        noise_var : float</span>
+<span class="sd">            The perturbation amount.</span>
+<span class="sd">        method : str</span>
+<span class="sd">            Method for sampling (uniform/poisson)</span>
+<span class="sd">        seed : float(optional)</span>
+<span class="sd">            Set seed for random data generation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">noise_var</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noise_var</span> <span class="o">=</span> <span class="n">noise_var</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_per</span> <span class="o">=</span> <span class="mi">0</span>
+
+<div class="viewcode-block" id="sample.randM"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.sample.randM">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">randM</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Multiplies each element of X by a uniform random number in (1-epsilon, 1+epsilon).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">M</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">noise_var</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_sample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">noise_var</span>
+        <span class="n">M</span> <span class="o">=</span> <span class="n">M</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_per</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="sample.poisson"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.sample.poisson">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">poisson</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Resamples each element of a matrix from a Poisson distribution with the mean set by that element. Y_{i,j} = Poisson(X_{i,j}&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">X_per</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="sample.fit"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.sample.fit">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calls the sub routines to perform resampling on data</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        X_per : ndarry</span>
+<span class="sd">           Perturbed version of data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;uniform&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">randM</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;poisson&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">poisson</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_per</span></div></div>
+
+
+<div class="viewcode-block" id="PyNMFk"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.PyNMFk">[docs]</a><span class="k">class</span> <span class="nc">PyNMFk</span><span class="p">():</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs the distributed NMF decomposition with custom clustering for estimating hidden factors k</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        A_ij : ndarray</span>
+<span class="sd">            Distributed Data</span>
+<span class="sd">        factors : tuple (optional)</span>
+<span class="sd">            Distributed factors W and H</span>
+<span class="sd">        params : class</span>
+<span class="sd">            Class which comprises following attributes</span>
+<span class="sd">        params.init : str</span>
+<span class="sd">            NMF initialization(rand/nnsvd)</span>
+<span class="sd">        params.comm1 : object</span>
+<span class="sd">            Global Communicator</span>
+<span class="sd">        params.comm : object</span>
+<span class="sd">            Modified communicator object</span>
+<span class="sd">        params.k : int</span>
+<span class="sd">            Rank for decomposition</span>
+<span class="sd">        params.m : int</span>
+<span class="sd">            Global dimensions m</span>
+<span class="sd">        params.n : int</span>
+<span class="sd">            Global dimensions n</span>
+<span class="sd">        params.p_r : int</span>
+<span class="sd">            Cartesian grid row count</span>
+<span class="sd">        params.p_c  : int</span>
+<span class="sd">            Cartesian grid column count</span>
+<span class="sd">        params.row_comm : object</span>
+<span class="sd">            Sub communicator along row</span>
+<span class="sd">        params.col_comm : object</span>
+<span class="sd">            Sub communicator along columns</span>
+<span class="sd">        params.W_update : bool</span>
+<span class="sd">            flag to set W update True/False</span>
+<span class="sd">        params.norm : str</span>
+<span class="sd">            NMF norm to be minimized</span>
+<span class="sd">        params.method : str</span>
+<span class="sd">            NMF optimization method</span>
+<span class="sd">        params.eps : float</span>
+<span class="sd">            Epsilon value</span>
+<span class="sd">        params.verbose : bool</span>
+<span class="sd">            Flag to enable/disable display results</span>
+<span class="sd">        params.save_factors : bool</span>
+<span class="sd">            Flag to enable/disable saving computed factors</span>
+<span class="sd">        params.perturbations : int</span>
+<span class="sd">            Number of Perturbations for clustering</span>
+<span class="sd">        params.noise_var : float</span>
+<span class="sd">            Set noise variance for perturbing the data</span>
+<span class="sd">        params.sill_thr : float</span>
+<span class="sd">            Set the sillhouette threshold for estimating K with p-test</span>
+<span class="sd">        params.start_k : int</span>
+<span class="sd">            Starting range for Feature search K</span>
+<span class="sd">        params.end_k : int</span>
+<span class="sd">            Ending range for Feature search K&quot;&quot;&quot;</span>
+
+    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A_ij</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span> <span class="o">=</span> <span class="n">A_ij</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="o">.</span><span class="n">shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">comm1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">rank</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">p_c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">fpath</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">fname</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">topo</span> <span class="o">=</span> <span class="s1">&#39;2d&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">topo</span> <span class="o">=</span> <span class="s1">&#39;1d&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sampling</span> <span class="o">=</span> <span class="n">var_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span><span class="s1">&#39;sampling&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span> <span class="o">=</span> <span class="n">var_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span><span class="s1">&#39;perturbations&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noise_var</span> <span class="o">=</span> <span class="n">var_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span><span class="s1">&#39;noise_var&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=.</span><span class="mi">03</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Wall</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">recon_err</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AvgH</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AvgG</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">col_err</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clusterSilhouetteCoefficients</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgSilhouetteCoefficients</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">L_errDist</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">avgErr</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">start_k</span>  <span class="c1"># [&#39;start_k&#39;]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">end_k</span>  <span class="c1"># [&#39;end_k&#39;]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sill_thr</span> <span class="o">=</span> <span class="n">var_init</span><span class="p">(</span><span class="n">params</span><span class="p">,</span><span class="s1">&#39;sill_thr&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">var_init</span><span class="p">(</span><span class="n">params</span><span class="p">,</span><span class="s1">&#39;verbose&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="PyNMFk.fit"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.PyNMFk.fit">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calls the sub routines to perform distributed NMF decomposition and then custom clustering to estimate k</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        nopt : int</span>
+<span class="sd">           Estimated value of latent features</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">SILL_MIN</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">errRegres</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">errRegresTol</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">RECON</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">RECON1</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_path</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">fname</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_paths</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
+        <span class="k">for</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pynmfk_per_k</span><span class="p">()</span>
+            <span class="n">SILL_MIN</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clusterSilhouetteCoefficients</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
+            <span class="n">errRegres</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">col_err</span><span class="p">])</span>
+            <span class="n">errRegresTol</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">recon_err</span><span class="p">])</span>
+            <span class="n">RECON</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">L_errDist</span><span class="p">)</span>
+            <span class="n">RECON1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">avgErr</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">nopt1</span><span class="p">,</span> <span class="n">pvalue1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pvalueAnalysis</span><span class="p">(</span><span class="n">errRegres</span><span class="p">,</span> <span class="n">SILL_MIN</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Rank estimated by NMFk = &#39;</span><span class="p">,</span> <span class="n">nopt1</span><span class="p">)</span>
+            <span class="n">plot_results</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_k</span><span class="p">,</span> <span class="n">RECON</span><span class="p">,</span> <span class="n">RECON1</span><span class="p">,</span> <span class="n">SILL_MIN</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fname</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nopt1</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">nopt1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">nopt1</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">nopt1</span></div>
+
+<div class="viewcode-block" id="PyNMFk.pynmfk_per_k"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.PyNMFk.pynmfk_per_k">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">pynmfk_per_k</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Performs NMF decomposition and clustering for each k to estimate silhouette statistics&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_paths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_path</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_paths</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*************Computing for k=&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;************&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Current perturbation =&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="n">noise_var</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">noise_var</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">i</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">W_update</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PyNMF</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Wall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(([</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">)]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Wall</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Wall</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Wall</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(([</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">)]))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">recon_err</span> <span class="o">=</span> <span class="p">[</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">)]</span>
+        <span class="p">[</span><span class="n">processAvg</span><span class="p">,</span> <span class="n">processSTD</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">clusterSilhouetteCoefficients</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgSilhouetteCoefficients</span><span class="p">,</span>
+         <span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">custom_clustering</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Wall</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AvgH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Hall</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AvgW</span> <span class="o">=</span> <span class="n">processAvg</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">W_update</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">regressH</span> <span class="o">=</span> <span class="n">PyNMF</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">AvgW</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">AvgH</span><span class="p">],</span> <span class="n">params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AvgW</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">AvgH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">L_errDist</span> <span class="o">=</span> <span class="n">regressH</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">col_err</span> <span class="o">=</span> <span class="n">regressH</span><span class="o">.</span><span class="n">column_err</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">avgErr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">recon_err</span><span class="p">)</span>
+        <span class="n">cluster_stats</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;clusterSilhouetteCoefficients&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">clusterSilhouetteCoefficients</span><span class="p">,</span>
+                         <span class="s1">&#39;avgSilhouetteCoefficients&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgSilhouetteCoefficients</span><span class="p">,</span> <span class="s1">&#39;L_errDist&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">L_errDist</span><span class="p">,</span> \
+                         <span class="s1">&#39;L_err&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">col_err</span><span class="p">,</span> <span class="s1">&#39;avgErr&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgErr</span><span class="p">,</span> <span class="s1">&#39;recon_err&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">recon_err</span><span class="p">}</span>
+        <span class="n">data_writer</span> <span class="o">=</span> <span class="n">data_write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+        <span class="n">data_writer</span><span class="o">.</span><span class="n">save_factors</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">AvgW</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">AvgH</span><span class="p">],</span> <span class="n">reg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">data_writer</span><span class="o">.</span><span class="n">save_cluster_results</span><span class="p">(</span><span class="n">cluster_stats</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PyNMFk.pvalueAnalysis"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.PyNMFk.pvalueAnalysis">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">pvalueAnalysis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">errRegres</span><span class="p">,</span> <span class="n">SILL_MIN</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates nopt by analysing the errors distributions</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        errRegres : array</span>
+<span class="sd">             array for storing the distributions of errors</span>
+<span class="sd">        SILL_MIN : float</span>
+<span class="sd">            Minimum of silhouette score</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pvalue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end_k</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">oneDistrErr</span> <span class="o">=</span> <span class="n">errRegres</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">i_old</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">nopt</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end_k</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">i_next</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="k">if</span> <span class="n">SILL_MIN</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">sill_thr</span><span class="p">:</span>  <span class="c1"># 0.75:</span>
+                <span class="n">pvalue</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">wilcoxon</span><span class="p">(</span><span class="n">oneDistrErr</span><span class="p">,</span> <span class="n">errRegres</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">pvalue</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">:</span>
+                    <span class="n">i_old</span> <span class="o">=</span> <span class="n">i</span>
+                    <span class="n">nopt</span> <span class="o">=</span> <span class="n">i</span>
+                    <span class="n">oneDistrErr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">errRegres</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="c1"># print(&#39;nopt=&#39;, nopt)</span>
+        <span class="k">return</span> <span class="n">nopt</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pvalue</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, LANL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,1676 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pyDNMFk package &mdash; pyDNMFk 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="pyDNMFk" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pyDNMFk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pyDNMFk</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pyDNMFk package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyDNMFk.config">pyDNMFk.config module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyDNMFk.data_generator">pyDNMFk.data_generator module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyDNMFk.data_io">pyDNMFk.data_io module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyDNMFk.dist_clustering">pyDNMFk.dist_clustering module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyDNMFk.dist_comm">pyDNMFk.dist_comm module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyDNMFk.dist_nmf">pyDNMFk.dist_nmf module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyDNMFk.dist_svd">pyDNMFk.dist_svd module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyDNMFk.plot_results">pyDNMFk.plot_results module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyDNMFk.pyDNMF">pyDNMFk.pyDNMF module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyDNMFk.pyDNMFk">pyDNMFk.pyDNMFk module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyDNMFk.utils">pyDNMFk.utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pyDNMFk">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyDNMFk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">pyDNMFk</a> &raquo;</li>
+        
+      <li>pyDNMFk package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/pyDNMFk.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pydnmfk-package">
+<h1>pyDNMFk package<a class="headerlink" href="#pydnmfk-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pyDNMFk.config">
+<span id="pydnmfk-config-module"></span><h2>pyDNMFk.config module<a class="headerlink" href="#module-pyDNMFk.config" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pyDNMFk.config.init">
+<code class="sig-prename descclassname"><span class="pre">pyDNMFk.config.</span></code><code class="sig-name descname"><span class="pre">init</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/config.html#init"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.config.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Global variables declaration here. The variables declared within this function in this file are shared across other files and functions during import.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyDNMFk.data_generator">
+<span id="pydnmfk-data-generator-module"></span><h2>pyDNMFk.data_generator module<a class="headerlink" href="#module-pyDNMFk.data_generator" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyDNMFk.data_generator.data_generator">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.data_generator.</span></code><code class="sig-name descname"><span class="pre">data_generator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_generator.html#data_generator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_generator.data_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generates synthetic data in distributed manner where each MPI process generates a chunk from the data parallelly.
+The W matrix is generated with gaussian distribution whereas the H matrix is random.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>args<span class="classifier">class</span></dt><dd><p>Class which comprises following attributes</p>
+</dd>
+<dt>fpath<span class="classifier">str</span></dt><dd><p>Directory path of file to be stored</p>
+</dd>
+<dt>p_r<span class="classifier">int</span></dt><dd><p>Count of row processor in the cartesian grid</p>
+</dd>
+<dt>p_c<span class="classifier">int</span></dt><dd><p>Count of column processor in the cartesian grid</p>
+</dd>
+<dt>m<span class="classifier">int</span></dt><dd><p>row dimension of the data</p>
+</dd>
+<dt>n<span class="classifier">int</span></dt><dd><p>Column dimension of the data</p>
+</dd>
+<dt>k<span class="classifier">int</span></dt><dd><p>Feature count</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt id="pyDNMFk.data_generator.data_generator.create_folder_dir">
+<code class="sig-name descname"><span class="pre">create_folder_dir</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_generator.html#data_generator.create_folder_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_generator.data_generator.create_folder_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a folder if doesn't exist</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_generator.data_generator.determine_block_index_range_asymm">
+<code class="sig-name descname"><span class="pre">determine_block_index_range_asymm</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_generator.html#data_generator.determine_block_index_range_asymm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_generator.data_generator.determine_block_index_range_asymm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the start and end indices for the Data block for each rank</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_generator.data_generator.determine_block_shape_asymm">
+<code class="sig-name descname"><span class="pre">determine_block_shape_asymm</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_generator.html#data_generator.determine_block_shape_asymm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_generator.data_generator.determine_block_shape_asymm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the shape for the Data block for each rank</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_generator.data_generator.dist_fromfunction">
+<code class="sig-name descname"><span class="pre">dist_fromfunction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func</span></em>, <em class="sig-param"><span class="pre">shape</span></em>, <em class="sig-param"><span class="pre">pgrid</span></em>, <em class="sig-param"><span class="pre">*args</span></em>, <em class="sig-param"><span class="pre">unravel_index=&lt;function</span> <span class="pre">unravel_index&gt;</span></em>, <em class="sig-param"><span class="pre">**kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_generator.html#data_generator.dist_fromfunction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_generator.data_generator.dist_fromfunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>produces X_{i,j} = func(i,j) in a distributed manner, so that each processor has an array_split section of X according to the grid.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_generator.data_generator.fit">
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_generator.html#data_generator.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_generator.data_generator.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>generates and save factors</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_generator.data_generator.gauss_matrix_generator">
+<code class="sig-name descname"><span class="pre">gauss_matrix_generator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_generator.html#data_generator.gauss_matrix_generator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_generator.data_generator.gauss_matrix_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a matrix of dimensions n by k where the ith column is a Gaussian kernel corresponding to approximately N(i*n/k, 0.01*n^2)</p>
+<blockquote>
+<div><dl class="simple">
+<dt>n<span class="classifier">int</span></dt><dd><p>the ambient space dimension</p>
+</dd>
+<dt>k :int</dt><dd><p>the latent space diemnsion</p>
+</dd>
+</dl>
+</div></blockquote>
+<blockquote>
+<div><dl class="simple">
+<dt>W<span class="classifier">ndarray</span></dt><dd><p>A matrix with Gaussian kernel columns of size n x k.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_generator.data_generator.generate_factors_data">
+<code class="sig-name descname"><span class="pre">generate_factors_data</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_generator.html#data_generator.generate_factors_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_generator.data_generator.generate_factors_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the chunk of factors W,H and data X for each MPI process</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_generator.data_generator.random_matrix_generator">
+<code class="sig-name descname"><span class="pre">random_matrix_generator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_generator.html#data_generator.random_matrix_generator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_generator.data_generator.random_matrix_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator for random matric with given seed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_generator.data_generator.unravel_column">
+<code class="sig-name descname"><span class="pre">unravel_column</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_generator.html#data_generator.unravel_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_generator.data_generator.unravel_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>finds the column rank for 2d grid</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_generator.data_generator.unravel_row">
+<code class="sig-name descname"><span class="pre">unravel_row</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_generator.html#data_generator.unravel_row"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_generator.data_generator.unravel_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>finds the row rank for 2d grid</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyDNMFk.data_generator.parser">
+<code class="sig-prename descclassname"><span class="pre">pyDNMFk.data_generator.</span></code><code class="sig-name descname"><span class="pre">parser</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_generator.html#parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_generator.parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the input arguments from the user and parses the parameters to the data generator module.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyDNMFk.data_io">
+<span id="pydnmfk-data-io-module"></span><h2>pyDNMFk.data_io module<a class="headerlink" href="#module-pyDNMFk.data_io" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyDNMFk.data_io.data_read">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.data_io.</span></code><code class="sig-name descname"><span class="pre">data_read</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#data_read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.data_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for reading data.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>args<span class="classifier">class</span></dt><dd><p>Class which comprises following attributes</p>
+</dd>
+<dt>fpath<span class="classifier">str</span></dt><dd><p>Directory path of file to be read</p>
+</dd>
+<dt>pgrid<span class="classifier">tuple</span></dt><dd><p>Cartesian grid configuration</p>
+</dd>
+<dt>ftype<span class="classifier">str</span></dt><dd><p>Type of data to read(mat/npy/csv/folder)</p>
+</dd>
+<dt>fname<span class="classifier">str</span></dt><dd><p>Name of the file to read</p>
+</dd>
+</dl>
+<p>comm (object): comm object for distributed read</p>
+</div></blockquote>
+<dl class="py method">
+<dt id="pyDNMFk.data_io.data_read.data_partition">
+<code class="sig-name descname"><span class="pre">data_partition</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#data_read.data_partition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.data_read.data_partition" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function divides the input matrix into chunks as specified by grid configuration.</p>
+<p>Return n array of shape (nrows_i, ncols_i) where i is the index of each chunk.
+Sum_i^n ( nrows_i * ncols_i )  = arr.size</p>
+<p>If arr is a 2D array, the returned array should look like n subblocks with
+each subblock preserving the &quot;physical&quot; layout of arr.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_io.data_read.read">
+<code class="sig-name descname"><span class="pre">read</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#data_read.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.data_read.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data read function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_io.data_read.read_dat">
+<code class="sig-name descname"><span class="pre">read_dat</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#data_read.read_dat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.data_read.read_dat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for reading the data and split into  chunks to be reach by each MPI rank</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_io.data_read.read_file_csv">
+<code class="sig-name descname"><span class="pre">read_file_csv</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#data_read.read_file_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.data_read.read_file_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>CSV data read function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_io.data_read.read_file_mat">
+<code class="sig-name descname"><span class="pre">read_file_mat</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#data_read.read_file_mat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.data_read.read_file_mat" title="Permalink to this definition">¶</a></dt>
+<dd><p>mat file read function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_io.data_read.read_file_npy">
+<code class="sig-name descname"><span class="pre">read_file_npy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#data_read.read_file_npy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.data_read.read_file_npy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Numpy data read function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_io.data_read.save_data_to_file">
+<code class="sig-name descname"><span class="pre">save_data_to_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#data_read.save_data_to_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.data_read.save_data_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function saves the splitted data to numpy array indexed with chunk number</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyDNMFk.data_io.data_write">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.data_io.</span></code><code class="sig-name descname"><span class="pre">data_write</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#data_write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.data_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for writing data/results.</p>
+<blockquote>
+<div><p>args (class): class which comprises following attributes
+results_path (str): Directory path of file to write
+pgrid (tuple): Cartesian grid configuration
+ftype (str): Type of data to read(mat/npy/csv/folder)
+comm (object): comm object for distributed read</p>
+</div></blockquote>
+<dl class="py method">
+<dt id="pyDNMFk.data_io.data_write.create_folder_dir">
+<code class="sig-name descname"><span class="pre">create_folder_dir</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#data_write.create_folder_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.data_write.create_folder_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create directory if not present</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_io.data_write.save_cluster_results">
+<code class="sig-name descname"><span class="pre">save_cluster_results</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#data_write.save_cluster_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.data_write.save_cluster_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save cluster results to a h5 file with rank 0</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_io.data_write.save_factors">
+<code class="sig-name descname"><span class="pre">save_factors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#data_write.save_factors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.data_write.save_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the W and H factors for each MPI process</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyDNMFk.data_io.read_factors">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.data_io.</span></code><code class="sig-name descname"><span class="pre">read_factors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factors_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pgrid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#read_factors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.read_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for reading saved factors.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>factors_path<span class="classifier">str</span></dt><dd><p>Directory path of factors to read from</p>
+</dd>
+<dt>pgrid<span class="classifier">tuple</span></dt><dd><p>Cartesian grid configuration</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt id="pyDNMFk.data_io.read_factors.custom_read_npy">
+<code class="sig-name descname"><span class="pre">custom_read_npy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#read_factors.custom_read_npy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.read_factors.custom_read_npy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read numpy files</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_io.read_factors.load_factors">
+<code class="sig-name descname"><span class="pre">load_factors</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#read_factors.load_factors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.read_factors.load_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the final stacked factors for visualization</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_io.read_factors.read_factor">
+<code class="sig-name descname"><span class="pre">read_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#read_factors.read_factor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.read_factors.read_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read factors as chunks and stack them</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyDNMFk.data_io.split_files_save">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.data_io.</span></code><code class="sig-name descname"><span class="pre">split_files_save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pgrid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#split_files_save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.split_files_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Rank 0 based data read, split and save</p>
+<dl class="py method">
+<dt id="pyDNMFk.data_io.split_files_save.save_data_to_file">
+<code class="sig-name descname"><span class="pre">save_data_to_file</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#split_files_save.save_data_to_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.split_files_save.save_data_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to save the chunks into numpy files</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.data_io.split_files_save.split_files">
+<code class="sig-name descname"><span class="pre">split_files</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/data_io.html#split_files_save.split_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.data_io.split_files_save.split_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the index range for each block and partition the data as per the chunk</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyDNMFk.dist_clustering">
+<span id="pydnmfk-dist-clustering-module"></span><h2>pyDNMFk.dist_clustering module<a class="headerlink" href="#module-pyDNMFk.dist_clustering" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyDNMFk.dist_clustering.custom_clustering">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.dist_clustering.</span></code><code class="sig-name descname"><span class="pre">custom_clustering</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Wall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Hall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_clustering.html#custom_clustering"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_clustering.custom_clustering" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Greedy algorithm to approximate a quadratic assignment problem to cluster vectors. Given p groups of k vectors, construct k clusters, each cluster containing a single vector from each of the p groups. This clustering approximation uses cos distances and mean centroids.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>W_all<span class="classifier">ndarray</span></dt><dd><p>Order three tensor of shape m by k by p, where m is the ambient dimension of the vectors, k is the number of vectors in each group, and p is the number of groups of vectors.</p>
+</dd>
+<dt>H_all<span class="classifier">ndarray</span></dt><dd><p>Order three tensor of shape n by k by p, where n is the ambient dimension of the vectors, k is the number of vectors in each group, and p is the number of groups of vectors.</p>
+</dd>
+<dt>params<span class="classifier">class</span></dt><dd><p>Class object with communication parameters which comprises of grid information (p_r,p_c) , commincator (comm) and epsilon (eps).</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt id="pyDNMFk.dist_clustering.custom_clustering.change_order">
+<code class="sig-name descname"><span class="pre">change_order</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tens</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_clustering.html#custom_clustering.change_order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_clustering.custom_clustering.change_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>change the order of features</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_clustering.custom_clustering.dist_custom_clustering">
+<code class="sig-name descname"><span class="pre">dist_custom_clustering</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">centroids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_clustering.html#custom_clustering.dist_custom_clustering"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_clustering.custom_clustering.dist_custom_clustering" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the distributed custom clustering</p>
+<dl class="simple">
+<dt>centroids<span class="classifier">ndarray, optional</span></dt><dd><p>The m by k initialization of the centroids of the clusters. None corresponds to using the first slice, W_all[:,:,0], as the initial centroids. Defaults to None.</p>
+</dd>
+<dt>vb<span class="classifier">bool, optional</span></dt><dd><p>Verbose to display intermediate results</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>centroids<span class="classifier">ndarray</span></dt><dd><p>The m by k centroids of the clusters</p>
+</dd>
+<dt>W_all :ndarray</dt><dd><p>Clustered organization of the vectors W_all</p>
+</dd>
+<dt>H_all<span class="classifier">ndarray</span></dt><dd><p>Clustered organization of the vectors H_all</p>
+</dd>
+<dt>permute_order<span class="classifier">list</span></dt><dd><p>Indices of the permuted features</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_clustering.custom_clustering.dist_feature_ordering">
+<code class="sig-name descname"><span class="pre">dist_feature_ordering</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">centroids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_sub</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_clustering.html#custom_clustering.dist_feature_ordering"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_clustering.custom_clustering.dist_feature_ordering" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the features in proper order</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_clustering.custom_clustering.dist_silhouettes">
+<code class="sig-name descname"><span class="pre">dist_silhouettes</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_clustering.html#custom_clustering.dist_silhouettes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_clustering.custom_clustering.dist_silhouettes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the cosine distances silhouettes of a distributed clustering of vectors.</p>
+<dl class="simple">
+<dt>sils<span class="classifier">ndarray</span></dt><dd><p>The k by p array of silhouettes where sils[i,j] is the silhouette measure for the vector W_all[:,i,j]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_clustering.custom_clustering.fit">
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_clustering.html#custom_clustering.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_clustering.custom_clustering.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the sub routines to perform distributed custom clustering and  compute silhouettes</p>
+<dl class="simple">
+<dt>centroids<span class="classifier">ndarray</span></dt><dd><p>The m by k centroids of the clusters</p>
+</dd>
+<dt>CentStd<span class="classifier">ndarray</span></dt><dd><p>Absolute deviation of the features from the centroid</p>
+</dd>
+<dt>W_all<span class="classifier">ndarray</span></dt><dd><p>Clustered organization of the vectors W_all</p>
+</dd>
+<dt>H_all<span class="classifier">ndarray</span></dt><dd><p>Clustered organization of the vectors H_all</p>
+</dd>
+<dt>S_avg<span class="classifier">ndarray</span></dt><dd><p>mean Silhouette score</p>
+</dd>
+<dt>permute_order<span class="classifier">list</span></dt><dd><p>Indices of the permuted features</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_clustering.custom_clustering.greedy_lsa">
+<code class="sig-name descname"><span class="pre">greedy_lsa</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_clustering.html#custom_clustering.greedy_lsa"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_clustering.custom_clustering.greedy_lsa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the permutation order</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_clustering.custom_clustering.mad">
+<code class="sig-name descname"><span class="pre">mad</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_clustering.html#custom_clustering.mad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_clustering.custom_clustering.mad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the median/mean absolute deviation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_clustering.custom_clustering.normalize_by_W">
+<code class="sig-name descname"><span class="pre">normalize_by_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_clustering.html#custom_clustering.normalize_by_W"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_clustering.custom_clustering.normalize_by_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize the factors W and H</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyDNMFk.dist_comm">
+<span id="pydnmfk-dist-comm-module"></span><h2>pyDNMFk.dist_comm module<a class="headerlink" href="#module-pyDNMFk.dist_comm" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyDNMFk.dist_comm.MPI_comm">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.dist_comm.</span></code><code class="sig-name descname"><span class="pre">MPI_comm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_c</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_comm.html#MPI_comm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_comm.MPI_comm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Initialization of MPI communicator to construct the cartesian topology and sub communicators</p>
+<dl class="simple">
+<dt>comm<span class="classifier">object</span></dt><dd><p>MPI communicator object</p>
+</dd>
+<dt>p_r<span class="classifier">int</span></dt><dd><p>row processors count</p>
+</dd>
+<dt>p_c<span class="classifier">int</span></dt><dd><p>column processors count</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pyDNMFk.dist_comm.MPI_comm.Free">
+<code class="sig-name descname"><span class="pre">Free</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_comm.html#MPI_comm.Free"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_comm.MPI_comm.Free" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frees the sub communicators</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_comm.MPI_comm.cart_1d_column">
+<code class="sig-name descname"><span class="pre">cart_1d_column</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_comm.html#MPI_comm.cart_1d_column"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_comm.MPI_comm.cart_1d_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a cartesian column communicator through construction of a sub communicator across columns</p>
+<dl class="simple">
+<dt>cartesian1d_column<span class="classifier">object</span></dt><dd><p>Sub Communicator object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_comm.MPI_comm.cart_1d_row">
+<code class="sig-name descname"><span class="pre">cart_1d_row</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_comm.html#MPI_comm.cart_1d_row"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_comm.MPI_comm.cart_1d_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a cartesian row communicator through construction of a sub communicator across rows</p>
+<dl class="simple">
+<dt>cartesian1d_row<span class="classifier">object</span></dt><dd><p>Sub Communicator object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyDNMFk.dist_nmf">
+<span id="pydnmfk-dist-nmf-module"></span><h2>pyDNMFk.dist_nmf module<a class="headerlink" href="#module-pyDNMFk.dist_nmf" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.dist_nmf.</span></code><code class="sig-name descname"><span class="pre">nmf_algorithms_1D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">H_j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Performs the distributed NMF operation along 1D cartesian grid</p>
+<blockquote>
+<div><dl class="simple">
+<dt>A_ij<span class="classifier">ndarray</span></dt><dd><p>Distributed Data</p>
+</dd>
+<dt>W_i<span class="classifier">ndarray</span></dt><dd><p>Distributed factor W</p>
+</dd>
+<dt>H_j<span class="classifier">ndarray</span></dt><dd><p>Distributed factor H</p>
+</dd>
+<dt>params<span class="classifier">class</span></dt><dd><p>Class which comprises following attributes</p>
+</dd>
+<dt>params.comm1<span class="classifier">object</span></dt><dd><p>Global Communicator</p>
+</dd>
+<dt>params.k<span class="classifier">int</span></dt><dd><p>Rank for decomposition</p>
+</dd>
+<dt>params.m<span class="classifier">int</span></dt><dd><p>Global dimensions m</p>
+</dd>
+<dt>params.n<span class="classifier">int</span></dt><dd><p>Global dimensions n</p>
+</dd>
+<dt>params.p_r<span class="classifier">int</span></dt><dd><p>Cartesian grid row count</p>
+</dd>
+<dt>params.p_c<span class="classifier">int</span></dt><dd><p>Cartesian grid column count</p>
+</dd>
+<dt>params.W_update<span class="classifier">bool</span></dt><dd><p>flag to set W update True/False</p>
+</dd>
+<dt>params.norm<span class="classifier">str</span></dt><dd><p>NMF norm to be minimized</p>
+</dd>
+<dt>params.method<span class="classifier">str</span></dt><dd><p>NMF optimization method</p>
+</dd>
+<dt>params.eps<span class="classifier">float</span></dt><dd><p>Epsilon value</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_BCD_update">
+<code class="sig-name descname"><span class="pre">FRO_BCD_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">itr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.FRO_BCD_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_BCD_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based BCD update of W  and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<blockquote>
+<div><dl class="simple">
+<dt>W_update: bool</dt><dd><p>flag to enable/disable W update</p>
+</dd>
+</dl>
+</div></blockquote>
+<blockquote>
+<div><p>self.W_i : ndarray (m/p_r X k)
+self.H_j : ndarray (k X n/p_c)</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update">
+<code class="sig-name descname"><span class="pre">FRO_HALS_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.FRO_HALS_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimizatio based HALS update of W and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<dl class="simple">
+<dt>W_update<span class="classifier">bool</span></dt><dd><p>Flag to enable/disable W_update</p>
+</dd>
+</dl>
+<p>self.H_j : ndarray (k X n/p_r)
+self.W_i : ndarray (m/p_c X k)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update_H">
+<code class="sig-name descname"><span class="pre">FRO_HALS_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.FRO_HALS_update_H"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based HALS update of H  parameter
+Function computes updated H parameter for each mpi rank</p>
+<p>self : object</p>
+<p>self.H_j : ndarray ( k X n/p_c)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update_W">
+<code class="sig-name descname"><span class="pre">FRO_HALS_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.FRO_HALS_update_W"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based HALS update of W  parameter
+Function computes updated W parameter for each mpi rank</p>
+<p>self : object</p>
+<p>self.W_i : ndarray (m/p_r X k)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.Fro_MU_update">
+<code class="sig-name descname"><span class="pre">Fro_MU_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.Fro_MU_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.Fro_MU_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of W and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<p>self : object</p>
+<p>self.H_ij : ndarray
+self.W_ij : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.Fro_MU_update_H">
+<code class="sig-name descname"><span class="pre">Fro_MU_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.Fro_MU_update_H"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.Fro_MU_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of H parameter
+Function computes updated H parameter for each mpi rank</p>
+<p>self : object</p>
+<p>self.H_j : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.Fro_MU_update_W">
+<code class="sig-name descname"><span class="pre">Fro_MU_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.Fro_MU_update_W"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.Fro_MU_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of W parameter
+Function computes updated H parameter for each mpi rank</p>
+<p>self : object</p>
+<p>self.W_i : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.KL_MU_update">
+<code class="sig-name descname"><span class="pre">KL_MU_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.KL_MU_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.KL_MU_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>KL divergence based multiplicative update of W and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<dl class="simple">
+<dt>W_update<span class="classifier">bool</span></dt><dd><p>Flag to enable/disable W_update</p>
+</dd>
+</dl>
+<p>self.H_j : ndarray (k X n/p_r)
+self.W_i : ndarray (m/p_c X k)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.KL_MU_update_H">
+<code class="sig-name descname"><span class="pre">KL_MU_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.KL_MU_update_H"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.KL_MU_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>KL divergence based multiplicative update of H parameter
+Function computes updated H parameter for each mpi rank</p>
+<p>self : object</p>
+<dl class="simple">
+<dt>self.H_j<span class="classifier">ndarray</span></dt><dd><p>Distributed factor H of shape  k X n/p_c</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.KL_MU_update_W">
+<code class="sig-name descname"><span class="pre">KL_MU_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.KL_MU_update_W"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.KL_MU_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>KL divergence based multiplicative update of W parameter
+Function computes updated W parameter for each mpi rank</p>
+<p>self : object</p>
+<dl class="simple">
+<dt>self.W_i<span class="classifier">ndarray</span></dt><dd><p>Distributed factor W of shape m/p_r X k</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.glob_UX">
+<code class="sig-name descname"><span class="pre">glob_UX</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.glob_UX"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.glob_UX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a global operation UX for W and H update with KL</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.globalSqNorm">
+<code class="sig-name descname"><span class="pre">globalSqNorm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.globalSqNorm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.globalSqNorm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calc global squared norm of any matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.global_gram">
+<code class="sig-name descname"><span class="pre">global_gram</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.global_gram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.global_gram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed gram computation</p>
+<p>Computes the global gram operation of matrix A
+.. math:: A^TA</p>
+<p>A  :  ndarray
+p  : Processor count</p>
+<p>A_TA_glob  : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.global_mm">
+<code class="sig-name descname"><span class="pre">global_mm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.global_mm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.global_mm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed matrix multiplication</p>
+<p>Computes the global matrix multiplication of matrix A and B
+.. math:: AB</p>
+<p>A  :  ndarray
+B  :  ndarray
+p  : processor count</p>
+<p>AB_glob  : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.initWandH">
+<code class="sig-name descname"><span class="pre">initWandH</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.initWandH"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.initWandH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the parameters for BCD updates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.sum_along_axis">
+<code class="sig-name descname"><span class="pre">sum_along_axis</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.sum_along_axis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.sum_along_axis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs sum of the matrix along given axis</p>
+<dl class="simple">
+<dt>X<span class="classifier">ndarray</span></dt><dd><p>Data</p>
+</dd>
+<dt>p<span class="classifier">int</span></dt><dd><p>Processor count</p>
+</dd>
+<dt>axis<span class="classifier">int</span></dt><dd><p>Axis along which the sum is to be performed</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>global_axis_sum<span class="classifier">ndarray</span></dt><dd><p>Vector array after summation operation along axis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_1D.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_1D.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_1D.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs 1 step Update for factors W and H based on NMF method and corresponding norm minimization</p>
+<dl class="simple">
+<dt>W_i<span class="classifier">ndarray</span></dt><dd><p>The m/p_r X k distributed factor W</p>
+</dd>
+<dt>H_j<span class="classifier">ndarray</span></dt><dd><p>The k X n/p_c distributed factor H</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.dist_nmf.</span></code><code class="sig-name descname"><span class="pre">nmf_algorithms_2D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">H_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Performs the distributed NMF operation along 2D cartesian grid</p>
+<blockquote>
+<div><dl class="simple">
+<dt>A_ij<span class="classifier">ndarray</span></dt><dd><p>Distributed Data</p>
+</dd>
+<dt>W_ij<span class="classifier">ndarray</span></dt><dd><p>Distributed factor W</p>
+</dd>
+<dt>H_ij<span class="classifier">ndarray</span></dt><dd><p>Distributed factor H</p>
+</dd>
+<dt>params<span class="classifier">class</span></dt><dd><p>Class which comprises following attributes</p>
+</dd>
+<dt>params.comm1<span class="classifier">object</span></dt><dd><p>Global Communicator</p>
+</dd>
+<dt>params.comm<span class="classifier">object</span></dt><dd><p>Modified communicator object</p>
+</dd>
+<dt>params.k<span class="classifier">int</span></dt><dd><p>Rank for decomposition</p>
+</dd>
+<dt>params.m<span class="classifier">int</span></dt><dd><p>Global dimensions m</p>
+</dd>
+<dt>params.n<span class="classifier">int</span></dt><dd><p>Global dimensions n</p>
+</dd>
+<dt>params.p_r<span class="classifier">int</span></dt><dd><p>Cartesian grid row count</p>
+</dd>
+<dt>params.p_c<span class="classifier">int</span></dt><dd><p>Cartesian grid column count</p>
+</dd>
+<dt>params.row_comm<span class="classifier">object</span></dt><dd><p>Sub communicator along row</p>
+</dd>
+<dt>params.col_comm<span class="classifier">object</span></dt><dd><p>Sub communicator along columns</p>
+</dd>
+<dt>params.W_update<span class="classifier">bool</span></dt><dd><p>flag to set W update True/False</p>
+</dd>
+<dt>params.norm<span class="classifier">str</span></dt><dd><p>NMF norm to be minimized</p>
+</dd>
+<dt>params.method<span class="classifier">str</span></dt><dd><p>NMF optimization method</p>
+</dd>
+<dt>params.eps<span class="classifier">float</span></dt><dd><p>Epsilon value</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.AH_glob">
+<code class="sig-name descname"><span class="pre">AH_glob</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">H_ij</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.AH_glob"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.AH_glob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed computation of AH^T</p>
+<p>Computes the global matrix multiplication of matrix A and H
+.. math:: AH^T</p>
+<p>A  :  ndarray
+H  :  ndarray</p>
+<p>AH  : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.ATW_glob">
+<code class="sig-name descname"><span class="pre">ATW_glob</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.ATW_glob"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.ATW_glob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed computation of W^TA</p>
+<p>Computes the global matrix multiplication of matrix W and A
+.. math:: W^TA</p>
+<p>W  :  ndarray
+A  :  ndarray</p>
+<p>Atw  : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_BCD_update">
+<code class="sig-name descname"><span class="pre">FRO_BCD_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">itr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.FRO_BCD_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_BCD_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based BCD update of W  and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<blockquote>
+<div><p>self : object</p>
+</div></blockquote>
+<blockquote>
+<div><p>self.W_ij : ndarray (m/p X k)</p>
+<p>self.H_ij : ndarray (k X n/p)</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update">
+<code class="sig-name descname"><span class="pre">FRO_HALS_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.FRO_HALS_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based HALS update of W  and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<p>self : object</p>
+<p>self.W_ij : ndarray (m/p X k)
+self.H_ij : ndarray (k X n/p)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update_H">
+<code class="sig-name descname"><span class="pre">FRO_HALS_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.FRO_HALS_update_H"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based HALS update of H  parameter
+Function computes updated H parameter for each mpi rank</p>
+<p>self : object</p>
+<p>self.H_ij : ndarray ( k X n/p)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update_W">
+<code class="sig-name descname"><span class="pre">FRO_HALS_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.FRO_HALS_update_W"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm minimization based HALS update of W  parameter
+Function computes updated W parameter for each mpi rank</p>
+<p>self : object</p>
+<p>self.W_ij : ndarray (m/p X k)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.Fro_MU_update">
+<code class="sig-name descname"><span class="pre">Fro_MU_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.Fro_MU_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.Fro_MU_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of W and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<p>self : object</p>
+<p>self.H_ij : ndarray
+self.W_ij : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.Fro_MU_update_H">
+<code class="sig-name descname"><span class="pre">Fro_MU_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.Fro_MU_update_H"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.Fro_MU_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of H parameter
+Function computes updated H parameter for each mpi rank</p>
+<p>self : object</p>
+<p>self.H_ij : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.Fro_MU_update_W">
+<code class="sig-name descname"><span class="pre">Fro_MU_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.Fro_MU_update_W"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.Fro_MU_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of W parameter
+Function computes updated H parameter for each mpi rank</p>
+<p>self : object</p>
+<p>self.W_ij : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.KL_MU_update">
+<code class="sig-name descname"><span class="pre">KL_MU_update</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W_update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.KL_MU_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.KL_MU_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>KL divergence based multiplicative update of W and H parameter
+Function computes updated W and H parameter for each mpi rank</p>
+<p>self : object</p>
+<p>self.H_ij : ndarray (k X n/p)
+self.W_ij : ndarray (m/p X k)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.KL_MU_update_H">
+<code class="sig-name descname"><span class="pre">KL_MU_update_H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.KL_MU_update_H"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.KL_MU_update_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Frobenius norm based multiplicative update of H parameter
+Function computes updated H parameter for each mpi rank</p>
+<p>self : object</p>
+<dl class="simple">
+<dt>self.H_ij<span class="classifier">ndarray</span></dt><dd><p>Distributed factor H of shape  k X n/p</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.KL_MU_update_W">
+<code class="sig-name descname"><span class="pre">KL_MU_update_W</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.KL_MU_update_W"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.KL_MU_update_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>KL divergence based multiplicative update of W parameter
+Function computes updated W parameter for each mpi rank</p>
+<p>self : object</p>
+<dl class="simple">
+<dt>self.W_ij<span class="classifier">ndarray</span></dt><dd><p>Distributed factor W of shape m/p X k</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.UHT_glob">
+<code class="sig-name descname"><span class="pre">UHT_glob</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.UHT_glob"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.UHT_glob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed computation of UH^T</p>
+<p>Computes the global matrix multiplication of matrix W and U for KL
+.. math:: UH^T</p>
+<p>W  :  ndarray
+H  :  ndarray
+A  :  ndarray</p>
+<p>UHT  : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.WTU_glob">
+<code class="sig-name descname"><span class="pre">WTU_glob</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.WTU_glob"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.WTU_glob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed computation of W^TU</p>
+<p>Computes the global matrix multiplication of matrix W and U for KL
+.. math:: W^TU</p>
+<p>W  :  ndarray
+H  :  ndarray
+A  :  ndarray</p>
+<p>WTU  : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.gather_W_H">
+<code class="sig-name descname"><span class="pre">gather_W_H</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gW</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gH</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.gather_W_H"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.gather_W_H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gathers W and H factors across cartesian groups
+i.e H_ij -&gt; H_j if gH=True and W_ij -&gt; W_i and gW=True</p>
+<p>gW : boolen
+gH : boolen</p>
+<p>self.H_j : ndarray
+self.W_i : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.globalSqNorm">
+<code class="sig-name descname"><span class="pre">globalSqNorm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.globalSqNorm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.globalSqNorm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calc global squared norm of any matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.global_gram">
+<code class="sig-name descname"><span class="pre">global_gram</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.global_gram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.global_gram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed gram computation</p>
+<p>Computes the global gram operation of matrix A
+.. math:: A^TA</p>
+<p>A  :  ndarray</p>
+<p>A_TA_glob  : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.global_mm">
+<code class="sig-name descname"><span class="pre">global_mm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.global_mm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.global_mm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distributed matrix multiplication</p>
+<p>Computes the global matrix multiplication of matrix A and B
+.. math:: AB</p>
+<p>A  :  ndarray
+B  :  ndarray</p>
+<p>AB_glob  : ndarray</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.initWandH">
+<code class="sig-name descname"><span class="pre">initWandH</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.initWandH"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.initWandH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the parameters for BCD updates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.sum_axis">
+<code class="sig-name descname"><span class="pre">sum_axis</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.sum_axis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.sum_axis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_nmf.nmf_algorithms_2D.update">
+<code class="sig-name descname"><span class="pre">update</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_nmf.html#nmf_algorithms_2D.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_nmf.nmf_algorithms_2D.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs 1 step Update for factors W and H based on NMF method and corresponding norm minimization</p>
+<dl class="simple">
+<dt>W_ij<span class="classifier">ndarray</span></dt><dd><p>The m/p X k distributed factor W</p>
+</dd>
+<dt>H_ij<span class="classifier">ndarray</span></dt><dd><p>The k X n/p distributed factor H</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyDNMFk.dist_svd">
+<span id="pydnmfk-dist-svd-module"></span><h2>pyDNMFk.dist_svd module<a class="headerlink" href="#module-pyDNMFk.dist_svd" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyDNMFk.dist_svd.DistSVD">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.dist_svd.</span></code><code class="sig-name descname"><span class="pre">DistSVD</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_svd.html#DistSVD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_svd.DistSVD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Distributed Computation of SVD along 1D distribution of the data. Only U or V is distributed based on data size.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>A<span class="classifier">ndarray</span></dt><dd><p>Distributed Data</p>
+</dd>
+<dt>args<span class="classifier">class</span></dt><dd><p>Class which comprises following attributes</p>
+</dd>
+<dt>args.globalm<span class="classifier">int</span></dt><dd><p>Global row dimensions of A</p>
+</dd>
+<dt>args.globaln<span class="classifier">int</span></dt><dd><p>Global column dimension of A</p>
+</dd>
+<dt>args.k<span class="classifier">int(optional)</span></dt><dd><p>Rank for decomposition</p>
+</dd>
+<dt>args.p_r<span class="classifier">int</span></dt><dd><p>Cartesian grid row count</p>
+</dd>
+<dt>args.p_c<span class="classifier">int</span></dt><dd><p>Cartesian grid column count</p>
+</dd>
+<dt>args.seed<span class="classifier">int(optional)</span></dt><dd><p>Set the random seed</p>
+</dd>
+<dt>args.comm<span class="classifier">object</span></dt><dd><p>comm object for distributed read</p>
+</dd>
+<dt>args.eps<span class="classifier">float</span></dt><dd><p>Epsilon value</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt id="pyDNMFk.dist_svd.DistSVD.calc_norm">
+<code class="sig-name descname"><span class="pre">calc_norm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_svd.html#DistSVD.calc_norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_svd.DistSVD.calc_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the norm of vector</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_svd.DistSVD.globalGram">
+<code class="sig-name descname"><span class="pre">globalGram</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_svd.html#DistSVD.globalGram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_svd.DistSVD.globalGram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the global gram betwee X and Y</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_svd.DistSVD.nnsvd">
+<code class="sig-name descname"><span class="pre">nnsvd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_svd.html#DistSVD.nnsvd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_svd.DistSVD.nnsvd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the distributed Non-Negative SVD(NNSVD) components from the computed SVD factors.</p>
+<dl class="simple">
+<dt>flag<span class="classifier">bool, optional</span></dt><dd><p>Computes nnSVD factors with different configurations</p>
+</dd>
+<dt>verbose<span class="classifier">bool, optional</span></dt><dd><p>Verbose to set returned errors. If true returns SVD and NNSVD reconstruction errors.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>W :ndarray</dt><dd><p>Non-negative factor W  of shape (m/p_r,k)</p>
+</dd>
+<dt>H<span class="classifier">ndarray</span></dt><dd><p>Non-negative factor H  of shape (k,n/p_c)</p>
+</dd>
+<dt>error<span class="classifier">dictionary (optional)</span></dt><dd><p>Dictinoary of reconstruction error for svd and nnsvd</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_svd.DistSVD.normalize_by_W">
+<code class="sig-name descname"><span class="pre">normalize_by_W</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Wall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Hall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comm1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_svd.html#DistSVD.normalize_by_W"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_svd.DistSVD.normalize_by_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize the factors W and H</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_svd.DistSVD.randomUnitVector">
+<code class="sig-name descname"><span class="pre">randomUnitVector</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_svd.html#DistSVD.randomUnitVector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_svd.DistSVD.randomUnitVector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construnct a rondom unit vector</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_svd.DistSVD.rel_error">
+<code class="sig-name descname"><span class="pre">rel_error</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">U</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">V</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_svd.html#DistSVD.rel_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_svd.DistSVD.rel_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the relative error between the reconstructed data with factors vs original data</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_svd.DistSVD.svd">
+<code class="sig-name descname"><span class="pre">svd</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_svd.html#DistSVD.svd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_svd.DistSVD.svd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the SVD for a given matrix</p>
+<dl class="simple">
+<dt>singularValues<span class="classifier">list</span></dt><dd><p>List of singular values of length k</p>
+</dd>
+<dt>Us :ndarray</dt><dd><p>Factor Us of shape (m/p_r,k)</p>
+</dd>
+<dt>Vs<span class="classifier">ndarray</span></dt><dd><p>Factor Vs of shape (k,n/p_c)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.dist_svd.DistSVD.svd1D">
+<code class="sig-name descname"><span class="pre">svd1D</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/dist_svd.html#DistSVD.svd1D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.dist_svd.DistSVD.svd1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>One dimensional SVD</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyDNMFk.plot_results">
+<span id="pydnmfk-plot-results-module"></span><h2>pyDNMFk.plot_results module<a class="headerlink" href="#module-pyDNMFk.plot_results" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="pyDNMFk.plot_results.box_plot">
+<code class="sig-prename descclassname"><span class="pre">pyDNMFk.plot_results.</span></code><code class="sig-name descname"><span class="pre">box_plot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">respath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/plot_results.html#box_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.plot_results.box_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the boxplot from the given data and saves the results</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyDNMFk.plot_results.plot_W">
+<code class="sig-prename descclassname"><span class="pre">pyDNMFk.plot_results.</span></code><code class="sig-name descname"><span class="pre">plot_W</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">W</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/plot_results.html#plot_W"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.plot_results.plot_W" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a factor and plots into subplots for each component</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyDNMFk.plot_results.plot_err">
+<code class="sig-prename descclassname"><span class="pre">pyDNMFk.plot_results.</span></code><code class="sig-name descname"><span class="pre">plot_err</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">err</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/plot_results.html#plot_err"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.plot_results.plot_err" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the relative error for NMF decomposition as a function of number of iterations</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyDNMFk.plot_results.plot_results">
+<code class="sig-prename descclassname"><span class="pre">pyDNMFk.plot_results.</span></code><code class="sig-name descname"><span class="pre">plot_results</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">startProcess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endProcess</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RECON</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RECON1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SILL_MIN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_put</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/plot_results.html#plot_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.plot_results.plot_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the relative error and Silhouette results for estimation of k</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyDNMFk.plot_results.plot_timing_stats">
+<code class="sig-prename descclassname"><span class="pre">pyDNMFk.plot_results.</span></code><code class="sig-name descname"><span class="pre">plot_timing_stats</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">respath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/plot_results.html#plot_timing_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.plot_results.plot_timing_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots the timing stats for the MPI operation.
+fpath: Stats data path
+respath: Path to save graph</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyDNMFk.plot_results.read_plot_factors">
+<code class="sig-prename descclassname"><span class="pre">pyDNMFk.plot_results.</span></code><code class="sig-name descname"><span class="pre">read_plot_factors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factors_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pgrid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/plot_results.html#read_plot_factors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.plot_results.read_plot_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the factors W and H and Plots them</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyDNMFk.plot_results.timing_stats">
+<code class="sig-prename descclassname"><span class="pre">pyDNMFk.plot_results.</span></code><code class="sig-name descname"><span class="pre">timing_stats</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/plot_results.html#timing_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.plot_results.timing_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the timing stats dictionary from the stored file and parses the data.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyDNMFk.pyDNMF">
+<span id="pydnmfk-pydnmf-module"></span><h2>pyDNMFk.pyDNMF module<a class="headerlink" href="#module-pyDNMFk.pyDNMF" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyDNMFk.pyDNMF.PyNMF">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.pyDNMF.</span></code><code class="sig-name descname"><span class="pre">PyNMF</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_factors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMF.html#PyNMF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMF.PyNMF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Performs the distributed NMF decomposition of given matrix X into factors W and H</p>
+<blockquote>
+<div><dl class="simple">
+<dt>A_ij<span class="classifier">ndarray</span></dt><dd><p>Distributed Data</p>
+</dd>
+<dt>factors<span class="classifier">tuple (optional)</span></dt><dd><p>Distributed factors W and H</p>
+</dd>
+<dt>params<span class="classifier">class</span></dt><dd><p>Class which comprises following attributes</p>
+</dd>
+<dt>params.init<span class="classifier">str</span></dt><dd><p>NMF initialization(rand/nnsvd)</p>
+</dd>
+<dt>params.comm1<span class="classifier">object</span></dt><dd><p>Global Communicator</p>
+</dd>
+<dt>params.comm<span class="classifier">object</span></dt><dd><p>Modified communicator object</p>
+</dd>
+<dt>params.k<span class="classifier">int</span></dt><dd><p>Rank for decomposition</p>
+</dd>
+<dt>params.m<span class="classifier">int</span></dt><dd><p>Global dimensions m</p>
+</dd>
+<dt>params.n<span class="classifier">int</span></dt><dd><p>Global dimensions n</p>
+</dd>
+<dt>params.p_r<span class="classifier">int</span></dt><dd><p>Cartesian grid row count</p>
+</dd>
+<dt>params.p_c<span class="classifier">int</span></dt><dd><p>Cartesian grid column count</p>
+</dd>
+<dt>params.row_comm<span class="classifier">object</span></dt><dd><p>Sub communicator along row</p>
+</dd>
+<dt>params.col_comm<span class="classifier">object</span></dt><dd><p>Sub communicator along columns</p>
+</dd>
+<dt>params.W_update<span class="classifier">bool</span></dt><dd><p>flag to set W update True/False</p>
+</dd>
+<dt>params.norm<span class="classifier">str</span></dt><dd><p>NMF norm to be minimized</p>
+</dd>
+<dt>params.method<span class="classifier">str</span></dt><dd><p>NMF optimization method</p>
+</dd>
+<dt>params.eps<span class="classifier">float</span></dt><dd><p>Epsilon value</p>
+</dd>
+<dt>params.verbose<span class="classifier">bool</span></dt><dd><p>Flag to enable/disable display results</p>
+</dd>
+<dt>params.save_factors<span class="classifier">bool</span></dt><dd><p>Flag to enable/disable saving computed factors</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMF.PyNMF.cart_2d_collect_factors">
+<code class="sig-name descname"><span class="pre">cart_2d_collect_factors</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMF.html#PyNMF.cart_2d_collect_factors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMF.PyNMF.cart_2d_collect_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collects factors along each sub communicators</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMF.PyNMF.column_err">
+<code class="sig-name descname"><span class="pre">column_err</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMF.html#PyNMF.column_err"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMF.PyNMF.column_err" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the distributed column wise norm</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMF.PyNMF.compute_global_dim">
+<code class="sig-name descname"><span class="pre">compute_global_dim</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMF.html#PyNMF.compute_global_dim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMF.PyNMF.compute_global_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes global dimensions m and n from given chunk sizes for any grid configuration</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMF.PyNMF.dist_norm">
+<code class="sig-name descname"><span class="pre">dist_norm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fro'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMF.html#PyNMF.dist_norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMF.PyNMF.dist_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the distributed norm</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMF.PyNMF.fit">
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMF.html#PyNMF.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMF.PyNMF.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the sub routines to perform distributed NMF decomposition with initialization for a given norm minimization and update method</p>
+<dl class="simple">
+<dt>W_i<span class="classifier">ndarray</span></dt><dd><p>Factor W of shape m/p_r * k</p>
+</dd>
+<dt>H_j<span class="classifier">ndarray</span></dt><dd><p>Factor H of shape k * n/p_c</p>
+</dd>
+<dt>recon_err<span class="classifier">float</span></dt><dd><p>Reconstruction error for NMF decomposition</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMF.PyNMF.init_factors">
+<code class="sig-name descname"><span class="pre">init_factors</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMF.html#PyNMF.init_factors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMF.PyNMF.init_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes NMF factors with rand/nnsvd method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMF.PyNMF.normalize_features">
+<code class="sig-name descname"><span class="pre">normalize_features</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Wall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Hall</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMF.html#PyNMF.normalize_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMF.PyNMF.normalize_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalizes features Wall and Hall</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMF.PyNMF.relative_err">
+<code class="sig-name descname"><span class="pre">relative_err</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMF.html#PyNMF.relative_err"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMF.PyNMF.relative_err" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the relative error for NMF decomposition</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyDNMFk.pyDNMFk">
+<span id="pydnmfk-pydnmfk-module"></span><h2>pyDNMFk.pyDNMFk module<a class="headerlink" href="#module-pyDNMFk.pyDNMFk" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyDNMFk.pyDNMFk.PyNMFk">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.pyDNMFk.</span></code><code class="sig-name descname"><span class="pre">PyNMFk</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A_ij</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMFk.html#PyNMFk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMFk.PyNMFk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Performs the distributed NMF decomposition with custom clustering for estimating hidden factors k</p>
+<blockquote>
+<div><dl class="simple">
+<dt>A_ij<span class="classifier">ndarray</span></dt><dd><p>Distributed Data</p>
+</dd>
+<dt>factors<span class="classifier">tuple (optional)</span></dt><dd><p>Distributed factors W and H</p>
+</dd>
+<dt>params<span class="classifier">class</span></dt><dd><p>Class which comprises following attributes</p>
+</dd>
+<dt>params.init<span class="classifier">str</span></dt><dd><p>NMF initialization(rand/nnsvd)</p>
+</dd>
+<dt>params.comm1<span class="classifier">object</span></dt><dd><p>Global Communicator</p>
+</dd>
+<dt>params.comm<span class="classifier">object</span></dt><dd><p>Modified communicator object</p>
+</dd>
+<dt>params.k<span class="classifier">int</span></dt><dd><p>Rank for decomposition</p>
+</dd>
+<dt>params.m<span class="classifier">int</span></dt><dd><p>Global dimensions m</p>
+</dd>
+<dt>params.n<span class="classifier">int</span></dt><dd><p>Global dimensions n</p>
+</dd>
+<dt>params.p_r<span class="classifier">int</span></dt><dd><p>Cartesian grid row count</p>
+</dd>
+<dt>params.p_c<span class="classifier">int</span></dt><dd><p>Cartesian grid column count</p>
+</dd>
+<dt>params.row_comm<span class="classifier">object</span></dt><dd><p>Sub communicator along row</p>
+</dd>
+<dt>params.col_comm<span class="classifier">object</span></dt><dd><p>Sub communicator along columns</p>
+</dd>
+<dt>params.W_update<span class="classifier">bool</span></dt><dd><p>flag to set W update True/False</p>
+</dd>
+<dt>params.norm<span class="classifier">str</span></dt><dd><p>NMF norm to be minimized</p>
+</dd>
+<dt>params.method<span class="classifier">str</span></dt><dd><p>NMF optimization method</p>
+</dd>
+<dt>params.eps<span class="classifier">float</span></dt><dd><p>Epsilon value</p>
+</dd>
+<dt>params.verbose<span class="classifier">bool</span></dt><dd><p>Flag to enable/disable display results</p>
+</dd>
+<dt>params.save_factors<span class="classifier">bool</span></dt><dd><p>Flag to enable/disable saving computed factors</p>
+</dd>
+<dt>params.perturbations<span class="classifier">int</span></dt><dd><p>Number of Perturbations for clustering</p>
+</dd>
+<dt>params.noise_var<span class="classifier">float</span></dt><dd><p>Set noise variance for perturbing the data</p>
+</dd>
+<dt>params.sill_thr<span class="classifier">float</span></dt><dd><p>Set the sillhouette threshold for estimating K with p-test</p>
+</dd>
+<dt>params.start_k<span class="classifier">int</span></dt><dd><p>Starting range for Feature search K</p>
+</dd>
+<dt>params.end_k<span class="classifier">int</span></dt><dd><p>Ending range for Feature search K</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMFk.PyNMFk.fit">
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMFk.html#PyNMFk.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMFk.PyNMFk.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the sub routines to perform distributed NMF decomposition and then custom clustering to estimate k</p>
+<dl class="simple">
+<dt>nopt<span class="classifier">int</span></dt><dd><p>Estimated value of latent features</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMFk.PyNMFk.pvalueAnalysis">
+<code class="sig-name descname"><span class="pre">pvalueAnalysis</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">errRegres</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SILL_MIN</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMFk.html#PyNMFk.pvalueAnalysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMFk.PyNMFk.pvalueAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates nopt by analysing the errors distributions</p>
+<dl class="simple">
+<dt>errRegres<span class="classifier">array</span></dt><dd><p>array for storing the distributions of errors</p>
+</dd>
+<dt>SILL_MIN<span class="classifier">float</span></dt><dd><p>Minimum of silhouette score</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMFk.PyNMFk.pynmfk_per_k">
+<code class="sig-name descname"><span class="pre">pynmfk_per_k</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMFk.html#PyNMFk.pynmfk_per_k"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMFk.PyNMFk.pynmfk_per_k" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs NMF decomposition and clustering for each k to estimate silhouette statistics</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyDNMFk.pyDNMFk.sample">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.pyDNMFk.</span></code><code class="sig-name descname"><span class="pre">sample</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMFk.html#sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMFk.sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Generates perturbed version of data based on sampling distribution.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>data<span class="classifier">ndarray</span></dt><dd><p>Array of which to find a perturbation.</p>
+</dd>
+<dt>noise_var<span class="classifier">float</span></dt><dd><p>The perturbation amount.</p>
+</dd>
+<dt>method<span class="classifier">str</span></dt><dd><p>Method for sampling (uniform/poisson)</p>
+</dd>
+<dt>seed<span class="classifier">float(optional)</span></dt><dd><p>Set seed for random data generation</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMFk.sample.fit">
+<code class="sig-name descname"><span class="pre">fit</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMFk.html#sample.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMFk.sample.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calls the sub routines to perform resampling on data</p>
+<dl class="simple">
+<dt>X_per<span class="classifier">ndarry</span></dt><dd><p>Perturbed version of data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMFk.sample.poisson">
+<code class="sig-name descname"><span class="pre">poisson</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMFk.html#sample.poisson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMFk.sample.poisson" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resamples each element of a matrix from a Poisson distribution with the mean set by that element. Y_{i,j} = Poisson(X_{i,j}</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.pyDNMFk.sample.randM">
+<code class="sig-name descname"><span class="pre">randM</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/pyDNMFk.html#sample.randM"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.pyDNMFk.sample.randM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multiplies each element of X by a uniform random number in (1-epsilon, 1+epsilon).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyDNMFk.utils">
+<span id="pydnmfk-utils-module"></span><h2>pyDNMFk.utils module<a class="headerlink" href="#module-pyDNMFk.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="pyDNMFk.utils.comm_timing">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.utils.</span></code><code class="sig-name descname"><span class="pre">comm_timing</span></code><a class="reference internal" href="_modules/pyDNMFk/utils.html#comm_timing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.comm_timing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Decorator class for computing timing for MPI operations. The class uses the global
+variables flag and time initialized in config file and updates them for each call dynamically.</p>
+<dl class="simple">
+<dt>flag: bool</dt><dd><p>if Set true, enables the decorator to compute the timings.</p>
+</dd>
+<dt>time: dict</dt><dd><p>Dictionary to store timing for each function calls</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyDNMFk.utils.data_operations">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.utils.</span></code><code class="sig-name descname"><span class="pre">data_operations</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#data_operations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.data_operations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Performs various operations on the data</p>
+<dl class="simple">
+<dt>data<span class="classifier">ndarray</span></dt><dd><p>Data to operate on</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pyDNMFk.utils.data_operations.commonFactors">
+<code class="sig-name descname"><span class="pre">commonFactors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intList</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#data_operations.commonFactors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.data_operations.commonFactors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.utils.data_operations.cutZero">
+<code class="sig-name descname"><span class="pre">cutZero</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-08</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#data_operations.cutZero"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.data_operations.cutZero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prunes zero columns from the data</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.utils.data_operations.desampleT">
+<code class="sig-name descname"><span class="pre">desampleT</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#data_operations.desampleT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.data_operations.desampleT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.utils.data_operations.matSplit">
+<code class="sig-name descname"><span class="pre">matSplit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'npy'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#data_operations.matSplit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.data_operations.matSplit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.utils.data_operations.primeFactors">
+<code class="sig-name descname"><span class="pre">primeFactors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#data_operations.primeFactors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.data_operations.primeFactors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.utils.data_operations.recZero">
+<code class="sig-name descname"><span class="pre">recZero</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indexList</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#data_operations.recZero"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.data_operations.recZero" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.utils.data_operations.remove_bad_factors">
+<code class="sig-name descname"><span class="pre">remove_bad_factors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Wall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Hall</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ErrTol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#data_operations.remove_bad_factors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.data_operations.remove_bad_factors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyDNMFk.utils.determine_block_params">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.utils.</span></code><code class="sig-name descname"><span class="pre">determine_block_params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pgrid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#determine_block_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.determine_block_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Computes the parameters  for each chunk to be read by MPI process</p>
+<dl class="simple">
+<dt>comm<span class="classifier">object</span></dt><dd><p>MPI communicator object</p>
+</dd>
+<dt>pgrid<span class="classifier">tuple</span></dt><dd><p>Cartesian grid configuration</p>
+</dd>
+<dt>shape<span class="classifier">tuple</span></dt><dd><p>Data shape</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="pyDNMFk.utils.determine_block_params.determine_block_index_range_asymm">
+<code class="sig-name descname"><span class="pre">determine_block_index_range_asymm</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#determine_block_params.determine_block_index_range_asymm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.determine_block_params.determine_block_index_range_asymm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the start and end indices for the Data block for each rank</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.utils.determine_block_params.determine_block_shape_asymm">
+<code class="sig-name descname"><span class="pre">determine_block_shape_asymm</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#determine_block_params.determine_block_shape_asymm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.determine_block_params.determine_block_shape_asymm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines the shape for the Data block for each rank</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyDNMFk.utils.norm">
+<code class="sig-prename descclassname"><span class="pre">pyDNMFk.utils.</span></code><code class="sig-name descname"><span class="pre">norm</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#norm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the data norm</p>
+<dl class="simple">
+<dt>X<span class="classifier">ndarray</span></dt><dd><p>Data to operate on</p>
+</dd>
+<dt>comm<span class="classifier">object</span></dt><dd><p>MPI communicator object</p>
+</dd>
+<dt>norm<span class="classifier">int</span></dt><dd><p>type of norm to be computed</p>
+</dd>
+<dt>axis<span class="classifier">int</span></dt><dd><p>axis of array for the norm to be computed along</p>
+</dd>
+<dt>p: int</dt><dd><p>Processor count</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>norm<span class="classifier">float</span></dt><dd><p>Norm of the given data X</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyDNMFk.utils.parse">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.utils.</span></code><code class="sig-name descname"><span class="pre">parse</span></code><a class="reference internal" href="_modules/pyDNMFk/utils.html#parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Define a class parse which is used for adding attributes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyDNMFk.utils.str2bool">
+<code class="sig-prename descclassname"><span class="pre">pyDNMFk.utils.</span></code><code class="sig-name descname"><span class="pre">str2bool</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#str2bool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.str2bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns instance of string parameter to bool type</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pyDNMFk.utils.transform_H_index">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pyDNMFk.utils.</span></code><code class="sig-name descname"><span class="pre">transform_H_index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#transform_H_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.transform_H_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Collected H factors after MPI operation aren't aligned. This operation performs careful reordering of H factors
+such that the collected factors are aligned</p>
+<dl class="py method">
+<dt id="pyDNMFk.utils.transform_H_index.rankidx2blkidx">
+<code class="sig-name descname"><span class="pre">rankidx2blkidx</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#transform_H_index.rankidx2blkidx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.transform_H_index.rankidx2blkidx" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is to transform the column index to rank index for H</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pyDNMFk.utils.transform_H_index.transform_H_idx">
+<code class="sig-name descname"><span class="pre">transform_H_idx</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rank</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#transform_H_index.transform_H_idx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.transform_H_index.transform_H_idx" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is to transform H based on new index</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyDNMFk.utils.var_init">
+<code class="sig-prename descclassname"><span class="pre">pyDNMFk.utils.</span></code><code class="sig-name descname"><span class="pre">var_init</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pyDNMFk/utils.html#var_init"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyDNMFk.utils.var_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if class attribute is present and if not, intializes the attribute with given default value</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyDNMFk">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyDNMFk" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="modules.html" class="btn btn-neutral float-left" title="pyDNMFk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, LANL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
