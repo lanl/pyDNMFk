@@ -42,12 +42,12 @@ def parser_pyNMFk(parser):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(
-        description='Arguments for pyNMF/pyDNMFk'
-                    'To run the code for pyNMF: mpirun -n 4 python main.py --p_r=2 --p_c=2 --k=4 -fpath=../Data/')  # ArgumentParser(description='Arguments for pyNMF/pyNMFk')
-    parser.add_argument('--process', type=str, default='pyNMF', help='pyNMF/pyNMFk')
-    '''if parser.parse_args().process=='pyNMF':
+        description='Arguments for pyDNMF/pyDNMFk'
+                    'To run the code for pyDNMF: mpirun -n 4 python main.py --p_r=2 --p_c=2 --k=4 -fpath=../Data/')  # ArgumentParser(description='Arguments for pyNMF/pyNMFk')
+    parser.add_argument('--process', type=str, default='pyNMF', help='pyDNMF/pyDNMFk')
+    '''if parser.parse_args().process=='pyDNMF':
         parser = parser_pyNMF(parser)
-    elif parser.parse_args().process=='pyNMFk':'''
+    elif parser.parse_args().process=='pyDNMFk':'''
     parser = parser_pyNMF(parser)
     parser = parser_pyNMFk(parser)
     try:
@@ -71,13 +71,13 @@ if __name__ == '__main__':
 
     '''NMF/NMFk block'''
     if args.process == 'pyDNMFk':
-        if main_comm.rank == 0: print('Starting PyNMFk...')
+        if main_comm.rank == 0: print('Starting PyDNMFk...')
         nopt = PyNMFk(A_ij, factors=None, params=args).fit()
-        if main_comm.rank == 0: print('PyNMFk done.')
-    elif args.process == 'pyNMF':
-        if main_comm.rank == 0: print('Starting PyNMF...')
+        if main_comm.rank == 0: print('PyDNMFk done.')
+    elif args.process == 'pyDNMF':
+        if main_comm.rank == 0: print('Starting PyDNMF...')
         W, H, err = PyNMF(A_ij, factors=None, params=args).fit()
-        if main_comm.rank == 0: print('PyNMF done.')
+        if main_comm.rank == 0: print('PyDNMF done.')
 
     if main_comm.rank == 0 and args.timing_stats:
         print(config.time)
