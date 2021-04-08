@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pyDNMFk.dist_comm &mdash; pyDNMFk 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> pyDNMFk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">pyDNMFk</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyDNMFk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>pyDNMFk.dist_comm</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pyDNMFk.dist_comm</h1><div class="highlight"><pre>
+<span></span><span class="c1"># @author: Manish Bhattarai</span>
+<div class="viewcode-block" id="MPI_comm"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_comm.MPI_comm">[docs]</a><span class="k">class</span> <span class="nc">MPI_comm</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Initialization of MPI communicator to construct the cartesian topology and sub communicators</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    comm : object</span>
+<span class="sd">        MPI communicator object</span>
+<span class="sd">    p_r : int</span>
+<span class="sd">        row processors count</span>
+<span class="sd">    p_c : int</span>
+<span class="sd">        column processors count&quot;&quot;&quot;</span>
+
+
+    <span class="c1"># MPI Initialization here</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comm</span><span class="p">,</span> <span class="n">p_r</span><span class="p">,</span> <span class="n">p_c</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm</span> <span class="o">=</span> <span class="n">comm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">Get_rank</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">Get_size</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">=</span> <span class="n">p_r</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">=</span> <span class="n">p_c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian2d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">Create_cart</span><span class="p">(</span><span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">],</span> <span class="n">periods</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span> <span class="n">reorder</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coord2d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian2d</span><span class="o">.</span><span class="n">Get_coords</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MPI_comm.cart_1d_row"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_comm.MPI_comm.cart_1d_row">[docs]</a>    <span class="k">def</span> <span class="nf">cart_1d_row</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs a cartesian row communicator through construction of a sub communicator across rows</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        cartesian1d_row : object</span>
+<span class="sd">            Sub Communicator object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian2d</span><span class="o">.</span><span class="n">Sub</span><span class="p">(</span><span class="n">remain_dims</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank1d_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_row</span><span class="o">.</span><span class="n">Get_rank</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coord1d_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_row</span><span class="o">.</span><span class="n">Get_coords</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank1d_row</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_row</span></div>
+
+<div class="viewcode-block" id="MPI_comm.cart_1d_column"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_comm.MPI_comm.cart_1d_column">[docs]</a>    <span class="k">def</span> <span class="nf">cart_1d_column</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs a cartesian column communicator through construction of a sub communicator across columns</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        cartesian1d_column : object</span>
+<span class="sd">            Sub Communicator object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_column</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian2d</span><span class="o">.</span><span class="n">Sub</span><span class="p">(</span><span class="n">remain_dims</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank1d_column</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_column</span><span class="o">.</span><span class="n">Get_rank</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coord1d_column</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_column</span><span class="o">.</span><span class="n">Get_coords</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank1d_column</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_column</span></div>
+
+<div class="viewcode-block" id="MPI_comm.Free"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_comm.MPI_comm.Free">[docs]</a>    <span class="k">def</span> <span class="nf">Free</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Frees the sub communicators&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cart_1d_row</span><span class="p">()</span><span class="o">.</span><span class="n">Free</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cart_1d_column</span><span class="p">()</span><span class="o">.</span><span class="n">Free</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, LANL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

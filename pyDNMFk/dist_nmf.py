@@ -8,24 +8,42 @@ class nmf_algorithms_2D():
     """
     Performs the distributed NMF operation along 2D cartesian grid
 
-    Parameters:
-        A_ij (ndarray) : Distributed Data
-        W_ij (ndarray) : Distributed factor W
-        H_ij (ndarray) : Distributed factor H
-        params (class): Class which comprises following attributes
-        params.comm1 (object): Global Communicator
-        params.comm (object): Modified communicator object
-        params.k (int) : Rank for decomposition
-        params.m (int) : Global dimensions m
-        params.n (int) : Global dimensions n
-        params.p_r  (int): Cartesian grid row count
-        params.p_c  (int): Cartesian grid column count
-        params.row_comm (object) : Sub communicator along row
-        params.col_comm (object) : Sub communicator along columns
-        params.W_update (bool) : flag to set W update True/False
-        params.norm (str): NMF norm to be minimized
-        params.method(str): NMF optimization method
-        params.eps (float) : Epsilon value
+    Parameters
+    ----------
+        A_ij : ndarray
+            Distributed Data
+        W_ij : ndarray
+            Distributed factor W
+        H_ij : ndarray
+            Distributed factor H
+        params : class
+            Class which comprises following attributes
+        params.comm1 : object
+            Global Communicator
+        params.comm : object
+            Modified communicator object
+        params.k : int
+            Rank for decomposition
+        params.m : int
+            Global dimensions m
+        params.n : int
+            Global dimensions n
+        params.p_r : int
+            Cartesian grid row count
+        params.p_c : int
+            Cartesian grid column count
+        params.row_comm : object
+            Sub communicator along row
+        params.col_comm : object
+            Sub communicator along columns
+        params.W_update : bool
+            flag to set W update True/False
+        params.norm : str
+            NMF norm to be minimized
+        params.method : str
+            NMF optimization method
+        params.eps : float
+            Epsilon value
 
 
     """
@@ -489,12 +507,14 @@ class nmf_algorithms_2D():
 
         Parameters
         ----------
-        self : object
+          self : object
 
         Returns
         -------
-        self.W_ij : ndarray (m/p X k)
-        self.H_ij : ndarray (k X n/p)
+          self.W_ij : ndarray (m/p X k)
+
+          self.H_ij : ndarray (k X n/p)
+
         """
         Wm, Hm, HHT, AHT, W_old, H_old, obj_old, Xnorm = self.initWandH()
         self.params.rw = 1
@@ -563,21 +583,37 @@ class nmf_algorithms_1D():
     """
     Performs the distributed NMF operation along 1D cartesian grid
 
-    Parameters:
-        A_ij (ndarray) : Distributed Data
-        W_i (ndarray) : Distributed factor W
-        H_j (ndarray) : Distributed factor H
-        params (class): Class which comprises following attributes
-        params.comm1 (object): Global Communicator
-        params.k (int) : Rank for decomposition
-        params.m (int) : Global dimensions m
-        params.n (int) : Global dimensions n
-        params.p_r  (int): Cartesian grid row count
-        params.p_c  (int): Cartesian grid column count
-        params.W_update (bool) : flag to set W update True/False
-        params.norm (str): NMF norm to be minimized
-        params.method(str): NMF optimization method
-        params.eps (float) : Epsilon value"""
+    Parameters
+    ----------
+        A_ij : ndarray
+            Distributed Data
+        W_i : ndarray
+            Distributed factor W
+        H_j : ndarray
+            Distributed factor H
+        params : class
+            Class which comprises following attributes
+        params.comm1 : object
+            Global Communicator
+        params.k : int
+            Rank for decomposition
+        params.m : int
+            Global dimensions m
+        params.n : int
+            Global dimensions n
+        params.p_r : int
+            Cartesian grid row count
+        params.p_c : int
+            Cartesian grid column count
+        params.W_update : bool
+            flag to set W update True/False
+        params.norm : str
+            NMF norm to be minimized
+        params.method : str
+            NMF optimization method
+        params.eps : float
+            Epsilon value """
+
 
     def __init__(self, A_ij, W_i, H_j, params=None):
         self.m, self.n, self.p_r, self.p_c, self.k = params.m, params.n, params.p_r, params.p_c, params.k
@@ -660,6 +696,7 @@ class nmf_algorithms_1D():
         A  :  ndarray
         B  :  ndarray
         p  : processor count
+
         Returns
         -------
 
@@ -938,13 +975,13 @@ class nmf_algorithms_1D():
 
         Parameters
         ----------
-        W_update: bool
+           W_update: bool
             flag to enable/disable W update
 
         Returns
         -------
-        self.W_i : ndarray (m/p_r X k)
-        self.H_j : ndarray (k X n/p_c)
+           self.W_i : ndarray (m/p_r X k)
+           self.H_j : ndarray (k X n/p_c)
         """
         Wm, Hm, HHT, AHT, W_old, H_old, obj_old, Xnorm = self.initWandH()
         self.params.rw = 1

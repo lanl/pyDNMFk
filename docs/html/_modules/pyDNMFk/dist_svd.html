@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pyDNMFk.dist_svd &mdash; pyDNMFk 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> pyDNMFk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">pyDNMFk</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyDNMFk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>pyDNMFk.dist_svd</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pyDNMFk.dist_svd</h1><div class="highlight"><pre>
+<span></span><span class="c1"># @Author: Gopinath Chennupati, Manish Bhattarai, Erik Skau</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">normalvariate</span>
+
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<div class="viewcode-block" id="DistSVD"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_svd.DistSVD">[docs]</a><span class="k">class</span> <span class="nc">DistSVD</span><span class="p">():</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Distributed Computation of SVD along 1D distribution of the data. Only U or V is distributed based on data size.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        A : ndarray</span>
+<span class="sd">            Distributed Data</span>
+<span class="sd">        args : class</span>
+<span class="sd">            Class which comprises following attributes</span>
+<span class="sd">        args.globalm : int</span>
+<span class="sd">            Global row dimensions of A</span>
+<span class="sd">        args.globaln : int</span>
+<span class="sd">            Global column dimension of A</span>
+<span class="sd">        args.k : int(optional)</span>
+<span class="sd">            Rank for decomposition</span>
+<span class="sd">        args.p_r : int</span>
+<span class="sd">            Cartesian grid row count</span>
+<span class="sd">        args.p_c  : int</span>
+<span class="sd">            Cartesian grid column count</span>
+<span class="sd">        args.seed : int(optional)</span>
+<span class="sd">            Set the random seed</span>
+<span class="sd">        args.comm : object</span>
+<span class="sd">            comm object for distributed read</span>
+<span class="sd">        args.eps : float</span>
+<span class="sd">            Epsilon value&quot;&quot;&quot;</span>
+
+    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DistSVD</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">globalm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">m</span>  <span class="c1"># [&#39;globalm&#39;]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">globaln</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">n</span>  <span class="c1"># [&#39;globaln&#39;]</span>
+        <span class="c1"># SVD inits</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">k</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">k</span> <span class="k">else</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">globalm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">globaln</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">svdSoFar</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># MPI inits</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">comm</span>  <span class="c1"># [&#39;comm&#39;]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">rank</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_comm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">cartesian2d</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">coord2d</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proc_rows</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">p_r</span>  <span class="c1"># num_row_ranks()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proc_cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">p_c</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalm</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">globaln</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">proc_rows</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">proc_cols</span><span class="p">,</span> <span class="s2">&quot;m&gt;n , ensure p_r&gt;p_c&quot;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalm</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">globaln</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">proc_rows</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">proc_cols</span><span class="p">,</span> <span class="s2">&quot;m&lt;n , ensure p_r&lt;p_c&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">A</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mat_for_1D</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="c1"># seed</span>
+        <span class="k">try</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">seed</span>
+        <span class="k">except</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span>
+
+        <span class="c1"># precision</span>
+        <span class="c1"># self._tensor_type = torch.FloatTensor # For some reason torch.cat doesn&#39;t accept double tensors</span>
+
+<div class="viewcode-block" id="DistSVD.normalize_by_W"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.normalize_by_W">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">normalize_by_W</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Wall</span><span class="p">,</span> <span class="n">Hall</span><span class="p">,</span> <span class="n">comm1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Normalize the factors W and H&quot;&quot;&quot;</span>
+        <span class="n">Wall_norm</span> <span class="o">=</span> <span class="n">Wall</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">proc_rows</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">Wall_norm</span> <span class="o">=</span> <span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">Wall_norm</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+        <span class="n">Wall_norm</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span>
+        <span class="c1"># temp = np.sqrt(Wall_norm)</span>
+        <span class="n">Wall</span> <span class="o">/=</span> <span class="n">Wall_norm</span>
+        <span class="n">Hall</span> <span class="o">*=</span> <span class="n">Wall_norm</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">return</span> <span class="n">Wall</span><span class="p">,</span> <span class="n">Hall</span></div>
+
+<div class="viewcode-block" id="DistSVD.randomUnitVector"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.randomUnitVector">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">randomUnitVector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Construnct a rondom unit vector</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">unnormalized</span> <span class="o">=</span> <span class="p">[</span><span class="n">normalvariate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">)]</span>
+        <span class="n">theNorm</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">unnormalized</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">x</span> <span class="o">/</span> <span class="n">theNorm</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">unnormalized</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DistSVD.globalGram"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.globalGram">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">globalGram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute the global gram betwee X and Y&quot;&quot;&quot;</span>
+        <span class="n">B</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">Y</span>
+        <span class="n">B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_comm</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">B</span></div>
+
+<div class="viewcode-block" id="DistSVD.svd1D"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.svd1D">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">svd1D</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        One dimensional SVD</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">randomUnitVector</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">globalm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">globaln</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lastV</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">buf</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">buf</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_comm</span><span class="o">.</span><span class="n">Bcast</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># self.currV = torch.from_numpy(buf).type(self._tensor_type)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">currV</span> <span class="o">=</span> <span class="n">buf</span>
+        <span class="c1"># print(&quot;current Vector {}&quot;.format(self.currV))</span>
+
+        <span class="c1"># self.At = self.mat_for_1D.t() # Transpose current A</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">At</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mat_for_1D</span><span class="o">.</span><span class="n">T</span>
+        <span class="c1"># print(&quot;At rank {} A.t() \n{}&quot;.format(self.rank, self.At))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalm</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">globaln</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalGram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">At</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mat_for_1D</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalGram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mat_for_1D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">currV</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">lastV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currV</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">currV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">currV</span>
+                <span class="c1"># self.currV = self.currV / torch.norm(self.currV)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">currV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currV</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">currV</span><span class="p">)</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">currV</span><span class="p">,</span> <span class="n">lastV</span><span class="p">)</span>
+                <span class="n">iteration</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="c1"># if abs(r.item()) &gt; 1. - eps:</span>
+                <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">item</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mf">1.</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">:</span>
+                    <span class="c1"># print(&quot;Converged in {}&quot;.format(iteration))</span>
+                    <span class="c1"># b = self.currV.numpy()</span>
+                    <span class="n">b</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currV</span>
+                    <span class="c1"># self.currV = torch.from_numpy(b)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">currV</span> <span class="o">=</span> <span class="n">b</span>
+                    <span class="c1"># return self.currV</span>
+                    <span class="k">break</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid_comm</span><span class="o">.</span><span class="n">Bcast</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">currV</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DistSVD.calc_norm"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.calc_norm">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">calc_norm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute the norm of vector&quot;&quot;&quot;</span>
+        <span class="n">partial_sq_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">vec</span> <span class="o">*</span> <span class="n">vec</span><span class="p">)</span>
+        <span class="n">global_sq_sum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_comm</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">partial_sq_sum</span><span class="p">)</span>
+        <span class="c1"># norm = torch.sqrt(global_sq_sum)</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">global_sq_sum</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">norm</span></div>
+
+<div class="viewcode-block" id="DistSVD.svd"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.svd">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">svd</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the SVD for a given matrix</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        singularValues : list</span>
+<span class="sd">           List of singular values of length k</span>
+<span class="sd">        Us :ndarray</span>
+<span class="sd">           Factor Us of shape (m/p_r,k)</span>
+<span class="sd">        Vs : ndarray</span>
+<span class="sd">           Factor Vs of shape (k,n/p_c)&quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mat_for_1D</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+            <span class="k">for</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">svdSoFar</span><span class="p">[:</span><span class="n">i</span><span class="p">]:</span>
+                <span class="c1"># outer = torch.ger(u, v)</span>
+                <span class="n">outer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mat_for_1D</span> <span class="o">-=</span> <span class="n">sigma</span> <span class="o">*</span> <span class="p">(</span><span class="n">outer</span><span class="p">)</span>  <span class="c1"># Need to fix this</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalm</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">globaln</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">svd1D</span><span class="p">()</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currV</span>
+                <span class="n">u_unnorm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">@</span> <span class="n">v</span>
+                <span class="n">sig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_norm</span><span class="p">(</span><span class="n">u_unnorm</span><span class="p">)</span>  <span class="c1"># next singular value</span>
+                <span class="n">u</span> <span class="o">=</span> <span class="n">u_unnorm</span> <span class="o">/</span> <span class="n">sig</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">svd1D</span><span class="p">()</span>
+                <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">currV</span>
+                <span class="n">v_unnorm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">u</span>
+                <span class="n">sig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_norm</span><span class="p">(</span><span class="n">v_unnorm</span><span class="p">)</span>  <span class="c1"># next singular value</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="n">v_unnorm</span> <span class="o">/</span> <span class="n">sig</span>
+            <span class="c1"># if self.rank==0: print(sig)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">svdSoFar</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">sig</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">])</span>
+        <span class="n">singularValues</span><span class="p">,</span> <span class="n">us</span><span class="p">,</span> <span class="n">vs</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">svdSoFar</span><span class="p">)]</span>
+        <span class="c1"># if self.rank==0: print(&quot;Rank &quot;, self.rank, singularValues, us.shape, vs.shape)</span>
+        <span class="k">return</span> <span class="n">singularValues</span><span class="p">,</span> <span class="n">us</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">vs</span></div>
+
+<div class="viewcode-block" id="DistSVD.rel_error"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.rel_error">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">rel_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Computes the relative error between the reconstructed data with factors vs original data&quot;&quot;&quot;</span>
+        <span class="n">X_recon</span> <span class="o">=</span> <span class="n">U</span> <span class="o">@</span> <span class="n">S</span> <span class="o">@</span> <span class="n">V</span>
+        <span class="n">err_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">-</span> <span class="n">X_recon</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">norm_deno</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">err_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_comm</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">err_num</span><span class="p">)</span>
+        <span class="n">norm_deno</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_comm</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">norm_deno</span><span class="p">)</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">err_num</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">norm_deno</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">err</span></div>
+
+<div class="viewcode-block" id="DistSVD.nnsvd"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.nnsvd">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">nnsvd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flag</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the distributed Non-Negative SVD(NNSVD) components from the computed SVD factors.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        flag : bool, optional</span>
+<span class="sd">           Computes nnSVD factors with different configurations</span>
+<span class="sd">        verbose : bool, optional</span>
+<span class="sd">           Verbose to set returned errors. If true returns SVD and NNSVD reconstruction errors.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        W :ndarray</span>
+<span class="sd">           Non-negative factor W  of shape (m/p_r,k)</span>
+<span class="sd">        H : ndarray</span>
+<span class="sd">           Non-negative factor H  of shape (k,n/p_c)</span>
+<span class="sd">        error : dictionary (optional)</span>
+<span class="sd">           Dictinoary of reconstruction error for svd and nnsvd</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">singularValues</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">svd</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">recon_err_svd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rel_error</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">singularValues</span><span class="p">),</span> <span class="n">V</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reconstruction error for SVD is :&#39;</span><span class="p">,</span> <span class="n">recon_err_svd</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">flag</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">singularValues</span><span class="p">)</span>
+            <span class="n">W</span> <span class="o">=</span> <span class="n">U</span>
+            <span class="n">H</span> <span class="o">=</span> <span class="n">S</span> <span class="o">@</span> <span class="n">V</span>
+            <span class="n">W</span><span class="p">[</span><span class="n">W</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">H</span><span class="p">[</span><span class="n">H</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="c1"># return W,H</span>
+
+        <span class="k">elif</span> <span class="n">flag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">S</span> <span class="o">=</span> <span class="n">singularValues</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">U</span><span class="p">[:,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">],</span> <span class="n">S</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">],</span> <span class="n">V</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">V</span> <span class="o">=</span> <span class="n">V</span><span class="o">.</span><span class="n">T</span>
+            <span class="n">UP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">U</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">UN</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">U</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">U</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">VP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">V</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">VN</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">V</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">V</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+            <span class="n">UP_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">UP</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">UP_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_comm</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">UP_norm</span><span class="p">))</span>
+            <span class="n">UN_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">UN</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">UN_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">grid_comm</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">UN_norm</span><span class="p">))</span>
+            <span class="n">VP_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">VP</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">VP_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">VP_norm</span><span class="p">)</span>
+            <span class="n">VN_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">VN</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">VN_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">VN_norm</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalm</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">globaln</span><span class="p">:</span>
+                <span class="n">UP_norm</span><span class="p">,</span> <span class="n">UN_norm</span> <span class="o">=</span> <span class="n">UP_norm</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="n">UN_norm</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span>
+            <span class="n">mp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">UP_norm</span> <span class="o">*</span> <span class="n">VP_norm</span> <span class="o">*</span> <span class="n">S</span><span class="p">)</span>
+            <span class="n">mn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">UN_norm</span> <span class="o">*</span> <span class="n">VN_norm</span> <span class="o">*</span> <span class="n">S</span><span class="p">)</span>
+
+            <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mp</span> <span class="o">&gt;</span> <span class="n">mn</span><span class="p">,</span> <span class="n">mp</span> <span class="o">*</span> <span class="n">UP</span> <span class="o">/</span> <span class="p">(</span><span class="n">UP_norm</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">),</span> <span class="n">mn</span> <span class="o">*</span> <span class="n">UN</span> <span class="o">/</span> <span class="p">(</span><span class="n">UN_norm</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">))</span>
+            <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mp</span> <span class="o">&gt;</span> <span class="n">mn</span><span class="p">,</span> <span class="n">mp</span> <span class="o">*</span> <span class="n">VP</span> <span class="o">/</span> <span class="p">(</span><span class="n">VP_norm</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">),</span> <span class="n">mn</span> <span class="o">*</span> <span class="n">VN</span> <span class="o">/</span> <span class="p">(</span><span class="n">VN_norm</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># print(W.shape,H.shape)</span>
+            <span class="n">recon_err_nnsvd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rel_error</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">),</span> <span class="n">H</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reconstruction error for nnSVD is :&#39;</span><span class="p">,</span> <span class="n">recon_err_nnsvd</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalize_by_W</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_comm</span><span class="p">),</span> <span class="p">{</span><span class="s1">&#39;recon_err_svd&#39;</span><span class="p">:</span> <span class="n">recon_err_svd</span><span class="p">,</span>
+                                                               <span class="s1">&#39;recon_err_nnsvd&#39;</span><span class="p">:</span> <span class="n">recon_err_nnsvd</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalize_by_W</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">grid_comm</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, LANL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,1246 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pyDNMFk.dist_nmf &mdash; pyDNMFk 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> pyDNMFk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">pyDNMFk</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyDNMFk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>pyDNMFk.dist_nmf</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pyDNMFk.dist_nmf</h1><div class="highlight"><pre>
+<span></span><span class="c1"># @author: Manish Bhattarai</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">matlib</span>
+
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<div class="viewcode-block" id="nmf_algorithms_2D"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D">[docs]</a><span class="k">class</span> <span class="nc">nmf_algorithms_2D</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs the distributed NMF operation along 2D cartesian grid</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        A_ij : ndarray</span>
+<span class="sd">            Distributed Data</span>
+<span class="sd">        W_ij : ndarray</span>
+<span class="sd">            Distributed factor W</span>
+<span class="sd">        H_ij : ndarray</span>
+<span class="sd">            Distributed factor H</span>
+<span class="sd">        params : class</span>
+<span class="sd">            Class which comprises following attributes</span>
+<span class="sd">        params.comm1 : object</span>
+<span class="sd">            Global Communicator</span>
+<span class="sd">        params.comm : object</span>
+<span class="sd">            Modified communicator object</span>
+<span class="sd">        params.k : int</span>
+<span class="sd">            Rank for decomposition</span>
+<span class="sd">        params.m : int</span>
+<span class="sd">            Global dimensions m</span>
+<span class="sd">        params.n : int</span>
+<span class="sd">            Global dimensions n</span>
+<span class="sd">        params.p_r : int</span>
+<span class="sd">            Cartesian grid row count</span>
+<span class="sd">        params.p_c : int</span>
+<span class="sd">            Cartesian grid column count</span>
+<span class="sd">        params.row_comm : object</span>
+<span class="sd">            Sub communicator along row</span>
+<span class="sd">        params.col_comm : object</span>
+<span class="sd">            Sub communicator along columns</span>
+<span class="sd">        params.W_update : bool</span>
+<span class="sd">            flag to set W update True/False</span>
+<span class="sd">        params.norm : str</span>
+<span class="sd">            NMF norm to be minimized</span>
+<span class="sd">        params.method : str</span>
+<span class="sd">            NMF optimization method</span>
+<span class="sd">        params.eps : float</span>
+<span class="sd">            Epsilon value</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A_ij</span><span class="p">,</span> <span class="n">W_ij</span><span class="p">,</span> <span class="n">H_ij</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">p_c</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">k</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">comm1</span>  <span class="c1"># [&#39;comm1&#39;]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_column</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">row_comm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">col_comm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">comm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span> <span class="o">=</span> <span class="n">A_ij</span><span class="p">,</span> <span class="n">W_ij</span><span class="p">,</span> <span class="n">H_ij</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_update</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">W_update</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">norm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">rank</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_W_m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_H_n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.update"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Performs 1 step Update for factors W and H based on NMF method and corresponding norm minimization</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        W_ij : ndarray</span>
+<span class="sd">           The m/p X k distributed factor W</span>
+<span class="sd">        H_ij : ndarray</span>
+<span class="sd">           The k X n/p distributed factor H</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;FRO&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;MU&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Fro_MU_update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_update</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;HALS&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">FRO_HALS_update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_update</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;BCD&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">FRO_BCD_update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_update</span><span class="p">,</span> <span class="n">itr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">itr</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Not a valid method: Choose (mu/hals/bcd)&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;KL&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;MU&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">KL_MU_update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_update</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Not a valid method: Choose (mu)&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Not a valid norm: Choose (fro/kl)&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.global_gram"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.global_gram">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot; Distributed gram computation</span>
+
+<span class="sd">        Computes the global gram operation of matrix A</span>
+<span class="sd">        .. math:: A^TA</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        A  :  ndarray</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        A_TA_glob  : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">A_TA_loc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+        <span class="n">A_TA_glob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">A_TA_loc</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">A_TA_glob</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.global_mm"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.global_mm">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">global_mm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot; Distributed matrix multiplication</span>
+
+<span class="sd">        Computes the global matrix multiplication of matrix A and B</span>
+<span class="sd">        .. math:: AB</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        A  :  ndarray</span>
+<span class="sd">        B  :  ndarray</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        AB_glob  : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">AB_loc</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">B</span>
+        <span class="n">AB_glob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">AB_loc</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">AB_glob</span></div>
+
+    <span class="sd">&#39;&#39;&#39;Functions for Fro MU NMF update&#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.ATW_glob"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.ATW_glob">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">ATW_glob</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot; Distributed computation of W^TA</span>
+
+<span class="sd">        Computes the global matrix multiplication of matrix W and A</span>
+<span class="sd">        .. math:: W^TA</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        W  :  ndarray</span>
+<span class="sd">        A  :  ndarray</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        Atw  : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">W_i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_column</span><span class="o">.</span><span class="n">allgather</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_column</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="n">W_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">W_i</span><span class="p">))</span>
+        <span class="n">Y_ij</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">W_i</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">)</span>
+        <span class="n">ks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_H_n</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>  <span class="c1"># self.n // (self.p_r * self.p_c)]).T.copy().astype(self.A_ij.dtype)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_row</span><span class="o">.</span><span class="n">Reduce_scatter</span><span class="p">(</span><span class="n">Y_ij</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">ks</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_row</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="n">Atw</span> <span class="o">=</span> <span class="n">ks</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">return</span> <span class="n">Atw</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.AH_glob"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.AH_glob">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">AH_glob</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">H_ij</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot; Distributed computation of AH^T</span>
+
+<span class="sd">        Computes the global matrix multiplication of matrix A and H</span>
+<span class="sd">        .. math:: AH^T</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        A  :  ndarray</span>
+<span class="sd">        H  :  ndarray</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        AH  : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">H_ij</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">H_ij</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span>
+        <span class="n">H_j</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_row</span><span class="o">.</span><span class="n">allgather</span><span class="p">(</span><span class="n">H_ij</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_row</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="n">H_j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">H_j</span><span class="p">))</span>
+        <span class="n">V_ij</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="n">H_j</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">ko</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">V_ij</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">sk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">local_W_m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>  <span class="c1"># self.m // (self.p_r * self.p_c), self.k]).astype(self.A_ij.dtype)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_column</span><span class="o">.</span><span class="n">Reduce_scatter</span><span class="p">(</span><span class="n">V_ij</span><span class="p">,</span> <span class="n">sk</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_column</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="n">AH</span> <span class="o">=</span> <span class="n">sk</span>
+        <span class="k">return</span> <span class="n">AH</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.Fro_MU_update_H"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.Fro_MU_update_H">[docs]</a>    <span class="k">def</span> <span class="nf">Fro_MU_update_H</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm based multiplicative update of H parameter</span>
+<span class="sd">        Function computes updated H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.H_ij : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">W_TW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">)</span>
+        <span class="n">AtW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ATW_glob</span><span class="p">()</span>
+        <span class="n">HWtW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">W_TW</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span> <span class="o">*=</span> <span class="n">AtW</span> <span class="o">/</span> <span class="n">HWtW</span><span class="o">.</span><span class="n">T</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.Fro_MU_update_W"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.Fro_MU_update_W">[docs]</a>    <span class="k">def</span> <span class="nf">Fro_MU_update_W</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm based multiplicative update of W parameter</span>
+<span class="sd">        Function computes updated H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.W_ij : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">HH_T</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">AH</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">AH_glob</span><span class="p">()</span>
+        <span class="n">WHTH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">,</span> <span class="n">HH_T</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span> <span class="o">*=</span> <span class="n">AH</span> <span class="o">/</span> <span class="n">WHTH</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.Fro_MU_update"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.Fro_MU_update">[docs]</a>    <span class="k">def</span> <span class="nf">Fro_MU_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">W_update</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm based multiplicative update of W and H parameter</span>
+<span class="sd">        Function computes updated W and H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.H_ij : ndarray</span>
+<span class="sd">        self.W_ij : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">W_update</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Fro_MU_update_W</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Fro_MU_update_H</span><span class="p">()</span></div>
+
+    <span class="sd">&#39;&#39;&#39;Functions for KL MU NMF update&#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.gather_W_H"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.gather_W_H">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">gather_W_H</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gW</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">gH</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gathers W and H factors across cartesian groups</span>
+<span class="sd">        i.e H_ij -&gt; H_j if gH=True and W_ij -&gt; W_i and gW=True</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        gW : boolen</span>
+<span class="sd">        gH : boolen</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.H_j : ndarray</span>
+<span class="sd">        self.W_i : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">gH</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_row</span><span class="o">.</span><span class="n">allgather</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_row</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">gW</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_column</span><span class="o">.</span><span class="n">allgather</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_column</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.WTU_glob"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.WTU_glob">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">WTU_glob</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot; Distributed computation of W^TU</span>
+
+<span class="sd">        Computes the global matrix multiplication of matrix W and U for KL</span>
+<span class="sd">        .. math:: W^TU</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        W  :  ndarray</span>
+<span class="sd">        H  :  ndarray</span>
+<span class="sd">        A  :  ndarray</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        WTU  : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">U_ij</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
+        <span class="n">WTU</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U_ij</span><span class="p">)</span>
+        <span class="n">ks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_H_n</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_row</span><span class="o">.</span><span class="n">Reduce_scatter</span><span class="p">(</span><span class="n">WTU</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">ks</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_row</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="n">ks</span> <span class="o">=</span> <span class="n">ks</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">return</span> <span class="n">ks</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.UHT_glob"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.UHT_glob">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">UHT_glob</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot; Distributed computation of UH^T</span>
+
+<span class="sd">        Computes the global matrix multiplication of matrix W and U for KL</span>
+<span class="sd">        .. math:: UH^T</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        W  :  ndarray</span>
+<span class="sd">        H  :  ndarray</span>
+<span class="sd">        A  :  ndarray</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        UHT  : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">U_ij</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
+        <span class="n">UHT</span> <span class="o">=</span> <span class="n">U_ij</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">sk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">local_W_m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_column</span><span class="o">.</span><span class="n">Reduce_scatter</span><span class="p">(</span><span class="n">UHT</span><span class="p">,</span> <span class="n">sk</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cartesian1d_column</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">sk</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.sum_axis"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.sum_axis">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">sum_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dat</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">dat</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tmp</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.KL_MU_update_W"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.KL_MU_update_W">[docs]</a>    <span class="k">def</span> <span class="nf">KL_MU_update_W</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        KL divergence based multiplicative update of W parameter</span>
+<span class="sd">        Function computes updated W parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.W_ij : ndarray</span>
+<span class="sd">            Distributed factor W of shape m/p X k</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sum_axis</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">X2</span> <span class="o">=</span> <span class="n">matlib</span><span class="o">.</span><span class="n">repmat</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_W_m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gather_W_H</span><span class="p">()</span>
+        <span class="n">sk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">UHT_glob</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span> <span class="o">*=</span> <span class="n">sk</span> <span class="o">/</span> <span class="p">(</span><span class="n">X2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.KL_MU_update_H"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.KL_MU_update_H">[docs]</a>    <span class="k">def</span> <span class="nf">KL_MU_update_H</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm based multiplicative update of H parameter</span>
+<span class="sd">        Function computes updated H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.H_ij : ndarray</span>
+<span class="sd">            Distributed factor H of shape  k X n/p</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sum_axis</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">X1</span> <span class="o">=</span> <span class="n">matlib</span><span class="o">.</span><span class="n">repmat</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_H_n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gather_W_H</span><span class="p">()</span>
+        <span class="n">ks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">WTU_glob</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span> <span class="o">*=</span> <span class="n">ks</span> <span class="o">/</span> <span class="p">(</span><span class="n">X1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.KL_MU_update"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.KL_MU_update">[docs]</a>    <span class="k">def</span> <span class="nf">KL_MU_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">W_update</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        KL divergence based multiplicative update of W and H parameter</span>
+<span class="sd">        Function computes updated W and H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.H_ij : ndarray (k X n/p)</span>
+<span class="sd">        self.W_ij : ndarray (m/p X k)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">W_update</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">KL_MU_update_W</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">KL_MU_update_H</span><span class="p">()</span></div>
+
+    <span class="sd">&#39;&#39;&#39;Functions for FRO HALS NMF update&#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.FRO_HALS_update_W"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update_W">[docs]</a>    <span class="k">def</span> <span class="nf">FRO_HALS_update_W</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm minimization based HALS update of W  parameter</span>
+<span class="sd">        Function computes updated W parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.W_ij : ndarray (m/p X k)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gather_W_H</span><span class="p">(</span><span class="n">gW</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">HHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">AH</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">AH_glob</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">kk</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)):</span>
+            <span class="n">temp_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">[:,</span> <span class="n">kk</span><span class="p">]</span> <span class="o">*</span> <span class="n">HHT</span><span class="p">[</span><span class="n">kk</span><span class="p">,</span> <span class="n">kk</span><span class="p">]</span> <span class="o">+</span> <span class="n">AH</span><span class="p">[:,</span> <span class="n">kk</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">HHT</span><span class="p">[:,</span> <span class="n">kk</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">[:,</span> <span class="n">kk</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">temp_vec</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
+            <span class="n">ss</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">[:,</span> <span class="n">kk</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">ss</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">[:,</span> <span class="n">kk</span><span class="p">]</span> <span class="o">/=</span> <span class="n">ss</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.FRO_HALS_update_H"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update_H">[docs]</a>    <span class="k">def</span> <span class="nf">FRO_HALS_update_H</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm minimization based HALS update of H  parameter</span>
+<span class="sd">        Function computes updated H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.H_ij : ndarray ( k X n/p)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gather_W_H</span><span class="p">(</span><span class="n">gH</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">WTW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">)</span>
+        <span class="n">AtW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ATW_glob</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">kk</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)):</span>
+            <span class="n">temp_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span><span class="p">[</span><span class="n">kk</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">AtW</span><span class="p">[</span><span class="n">kk</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">WTW</span><span class="p">[</span><span class="n">kk</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span><span class="p">[</span><span class="n">kk</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">temp_vec</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.FRO_HALS_update"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update">[docs]</a>    <span class="k">def</span> <span class="nf">FRO_HALS_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">W_update</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm minimization based HALS update of W  and H parameter</span>
+<span class="sd">        Function computes updated W and H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.W_ij : ndarray (m/p X k)</span>
+<span class="sd">        self.H_ij : ndarray (k X n/p)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">W_update</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">FRO_HALS_update_W</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">FRO_HALS_update_H</span><span class="p">()</span></div>
+
+    <span class="sd">&#39;&#39;&#39;Functions for FRO BCD NMF update&#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.globalSqNorm"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.globalSqNorm">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">globalSqNorm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comm</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Calc global squared norm of any matrix&quot;&quot;&quot;</span>
+        <span class="n">normX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">sqnormX</span> <span class="o">=</span> <span class="n">normX</span> <span class="o">*</span> <span class="n">normX</span>
+        <span class="n">Xnorm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">sqnormX</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Xnorm</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.initWandH"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.initWandH">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">initWandH</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Initialize the parameters for BCD updates&quot;&quot;&quot;</span>
+
+        <span class="c1"># global Frobenius norm u calculated before</span>
+        <span class="n">Xnorm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalSqNorm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">)</span>
+        <span class="c1"># Norm of W0 per processor</span>
+        <span class="n">globalsqnormW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalSqNorm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">)</span>
+        <span class="c1"># Norm of H0 per processor</span>
+        <span class="n">globalsqnormH</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalSqNorm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span><span class="p">)</span>
+        <span class="c1"># Now normalize the initial W and H</span>
+        <span class="n">W_old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">globalsqnormW</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Xnorm</span><span class="p">))</span>
+        <span class="n">H_old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">globalsqnormH</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Xnorm</span><span class="p">))</span>
+        <span class="n">Wm</span> <span class="o">=</span> <span class="n">W_old</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">Hm</span> <span class="o">=</span> <span class="n">H_old</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">HHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="n">H_old</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span> <span class="o">=</span> <span class="n">H_old</span>
+        <span class="n">AHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">AH_glob</span><span class="p">()</span>
+        <span class="n">obj_old</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">Xnorm</span>  <span class="c1"># This is correct, already a squared norm</span>
+        <span class="k">return</span> <span class="n">Wm</span><span class="p">,</span> <span class="n">Hm</span><span class="p">,</span> <span class="n">HHT</span><span class="p">,</span> <span class="n">AHT</span><span class="p">,</span> <span class="n">W_old</span><span class="p">,</span> <span class="n">H_old</span><span class="p">,</span> <span class="n">obj_old</span><span class="p">,</span> <span class="n">Xnorm</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_2D.FRO_BCD_update"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_BCD_update">[docs]</a>    <span class="k">def</span> <span class="nf">FRO_BCD_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">W_update</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">itr</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm minimization based BCD update of W  and H parameter</span>
+<span class="sd">        Function computes updated W and H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">          self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">          self.W_ij : ndarray (m/p X k)</span>
+
+<span class="sd">          self.H_ij : ndarray (k X n/p)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">Wm</span><span class="p">,</span> <span class="n">Hm</span><span class="p">,</span> <span class="n">HHT</span><span class="p">,</span> <span class="n">AHT</span><span class="p">,</span> <span class="n">W_old</span><span class="p">,</span> <span class="n">H_old</span><span class="p">,</span> <span class="n">obj_old</span><span class="p">,</span> <span class="n">Xnorm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initWandH</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rw</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">nstall</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">t_old</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">HHTnorm</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">WTWnorm</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">opts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;rel_err&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;obj&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+        <span class="n">max_iters</span> <span class="o">=</span> <span class="n">itr</span>  <span class="c1"># Read it from the arguments or somewhere</span>
+        <span class="c1"># relerr1 = relerr2 = []</span>
+        <span class="c1"># Iterate for max iterations:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iters</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            W update</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">HHTnorm_old</span> <span class="o">=</span> <span class="n">HHTnorm</span>  <span class="c1">#</span>
+            <span class="n">HHTnorm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">HHT</span><span class="p">)</span>  <span class="c1"># save and update Lipschitz bound for W</span>
+            <span class="n">WmHHT</span> <span class="o">=</span> <span class="n">Wm</span> <span class="o">@</span> <span class="n">HHT</span>  <span class="c1"># No need of dist multiplication</span>
+            <span class="n">GW</span> <span class="o">=</span> <span class="n">WmHHT</span> <span class="o">-</span> <span class="n">AHT</span>  <span class="c1"># gradient at X=Xm</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Wm</span> <span class="o">-</span> <span class="n">GW</span> <span class="o">/</span> <span class="n">HHTnorm</span><span class="p">)</span>
+            <span class="c1"># L1 norm of Each column in W</span>
+            <span class="n">localWsum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">globalWSum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">localWsum</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span> <span class="o">/=</span> <span class="n">globalWSum</span>
+            <span class="n">WTW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="p">)</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            H update</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">WTWnorm_old</span> <span class="o">=</span> <span class="n">WTWnorm</span>
+            <span class="n">WTWnorm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">WTW</span><span class="p">)</span>  <span class="c1"># save and update Lipschitz bound for H</span>
+            <span class="n">WTWHm</span> <span class="o">=</span> <span class="n">WTW</span> <span class="o">@</span> <span class="n">Hm</span>  <span class="c1"># No need of dist multiplication</span>
+            <span class="n">WTA</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ATW_glob</span><span class="p">()</span>
+            <span class="n">GH</span> <span class="o">=</span> <span class="n">WTWHm</span> <span class="o">-</span> <span class="n">WTA</span>  <span class="c1"># gradient at Y=Ym</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Hm</span> <span class="o">-</span> <span class="n">GH</span> <span class="o">/</span> <span class="n">WTWnorm</span><span class="p">)</span>
+            <span class="n">HHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+            <span class="n">AHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">AH_glob</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gather_W_H</span><span class="p">()</span>
+            <span class="n">glob_jt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalSqNorm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="p">)</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">glob_jt</span>  <span class="c1">#</span>
+            <span class="n">rel_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">obj</span> <span class="o">/</span> <span class="n">Xnorm</span><span class="p">)</span>
+            <span class="n">opts</span><span class="p">[</span><span class="s1">&#39;obj&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+            <span class="n">opts</span><span class="p">[</span><span class="s1">&#39;rel_err&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rel_err</span><span class="p">)</span>
+            <span class="c1"># --- correction and extrapolation ---</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">t_old</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="k">if</span> <span class="n">obj</span> <span class="o">&gt;=</span> <span class="n">obj_old</span><span class="p">:</span>
+                <span class="c1"># restore to previous W,H, and cached quantities for nonincreasing objective</span>
+                <span class="n">Wm</span> <span class="o">=</span> <span class="n">W_old</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">Hm</span> <span class="o">=</span> <span class="n">H_old</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">HHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="n">H_old</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+                <span class="n">AHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">AH_glob</span><span class="p">(</span><span class="n">H_old</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># extrapolation</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_old</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">t</span>  <span class="c1"># extrapolation weight</span>
+                <span class="n">ww</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rw</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">HHTnorm_old</span> <span class="o">/</span> <span class="n">HHTnorm</span><span class="p">)])</span>  <span class="c1"># choose smaller one for convergence</span>
+                <span class="n">wh</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rw</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">WTWnorm_old</span> <span class="o">/</span> <span class="n">WTWnorm</span><span class="p">)])</span>
+                <span class="n">Wm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span> <span class="o">+</span> <span class="n">ww</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span> <span class="o">-</span> <span class="n">W_old</span><span class="p">)</span>
+                <span class="n">Hm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span> <span class="o">+</span> <span class="n">wh</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span> <span class="o">-</span> <span class="n">H_old</span><span class="p">)</span>  <span class="c1"># extrapolation</span>
+                <span class="n">W_old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_ij</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">H_old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_ij</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">t_old</span> <span class="o">=</span> <span class="n">t</span>
+                <span class="n">obj_old</span> <span class="o">=</span> <span class="n">obj</span></div></div>
+
+
+<div class="viewcode-block" id="nmf_algorithms_1D"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D">[docs]</a><span class="k">class</span> <span class="nc">nmf_algorithms_1D</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Performs the distributed NMF operation along 1D cartesian grid</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        A_ij : ndarray</span>
+<span class="sd">            Distributed Data</span>
+<span class="sd">        W_i : ndarray</span>
+<span class="sd">            Distributed factor W</span>
+<span class="sd">        H_j : ndarray</span>
+<span class="sd">            Distributed factor H</span>
+<span class="sd">        params : class</span>
+<span class="sd">            Class which comprises following attributes</span>
+<span class="sd">        params.comm1 : object</span>
+<span class="sd">            Global Communicator</span>
+<span class="sd">        params.k : int</span>
+<span class="sd">            Rank for decomposition</span>
+<span class="sd">        params.m : int</span>
+<span class="sd">            Global dimensions m</span>
+<span class="sd">        params.n : int</span>
+<span class="sd">            Global dimensions n</span>
+<span class="sd">        params.p_r : int</span>
+<span class="sd">            Cartesian grid row count</span>
+<span class="sd">        params.p_c : int</span>
+<span class="sd">            Cartesian grid column count</span>
+<span class="sd">        params.W_update : bool</span>
+<span class="sd">            flag to set W update True/False</span>
+<span class="sd">        params.norm : str</span>
+<span class="sd">            NMF norm to be minimized</span>
+<span class="sd">        params.method : str</span>
+<span class="sd">            NMF optimization method</span>
+<span class="sd">        params.eps : float</span>
+<span class="sd">            Epsilon value &quot;&quot;&quot;</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A_ij</span><span class="p">,</span> <span class="n">W_i</span><span class="p">,</span> <span class="n">H_j</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="n">params</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">params</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="n">params</span><span class="o">.</span><span class="n">p_c</span><span class="p">,</span> <span class="n">params</span><span class="o">.</span><span class="n">k</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">comm1</span>  <span class="c1"># [&#39;comm1&#39;]</span>
+        <span class="c1"># self.comm = comm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">norm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">comm1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span> <span class="o">=</span> <span class="n">A_ij</span><span class="p">,</span> <span class="n">W_i</span><span class="p">,</span> <span class="n">H_j</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_update</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">W_update</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">rank</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_W_m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_H_n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.update"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Performs 1 step Update for factors W and H based on NMF method and corresponding norm minimization</span>
+
+<span class="sd">         Returns</span>
+<span class="sd">         -------</span>
+<span class="sd">         W_i : ndarray</span>
+<span class="sd">            The m/p_r X k distributed factor W</span>
+<span class="sd">         H_j : ndarray</span>
+<span class="sd">            The k X n/p_c distributed factor H</span>
+<span class="sd">         &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;FRO&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;MU&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">Fro_MU_update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_update</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;HALS&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">FRO_HALS_update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_update</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;BCD&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">FRO_BCD_update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_update</span><span class="p">,</span> <span class="n">itr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">itr</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Not a valid method: Choose (mu/hals/bcd)&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;KL&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;MU&#39;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">KL_MU_update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_update</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Not a valid method: Choose (mu)&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Not a valid norm: Choose (fro/kl)&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.global_gram"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.global_gram">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot; Distributed gram computation</span>
+
+<span class="sd">        Computes the global gram operation of matrix A</span>
+<span class="sd">        .. math:: A^TA</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        A  :  ndarray</span>
+<span class="sd">        p  : Processor count</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        A_TA_glob  : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">A_TA_loc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">A_TA_glob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">A_TA_loc</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">A_TA_glob</span> <span class="o">=</span> <span class="n">A_TA_loc</span>
+        <span class="k">return</span> <span class="n">A_TA_glob</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.global_mm"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.global_mm">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">global_mm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">p</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot; Distributed matrix multiplication</span>
+
+<span class="sd">        Computes the global matrix multiplication of matrix A and B</span>
+<span class="sd">        .. math:: AB</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        A  :  ndarray</span>
+<span class="sd">        B  :  ndarray</span>
+<span class="sd">        p  : processor count</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        AB_glob  : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">AB_loc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">AB_glob</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">AB_loc</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">AB_glob</span> <span class="o">=</span> <span class="n">AB_loc</span>
+        <span class="k">return</span> <span class="n">AB_glob</span></div>
+
+    <span class="sd">&#39;&#39;&#39;Functions for Fro MU NMF update&#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.Fro_MU_update_W"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.Fro_MU_update_W">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">Fro_MU_update_W</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">         Frobenius norm based multiplicative update of W parameter</span>
+<span class="sd">         Function computes updated H parameter for each mpi rank</span>
+
+<span class="sd">         Parameters</span>
+<span class="sd">         ----------</span>
+<span class="sd">         self : object</span>
+
+<span class="sd">         Returns</span>
+<span class="sd">         -------</span>
+<span class="sd">         self.W_i : ndarray</span>
+<span class="sd">         &quot;&quot;&quot;</span>
+
+        <span class="n">W_TW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">)</span>
+        <span class="n">AtW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">)</span>
+        <span class="n">HWtW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">W_TW</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span> <span class="o">*=</span> <span class="n">AtW</span> <span class="o">/</span> <span class="n">HWtW</span><span class="o">.</span><span class="n">T</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.Fro_MU_update_H"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.Fro_MU_update_H">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">Fro_MU_update_H</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm based multiplicative update of H parameter</span>
+<span class="sd">        Function computes updated H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.H_j : ndarray&quot;&quot;&quot;</span>
+
+        <span class="n">HH_T</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">)</span>
+        <span class="n">AH</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">)</span>
+        <span class="n">WHTH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">,</span> <span class="n">HH_T</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span> <span class="o">*=</span> <span class="n">AH</span> <span class="o">/</span> <span class="n">WHTH</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.Fro_MU_update"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.Fro_MU_update">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">Fro_MU_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">W_update</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm based multiplicative update of W and H parameter</span>
+<span class="sd">        Function computes updated W and H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.H_ij : ndarray</span>
+<span class="sd">        self.W_ij : ndarray&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">W_update</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Fro_MU_update_W</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Fro_MU_update_H</span><span class="p">()</span></div>
+
+    <span class="sd">&#39;&#39;&#39;Functions for KL MU NMF update&#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.sum_along_axis"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.sum_along_axis">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">sum_along_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Performs sum of the matrix along given axis</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : ndarray</span>
+<span class="sd">            Data</span>
+<span class="sd">        p : int</span>
+<span class="sd">            Processor count</span>
+<span class="sd">        axis : int</span>
+<span class="sd">            Axis along which the sum is to be performed</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        global_axis_sum : ndarray</span>
+<span class="sd">            Vector array after summation operation along axis&quot;&quot;&quot;</span>
+        <span class="n">loc_axis_sum</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">loc_axis_sum</span> <span class="o">=</span> <span class="n">loc_axis_sum</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">glob_axis_sum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">loc_axis_sum</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">glob_axis_sum</span> <span class="o">=</span> <span class="n">loc_axis_sum</span>
+        <span class="k">return</span> <span class="n">glob_axis_sum</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.glob_UX"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.glob_UX">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">glob_UX</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Perform a global operation UX for W and H update with KL&quot;&quot;&quot;</span>
+        <span class="n">UX</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">UX</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">UX</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">axis</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">UX</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_mm</span><span class="p">(</span><span class="n">UX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">UX</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.KL_MU_update_W"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.KL_MU_update_W">[docs]</a>    <span class="k">def</span> <span class="nf">KL_MU_update_W</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        KL divergence based multiplicative update of W parameter</span>
+<span class="sd">        Function computes updated W parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.W_i : ndarray</span>
+<span class="sd">            Distributed factor W of shape m/p_r X k</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sum_along_axis</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">X2</span> <span class="o">=</span> <span class="n">matlib</span><span class="o">.</span><span class="n">repmat</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_W_m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">sk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">glob_UX</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span> <span class="o">*=</span> <span class="n">sk</span> <span class="o">/</span> <span class="p">(</span><span class="n">X2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.KL_MU_update_H"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.KL_MU_update_H">[docs]</a>    <span class="k">def</span> <span class="nf">KL_MU_update_H</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        KL divergence based multiplicative update of H parameter</span>
+<span class="sd">        Function computes updated H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.H_j : ndarray</span>
+<span class="sd">            Distributed factor H of shape  k X n/p_c</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sum_along_axis</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">X2</span> <span class="o">=</span> <span class="n">matlib</span><span class="o">.</span><span class="n">repmat</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_H_n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">sk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">glob_UX</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span> <span class="o">*=</span> <span class="n">sk</span> <span class="o">/</span> <span class="p">(</span><span class="n">X2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.KL_MU_update"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.KL_MU_update">[docs]</a>    <span class="k">def</span> <span class="nf">KL_MU_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">W_update</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        KL divergence based multiplicative update of W and H parameter</span>
+<span class="sd">        Function computes updated W and H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        W_update : bool</span>
+<span class="sd">            Flag to enable/disable W_update</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.H_j : ndarray (k X n/p_r)</span>
+<span class="sd">        self.W_i : ndarray (m/p_c X k)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">W_update</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">KL_MU_update_W</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">KL_MU_update_H</span><span class="p">()</span></div>
+
+    <span class="sd">&#39;&#39;&#39;Functions for FRO HALS NMF update&#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.FRO_HALS_update_W"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update_W">[docs]</a>    <span class="k">def</span> <span class="nf">FRO_HALS_update_W</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm minimization based HALS update of W  parameter</span>
+<span class="sd">        Function computes updated W parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.W_i : ndarray (m/p_r X k)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">HHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">)</span>
+        <span class="n">AH</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">kk</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)):</span>
+            <span class="n">temp_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">[:,</span> <span class="n">kk</span><span class="p">]</span> <span class="o">*</span> <span class="n">HHT</span><span class="p">[</span><span class="n">kk</span><span class="p">,</span> <span class="n">kk</span><span class="p">]</span> <span class="o">+</span> <span class="n">AH</span><span class="p">[:,</span> <span class="n">kk</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">HHT</span><span class="p">[:,</span> <span class="n">kk</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">[:,</span> <span class="n">kk</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">temp_vec</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
+            <span class="n">ss</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">[:,</span> <span class="n">kk</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">ss</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">[:,</span> <span class="n">kk</span><span class="p">]</span> <span class="o">/=</span> <span class="n">ss</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.FRO_HALS_update_H"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update_H">[docs]</a>    <span class="k">def</span> <span class="nf">FRO_HALS_update_H</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm minimization based HALS update of H  parameter</span>
+<span class="sd">        Function computes updated H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : object</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.H_j : ndarray ( k X n/p_c)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">WTW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">)</span>
+        <span class="n">AtW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">)</span>
+        <span class="c1"># self.H_j = self.H_j.T</span>
+        <span class="k">for</span> <span class="n">kk</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)):</span>
+            <span class="n">temp_vec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="p">[</span><span class="n">kk</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">AtW</span><span class="p">[</span><span class="n">kk</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">WTW</span><span class="p">[</span><span class="n">kk</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="p">[</span><span class="n">kk</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">temp_vec</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span></div>
+        <span class="c1"># self.H_j = self.H_j.T</span>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.FRO_HALS_update"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update">[docs]</a>    <span class="k">def</span> <span class="nf">FRO_HALS_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">W_update</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm minimizatio based HALS update of W and H parameter</span>
+<span class="sd">        Function computes updated W and H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        W_update : bool</span>
+<span class="sd">            Flag to enable/disable W_update</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.H_j : ndarray (k X n/p_r)</span>
+<span class="sd">        self.W_i : ndarray (m/p_c X k)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">W_update</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">FRO_HALS_update_W</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">FRO_HALS_update_H</span><span class="p">()</span></div>
+
+
+    <span class="sd">&#39;&#39;&#39;Functions for FRO BCD NMF update&#39;&#39;&#39;</span>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.globalSqNorm"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.globalSqNorm">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">globalSqNorm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">p</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Calc global squared norm of any matrix&quot;&quot;&quot;</span>
+        <span class="n">normX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">sqnormX</span> <span class="o">=</span> <span class="n">normX</span> <span class="o">*</span> <span class="n">normX</span>
+        <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">Xnorm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">sqnormX</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">Xnorm</span> <span class="o">=</span> <span class="n">sqnormX</span>
+        <span class="k">return</span> <span class="n">Xnorm</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.initWandH"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.initWandH">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">initWandH</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Initialize the parameters for BCD updates&quot;&quot;&quot;</span>
+
+        <span class="c1"># global Frobenius norm u calculated before</span>
+        <span class="n">Xnorm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalSqNorm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">)</span>
+        <span class="c1"># Norm of W0 per processor</span>
+        <span class="n">globalsqnormW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalSqNorm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">)</span>
+        <span class="c1"># Norm of H0 per processor</span>
+        <span class="n">globalsqnormH</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalSqNorm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">)</span>
+        <span class="c1"># Now normalize the initial W and H</span>
+        <span class="n">W_old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">globalsqnormW</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Xnorm</span><span class="p">))</span>
+        <span class="n">H_old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">globalsqnormH</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Xnorm</span><span class="p">))</span>
+        <span class="n">Wm</span> <span class="o">=</span> <span class="n">W_old</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">Hm</span> <span class="o">=</span> <span class="n">H_old</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">HHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="n">H_old</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">)</span>
+        <span class="n">AHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="n">H_old</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">)</span>
+        <span class="n">obj_old</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">Xnorm</span>  <span class="c1"># This is correct, already a squared norm</span>
+        <span class="k">return</span> <span class="n">Wm</span><span class="p">,</span> <span class="n">Hm</span><span class="p">,</span> <span class="n">HHT</span><span class="p">,</span> <span class="n">AHT</span><span class="p">,</span> <span class="n">W_old</span><span class="p">,</span> <span class="n">H_old</span><span class="p">,</span> <span class="n">obj_old</span><span class="p">,</span> <span class="n">Xnorm</span></div>
+
+<div class="viewcode-block" id="nmf_algorithms_1D.FRO_BCD_update"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_BCD_update">[docs]</a>    <span class="k">def</span> <span class="nf">FRO_BCD_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">W_update</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">itr</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Frobenius norm minimization based BCD update of W  and H parameter</span>
+<span class="sd">        Function computes updated W and H parameter for each mpi rank</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">           W_update: bool</span>
+<span class="sd">            flag to enable/disable W update</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">           self.W_i : ndarray (m/p_r X k)</span>
+<span class="sd">           self.H_j : ndarray (k X n/p_c)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">Wm</span><span class="p">,</span> <span class="n">Hm</span><span class="p">,</span> <span class="n">HHT</span><span class="p">,</span> <span class="n">AHT</span><span class="p">,</span> <span class="n">W_old</span><span class="p">,</span> <span class="n">H_old</span><span class="p">,</span> <span class="n">obj_old</span><span class="p">,</span> <span class="n">Xnorm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initWandH</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rw</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">nstall</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">t_old</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">HHTnorm</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">WTWnorm</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">opts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;rel_err&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;obj&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+        <span class="n">max_iters</span> <span class="o">=</span> <span class="n">itr</span>  <span class="c1"># Read it from the arguments or somewhere</span>
+        <span class="c1"># relerr1 = relerr2 = []</span>
+        <span class="c1"># Iterate for max iterations:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iters</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            W update</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">HHTnorm_old</span> <span class="o">=</span> <span class="n">HHTnorm</span>  <span class="c1">#</span>
+            <span class="n">HHTnorm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">HHT</span><span class="p">)</span>  <span class="c1"># save and update Lipschitz bound for W</span>
+            <span class="n">WmHHT</span> <span class="o">=</span> <span class="n">Wm</span> <span class="o">@</span> <span class="n">HHT</span>  <span class="c1"># No need of dist multiplication</span>
+            <span class="n">GW</span> <span class="o">=</span> <span class="n">WmHHT</span> <span class="o">-</span> <span class="n">AHT</span>  <span class="c1"># gradient at X=Xm</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Wm</span> <span class="o">-</span> <span class="n">GW</span> <span class="o">/</span> <span class="n">HHTnorm</span><span class="p">)</span>
+            <span class="c1"># L1 norm of Each column in W</span>
+            <span class="n">localWsum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">globalWSum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">localWsum</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="n">globalWSum</span> <span class="o">=</span> <span class="n">localWsum</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span> <span class="o">/=</span> <span class="n">globalWSum</span>
+            <span class="n">WTW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">)</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            H update</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">WTWnorm_old</span> <span class="o">=</span> <span class="n">WTWnorm</span>
+            <span class="n">WTWnorm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">WTW</span><span class="p">)</span>  <span class="c1"># save and update Lipschitz bound for H</span>
+            <span class="n">WTWHm</span> <span class="o">=</span> <span class="n">WTW</span> <span class="o">@</span> <span class="n">Hm</span>  <span class="c1"># No need of dist multiplication</span>
+            <span class="n">WTA</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">)</span>
+            <span class="n">GH</span> <span class="o">=</span> <span class="n">WTWHm</span> <span class="o">-</span> <span class="n">WTA</span>  <span class="c1"># gradient at Y=Ym</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Hm</span> <span class="o">-</span> <span class="n">GH</span> <span class="o">/</span> <span class="n">WTWnorm</span><span class="p">)</span>
+            <span class="n">HHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">)</span>
+            <span class="n">AHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">)</span>
+            <span class="n">glob_jt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">globalSqNorm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="p">)</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">glob_jt</span>  <span class="c1">#</span>
+            <span class="n">rel_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">obj</span> <span class="o">/</span> <span class="n">Xnorm</span><span class="p">)</span>
+            <span class="n">opts</span><span class="p">[</span><span class="s1">&#39;obj&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+            <span class="n">opts</span><span class="p">[</span><span class="s1">&#39;rel_err&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rel_err</span><span class="p">)</span>
+            <span class="c1"># --- correction and extrapolation ---</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">t_old</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="k">if</span> <span class="n">obj</span> <span class="o">&gt;=</span> <span class="n">obj_old</span><span class="p">:</span>
+                <span class="c1"># restore to previous W,H, and cached quantities for nonincreasing objective</span>
+                <span class="n">Wm</span> <span class="o">=</span> <span class="n">W_old</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">Hm</span> <span class="o">=</span> <span class="n">H_old</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">HHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_gram</span><span class="p">(</span><span class="n">H_old</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">)</span>
+                <span class="n">AHT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="n">H_old</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># extrapolation</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">t_old</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">t</span>  <span class="c1"># extrapolation weight</span>
+                <span class="n">ww</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rw</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">HHTnorm_old</span> <span class="o">/</span> <span class="n">HHTnorm</span><span class="p">)])</span>  <span class="c1"># choose smaller one for convergence</span>
+                <span class="n">wh</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="n">w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rw</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">WTWnorm_old</span> <span class="o">/</span> <span class="n">WTWnorm</span><span class="p">)])</span>
+                <span class="n">Wm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span> <span class="o">+</span> <span class="n">ww</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_i</span> <span class="o">-</span> <span class="n">W_old</span><span class="p">)</span>
+                <span class="n">Hm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span> <span class="o">+</span> <span class="n">wh</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_j</span> <span class="o">-</span> <span class="n">H_old</span><span class="p">)</span>  <span class="c1"># extrapolation</span>
+                <span class="n">W_old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">W_i</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">H_old</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">H_j</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">t_old</span> <span class="o">=</span> <span class="n">t</span>
+                <span class="n">obj_old</span> <span class="o">=</span> <span class="n">obj</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, LANL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

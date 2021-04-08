@@ -6,11 +6,15 @@ class custom_clustering():
     r"""
     Greedy algorithm to approximate a quadratic assignment problem to cluster vectors. Given p groups of k vectors, construct k clusters, each cluster containing a single vector from each of the p groups. This clustering approximation uses cos distances and mean centroids.
 
-    Args:
+    Parameters
+    ----------
 
-        W_all (ndarray) : Order three tensor of shape m by k by p, where m is the ambient dimension of the vectors, k is the number of vectors in each group, and p is the number of groups of vectors.
-        H_all (ndarray) : Order three tensor of shape n by k by p, where n is the ambient dimension of the vectors, k is the number of vectors in each group, and p is the number of groups of vectors.
-        params (class) : Class object with communication parameters which comprises of grid information (p_r,p_c) , commincator (comm) and epsilon (eps).
+        W_all : ndarray
+            Order three tensor of shape m by k by p, where m is the ambient dimension of the vectors, k is the number of vectors in each group, and p is the number of groups of vectors.
+        H_all : ndarray
+            Order three tensor of shape n by k by p, where n is the ambient dimension of the vectors, k is the number of vectors in each group, and p is the number of groups of vectors.
+        params : class
+            Class object with communication parameters which comprises of grid information (p_r,p_c) , commincator (comm) and epsilon (eps).
 
     """
 

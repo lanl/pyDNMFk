@@ -1,0 +1,3661 @@
+************* Module tests.test_dist_file_split
+tests/test_dist_file_split.py:24:0: C0303: Trailing whitespace (trailing-whitespace)
+tests/test_dist_file_split.py:37:0: C0303: Trailing whitespace (trailing-whitespace)
+tests/test_dist_file_split.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/test_dist_file_split.py:4:0: W0401: Wildcard import pyDNMFk.utils (wildcard-import)
+tests/test_dist_file_split.py:4:0: C0413: Import "from pyDNMFk.utils import *" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_file_split.py:5:0: E0401: Unable to import 'mpi4py' (import-error)
+tests/test_dist_file_split.py:5:0: C0413: Import "from mpi4py import MPI" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_file_split.py:6:0: C0413: Import "from scipy.io import loadmat" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_file_split.py:7:0: C0413: Import "import pytest" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_file_split.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/test_dist_file_split.py:14:4: W0612: Unused variable 'm' (unused-variable)
+tests/test_dist_file_split.py:14:7: W0612: Unused variable 'n' (unused-variable)
+tests/test_dist_file_split.py:32:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/test_dist_file_split.py:1:0: W0611: Unused import sys (unused-import)
+tests/test_dist_file_split.py:6:0: C0411: third party import "from scipy.io import loadmat" should be placed before "from pyDNMFk.utils import *" (wrong-import-order)
+tests/test_dist_file_split.py:7:0: C0411: third party import "import pytest" should be placed before "from pyDNMFk.utils import *" (wrong-import-order)
+************* Module tests.test_dist_nmf_1d_nnsvd_init
+tests/test_dist_nmf_1d_nnsvd_init.py:26:0: C0301: Line too long (108/100) (line-too-long)
+tests/test_dist_nmf_1d_nnsvd_init.py:33:0: C0301: Line too long (101/100) (line-too-long)
+tests/test_dist_nmf_1d_nnsvd_init.py:38:0: C0301: Line too long (101/100) (line-too-long)
+tests/test_dist_nmf_1d_nnsvd_init.py:38:25: C0326: Exactly one space required after comma
+        for mthd in ['mu',  'bcd', 'hals']:  # Frobenius norm, KL divergence,  and BCD implementation
+                         ^ (bad-whitespace)
+tests/test_dist_nmf_1d_nnsvd_init.py:44:0: C0301: Line too long (116/100) (line-too-long)
+tests/test_dist_nmf_1d_nnsvd_init.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/test_dist_nmf_1d_nnsvd_init.py:6:0: C0413: Import "import pyDNMFk.config as config" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_nmf_1d_nnsvd_init.py:9:0: W0401: Wildcard import pyDNMFk.pyDNMF (wildcard-import)
+tests/test_dist_nmf_1d_nnsvd_init.py:9:0: C0413: Import "from pyDNMFk.pyDNMF import *" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_nmf_1d_nnsvd_init.py:10:0: W0401: Wildcard import pyDNMFk.dist_comm (wildcard-import)
+tests/test_dist_nmf_1d_nnsvd_init.py:10:0: C0413: Import "from pyDNMFk.dist_comm import *" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_nmf_1d_nnsvd_init.py:39:16: W0621: Redefining name 'norm' from outer scope (line 9) (redefined-outer-name)
+tests/test_dist_nmf_1d_nnsvd_init.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/test_dist_nmf_1d_nnsvd_init.py:14:0: R0914: Too many local variables (25/15) (too-many-locals)
+tests/test_dist_nmf_1d_nnsvd_init.py:44:30: C0321: More than one statement on a single line (multiple-statements)
+tests/test_dist_nmf_1d_nnsvd_init.py:43:16: W0612: Unused variable 'W_ij' (unused-variable)
+tests/test_dist_nmf_1d_nnsvd_init.py:43:22: W0612: Unused variable 'H_ij' (unused-variable)
+tests/test_dist_nmf_1d_nnsvd_init.py:49:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/test_dist_nmf_1d_nnsvd_init.py:1:0: W0611: Unused import sys (unused-import)
+tests/test_dist_nmf_1d_nnsvd_init.py:4:0: C0411: standard import "import os" should be placed before "import pytest" (wrong-import-order)
+************* Module tests.test_dist_nmf_2d
+tests/test_dist_nmf_2d.py:31:0: C0301: Line too long (108/100) (line-too-long)
+tests/test_dist_nmf_2d.py:34:0: C0301: Line too long (101/100) (line-too-long)
+tests/test_dist_nmf_2d.py:45:0: C0301: Line too long (116/100) (line-too-long)
+tests/test_dist_nmf_2d.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/test_dist_nmf_2d.py:5:0: C0413: Import "import pyDNMFk.config as config" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_nmf_2d.py:9:0: W0401: Wildcard import pyDNMFk.pyDNMF (wildcard-import)
+tests/test_dist_nmf_2d.py:9:0: C0413: Import "from pyDNMFk.pyDNMF import *" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_nmf_2d.py:10:0: W0401: Wildcard import pyDNMFk.dist_comm (wildcard-import)
+tests/test_dist_nmf_2d.py:10:0: C0413: Import "from pyDNMFk.dist_comm import *" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_nmf_2d.py:40:16: W0621: Redefining name 'norm' from outer scope (line 9) (redefined-outer-name)
+tests/test_dist_nmf_2d.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/test_dist_nmf_2d.py:14:0: R0914: Too many local variables (23/15) (too-many-locals)
+tests/test_dist_nmf_2d.py:45:30: C0321: More than one statement on a single line (multiple-statements)
+tests/test_dist_nmf_2d.py:44:16: W0612: Unused variable 'W_ij' (unused-variable)
+tests/test_dist_nmf_2d.py:44:22: W0612: Unused variable 'H_ij' (unused-variable)
+tests/test_dist_nmf_2d.py:50:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/test_dist_nmf_2d.py:1:0: W0611: Unused import sys (unused-import)
+************* Module tests.test_dist_nmf_1d
+tests/test_dist_nmf_1d.py:30:0: C0301: Line too long (108/100) (line-too-long)
+tests/test_dist_nmf_1d.py:33:0: C0301: Line too long (101/100) (line-too-long)
+tests/test_dist_nmf_1d.py:44:0: C0301: Line too long (116/100) (line-too-long)
+tests/test_dist_nmf_1d.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/test_dist_nmf_1d.py:5:0: C0413: Import "import pyDNMFk.config as config" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_nmf_1d.py:8:0: W0401: Wildcard import pyDNMFk.pyDNMF (wildcard-import)
+tests/test_dist_nmf_1d.py:8:0: C0413: Import "from pyDNMFk.pyDNMF import *" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_nmf_1d.py:9:0: W0401: Wildcard import pyDNMFk.dist_comm (wildcard-import)
+tests/test_dist_nmf_1d.py:9:0: C0413: Import "from pyDNMFk.dist_comm import *" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_nmf_1d.py:39:16: W0621: Redefining name 'norm' from outer scope (line 8) (redefined-outer-name)
+tests/test_dist_nmf_1d.py:13:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/test_dist_nmf_1d.py:13:0: R0914: Too many local variables (23/15) (too-many-locals)
+tests/test_dist_nmf_1d.py:44:30: C0321: More than one statement on a single line (multiple-statements)
+tests/test_dist_nmf_1d.py:43:16: W0612: Unused variable 'W_ij' (unused-variable)
+tests/test_dist_nmf_1d.py:43:22: W0612: Unused variable 'H_ij' (unused-variable)
+tests/test_dist_nmf_1d.py:49:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/test_dist_nmf_1d.py:1:0: W0611: Unused import sys (unused-import)
+tests/test_dist_nmf_1d.py:3:0: C0411: standard import "import os" should be placed before "import pytest" (wrong-import-order)
+************* Module tests.test_dist_nnsvd
+tests/test_dist_nnsvd.py:31:0: C0301: Line too long (108/100) (line-too-long)
+tests/test_dist_nnsvd.py:63:0: C0301: Line too long (108/100) (line-too-long)
+tests/test_dist_nnsvd.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/test_dist_nnsvd.py:5:0: C0413: Import "import pyDNMFk.config as config" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_nnsvd.py:8:0: W0401: Wildcard import pyDNMFk.dist_svd (wildcard-import)
+tests/test_dist_nnsvd.py:8:0: C0413: Import "from pyDNMFk.dist_svd import *" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_nnsvd.py:9:0: W0401: Wildcard import pyDNMFk.dist_comm (wildcard-import)
+tests/test_dist_nnsvd.py:9:0: C0413: Import "from pyDNMFk.dist_comm import *" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_nnsvd.py:10:0: C0413: Import "import pytest" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_nnsvd.py:16:4: W0621: Redefining name 'MPI' from outer scope (line 8) (redefined-outer-name)
+tests/test_dist_nnsvd.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/test_dist_nnsvd.py:14:0: R0914: Too many local variables (24/15) (too-many-locals)
+tests/test_dist_nnsvd.py:16:4: E0401: Unable to import 'mpi4py' (import-error)
+tests/test_dist_nnsvd.py:38:14: W0612: Unused variable 'H_j' (unused-variable)
+tests/test_dist_nnsvd.py:14:0: R0915: Too many statements (54/50) (too-many-statements)
+tests/test_dist_nnsvd.py:1:0: W0611: Unused import sys (unused-import)
+tests/test_dist_nnsvd.py:10:0: C0411: third party import "import pytest" should be placed before "import pyDNMFk.config as config" (wrong-import-order)
+************* Module tests.test_dist_clustering
+tests/test_dist_clustering.py:39:0: C0301: Line too long (109/100) (line-too-long)
+tests/test_dist_clustering.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/test_dist_clustering.py:4:0: C0413: Import "import sys" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_clustering.py:6:0: C0413: Import "import pyDNMFk.config as config" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_clustering.py:9:0: W0401: Wildcard import pyDNMFk.utils (wildcard-import)
+tests/test_dist_clustering.py:9:0: C0413: Import "from pyDNMFk.utils import *" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_clustering.py:10:0: W0401: Wildcard import pyDNMFk.dist_clustering (wildcard-import)
+tests/test_dist_clustering.py:10:0: C0413: Import "from pyDNMFk.dist_clustering import *" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_clustering.py:11:0: W0401: Wildcard import pyDNMFk.dist_comm (wildcard-import)
+tests/test_dist_clustering.py:11:0: C0413: Import "from pyDNMFk.dist_comm import *" should be placed at the top of the module (wrong-import-position)
+tests/test_dist_clustering.py:18:4: W0621: Redefining name 'np' from outer scope (line 9) (redefined-outer-name)
+tests/test_dist_clustering.py:20:4: W0621: Redefining name 'MPI' from outer scope (line 9) (redefined-outer-name)
+tests/test_dist_clustering.py:17:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/test_dist_clustering.py:17:0: R0914: Too many local variables (23/15) (too-many-locals)
+tests/test_dist_clustering.py:18:4: C0415: Import outside toplevel (numpy) (import-outside-toplevel)
+tests/test_dist_clustering.py:20:4: E0401: Unable to import 'mpi4py' (import-error)
+tests/test_dist_clustering.py:31:4: W0404: Reimport 'numpy' (imported line 18) (reimported)
+tests/test_dist_clustering.py:31:4: C0415: Import outside toplevel (numpy) (import-outside-toplevel)
+tests/test_dist_clustering.py:43:0: R1721: Unnecessary use of a comprehension (unnecessary-comprehension)
+tests/test_dist_clustering.py:4:0: W0611: Unused import sys (unused-import)
+tests/test_dist_clustering.py:2:0: C0411: standard import "import os" should be placed before "import pytest" (wrong-import-order)
+tests/test_dist_clustering.py:4:0: C0411: standard import "import sys" should be placed before "import pytest" (wrong-import-order)
+************* Module tests.main
+tests/main.py:19:0: C0301: Line too long (104/100) (line-too-long)
+tests/main.py:24:0: C0301: Line too long (112/100) (line-too-long)
+tests/main.py:27:0: C0301: Line too long (106/100) (line-too-long)
+tests/main.py:28:0: C0301: Line too long (115/100) (line-too-long)
+tests/main.py:37:0: C0301: Line too long (102/100) (line-too-long)
+tests/main.py:38:0: C0301: Line too long (118/100) (line-too-long)
+tests/main.py:46:0: C0301: Line too long (174/100) (line-too-long)
+tests/main.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/main.py:4:0: C0413: Import "import pyDNMFk.config as config" should be placed at the top of the module (wrong-import-position)
+tests/main.py:7:0: C0413: Import "import argparse" should be placed at the top of the module (wrong-import-position)
+tests/main.py:8:0: W0401: Wildcard import pyDNMFk.utils (wildcard-import)
+tests/main.py:8:0: C0413: Import "from pyDNMFk.utils import *" should be placed at the top of the module (wrong-import-position)
+tests/main.py:9:0: W0401: Wildcard import pyDNMFk.pyDNMFk (wildcard-import)
+tests/main.py:9:0: C0413: Import "from pyDNMFk.pyDNMFk import *" should be placed at the top of the module (wrong-import-position)
+tests/main.py:10:0: W0401: Wildcard import pyDNMFk.pyDNMF (wildcard-import)
+tests/main.py:10:0: C0413: Import "from pyDNMFk.pyDNMF import *" should be placed at the top of the module (wrong-import-position)
+tests/main.py:11:0: W0401: Wildcard import pyDNMFk.dist_comm (wildcard-import)
+tests/main.py:11:0: C0413: Import "from pyDNMFk.dist_comm import *" should be placed at the top of the module (wrong-import-position)
+tests/main.py:12:0: C0413: Import "import pandas as pd" should be placed at the top of the module (wrong-import-position)
+tests/main.py:15:17: W0621: Redefining name 'parser' from outer scope (line 44) (redefined-outer-name)
+tests/main.py:15:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/main.py:32:18: W0621: Redefining name 'parser' from outer scope (line 44) (redefined-outer-name)
+tests/main.py:32:0: C0116: Missing function or method docstring (missing-function-docstring)
+tests/main.py:50:-1: W0105: String statement has no effect (pointless-string-statement)
+tests/main.py:55:4: W0702: No exception type(s) specified (bare-except)
+tests/main.py:68:18: C0321: More than one statement on a single line (multiple-statements)
+tests/main.py:70:18: C0321: More than one statement on a single line (multiple-statements)
+tests/main.py:72:4: W0105: String statement has no effect (pointless-string-statement)
+tests/main.py:74:32: C0321: More than one statement on a single line (multiple-statements)
+tests/main.py:76:32: C0321: More than one statement on a single line (multiple-statements)
+tests/main.py:78:32: C0321: More than one statement on a single line (multiple-statements)
+tests/main.py:80:32: C0321: More than one statement on a single line (multiple-statements)
+tests/main.py:7:0: C0411: standard import "import argparse" should be placed before "import pyDNMFk.config as config" (wrong-import-order)
+tests/main.py:12:0: C0411: third party import "import pandas as pd" should be placed before "import pyDNMFk.config as config" (wrong-import-order)
+************* Module conf
+docs/source/conf.py:61:0: C0304: Final newline missing (missing-final-newline)
+docs/source/conf.py:21:0: W0622: Redefining built-in 'copyright' (redefined-builtin)
+docs/source/conf.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+docs/source/conf.py:13:0: W0611: Unused import os (unused-import)
+************* Module setup
+setup.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+setup.py:1:0: W0611: Unused find_packages imported from setuptools (unused-import)
+************* Module dist_pynmfk_1d_wtsi
+examples/dist_pynmfk_1d_wtsi.py:46:0: C0305: Trailing newlines (trailing-newlines)
+examples/dist_pynmfk_1d_wtsi.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+examples/dist_pynmfk_1d_wtsi.py:10:0: W0401: Wildcard import pyDNMFk.pyDNMFk (wildcard-import)
+examples/dist_pynmfk_1d_wtsi.py:10:0: C0413: Import "from pyDNMFk.pyDNMFk import *" should be placed at the top of the module (wrong-import-position)
+examples/dist_pynmfk_1d_wtsi.py:11:0: W0401: Wildcard import pyDNMFk.utils (wildcard-import)
+examples/dist_pynmfk_1d_wtsi.py:11:0: C0413: Import "from pyDNMFk.utils import *" should be placed at the top of the module (wrong-import-position)
+examples/dist_pynmfk_1d_wtsi.py:12:0: W0401: Wildcard import pyDNMFk.dist_comm (wildcard-import)
+examples/dist_pynmfk_1d_wtsi.py:12:0: C0413: Import "from pyDNMFk.dist_comm import *" should be placed at the top of the module (wrong-import-position)
+examples/dist_pynmfk_1d_wtsi.py:13:0: C0413: Import "from scipy.io import loadmat" should be placed at the top of the module (wrong-import-position)
+examples/dist_pynmfk_1d_wtsi.py:16:4: W0621: Redefining name 'MPI' from outer scope (line 10) (redefined-outer-name)
+examples/dist_pynmfk_1d_wtsi.py:15:0: C0116: Missing function or method docstring (missing-function-docstring)
+examples/dist_pynmfk_1d_wtsi.py:16:4: E0401: Unable to import 'mpi4py' (import-error)
+examples/dist_pynmfk_1d_wtsi.py:4:0: W0611: Unused import sys (unused-import)
+examples/dist_pynmfk_1d_wtsi.py:13:0: C0411: third party import "from scipy.io import loadmat" should be placed before "import pyDNMFk.config as config" (wrong-import-order)
+************* Module dist_pynmfk_2d_Swim
+examples/dist_pynmfk_2d_Swim.py:53:0: C0305: Trailing newlines (trailing-newlines)
+examples/dist_pynmfk_2d_Swim.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+examples/dist_pynmfk_2d_Swim.py:12:0: W0401: Wildcard import pyDNMFk.pyDNMFk (wildcard-import)
+examples/dist_pynmfk_2d_Swim.py:12:0: C0413: Import "from pyDNMFk.pyDNMFk import *" should be placed at the top of the module (wrong-import-position)
+examples/dist_pynmfk_2d_Swim.py:13:0: W0401: Wildcard import pyDNMFk.utils (wildcard-import)
+examples/dist_pynmfk_2d_Swim.py:13:0: C0413: Import "from pyDNMFk.utils import *" should be placed at the top of the module (wrong-import-position)
+examples/dist_pynmfk_2d_Swim.py:14:0: W0401: Wildcard import pyDNMFk.dist_comm (wildcard-import)
+examples/dist_pynmfk_2d_Swim.py:14:0: C0413: Import "from pyDNMFk.dist_comm import *" should be placed at the top of the module (wrong-import-position)
+examples/dist_pynmfk_2d_Swim.py:15:0: C0413: Import "from scipy.io import loadmat" should be placed at the top of the module (wrong-import-position)
+examples/dist_pynmfk_2d_Swim.py:20:4: W0621: Redefining name 'MPI' from outer scope (line 12) (redefined-outer-name)
+examples/dist_pynmfk_2d_Swim.py:19:0: C0116: Missing function or method docstring (missing-function-docstring)
+examples/dist_pynmfk_2d_Swim.py:20:4: E0401: Unable to import 'mpi4py' (import-error)
+examples/dist_pynmfk_2d_Swim.py:6:0: W0611: Unused import sys (unused-import)
+examples/dist_pynmfk_2d_Swim.py:15:0: C0411: third party import "from scipy.io import loadmat" should be placed before "import pyDNMFk.config as config" (wrong-import-order)
+************* Module pyDNMFk.dist_nmf
+pyDNMFk/dist_nmf.py:35:0: C0301: Line too long (130/100) (line-too-long)
+pyDNMFk/dist_nmf.py:37:0: C0301: Line too long (127/100) (line-too-long)
+pyDNMFk/dist_nmf.py:49:0: C0301: Line too long (109/100) (line-too-long)
+pyDNMFk/dist_nmf.py:552:0: C0301: Line too long (119/100) (line-too-long)
+pyDNMFk/dist_nmf.py:583:0: C0301: Line too long (105/100) (line-too-long)
+pyDNMFk/dist_nmf.py:599:0: C0301: Line too long (109/100) (line-too-long)
+pyDNMFk/dist_nmf.py:1003:0: C0301: Line too long (119/100) (line-too-long)
+pyDNMFk/dist_nmf.py:1:0: C0302: Too many lines in module (1010/1000) (too-many-lines)
+pyDNMFk/dist_nmf.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+pyDNMFk/dist_nmf.py:4:0: W0401: Wildcard import utils (wildcard-import)
+pyDNMFk/dist_nmf.py:7:0: R0902: Too many instance attributes (23/7) (too-many-instance-attributes)
+pyDNMFk/dist_nmf.py:124:4: W0105: String statement has no effect (pointless-string-statement)
+pyDNMFk/dist_nmf.py:181:8: W0612: Unused variable 'ko' (unused-variable)
+pyDNMFk/dist_nmf.py:181:12: W0612: Unused variable 'l' (unused-variable)
+pyDNMFk/dist_nmf.py:243:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+pyDNMFk/dist_nmf.py:247:4: W0105: String statement has no effect (pointless-string-statement)
+pyDNMFk/dist_nmf.py:266:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+pyDNMFk/dist_nmf.py:270:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+pyDNMFk/dist_nmf.py:328:4: C0116: Missing function or method docstring (missing-function-docstring)
+pyDNMFk/dist_nmf.py:387:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+pyDNMFk/dist_nmf.py:391:4: W0105: String statement has no effect (pointless-string-statement)
+pyDNMFk/dist_nmf.py:450:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+pyDNMFk/dist_nmf.py:454:4: W0105: String statement has no effect (pointless-string-statement)
+pyDNMFk/dist_nmf.py:457:27: W0613: Unused argument 'comm' (unused-argument)
+pyDNMFk/dist_nmf.py:485:4: R0914: Too many local variables (35/15) (too-many-locals)
+pyDNMFk/dist_nmf.py:512:-1: W0105: String statement has no effect (pointless-string-statement)
+pyDNMFk/dist_nmf.py:526:-1: W0105: String statement has no effect (pointless-string-statement)
+pyDNMFk/dist_nmf.py:485:29: W0613: Unused argument 'W_update' (unused-argument)
+pyDNMFk/dist_nmf.py:501:8: W0612: Unused variable 'nstall' (unused-variable)
+pyDNMFk/dist_nmf.py:509:12: W0612: Unused variable 'i' (unused-variable)
+pyDNMFk/dist_nmf.py:485:4: R0915: Too many statements (51/50) (too-many-statements)
+pyDNMFk/dist_nmf.py:267:12: W0201: Attribute 'H_j' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_nmf.py:269:12: W0201: Attribute 'H_j' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_nmf.py:271:12: W0201: Attribute 'W_i' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_nmf.py:273:12: W0201: Attribute 'W_i' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_nmf.py:7:0: R0904: Too many public methods (21/20) (too-many-public-methods)
+pyDNMFk/dist_nmf.py:562:0: R0902: Too many instance attributes (19/7) (too-many-instance-attributes)
+pyDNMFk/dist_nmf.py:676:4: W0105: String statement has no effect (pointless-string-statement)
+pyDNMFk/dist_nmf.py:732:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+pyDNMFk/dist_nmf.py:736:4: W0105: String statement has no effect (pointless-string-statement)
+pyDNMFk/dist_nmf.py:830:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+pyDNMFk/dist_nmf.py:834:4: W0105: String statement has no effect (pointless-string-statement)
+pyDNMFk/dist_nmf.py:895:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+pyDNMFk/dist_nmf.py:900:4: W0105: String statement has no effect (pointless-string-statement)
+pyDNMFk/dist_nmf.py:934:4: R0914: Too many local variables (35/15) (too-many-locals)
+pyDNMFk/dist_nmf.py:962:-1: W0105: String statement has no effect (pointless-string-statement)
+pyDNMFk/dist_nmf.py:973:30: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/dist_nmf.py:978:-1: W0105: String statement has no effect (pointless-string-statement)
+pyDNMFk/dist_nmf.py:934:29: W0613: Unused argument 'W_update' (unused-argument)
+pyDNMFk/dist_nmf.py:951:8: W0612: Unused variable 'nstall' (unused-variable)
+pyDNMFk/dist_nmf.py:959:12: W0612: Unused variable 'i' (unused-variable)
+pyDNMFk/dist_nmf.py:934:4: R0915: Too many statements (53/50) (too-many-statements)
+************* Module pyDNMFk.config
+pyDNMFk/config.py:2:0: C0301: Line too long (161/100) (line-too-long)
+pyDNMFk/config.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+pyDNMFk/config.py:3:4: W0601: Global variable 'time' undefined at the module level (global-variable-undefined)
+pyDNMFk/config.py:3:4: W0601: Global variable 'flag' undefined at the module level (global-variable-undefined)
+pyDNMFk/config.py:1:9: W0613: Unused argument 'arg' (unused-argument)
+************* Module pyDNMFk.pyDNMFk
+pyDNMFk/pyDNMFk.py:37:0: C0301: Line too long (108/100) (line-too-long)
+pyDNMFk/pyDNMFk.py:43:0: C0301: Line too long (137/100) (line-too-long)
+pyDNMFk/pyDNMFk.py:67:0: C0301: Line too long (101/100) (line-too-long)
+pyDNMFk/pyDNMFk.py:110:44: C0326: Exactly one space required after comma
+        self.sampling = var_init(self.params,'sampling',default='uniform')
+                                            ^ (bad-whitespace)
+pyDNMFk/pyDNMFk.py:110:55: C0326: Exactly one space required after comma
+        self.sampling = var_init(self.params,'sampling',default='uniform')
+                                                       ^ (bad-whitespace)
+pyDNMFk/pyDNMFk.py:111:49: C0326: Exactly one space required after comma
+        self.perturbations = var_init(self.params,'perturbations',default=20)
+                                                 ^ (bad-whitespace)
+pyDNMFk/pyDNMFk.py:111:65: C0326: Exactly one space required after comma
+        self.perturbations = var_init(self.params,'perturbations',default=20)
+                                                                 ^ (bad-whitespace)
+pyDNMFk/pyDNMFk.py:112:45: C0326: Exactly one space required after comma
+        self.noise_var = var_init(self.params,'noise_var',default=.03)
+                                             ^ (bad-whitespace)
+pyDNMFk/pyDNMFk.py:112:57: C0326: Exactly one space required after comma
+        self.noise_var = var_init(self.params,'noise_var',default=.03)
+                                                         ^ (bad-whitespace)
+pyDNMFk/pyDNMFk.py:124:39: C0326: Exactly one space required after comma
+        self.sill_thr = var_init(params,'sill_thr',default=0.9)
+                                       ^ (bad-whitespace)
+pyDNMFk/pyDNMFk.py:124:50: C0326: Exactly one space required after comma
+        self.sill_thr = var_init(params,'sill_thr',default=0.9)
+                                                  ^ (bad-whitespace)
+pyDNMFk/pyDNMFk.py:125:38: C0326: Exactly one space required after comma
+        self.verbose = var_init(params,'verbose',default=False)
+                                      ^ (bad-whitespace)
+pyDNMFk/pyDNMFk.py:125:48: C0326: Exactly one space required after comma
+        self.verbose = var_init(params,'verbose',default=False)
+                                                ^ (bad-whitespace)
+pyDNMFk/pyDNMFk.py:131:0: C0301: Line too long (112/100) (line-too-long)
+pyDNMFk/pyDNMFk.py:158:0: C0301: Line too long (113/100) (line-too-long)
+pyDNMFk/pyDNMFk.py:176:0: C0301: Line too long (110/100) (line-too-long)
+pyDNMFk/pyDNMFk.py:184:0: C0301: Line too long (111/100) (line-too-long)
+pyDNMFk/pyDNMFk.py:194:0: C0301: Line too long (116/100) (line-too-long)
+pyDNMFk/pyDNMFk.py:213:0: W0301: Unnecessary semicolon (unnecessary-semicolon)
+pyDNMFk/pyDNMFk.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+pyDNMFk/pyDNMFk.py:4:0: W0401: Wildcard import dist_clustering (wildcard-import)
+pyDNMFk/pyDNMFk.py:5:0: W0401: Wildcard import pyDNMF (wildcard-import)
+pyDNMFk/pyDNMFk.py:6:0: W0401: Wildcard import plot_results (wildcard-import)
+pyDNMFk/pyDNMFk.py:26:11: C0121: Comparison to None should be 'expr is not None' (singleton-comparison)
+pyDNMFk/pyDNMFk.py:65:0: R0902: Too many instance attributes (31/7) (too-many-instance-attributes)
+pyDNMFk/pyDNMFk.py:96:29: W0613: Unused argument 'factors' (unused-argument)
+pyDNMFk/pyDNMFk.py:146:12: W0702: No exception type(s) specified (bare-except)
+pyDNMFk/pyDNMFk.py:145:17: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/pyDNMFk.py:146:20: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/pyDNMFk.py:156:19: W0612: Unused variable 'pvalue1' (unused-variable)
+pyDNMFk/pyDNMFk.py:171:12: W0702: No exception type(s) specified (bare-except)
+pyDNMFk/pyDNMFk.py:170:17: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/pyDNMFk.py:171:20: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/pyDNMFk.py:173:27: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/pyDNMFk.py:175:31: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/pyDNMFk.py:184:21: W0612: Unused variable 'processSTD' (unused-variable)
+pyDNMFk/pyDNMFk.py:185:9: W0612: Unused variable 'idx' (unused-variable)
+pyDNMFk/pyDNMFk.py:215:8: W0612: Unused variable 'i_old' (unused-variable)
+pyDNMFk/pyDNMFk.py:219:12: W0612: Unused variable 'i_next' (unused-variable)
+pyDNMFk/pyDNMFk.py:147:12: W0201: Attribute 'k' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/pyDNMFk.py:187:8: W0201: Attribute 'AvgW' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/pyDNMFk.py:190:8: W0201: Attribute 'AvgW' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/pyDNMFk.py:3:0: W0611: Unused import config (unused-import)
+************* Module pyDNMFk.data_io
+pyDNMFk/data_io.py:73:0: C0301: Line too long (111/100) (line-too-long)
+pyDNMFk/data_io.py:112:0: C0301: Line too long (120/100) (line-too-long)
+pyDNMFk/data_io.py:188:0: C0301: Line too long (112/100) (line-too-long)
+pyDNMFk/data_io.py:189:0: C0301: Line too long (104/100) (line-too-long)
+pyDNMFk/data_io.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+pyDNMFk/data_io.py:9:0: W0401: Wildcard import utils (wildcard-import)
+pyDNMFk/data_io.py:12:0: R0902: Too many instance attributes (8/7) (too-many-instance-attributes)
+pyDNMFk/data_io.py:121:12: W0612: Unused variable 'i' (unused-variable)
+pyDNMFk/data_io.py:124:12: W0612: Unused variable 'arr' (unused-variable)
+pyDNMFk/data_io.py:114:8: W0201: Attribute 'split' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/data_io.py:120:8: W0201: Attribute 'split' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/data_io.py:129:0: R0902: Too many instance attributes (8/7) (too-many-instance-attributes)
+pyDNMFk/data_io.py:156:8: W0702: No exception type(s) specified (bare-except)
+pyDNMFk/data_io.py:152:4: R0201: Method could be a function (no-self-use)
+pyDNMFk/data_io.py:163:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+pyDNMFk/data_io.py:213:4: R0201: Method could be a function (no-self-use)
+pyDNMFk/data_io.py:235:21: C0321: More than one statement on a single line (multiple-statements)
+************* Module pyDNMFk.dist_clustering
+pyDNMFk/dist_clustering.py:7:0: C0301: Line too long (273/100) (line-too-long)
+pyDNMFk/dist_clustering.py:11:0: C0301: Line too long (199/100) (line-too-long)
+pyDNMFk/dist_clustering.py:12:0: C0301: Line too long (199/100) (line-too-long)
+pyDNMFk/dist_clustering.py:13:0: C0301: Line too long (153/100) (line-too-long)
+pyDNMFk/dist_clustering.py:41:0: C0301: Line too long (108/100) (line-too-long)
+pyDNMFk/dist_clustering.py:87:0: C0301: Line too long (171/100) (line-too-long)
+pyDNMFk/dist_clustering.py:133:0: C0301: Line too long (113/100) (line-too-long)
+pyDNMFk/dist_clustering.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+pyDNMFk/dist_clustering.py:2:0: W0401: Wildcard import utils (wildcard-import)
+pyDNMFk/dist_clustering.py:40:8: R1705: Unnecessary "else" after "return" (no-else-return)
+pyDNMFk/dist_clustering.py:38:4: R0201: Method could be a function (no-self-use)
+pyDNMFk/dist_clustering.py:47:4: R0201: Method could be a function (no-self-use)
+pyDNMFk/dist_clustering.py:59:12: W0612: Unused variable 'i' (unused-variable)
+pyDNMFk/dist_clustering.py:55:4: R0201: Method could be a function (no-self-use)
+pyDNMFk/dist_clustering.py:70:8: W0612: Unused variable 'k' (unused-variable)
+pyDNMFk/dist_clustering.py:105:11: C0121: Comparison to None should be 'expr is None' (singleton-comparison)
+pyDNMFk/dist_clustering.py:80:53: W0613: Unused argument 'vb' (unused-argument)
+pyDNMFk/dist_clustering.py:110:12: W0612: Unused variable 'i' (unused-variable)
+************* Module pyDNMFk.utils
+pyDNMFk/utils.py:35:0: C0301: Line too long (105/100) (line-too-long)
+pyDNMFk/utils.py:36:0: C0301: Line too long (119/100) (line-too-long)
+pyDNMFk/utils.py:102:0: C0325: Unnecessary parens after 'return' keyword (superfluous-parens)
+pyDNMFk/utils.py:110:0: C0325: Unnecessary parens after 'del' keyword (superfluous-parens)
+pyDNMFk/utils.py:115:0: C0325: Unnecessary parens after 'return' keyword (superfluous-parens)
+pyDNMFk/utils.py:134:0: C0325: Unnecessary parens after 'raise' keyword (superfluous-parens)
+pyDNMFk/utils.py:141:0: C0325: Unnecessary parens after 'raise' keyword (superfluous-parens)
+pyDNMFk/utils.py:145:0: C0325: Unnecessary parens after 'raise' keyword (superfluous-parens)
+pyDNMFk/utils.py:176:0: C0325: Unnecessary parens after 'return' keyword (superfluous-parens)
+pyDNMFk/utils.py:180:0: C0301: Line too long (118/100) (line-too-long)
+pyDNMFk/utils.py:239:17: C0326: Exactly one space required after comma
+def var_init(clas,var,default):
+                 ^ (bad-whitespace)
+pyDNMFk/utils.py:239:21: C0326: Exactly one space required after comma
+def var_init(clas,var,default):
+                     ^ (bad-whitespace)
+pyDNMFk/utils.py:240:0: C0301: Line too long (108/100) (line-too-long)
+pyDNMFk/utils.py:241:23: C0326: Exactly one space required after comma
+    if not hasattr(clas,var):
+                       ^ (bad-whitespace)
+pyDNMFk/utils.py:242:0: W0311: Bad indentation. Found 7 spaces, expected 8 (bad-indentation)
+pyDNMFk/utils.py:275:0: C0301: Line too long (107/100) (line-too-long)
+pyDNMFk/utils.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+pyDNMFk/utils.py:7:0: C0413: Import "import numpy" should be placed at the top of the module (wrong-import-position)
+pyDNMFk/utils.py:8:0: W0404: Reimport 'numpy' (imported line 7) (reimported)
+pyDNMFk/utils.py:8:0: C0413: Import "import numpy as np" should be placed at the top of the module (wrong-import-position)
+pyDNMFk/utils.py:9:0: E0401: Unable to import 'mpi4py' (import-error)
+pyDNMFk/utils.py:9:0: C0413: Import "from mpi4py import MPI" should be placed at the top of the module (wrong-import-position)
+pyDNMFk/utils.py:25:11: C0123: Using type() instead of isinstance() for a typecheck. (unidiomatic-typecheck)
+pyDNMFk/utils.py:79:4: C0116: Missing function or method docstring (missing-function-docstring)
+pyDNMFk/utils.py:85:38: E0602: Undefined variable 'ten' (undefined-variable)
+pyDNMFk/utils.py:104:4: C0116: Missing function or method docstring (missing-function-docstring)
+pyDNMFk/utils.py:106:12: W0612: Unused variable 'data' (unused-variable)
+pyDNMFk/utils.py:117:4: C0116: Missing function or method docstring (missing-function-docstring)
+pyDNMFk/utils.py:117:4: R0201: Method could be a function (no-self-use)
+pyDNMFk/utils.py:130:39: W0622: Redefining built-in 'format' (redefined-builtin)
+pyDNMFk/utils.py:130:4: C0116: Missing function or method docstring (missing-function-docstring)
+pyDNMFk/utils.py:137:8: W0702: No exception type(s) specified (bare-except)
+pyDNMFk/utils.py:140:8: R1720: Unnecessary "else" after "raise" (no-else-raise)
+pyDNMFk/utils.py:144:8: R1720: Unnecessary "else" after "raise" (no-else-raise)
+pyDNMFk/utils.py:130:4: R0201: Method could be a function (no-self-use)
+pyDNMFk/utils.py:156:4: C0116: Missing function or method docstring (missing-function-docstring)
+pyDNMFk/utils.py:156:4: R0201: Method could be a function (no-self-use)
+pyDNMFk/utils.py:169:4: C0116: Missing function or method docstring (missing-function-docstring)
+pyDNMFk/utils.py:190:27: E1101: Instance of 'transform_H_index' has no 'p_n' member; maybe 'p_r'? (no-member)
+pyDNMFk/utils.py:191:33: E1101: Instance of 'transform_H_index' has no 'p_n' member; maybe 'p_r'? (no-member)
+pyDNMFk/utils.py:201:18: W0621: Redefining name 'norm' from outer scope (line 201) (redefined-outer-name)
+pyDNMFk/utils.py:232:4: R1705: Unnecessary "elif" after "return" (no-else-return)
+pyDNMFk/utils.py:237:14: E0602: Undefined variable 'argparse' (undefined-variable)
+pyDNMFk/utils.py:246:0: R0902: Too many instance attributes (26/7) (too-many-instance-attributes)
+pyDNMFk/utils.py:246:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+pyDNMFk/utils.py:251:0: R0205: Class 'comm_timing' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
+pyDNMFk/utils.py:268:26: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/utils.py:251:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+pyDNMFk/utils.py:7:0: C0411: third party import "import numpy" should be placed before "from . import config" (wrong-import-order)
+pyDNMFk/utils.py:8:0: C0411: third party import "import numpy as np" should be placed before "from . import config" (wrong-import-order)
+pyDNMFk/utils.py:9:0: C0411: first party import "from mpi4py import MPI" should be placed before "from . import config" (wrong-import-order)
+************* Module pyDNMFk.dist_comm
+pyDNMFk/dist_comm.py:22:0: C0301: Line too long (114/100) (line-too-long)
+pyDNMFk/dist_comm.py:27:0: C0301: Line too long (102/100) (line-too-long)
+pyDNMFk/dist_comm.py:41:0: C0301: Line too long (108/100) (line-too-long)
+pyDNMFk/dist_comm.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+pyDNMFk/dist_comm.py:2:0: R0902: Too many instance attributes (13/7) (too-many-instance-attributes)
+pyDNMFk/dist_comm.py:34:8: W0201: Attribute 'cartesian1d_row' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_comm.py:35:8: W0201: Attribute 'rank1d_row' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_comm.py:36:8: W0201: Attribute 'coord1d_row' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_comm.py:48:8: W0201: Attribute 'cartesian1d_column' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_comm.py:49:8: W0201: Attribute 'rank1d_column' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_comm.py:50:8: W0201: Attribute 'coord1d_column' defined outside __init__ (attribute-defined-outside-init)
+************* Module pyDNMFk.dist_svd
+pyDNMFk/dist_svd.py:11:0: C0301: Line too long (116/100) (line-too-long)
+pyDNMFk/dist_svd.py:55:0: C0301: Line too long (105/100) (line-too-long)
+pyDNMFk/dist_svd.py:179:0: C0301: Line too long (102/100) (line-too-long)
+pyDNMFk/dist_svd.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+pyDNMFk/dist_svd.py:6:0: W0401: Wildcard import utils (wildcard-import)
+pyDNMFk/dist_svd.py:9:0: R0902: Too many instance attributes (20/7) (too-many-instance-attributes)
+pyDNMFk/dist_svd.py:52:8: W0702: No exception type(s) specified (bare-except)
+pyDNMFk/dist_svd.py:51:13: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/dist_svd.py:52:16: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/dist_svd.py:70:4: R0201: Method could be a function (no-self-use)
+pyDNMFk/dist_svd.py:92:27: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/dist_svd.py:134:8: W0621: Redefining name 'norm' from outer scope (line 6) (redefined-outer-name)
+pyDNMFk/dist_svd.py:189:4: R0914: Too many local variables (21/15) (too-many-locals)
+pyDNMFk/dist_svd.py:252:8: R1705: Unnecessary "else" after "return" (no-else-return)
+pyDNMFk/dist_svd.py:91:8: W0201: Attribute 'lastV' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_svd.py:95:8: W0201: Attribute 'currV' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_svd.py:112:16: W0201: Attribute 'currV' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_svd.py:114:16: W0201: Attribute 'currV' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_svd.py:123:20: W0201: Attribute 'currV' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_svd.py:99:8: W0201: Attribute 'At' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_svd.py:102:12: W0201: Attribute 'B' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/dist_svd.py:104:12: W0201: Attribute 'B' defined outside __init__ (attribute-defined-outside-init)
+************* Module pyDNMFk.data_generator
+pyDNMFk/data_generator.py:19:0: C0301: Line too long (105/100) (line-too-long)
+pyDNMFk/data_generator.py:26:0: C0301: Line too long (117/100) (line-too-long)
+pyDNMFk/data_generator.py:54:0: C0301: Line too long (139/100) (line-too-long)
+pyDNMFk/data_generator.py:78:0: C0301: Line too long (105/100) (line-too-long)
+pyDNMFk/data_generator.py:79:0: C0301: Line too long (119/100) (line-too-long)
+pyDNMFk/data_generator.py:92:0: C0301: Line too long (101/100) (line-too-long)
+pyDNMFk/data_generator.py:94:0: C0301: Line too long (139/100) (line-too-long)
+pyDNMFk/data_generator.py:99:0: C0301: Line too long (119/100) (line-too-long)
+pyDNMFk/data_generator.py:124:0: C0301: Line too long (116/100) (line-too-long)
+pyDNMFk/data_generator.py:129:0: C0301: Line too long (109/100) (line-too-long)
+pyDNMFk/data_generator.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+pyDNMFk/data_generator.py:6:0: E0401: Unable to import 'mpi4py' (import-error)
+pyDNMFk/data_generator.py:13:4: W0621: Redefining name 'parser' from outer scope (line 9) (redefined-outer-name)
+pyDNMFk/data_generator.py:20:4: W0621: Redefining name 'args' from outer scope (line 147) (redefined-outer-name)
+pyDNMFk/data_generator.py:24:0: R0902: Too many instance attributes (9/7) (too-many-instance-attributes)
+pyDNMFk/data_generator.py:39:23: W0621: Redefining name 'args' from outer scope (line 147) (redefined-outer-name)
+pyDNMFk/data_generator.py:52:4: R0201: Method could be a function (no-self-use)
+pyDNMFk/data_generator.py:87:4: R0201: Method could be a function (no-self-use)
+pyDNMFk/data_generator.py:92:0: W0621: Redefining name 'args' from outer scope (line 147) (redefined-outer-name)
+pyDNMFk/data_generator.py:92:4: R0201: Method could be a function (no-self-use)
+pyDNMFk/data_generator.py:104:0: W0621: Redefining name 'args' from outer scope (line 147) (redefined-outer-name)
+pyDNMFk/data_generator.py:105:12: W0632: Possible unbalanced tuple unpacking with sequence defined at line 1040 of numpy.core.multiarray: left side has 2 label(s), right side has 1 value(s) (unbalanced-tuple-unpacking)
+pyDNMFk/data_generator.py:104:0: W0613: Unused argument 'args' (unused-argument)
+pyDNMFk/data_generator.py:104:0: W0613: Unused argument 'kwargs' (unused-argument)
+pyDNMFk/data_generator.py:112:8: W0632: Possible unbalanced tuple unpacking with sequence defined at line 1040 of numpy.core.multiarray: left side has 2 label(s), right side has 1 value(s) (unbalanced-tuple-unpacking)
+pyDNMFk/data_generator.py:119:8: W0702: No exception type(s) specified (bare-except)
+pyDNMFk/data_generator.py:115:4: R0201: Method could be a function (no-self-use)
+************* Module pyDNMFk.plot_results
+pyDNMFk/plot_results.py:67:0: C0301: Line too long (106/100) (line-too-long)
+pyDNMFk/plot_results.py:76:0: C0301: Line too long (102/100) (line-too-long)
+pyDNMFk/plot_results.py:82:50: C0303: Trailing whitespace (trailing-whitespace)
+pyDNMFk/plot_results.py:122:0: C0301: Line too long (106/100) (line-too-long)
+pyDNMFk/plot_results.py:125:0: C0301: Line too long (113/100) (line-too-long)
+pyDNMFk/plot_results.py:128:0: C0301: Line too long (119/100) (line-too-long)
+pyDNMFk/plot_results.py:130:0: C0301: Line too long (109/100) (line-too-long)
+pyDNMFk/plot_results.py:132:0: C0301: Line too long (111/100) (line-too-long)
+pyDNMFk/plot_results.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+pyDNMFk/plot_results.py:4:0: W0401: Wildcard import data_io (wildcard-import)
+pyDNMFk/plot_results.py:20:4: E0633: Attempting to unpack a non-sequence defined at line 196 of pyDNMFk.data_io (unpacking-non-sequence)
+pyDNMFk/plot_results.py:29:4: W0612: Unused variable 'm' (unused-variable)
+pyDNMFk/plot_results.py:65:0: R0913: Too many arguments (7/5) (too-many-arguments)
+pyDNMFk/plot_results.py:65:0: R0914: Too many local variables (19/15) (too-many-locals)
+pyDNMFk/plot_results.py:119:4: W0621: Redefining name 'copy' from outer scope (line 4) (redefined-outer-name)
+pyDNMFk/plot_results.py:119:4: C0415: Import outside toplevel (copy) (import-outside-toplevel)
+pyDNMFk/plot_results.py:136:4: W0105: String statement has no effect (pointless-string-statement)
+pyDNMFk/plot_results.py:149:12: W0702: No exception type(s) specified (bare-except)
+pyDNMFk/plot_results.py:143:19: C0123: Using type() instead of isinstance() for a typecheck. (unidiomatic-typecheck)
+pyDNMFk/plot_results.py:159:12: W0702: No exception type(s) specified (bare-except)
+pyDNMFk/plot_results.py:153:19: C0123: Using type() instead of isinstance() for a typecheck. (unidiomatic-typecheck)
+pyDNMFk/plot_results.py:134:4: W0612: Unused variable 'results' (unused-variable)
+pyDNMFk/plot_results.py:171:11: C0123: Using type() instead of isinstance() for a typecheck. (unidiomatic-typecheck)
+pyDNMFk/plot_results.py:173:10: R1717: Consider using a dictionary comprehension (consider-using-dict-comprehension)
+pyDNMFk/plot_results.py:168:10: W0612: Unused variable 'res2' (unused-variable)
+************* Module pyDNMFk.pyDNMF
+pyDNMFk/pyDNMF.py:40:0: C0301: Line too long (155/100) (line-too-long)
+pyDNMFk/pyDNMF.py:42:0: C0301: Line too long (180/100) (line-too-long)
+pyDNMFk/pyDNMF.py:47:40: C0326: Exactly one space required after comma
+        self.norm = var_init(self.params,'norm',default='kl')
+                                        ^ (bad-whitespace)
+pyDNMFk/pyDNMF.py:47:47: C0326: Exactly one space required after comma
+        self.norm = var_init(self.params,'norm',default='kl')
+                                               ^ (bad-whitespace)
+pyDNMFk/pyDNMF.py:48:42: C0326: Exactly one space required after comma
+        self.method = var_init(self.params,'method',default='mu')
+                                          ^ (bad-whitespace)
+pyDNMFk/pyDNMF.py:48:51: C0326: Exactly one space required after comma
+        self.method = var_init(self.params,'method',default='mu')
+                                                   ^ (bad-whitespace)
+pyDNMFk/pyDNMF.py:50:46: C0326: Exactly one space required after comma
+        self.params.itr = var_init(self.params,'itr',default=5000)
+                                              ^ (bad-whitespace)
+pyDNMFk/pyDNMF.py:50:52: C0326: Exactly one space required after comma
+        self.params.itr = var_init(self.params,'itr',default=5000)
+                                                    ^ (bad-whitespace)
+pyDNMFk/pyDNMF.py:103:0: C0301: Line too long (116/100) (line-too-long)
+pyDNMFk/pyDNMF.py:105:0: C0301: Line too long (113/100) (line-too-long)
+pyDNMFk/pyDNMF.py:130:0: C0301: Line too long (102/100) (line-too-long)
+pyDNMFk/pyDNMF.py:135:0: C0301: Line too long (139/100) (line-too-long)
+pyDNMFk/pyDNMF.py:149:0: C0301: Line too long (118/100) (line-too-long)
+pyDNMFk/pyDNMF.py:163:0: C0301: Line too long (114/100) (line-too-long)
+pyDNMFk/pyDNMF.py:215:0: C0301: Line too long (106/100) (line-too-long)
+pyDNMFk/pyDNMF.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+pyDNMFk/pyDNMF.py:3:0: W0401: Wildcard import data_io (wildcard-import)
+pyDNMFk/pyDNMF.py:4:0: W0401: Wildcard import dist_nmf (wildcard-import)
+pyDNMFk/pyDNMF.py:5:0: W0401: Wildcard import dist_svd (wildcard-import)
+pyDNMFk/pyDNMF.py:6:0: W0401: Wildcard import utils (wildcard-import)
+pyDNMFk/pyDNMF.py:9:0: R0902: Too many instance attributes (31/7) (too-many-instance-attributes)
+pyDNMFk/pyDNMF.py:54:8: W0702: No exception type(s) specified (bare-except)
+pyDNMFk/pyDNMF.py:147:45: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/pyDNMF.py:156:23: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+pyDNMFk/pyDNMF.py:157:43: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/pyDNMF.py:170:23: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+pyDNMFk/pyDNMF.py:171:43: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/pyDNMF.py:133:4: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+pyDNMFk/pyDNMF.py:133:4: R0912: Too many branches (14/12) (too-many-branches)
+pyDNMFk/pyDNMF.py:183:30: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/pyDNMF.py:199:30: C0321: More than one statement on a single line (multiple-statements)
+pyDNMFk/pyDNMF.py:205:36: W0621: Redefining name 'norm' from outer scope (line 3) (redefined-outer-name)
+pyDNMFk/pyDNMF.py:200:8: W0201: Attribute 'glob_norm_err' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/pyDNMF.py:201:8: W0201: Attribute 'glob_norm_A' defined outside __init__ (attribute-defined-outside-init)
+pyDNMFk/pyDNMF.py:202:8: W0201: Attribute 'recon_err' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_nmf.py:35:0: C0301: Line too long (130/100) (line-too-long)
+build/lib/pyDNMFk/dist_nmf.py:37:0: C0301: Line too long (127/100) (line-too-long)
+build/lib/pyDNMFk/dist_nmf.py:49:0: C0301: Line too long (109/100) (line-too-long)
+build/lib/pyDNMFk/dist_nmf.py:552:0: C0301: Line too long (119/100) (line-too-long)
+build/lib/pyDNMFk/dist_nmf.py:583:0: C0301: Line too long (105/100) (line-too-long)
+build/lib/pyDNMFk/dist_nmf.py:599:0: C0301: Line too long (109/100) (line-too-long)
+build/lib/pyDNMFk/dist_nmf.py:1003:0: C0301: Line too long (119/100) (line-too-long)
+build/lib/pyDNMFk/dist_nmf.py:1:0: C0302: Too many lines in module (1010/1000) (too-many-lines)
+build/lib/pyDNMFk/dist_nmf.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+build/lib/pyDNMFk/dist_nmf.py:4:0: W0401: Wildcard import utils (wildcard-import)
+build/lib/pyDNMFk/dist_nmf.py:7:0: R0902: Too many instance attributes (23/7) (too-many-instance-attributes)
+build/lib/pyDNMFk/dist_nmf.py:124:4: W0105: String statement has no effect (pointless-string-statement)
+build/lib/pyDNMFk/dist_nmf.py:181:8: W0612: Unused variable 'ko' (unused-variable)
+build/lib/pyDNMFk/dist_nmf.py:181:12: W0612: Unused variable 'l' (unused-variable)
+build/lib/pyDNMFk/dist_nmf.py:243:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+build/lib/pyDNMFk/dist_nmf.py:247:4: W0105: String statement has no effect (pointless-string-statement)
+build/lib/pyDNMFk/dist_nmf.py:266:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+build/lib/pyDNMFk/dist_nmf.py:270:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+build/lib/pyDNMFk/dist_nmf.py:328:4: C0116: Missing function or method docstring (missing-function-docstring)
+build/lib/pyDNMFk/dist_nmf.py:387:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+build/lib/pyDNMFk/dist_nmf.py:391:4: W0105: String statement has no effect (pointless-string-statement)
+build/lib/pyDNMFk/dist_nmf.py:450:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+build/lib/pyDNMFk/dist_nmf.py:454:4: W0105: String statement has no effect (pointless-string-statement)
+build/lib/pyDNMFk/dist_nmf.py:457:27: W0613: Unused argument 'comm' (unused-argument)
+build/lib/pyDNMFk/dist_nmf.py:485:4: R0914: Too many local variables (35/15) (too-many-locals)
+build/lib/pyDNMFk/dist_nmf.py:512:-1: W0105: String statement has no effect (pointless-string-statement)
+build/lib/pyDNMFk/dist_nmf.py:526:-1: W0105: String statement has no effect (pointless-string-statement)
+build/lib/pyDNMFk/dist_nmf.py:485:29: W0613: Unused argument 'W_update' (unused-argument)
+build/lib/pyDNMFk/dist_nmf.py:501:8: W0612: Unused variable 'nstall' (unused-variable)
+build/lib/pyDNMFk/dist_nmf.py:509:12: W0612: Unused variable 'i' (unused-variable)
+build/lib/pyDNMFk/dist_nmf.py:485:4: R0915: Too many statements (51/50) (too-many-statements)
+build/lib/pyDNMFk/dist_nmf.py:267:12: W0201: Attribute 'H_j' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_nmf.py:269:12: W0201: Attribute 'H_j' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_nmf.py:271:12: W0201: Attribute 'W_i' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_nmf.py:273:12: W0201: Attribute 'W_i' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_nmf.py:7:0: R0904: Too many public methods (21/20) (too-many-public-methods)
+build/lib/pyDNMFk/dist_nmf.py:562:0: R0902: Too many instance attributes (19/7) (too-many-instance-attributes)
+build/lib/pyDNMFk/dist_nmf.py:676:4: W0105: String statement has no effect (pointless-string-statement)
+build/lib/pyDNMFk/dist_nmf.py:732:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+build/lib/pyDNMFk/dist_nmf.py:736:4: W0105: String statement has no effect (pointless-string-statement)
+build/lib/pyDNMFk/dist_nmf.py:830:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+build/lib/pyDNMFk/dist_nmf.py:834:4: W0105: String statement has no effect (pointless-string-statement)
+build/lib/pyDNMFk/dist_nmf.py:895:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+build/lib/pyDNMFk/dist_nmf.py:900:4: W0105: String statement has no effect (pointless-string-statement)
+build/lib/pyDNMFk/dist_nmf.py:934:4: R0914: Too many local variables (35/15) (too-many-locals)
+build/lib/pyDNMFk/dist_nmf.py:962:-1: W0105: String statement has no effect (pointless-string-statement)
+build/lib/pyDNMFk/dist_nmf.py:973:30: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/dist_nmf.py:978:-1: W0105: String statement has no effect (pointless-string-statement)
+build/lib/pyDNMFk/dist_nmf.py:934:29: W0613: Unused argument 'W_update' (unused-argument)
+build/lib/pyDNMFk/dist_nmf.py:951:8: W0612: Unused variable 'nstall' (unused-variable)
+build/lib/pyDNMFk/dist_nmf.py:959:12: W0612: Unused variable 'i' (unused-variable)
+build/lib/pyDNMFk/dist_nmf.py:934:4: R0915: Too many statements (53/50) (too-many-statements)
+build/lib/pyDNMFk/config.py:2:0: C0301: Line too long (161/100) (line-too-long)
+build/lib/pyDNMFk/config.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+build/lib/pyDNMFk/config.py:3:4: W0601: Global variable 'time' undefined at the module level (global-variable-undefined)
+build/lib/pyDNMFk/config.py:3:4: W0601: Global variable 'flag' undefined at the module level (global-variable-undefined)
+build/lib/pyDNMFk/config.py:1:9: W0613: Unused argument 'arg' (unused-argument)
+build/lib/pyDNMFk/pyDNMFk.py:37:0: C0301: Line too long (108/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMFk.py:43:0: C0301: Line too long (137/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMFk.py:67:0: C0301: Line too long (101/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMFk.py:110:44: C0326: Exactly one space required after comma
+        self.sampling = var_init(self.params,'sampling',default='uniform')
+                                            ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMFk.py:110:55: C0326: Exactly one space required after comma
+        self.sampling = var_init(self.params,'sampling',default='uniform')
+                                                       ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMFk.py:111:49: C0326: Exactly one space required after comma
+        self.perturbations = var_init(self.params,'perturbations',default=20)
+                                                 ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMFk.py:111:65: C0326: Exactly one space required after comma
+        self.perturbations = var_init(self.params,'perturbations',default=20)
+                                                                 ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMFk.py:112:45: C0326: Exactly one space required after comma
+        self.noise_var = var_init(self.params,'noise_var',default=.03)
+                                             ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMFk.py:112:57: C0326: Exactly one space required after comma
+        self.noise_var = var_init(self.params,'noise_var',default=.03)
+                                                         ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMFk.py:124:39: C0326: Exactly one space required after comma
+        self.sill_thr = var_init(params,'sill_thr',default=0.9)
+                                       ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMFk.py:124:50: C0326: Exactly one space required after comma
+        self.sill_thr = var_init(params,'sill_thr',default=0.9)
+                                                  ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMFk.py:125:38: C0326: Exactly one space required after comma
+        self.verbose = var_init(params,'verbose',default=False)
+                                      ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMFk.py:125:48: C0326: Exactly one space required after comma
+        self.verbose = var_init(params,'verbose',default=False)
+                                                ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMFk.py:131:0: C0301: Line too long (112/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMFk.py:158:0: C0301: Line too long (113/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMFk.py:176:0: C0301: Line too long (110/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMFk.py:184:0: C0301: Line too long (111/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMFk.py:194:0: C0301: Line too long (116/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMFk.py:213:0: W0301: Unnecessary semicolon (unnecessary-semicolon)
+build/lib/pyDNMFk/pyDNMFk.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+build/lib/pyDNMFk/pyDNMFk.py:4:0: W0401: Wildcard import dist_clustering (wildcard-import)
+build/lib/pyDNMFk/pyDNMFk.py:5:0: W0401: Wildcard import pyDNMF (wildcard-import)
+build/lib/pyDNMFk/pyDNMFk.py:6:0: W0401: Wildcard import plot_results (wildcard-import)
+build/lib/pyDNMFk/pyDNMFk.py:26:11: C0121: Comparison to None should be 'expr is not None' (singleton-comparison)
+build/lib/pyDNMFk/pyDNMFk.py:65:0: R0902: Too many instance attributes (31/7) (too-many-instance-attributes)
+build/lib/pyDNMFk/pyDNMFk.py:96:29: W0613: Unused argument 'factors' (unused-argument)
+build/lib/pyDNMFk/pyDNMFk.py:146:12: W0702: No exception type(s) specified (bare-except)
+build/lib/pyDNMFk/pyDNMFk.py:145:17: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/pyDNMFk.py:146:20: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/pyDNMFk.py:156:19: W0612: Unused variable 'pvalue1' (unused-variable)
+build/lib/pyDNMFk/pyDNMFk.py:171:12: W0702: No exception type(s) specified (bare-except)
+build/lib/pyDNMFk/pyDNMFk.py:170:17: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/pyDNMFk.py:171:20: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/pyDNMFk.py:173:27: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/pyDNMFk.py:175:31: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/pyDNMFk.py:184:21: W0612: Unused variable 'processSTD' (unused-variable)
+build/lib/pyDNMFk/pyDNMFk.py:185:9: W0612: Unused variable 'idx' (unused-variable)
+build/lib/pyDNMFk/pyDNMFk.py:215:8: W0612: Unused variable 'i_old' (unused-variable)
+build/lib/pyDNMFk/pyDNMFk.py:219:12: W0612: Unused variable 'i_next' (unused-variable)
+build/lib/pyDNMFk/pyDNMFk.py:147:12: W0201: Attribute 'k' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/pyDNMFk.py:187:8: W0201: Attribute 'AvgW' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/pyDNMFk.py:190:8: W0201: Attribute 'AvgW' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/pyDNMFk.py:3:0: W0611: Unused import config (unused-import)
+build/lib/pyDNMFk/data_io.py:73:0: C0301: Line too long (111/100) (line-too-long)
+build/lib/pyDNMFk/data_io.py:112:0: C0301: Line too long (120/100) (line-too-long)
+build/lib/pyDNMFk/data_io.py:188:0: C0301: Line too long (112/100) (line-too-long)
+build/lib/pyDNMFk/data_io.py:189:0: C0301: Line too long (104/100) (line-too-long)
+build/lib/pyDNMFk/data_io.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+build/lib/pyDNMFk/data_io.py:9:0: W0401: Wildcard import utils (wildcard-import)
+build/lib/pyDNMFk/data_io.py:12:0: R0902: Too many instance attributes (8/7) (too-many-instance-attributes)
+build/lib/pyDNMFk/data_io.py:121:12: W0612: Unused variable 'i' (unused-variable)
+build/lib/pyDNMFk/data_io.py:124:12: W0612: Unused variable 'arr' (unused-variable)
+build/lib/pyDNMFk/data_io.py:114:8: W0201: Attribute 'split' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/data_io.py:120:8: W0201: Attribute 'split' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/data_io.py:129:0: R0902: Too many instance attributes (8/7) (too-many-instance-attributes)
+build/lib/pyDNMFk/data_io.py:156:8: W0702: No exception type(s) specified (bare-except)
+build/lib/pyDNMFk/data_io.py:152:4: R0201: Method could be a function (no-self-use)
+build/lib/pyDNMFk/data_io.py:163:11: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+build/lib/pyDNMFk/data_io.py:213:4: R0201: Method could be a function (no-self-use)
+build/lib/pyDNMFk/data_io.py:235:21: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/dist_clustering.py:7:0: C0301: Line too long (273/100) (line-too-long)
+build/lib/pyDNMFk/dist_clustering.py:11:0: C0301: Line too long (199/100) (line-too-long)
+build/lib/pyDNMFk/dist_clustering.py:12:0: C0301: Line too long (199/100) (line-too-long)
+build/lib/pyDNMFk/dist_clustering.py:13:0: C0301: Line too long (153/100) (line-too-long)
+build/lib/pyDNMFk/dist_clustering.py:41:0: C0301: Line too long (108/100) (line-too-long)
+build/lib/pyDNMFk/dist_clustering.py:87:0: C0301: Line too long (171/100) (line-too-long)
+build/lib/pyDNMFk/dist_clustering.py:133:0: C0301: Line too long (113/100) (line-too-long)
+build/lib/pyDNMFk/dist_clustering.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+build/lib/pyDNMFk/dist_clustering.py:2:0: W0401: Wildcard import utils (wildcard-import)
+build/lib/pyDNMFk/dist_clustering.py:40:8: R1705: Unnecessary "else" after "return" (no-else-return)
+build/lib/pyDNMFk/dist_clustering.py:38:4: R0201: Method could be a function (no-self-use)
+build/lib/pyDNMFk/dist_clustering.py:47:4: R0201: Method could be a function (no-self-use)
+build/lib/pyDNMFk/dist_clustering.py:59:12: W0612: Unused variable 'i' (unused-variable)
+build/lib/pyDNMFk/dist_clustering.py:55:4: R0201: Method could be a function (no-self-use)
+build/lib/pyDNMFk/dist_clustering.py:70:8: W0612: Unused variable 'k' (unused-variable)
+build/lib/pyDNMFk/dist_clustering.py:105:11: C0121: Comparison to None should be 'expr is None' (singleton-comparison)
+build/lib/pyDNMFk/dist_clustering.py:80:53: W0613: Unused argument 'vb' (unused-argument)
+build/lib/pyDNMFk/dist_clustering.py:110:12: W0612: Unused variable 'i' (unused-variable)
+build/lib/pyDNMFk/utils.py:35:0: C0301: Line too long (105/100) (line-too-long)
+build/lib/pyDNMFk/utils.py:36:0: C0301: Line too long (119/100) (line-too-long)
+build/lib/pyDNMFk/utils.py:102:0: C0325: Unnecessary parens after 'return' keyword (superfluous-parens)
+build/lib/pyDNMFk/utils.py:110:0: C0325: Unnecessary parens after 'del' keyword (superfluous-parens)
+build/lib/pyDNMFk/utils.py:115:0: C0325: Unnecessary parens after 'return' keyword (superfluous-parens)
+build/lib/pyDNMFk/utils.py:134:0: C0325: Unnecessary parens after 'raise' keyword (superfluous-parens)
+build/lib/pyDNMFk/utils.py:141:0: C0325: Unnecessary parens after 'raise' keyword (superfluous-parens)
+build/lib/pyDNMFk/utils.py:145:0: C0325: Unnecessary parens after 'raise' keyword (superfluous-parens)
+build/lib/pyDNMFk/utils.py:176:0: C0325: Unnecessary parens after 'return' keyword (superfluous-parens)
+build/lib/pyDNMFk/utils.py:180:0: C0301: Line too long (118/100) (line-too-long)
+build/lib/pyDNMFk/utils.py:239:17: C0326: Exactly one space required after comma
+def var_init(clas,var,default):
+                 ^ (bad-whitespace)
+build/lib/pyDNMFk/utils.py:239:21: C0326: Exactly one space required after comma
+def var_init(clas,var,default):
+                     ^ (bad-whitespace)
+build/lib/pyDNMFk/utils.py:240:0: C0301: Line too long (108/100) (line-too-long)
+build/lib/pyDNMFk/utils.py:241:23: C0326: Exactly one space required after comma
+    if not hasattr(clas,var):
+                       ^ (bad-whitespace)
+build/lib/pyDNMFk/utils.py:242:0: W0311: Bad indentation. Found 7 spaces, expected 8 (bad-indentation)
+build/lib/pyDNMFk/utils.py:275:0: C0301: Line too long (107/100) (line-too-long)
+build/lib/pyDNMFk/utils.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+build/lib/pyDNMFk/utils.py:7:0: C0413: Import "import numpy" should be placed at the top of the module (wrong-import-position)
+build/lib/pyDNMFk/utils.py:8:0: W0404: Reimport 'numpy' (imported line 7) (reimported)
+build/lib/pyDNMFk/utils.py:8:0: C0413: Import "import numpy as np" should be placed at the top of the module (wrong-import-position)
+build/lib/pyDNMFk/utils.py:9:0: E0401: Unable to import 'mpi4py' (import-error)
+build/lib/pyDNMFk/utils.py:9:0: C0413: Import "from mpi4py import MPI" should be placed at the top of the module (wrong-import-position)
+build/lib/pyDNMFk/utils.py:25:11: C0123: Using type() instead of isinstance() for a typecheck. (unidiomatic-typecheck)
+build/lib/pyDNMFk/utils.py:79:4: C0116: Missing function or method docstring (missing-function-docstring)
+build/lib/pyDNMFk/utils.py:85:38: E0602: Undefined variable 'ten' (undefined-variable)
+build/lib/pyDNMFk/utils.py:104:4: C0116: Missing function or method docstring (missing-function-docstring)
+build/lib/pyDNMFk/utils.py:106:12: W0612: Unused variable 'data' (unused-variable)
+build/lib/pyDNMFk/utils.py:117:4: C0116: Missing function or method docstring (missing-function-docstring)
+build/lib/pyDNMFk/utils.py:117:4: R0201: Method could be a function (no-self-use)
+build/lib/pyDNMFk/utils.py:130:39: W0622: Redefining built-in 'format' (redefined-builtin)
+build/lib/pyDNMFk/utils.py:130:4: C0116: Missing function or method docstring (missing-function-docstring)
+build/lib/pyDNMFk/utils.py:137:8: W0702: No exception type(s) specified (bare-except)
+build/lib/pyDNMFk/utils.py:140:8: R1720: Unnecessary "else" after "raise" (no-else-raise)
+build/lib/pyDNMFk/utils.py:144:8: R1720: Unnecessary "else" after "raise" (no-else-raise)
+build/lib/pyDNMFk/utils.py:130:4: R0201: Method could be a function (no-self-use)
+build/lib/pyDNMFk/utils.py:156:4: C0116: Missing function or method docstring (missing-function-docstring)
+build/lib/pyDNMFk/utils.py:156:4: R0201: Method could be a function (no-self-use)
+build/lib/pyDNMFk/utils.py:169:4: C0116: Missing function or method docstring (missing-function-docstring)
+build/lib/pyDNMFk/utils.py:190:27: E1101: Instance of 'transform_H_index' has no 'p_n' member; maybe 'p_r'? (no-member)
+build/lib/pyDNMFk/utils.py:191:33: E1101: Instance of 'transform_H_index' has no 'p_n' member; maybe 'p_r'? (no-member)
+build/lib/pyDNMFk/utils.py:201:18: W0621: Redefining name 'norm' from outer scope (line 201) (redefined-outer-name)
+build/lib/pyDNMFk/utils.py:232:4: R1705: Unnecessary "elif" after "return" (no-else-return)
+build/lib/pyDNMFk/utils.py:237:14: E0602: Undefined variable 'argparse' (undefined-variable)
+build/lib/pyDNMFk/utils.py:246:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+build/lib/pyDNMFk/utils.py:251:0: R0205: Class 'comm_timing' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
+build/lib/pyDNMFk/utils.py:268:26: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/utils.py:251:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+build/lib/pyDNMFk/utils.py:7:0: C0411: third party import "import numpy" should be placed before "from . import config" (wrong-import-order)
+build/lib/pyDNMFk/utils.py:8:0: C0411: third party import "import numpy as np" should be placed before "from . import config" (wrong-import-order)
+build/lib/pyDNMFk/utils.py:9:0: C0411: first party import "from mpi4py import MPI" should be placed before "from . import config" (wrong-import-order)
+build/lib/pyDNMFk/dist_comm.py:22:0: C0301: Line too long (114/100) (line-too-long)
+build/lib/pyDNMFk/dist_comm.py:27:0: C0301: Line too long (102/100) (line-too-long)
+build/lib/pyDNMFk/dist_comm.py:41:0: C0301: Line too long (108/100) (line-too-long)
+build/lib/pyDNMFk/dist_comm.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+build/lib/pyDNMFk/dist_comm.py:2:0: R0902: Too many instance attributes (13/7) (too-many-instance-attributes)
+build/lib/pyDNMFk/dist_comm.py:34:8: W0201: Attribute 'cartesian1d_row' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_comm.py:35:8: W0201: Attribute 'rank1d_row' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_comm.py:36:8: W0201: Attribute 'coord1d_row' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_comm.py:48:8: W0201: Attribute 'cartesian1d_column' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_comm.py:49:8: W0201: Attribute 'rank1d_column' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_comm.py:50:8: W0201: Attribute 'coord1d_column' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_svd.py:11:0: C0301: Line too long (116/100) (line-too-long)
+build/lib/pyDNMFk/dist_svd.py:55:0: C0301: Line too long (105/100) (line-too-long)
+build/lib/pyDNMFk/dist_svd.py:179:0: C0301: Line too long (102/100) (line-too-long)
+build/lib/pyDNMFk/dist_svd.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+build/lib/pyDNMFk/dist_svd.py:6:0: W0401: Wildcard import utils (wildcard-import)
+build/lib/pyDNMFk/dist_svd.py:9:0: R0902: Too many instance attributes (20/7) (too-many-instance-attributes)
+build/lib/pyDNMFk/dist_svd.py:52:8: W0702: No exception type(s) specified (bare-except)
+build/lib/pyDNMFk/dist_svd.py:51:13: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/dist_svd.py:52:16: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/dist_svd.py:70:4: R0201: Method could be a function (no-self-use)
+build/lib/pyDNMFk/dist_svd.py:92:27: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/dist_svd.py:134:8: W0621: Redefining name 'norm' from outer scope (line 6) (redefined-outer-name)
+build/lib/pyDNMFk/dist_svd.py:189:4: R0914: Too many local variables (21/15) (too-many-locals)
+build/lib/pyDNMFk/dist_svd.py:252:8: R1705: Unnecessary "else" after "return" (no-else-return)
+build/lib/pyDNMFk/dist_svd.py:91:8: W0201: Attribute 'lastV' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_svd.py:95:8: W0201: Attribute 'currV' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_svd.py:112:16: W0201: Attribute 'currV' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_svd.py:114:16: W0201: Attribute 'currV' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_svd.py:123:20: W0201: Attribute 'currV' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_svd.py:99:8: W0201: Attribute 'At' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_svd.py:102:12: W0201: Attribute 'B' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/dist_svd.py:104:12: W0201: Attribute 'B' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/data_generator.py:19:0: C0301: Line too long (105/100) (line-too-long)
+build/lib/pyDNMFk/data_generator.py:26:0: C0301: Line too long (117/100) (line-too-long)
+build/lib/pyDNMFk/data_generator.py:54:0: C0301: Line too long (139/100) (line-too-long)
+build/lib/pyDNMFk/data_generator.py:78:0: C0301: Line too long (105/100) (line-too-long)
+build/lib/pyDNMFk/data_generator.py:79:0: C0301: Line too long (119/100) (line-too-long)
+build/lib/pyDNMFk/data_generator.py:92:0: C0301: Line too long (101/100) (line-too-long)
+build/lib/pyDNMFk/data_generator.py:94:0: C0301: Line too long (139/100) (line-too-long)
+build/lib/pyDNMFk/data_generator.py:99:0: C0301: Line too long (119/100) (line-too-long)
+build/lib/pyDNMFk/data_generator.py:124:0: C0301: Line too long (116/100) (line-too-long)
+build/lib/pyDNMFk/data_generator.py:129:0: C0301: Line too long (109/100) (line-too-long)
+build/lib/pyDNMFk/data_generator.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+build/lib/pyDNMFk/data_generator.py:6:0: E0401: Unable to import 'mpi4py' (import-error)
+build/lib/pyDNMFk/data_generator.py:13:4: W0621: Redefining name 'parser' from outer scope (line 9) (redefined-outer-name)
+build/lib/pyDNMFk/data_generator.py:20:4: W0621: Redefining name 'args' from outer scope (line 147) (redefined-outer-name)
+build/lib/pyDNMFk/data_generator.py:24:0: R0902: Too many instance attributes (9/7) (too-many-instance-attributes)
+build/lib/pyDNMFk/data_generator.py:39:23: W0621: Redefining name 'args' from outer scope (line 147) (redefined-outer-name)
+build/lib/pyDNMFk/data_generator.py:52:4: R0201: Method could be a function (no-self-use)
+build/lib/pyDNMFk/data_generator.py:87:4: R0201: Method could be a function (no-self-use)
+build/lib/pyDNMFk/data_generator.py:92:0: W0621: Redefining name 'args' from outer scope (line 147) (redefined-outer-name)
+build/lib/pyDNMFk/data_generator.py:92:4: R0201: Method could be a function (no-self-use)
+build/lib/pyDNMFk/data_generator.py:104:0: W0621: Redefining name 'args' from outer scope (line 147) (redefined-outer-name)
+build/lib/pyDNMFk/data_generator.py:105:12: W0632: Possible unbalanced tuple unpacking with sequence defined at line 1040 of numpy.core.multiarray: left side has 2 label(s), right side has 1 value(s) (unbalanced-tuple-unpacking)
+build/lib/pyDNMFk/data_generator.py:104:0: W0613: Unused argument 'args' (unused-argument)
+build/lib/pyDNMFk/data_generator.py:104:0: W0613: Unused argument 'kwargs' (unused-argument)
+build/lib/pyDNMFk/data_generator.py:112:8: W0632: Possible unbalanced tuple unpacking with sequence defined at line 1040 of numpy.core.multiarray: left side has 2 label(s), right side has 1 value(s) (unbalanced-tuple-unpacking)
+build/lib/pyDNMFk/data_generator.py:119:8: W0702: No exception type(s) specified (bare-except)
+build/lib/pyDNMFk/data_generator.py:115:4: R0201: Method could be a function (no-self-use)
+build/lib/pyDNMFk/plot_results.py:67:0: C0301: Line too long (106/100) (line-too-long)
+build/lib/pyDNMFk/plot_results.py:76:0: C0301: Line too long (102/100) (line-too-long)
+build/lib/pyDNMFk/plot_results.py:82:50: C0303: Trailing whitespace (trailing-whitespace)
+build/lib/pyDNMFk/plot_results.py:122:0: C0301: Line too long (106/100) (line-too-long)
+build/lib/pyDNMFk/plot_results.py:125:0: C0301: Line too long (113/100) (line-too-long)
+build/lib/pyDNMFk/plot_results.py:128:0: C0301: Line too long (119/100) (line-too-long)
+build/lib/pyDNMFk/plot_results.py:130:0: C0301: Line too long (109/100) (line-too-long)
+build/lib/pyDNMFk/plot_results.py:132:0: C0301: Line too long (111/100) (line-too-long)
+build/lib/pyDNMFk/plot_results.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+build/lib/pyDNMFk/plot_results.py:4:0: W0401: Wildcard import data_io (wildcard-import)
+build/lib/pyDNMFk/plot_results.py:20:4: E0633: Attempting to unpack a non-sequence defined at line 196 of pyDNMFk.data_io (unpacking-non-sequence)
+build/lib/pyDNMFk/plot_results.py:29:4: W0612: Unused variable 'm' (unused-variable)
+build/lib/pyDNMFk/plot_results.py:65:0: R0913: Too many arguments (7/5) (too-many-arguments)
+build/lib/pyDNMFk/plot_results.py:65:0: R0914: Too many local variables (19/15) (too-many-locals)
+build/lib/pyDNMFk/plot_results.py:119:4: W0621: Redefining name 'copy' from outer scope (line 4) (redefined-outer-name)
+build/lib/pyDNMFk/plot_results.py:119:4: C0415: Import outside toplevel (copy) (import-outside-toplevel)
+build/lib/pyDNMFk/plot_results.py:136:4: W0105: String statement has no effect (pointless-string-statement)
+build/lib/pyDNMFk/plot_results.py:149:12: W0702: No exception type(s) specified (bare-except)
+build/lib/pyDNMFk/plot_results.py:143:19: C0123: Using type() instead of isinstance() for a typecheck. (unidiomatic-typecheck)
+build/lib/pyDNMFk/plot_results.py:159:12: W0702: No exception type(s) specified (bare-except)
+build/lib/pyDNMFk/plot_results.py:153:19: C0123: Using type() instead of isinstance() for a typecheck. (unidiomatic-typecheck)
+build/lib/pyDNMFk/plot_results.py:134:4: W0612: Unused variable 'results' (unused-variable)
+build/lib/pyDNMFk/plot_results.py:171:11: C0123: Using type() instead of isinstance() for a typecheck. (unidiomatic-typecheck)
+build/lib/pyDNMFk/plot_results.py:173:10: R1717: Consider using a dictionary comprehension (consider-using-dict-comprehension)
+build/lib/pyDNMFk/plot_results.py:168:10: W0612: Unused variable 'res2' (unused-variable)
+build/lib/pyDNMFk/pyDNMF.py:40:0: C0301: Line too long (155/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMF.py:42:0: C0301: Line too long (180/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMF.py:47:40: C0326: Exactly one space required after comma
+        self.norm = var_init(self.params,'norm',default='kl')
+                                        ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMF.py:47:47: C0326: Exactly one space required after comma
+        self.norm = var_init(self.params,'norm',default='kl')
+                                               ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMF.py:48:42: C0326: Exactly one space required after comma
+        self.method = var_init(self.params,'method',default='mu')
+                                          ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMF.py:48:51: C0326: Exactly one space required after comma
+        self.method = var_init(self.params,'method',default='mu')
+                                                   ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMF.py:50:46: C0326: Exactly one space required after comma
+        self.params.itr = var_init(self.params,'itr',default=5000)
+                                              ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMF.py:50:52: C0326: Exactly one space required after comma
+        self.params.itr = var_init(self.params,'itr',default=5000)
+                                                    ^ (bad-whitespace)
+build/lib/pyDNMFk/pyDNMF.py:103:0: C0301: Line too long (116/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMF.py:105:0: C0301: Line too long (113/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMF.py:130:0: C0301: Line too long (102/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMF.py:135:0: C0301: Line too long (139/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMF.py:149:0: C0301: Line too long (118/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMF.py:163:0: C0301: Line too long (114/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMF.py:215:0: C0301: Line too long (106/100) (line-too-long)
+build/lib/pyDNMFk/pyDNMF.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+build/lib/pyDNMFk/pyDNMF.py:3:0: W0401: Wildcard import data_io (wildcard-import)
+build/lib/pyDNMFk/pyDNMF.py:4:0: W0401: Wildcard import dist_nmf (wildcard-import)
+build/lib/pyDNMFk/pyDNMF.py:5:0: W0401: Wildcard import dist_svd (wildcard-import)
+build/lib/pyDNMFk/pyDNMF.py:6:0: W0401: Wildcard import utils (wildcard-import)
+build/lib/pyDNMFk/pyDNMF.py:9:0: R0902: Too many instance attributes (31/7) (too-many-instance-attributes)
+build/lib/pyDNMFk/pyDNMF.py:54:8: W0702: No exception type(s) specified (bare-except)
+build/lib/pyDNMFk/pyDNMF.py:147:45: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/pyDNMF.py:156:23: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+build/lib/pyDNMFk/pyDNMF.py:157:43: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/pyDNMF.py:170:23: C0121: Comparison to True should be just 'expr' (singleton-comparison)
+build/lib/pyDNMFk/pyDNMF.py:171:43: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/pyDNMF.py:133:4: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+build/lib/pyDNMFk/pyDNMF.py:133:4: R0912: Too many branches (14/12) (too-many-branches)
+build/lib/pyDNMFk/pyDNMF.py:183:30: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/pyDNMF.py:199:30: C0321: More than one statement on a single line (multiple-statements)
+build/lib/pyDNMFk/pyDNMF.py:205:36: W0621: Redefining name 'norm' from outer scope (line 3) (redefined-outer-name)
+build/lib/pyDNMFk/pyDNMF.py:200:8: W0201: Attribute 'glob_norm_err' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/pyDNMF.py:201:8: W0201: Attribute 'glob_norm_A' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/pyDNMF.py:202:8: W0201: Attribute 'recon_err' defined outside __init__ (attribute-defined-outside-init)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==pyDNMFk.dist_nmf:1
+==pyDNMFk.dist_nmf:1
+from numpy import matlib
+
+from .utils import *
+
+
+class nmf_algorithms_2D():
+    """
+    Performs the distributed NMF operation along 2D cartesian grid
+
+    Parameters:
+        A_ij (ndarray) : Distributed Data
+        W_ij (ndarray) : Distributed factor W
+        H_ij (ndarray) : Distributed factor H
+        params (class): Class which comprises following attributes
+        params.comm1 (object): Global Communicator
+        params.comm (object): Modified communicator object
+        params.k (int) : Rank for decomposition
+        params.m (int) : Global dimensions m
+        params.n (int) : Global dimensions n
+        params.p_r  (int): Cartesian grid row count
+        params.p_c  (int): Cartesian grid column count
+        params.row_comm (object) : Sub communicator along row
+        params.col_comm (object) : Sub communicator along columns
+        params.W_update (bool) : flag to set W update True/False
+        params.norm (str): NMF norm to be minimized
+        params.method(str): NMF optimization method
+        params.eps (float) : Epsilon value
+
+
+    """
+    @comm_timing()
+    def __init__(self, A_ij, W_ij, H_ij, params=None):
+        self.params = params
+        self.m, self.n, self.p_r, self.p_c, self.k = self.params.m, self.params.n, self.params.p_r, self.params.p_c, self.params.k
+        self.comm1 = self.params.comm1  # ['comm1']
+        self.cartesian1d_row, self.cartesian1d_column, self.comm = self.params.row_comm, self.params.col_comm, self.params.comm
+        self.A_ij, self.W_ij, self.H_ij = A_ij, W_ij, H_ij
+        self.eps = self.params.eps
+        self.p = self.p_r * self.p_c
+        self.W_update = self.params.W_update
+        self.norm = self.params.norm
+        self.method = self.params.method
+        self.rank = self.comm1.rank
+        self.local_W_m = self.W_ij.shape[0]
+        self.local_H_n = self.H_ij.shape[1]
+
+    def update(self):
+        """Performs 1 step Update for factors W and H based on NMF method and corresponding norm minimization
+
+        Returns
+        -------
+        W_ij : ndarray
+           The m/p X k distributed factor W
+        H_ij : ndarray
+           The k X n/p distributed factor H
+        """
+        if self.norm.upper() == 'FRO':
+            if self.method.upper() == 'MU':
+                self.Fro_MU_update(self.W_update)
+            elif self.method.upper() == 'HALS':
+                self.FRO_HALS_update(self.W_update)
+            elif self.method.upper() == 'BCD':
+                self.FRO_BCD_update(self.W_update, itr=self.params.itr)
+            else:
+                raise Exception('Not a valid method: Choose (mu/hals/bcd)')
+        elif self.norm.upper() == 'KL':
+            if self.method.upper() == 'MU':
+                self.KL_MU_update(self.W_update)
+            else:
+                raise Exception('Not a valid method: Choose (mu)')
+        else:
+            raise Exception('Not a valid norm: Choose (fro/kl)')
+        return self.W_ij, self.H_ij
+
+    @comm_timing()
+    def global_gram(self, A):
+
+        r""" Distributed gram computation
+
+        Computes the global gram operation of matrix A
+        .. math:: A^TA
+
+        Parameters
+        ----------
+        A  :  ndarray
+
+
+        Returns
+        -------
+
+        A_TA_glob  : ndarray
+        """
+
+        A_TA_loc = np.matmul(A.T, A)
+        A_TA_glob = self.comm1.allreduce(A_TA_loc, op=MPI.SUM)
+        self.comm1.barrier()
+        return A_TA_glob
+
+    @comm_timing()
+    def global_mm(self, A, B):
+
+        r""" Distributed matrix multiplication
+
+        Computes the global matrix multiplication of matrix A and B
+        .. math:: AB
+
+        Parameters
+        ----------
+        A  :  ndarray
+        B  :  ndarray
+
+        Returns
+        -------
+
+        AB_glob  : ndarray
+        """
+
+        AB_loc = A @ B
+        AB_glob = self.comm1.allreduce(AB_loc, op=MPI.SUM)
+        self.comm1.barrier()
+        return AB_glob
+
+    '''Functions for Fro MU NMF update'''
+
+    @comm_timing()
+    def ATW_glob(self):
+
+        r""" Distributed computation of W^TA
+
+        Computes the global matrix multiplication of matrix W and A
+        .. math:: W^TA
+
+        Parameters
+        ----------
+        W  :  ndarray
+        A  :  ndarray
+
+        Returns
+        -------
+
+        Atw  : ndarray
+        """
+
+        W_i = self.cartesian1d_column.allgather(self.W_ij)
+        self.cartesian1d_column.barrier()
+        W_i = np.vstack((W_i))
+        Y_ij = np.matmul(W_i.T, self.A_ij)
+        ks = np.empty([self.k, self.local_H_n]).T.copy().astype(
+            self.A_ij.dtype)  # self.n // (self.p_r * self.p_c)]).T.copy().astype(self.A_ij.dtype)
+        self.cartesian1d_row.Reduce_scatter(Y_ij.T.copy(), ks, op=MPI.SUM)
+        self.cartesian1d_row.barrier()
+        Atw = ks.T
+        return Atw
+
+    @comm_timing()
+    def AH_glob(self, H_ij=None):
+
+        r""" Distributed computation of AH^T
+
+        Computes the global matrix multiplication of matrix A and H
+        .. math:: AH^T
+
+        Parameters
+        ----------
+        A  :  ndarray
+        H  :  ndarray
+
+        Returns
+        -------
+
+        AH  : ndarray
+        """
+
+        if H_ij is None:
+            H_ij = self.H_ij
+        H_j = self.cartesian1d_row.allgather(H_ij)
+        self.cartesian1d_row.barrier()
+        H_j = np.hstack((H_j))
+        V_ij = np.matmul(self.A_ij, H_j.T)
+        ko, l = V_ij.shape
+        sk = np.empty([self.local_W_m, self.k]).astype(
+            self.A_ij.dtype)  # self.m // (self.p_r * self.p_c), self.k]).astype(self.A_ij.dtype)
+        self.cartesian1d_column.Reduce_scatter(V_ij, sk, op=MPI.SUM)
+        self.cartesian1d_column.barrier()
+        AH = sk
+        return AH
+
+    def Fro_MU_update_H(self):
+
+        r"""
+        Frobenius norm based multiplicative update of H parameter
+        Function computes updated H parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.H_ij : ndarray
+        """
+
+        W_TW = self.global_gram(self.W_ij)
+        AtW = self.ATW_glob()
+        HWtW = np.matmul(self.H_ij.T, W_TW) + self.eps
+        self.H_ij *= AtW / HWtW.T
+
+    def Fro_MU_update_W(self):
+
+        r"""
+        Frobenius norm based multiplicative update of W parameter
+        Function computes updated H parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.W_ij : ndarray
+        """
+
+        HH_T = self.global_gram(self.H_ij.T)
+        AH = self.AH_glob()
+        WHTH = np.matmul(self.W_ij, HH_T) + self.eps
+        self.W_ij *= AH / WHTH
+
+    def Fro_MU_update(self, W_update=True):
+        r"""
+        Frobenius norm based multiplicative update of W and H parameter
+        Function computes updated W and H parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.H_ij : ndarray
+        self.W_ij : ndarray
+        """
+        if W_update == True:
+            self.Fro_MU_update_W()
+        self.Fro_MU_update_H()
+
+    '''Functions for KL MU NMF update'''
+
+    @comm_timing()
+    def gather_W_H(self, gW=True, gH=True):
+        r"""
+        Gathers W and H factors across cartesian groups
+        i.e H_ij -> H_j if gH=True and W_ij -> W_i and gW=True
+
+        Parameters
+        ----------
+        gW : boolen
+        gH : boolen
+
+        Returns
+        -------
+        self.H_j : ndarray
+        self.W_i : ndarray
+        """
+
+        if gH == True:
+            self.H_j = self.cartesian1d_row.allgather(self.H_ij)
+            self.cartesian1d_row.barrier()
+            self.H_j = np.hstack((self.H_j))
+        if gW == True:
+            self.W_i = self.cartesian1d_column.allgather(self.W_ij)
+            self.cartesian1d_column.barrier()
+            self.W_i = np.vstack((self.W_i))
+
+    @comm_timing()
+    def WTU_glob(self):
+        r""" Distributed computation of W^TU
+
+        Computes the global matrix multiplication of matrix W and U for KL
+        .. math:: W^TU
+
+        Parameters
+        ----------
+        W  :  ndarray
+        H  :  ndarray
+        A  :  ndarray
+
+        Returns
+        -------
+
+        WTU  : ndarray
+        """
+
+        U_ij = self.A_ij / (self.W_i.dot(self.H_j) + self.eps)
+        WTU = self.W_i.T.dot(U_ij)
+        ks = np.empty([self.k, self.local_H_n]).T.copy().astype(self.A_ij.dtype)
+        self.cartesian1d_row.Reduce_scatter(WTU.T.copy(), ks, op=MPI.SUM)
+        self.cartesian1d_row.barrier()
+        ks = ks.T
+        return ks
+
+    @comm_timing()
+    def UHT_glob(self):
+        r""" Distributed computation of UH^T
+
+        Computes the global matrix multiplication of matrix W and U for KL
+        .. math:: UH^T
+
+        Parameters
+        ----------
+        W  :  ndarray
+        H  :  ndarray
+        A  :  ndarray
+
+        Returns
+        -------
+
+        UHT  : ndarray
+        """
+        U_ij = self.A_ij / (self.W_i.dot(self.H_j) + self.eps)
+        UHT = U_ij.dot(self.H_j.T)
+        sk = np.empty([self.local_W_m, self.k]).astype(self.A_ij.dtype)
+        self.cartesian1d_column.Reduce_scatter(UHT, sk, op=MPI.SUM)
+        self.cartesian1d_column.barrier()
+        return sk
+
+    @comm_timing()
+    def sum_axis(self, dat, axis):
+        tmp = dat.sum(axis=axis)
+        tmp = self.comm1.allreduce(tmp, op=MPI.SUM)
+        return tmp
+
+    def KL_MU_update_W(self):
+        r"""
+        KL divergence based multiplicative update of W parameter
+        Function computes updated W parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.W_ij : ndarray
+            Distributed factor W of shape m/p X k
+        """
+        x2 = self.sum_axis(self.H_ij, axis=1)
+        X2 = matlib.repmat(x2, self.local_W_m, 1)
+        self.gather_W_H()
+        sk = self.UHT_glob()
+        self.W_ij *= sk / (X2 + self.eps)
+
+    def KL_MU_update_H(self):
+        r"""
+        Frobenius norm based multiplicative update of H parameter
+        Function computes updated H parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.H_ij : ndarray
+            Distributed factor H of shape  k X n/p
+        """
+        x1 = self.sum_axis(self.W_ij, axis=0)
+        X1 = matlib.repmat(x1, self.local_H_n, 1).T
+        self.gather_W_H()
+        ks = self.WTU_glob()
+        self.H_ij *= ks / (X1 + self.eps)
+
+    def KL_MU_update(self, W_update=True):
+        r"""
+        KL divergence based multiplicative update of W and H parameter
+        Function computes updated W and H parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.H_ij : ndarray (k X n/p)
+        self.W_ij : ndarray (m/p X k)
+        """
+        if W_update == True:
+            self.KL_MU_update_W()
+        self.KL_MU_update_H()
+
+    '''Functions for FRO HALS NMF update'''
+
+    def FRO_HALS_update_W(self):
+        r"""
+        Frobenius norm minimization based HALS update of W  parameter
+        Function computes updated W parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.W_ij : ndarray (m/p X k)
+        """
+        self.gather_W_H(gW=False)
+        HHT = self.global_gram(self.H_ij.T)
+        AH = self.AH_glob()
+        for kk in iter(range(0, self.k)):
+            temp_vec = self.W_ij[:, kk] * HHT[kk, kk] + AH[:, kk] - self.W_ij.dot(HHT[:, kk])
+            self.W_ij[:, kk] = np.maximum(temp_vec, self.eps)
+            ss = norm(self.W_ij[:, kk], self.comm1, norm=2, p=self.p_r)
+            if ss > 0:
+                self.W_ij[:, kk] /= ss
+
+    def FRO_HALS_update_H(self):
+        r"""
+        Frobenius norm minimization based HALS update of H  parameter
+        Function computes updated H parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.H_ij : ndarray ( k X n/p)
+        """
+        self.gather_W_H(gH=False)
+        WTW = self.global_gram(self.W_ij)
+        AtW = self.ATW_glob()
+        for kk in iter(range(0, self.k)):
+            temp_vec = self.H_ij[kk, :] + AtW[kk, :] - WTW[kk, :].dot(self.H_ij)
+            self.H_ij[kk, :] = np.maximum(temp_vec, self.eps)
+
+    def FRO_HALS_update(self, W_update=True):
+        r"""
+        Frobenius norm minimization based HALS update of W  and H parameter
+        Function computes updated W and H parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.W_ij : ndarray (m/p X k)
+        self.H_ij : ndarray (k X n/p)
+        """
+        if W_update == True:
+            self.FRO_HALS_update_W()
+        self.FRO_HALS_update_H()
+
+    '''Functions for FRO BCD NMF update'''
+
+    @comm_timing()
+    def globalSqNorm(self, comm, X):
+        """ Calc global squared norm of any matrix"""
+        normX = np.linalg.norm(X)
+        sqnormX = normX * normX
+        Xnorm = self.comm1.allreduce(sqnormX, op=MPI.SUM)
+        return Xnorm
+
+    @comm_timing()
+    def initWandH(self):
+        """ Initialize the parameters for BCD updates"""
+
+        # global Frobenius norm u calculated before
+        Xnorm = self.globalSqNorm(self.comm1, self.A_ij)
+        # Norm of W0 per processor
+        globalsqnormW = self.globalSqNorm(self.comm1, self.W_ij)
+        # Norm of H0 per processor
+        globalsqnormH = self.globalSqNorm(self.comm1, self.H_ij)
+        # Now normalize the initial W and H
+        W_old = self.W_ij / np.sqrt(globalsqnormW) * np.sqrt(np.sqrt(Xnorm))
+        H_old = self.H_ij / np.sqrt(globalsqnormH) * np.sqrt(np.sqrt(Xnorm))
+        Wm = W_old.copy()
+        Hm = H_old.copy()
+        HHT = self.global_gram(H_old.T)
+        self.H_ij = H_old
+        AHT = self.AH_glob()
+        obj_old = 0.5 * Xnorm  # This is correct, already a squared norm
+        return Wm, Hm, HHT, AHT, W_old, H_old, obj_old, Xnorm
+
+    def FRO_BCD_update(self, W_update=True, itr=1000):
+        r"""
+        Frobenius norm minimization based BCD update of W  and H parameter
+        Function computes updated W and H parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.W_ij : ndarray (m/p X k)
+        self.H_ij : ndarray (k X n/p)
+        """
+        Wm, Hm, HHT, AHT, W_old, H_old, obj_old, Xnorm = self.initWandH()
+        self.params.rw = 1
+        nstall = 0
+        t_old = 1
+        HHTnorm = 1
+        WTWnorm = 1
+        opts = {'rel_err': [], 'obj': []}
+        max_iters = itr  # Read it from the arguments or somewhere
+        # relerr1 = relerr2 = []
+        # Iterate for max iterations:
+        for i in range(max_iters):
+            """
+            W update
+            """
+            HHTnorm_old = HHTnorm  #
+            HHTnorm = np.linalg.norm(HHT)  # save and update Lipschitz bound for W
+            WmHHT = Wm @ HHT  # No need of dist multiplication
+            GW = WmHHT - AHT  # gradient at X=Xm
+            self.W_ij = np.maximum(0, Wm - GW / HHTnorm)
+            # L1 norm of Each column in W
+            localWsum = np.sum(self.W_ij, 0, keepdims=True)
+            globalWSum = self.comm1.allreduce(localWsum, op=MPI.SUM)
+            self.comm1.barrier()
+            self.W_ij /= globalWSum
+            WTW = self.global_gram(self.W_ij)
+            """
+            H update
+            """
+            WTWnorm_old = WTWnorm
+            WTWnorm = np.linalg.norm(WTW)  # save and update Lipschitz bound for H
+            WTWHm = WTW @ Hm  # No need of dist multiplication
+            WTA = self.ATW_glob()
+            GH = WTWHm - WTA  # gradient at Y=Ym
+            self.H_ij = np.maximum(0, Hm - GH / WTWnorm)
+            HHT = self.global_gram(self.H_ij.T)
+            AHT = self.AH_glob()
+            self.gather_W_H()
+            glob_jt = self.globalSqNorm(self.comm1, self.A_ij - self.W_i @ self.H_j)
+            obj = 0.5 * glob_jt  #
+            rel_err = np.sqrt(2 * obj / Xnorm)
+            opts['obj'].append(obj)
+            opts['rel_err'].append(rel_err)
+            # --- correction and extrapolation ---
+            t = (1 + np.sqrt(1 + 4 * t_old ** 2)) / 2
+            if obj >= obj_old:
+                # restore to previous W,H, and cached quantities for nonincreasing objective
+                Wm = W_old.copy()
+                Hm = H_old.copy()
+                HHT = self.global_gram(H_old.T)
+                AHT = self.AH_glob(H_old)
+            else:
+                # extrapolation
+                w = (t_old - 1) / t  # extrapolation weight
+                ww = np.min([w, self.params.rw * np.sqrt(HHTnorm_old / HHTnorm)])  # choose smaller one for convergence
+                wh = min([w, self.params.rw * np.sqrt(WTWnorm_old / WTWnorm)])
+                Wm = self.W_ij + ww * (self.W_ij - W_old)
+                Hm = self.H_ij + wh * (self.H_ij - H_old)  # extrapolation
+                W_old = self.W_ij.copy()
+                H_old = self.H_ij.copy()
+                t_old = t
+                obj_old = obj
+
+
+class nmf_algorithms_1D():
+    """
+    Performs the distributed NMF operation along 1D cartesian grid
+
+    Parameters:
+        A_ij (ndarray) : Distributed Data
+        W_i (ndarray) : Distributed factor W
+        H_j (ndarray) : Distributed factor H
+        params (class): Class which comprises following attributes
+        params.comm1 (object): Global Communicator
+        params.k (int) : Rank for decomposition
+        params.m (int) : Global dimensions m
+        params.n (int) : Global dimensions n
+        params.p_r  (int): Cartesian grid row count
+        params.p_c  (int): Cartesian grid column count
+        params.W_update (bool) : flag to set W update True/False
+        params.norm (str): NMF norm to be minimized
+        params.method(str): NMF optimization method
+        params.eps (float) : Epsilon value"""
+
+    def __init__(self, A_ij, W_i, H_j, params=None):
+        self.m, self.n, self.p_r, self.p_c, self.k = params.m, params.n, params.p_r, params.p_c, params.k
+        self.params = params
+        self.comm = self.params.comm1  # ['comm1']
+        # self.comm = comm
+        self.norm = self.params.norm
+        self.method = self.params.method
+        self.comm1 = self.params.comm1
+        self.A_ij, self.W_i, self.H_j = A_ij, W_i, H_j
+        self.eps = self.params.eps
+        self.p = self.p_r * self.p_c
+        self.W_update = self.params.W_update
+        self.rank = self.comm1.rank
+        self.local_W_m = self.W_i.shape[0]
+        self.local_H_n = self.H_j.shape[1]
+
+    def update(self):
+        """Performs 1 step Update for factors W and H based on NMF method and corresponding norm minimization
+
+         Returns
+         -------
+         W_i : ndarray
+            The m/p_r X k distributed factor W
+         H_j : ndarray
+            The k X n/p_c distributed factor H
+         """
+        if self.norm.upper() == 'FRO':
+            if self.method.upper() == 'MU':
+                self.Fro_MU_update(self.W_update)
+            elif self.method.upper() == 'HALS':
+                self.FRO_HALS_update(self.W_update)
+            elif self.method.upper() == 'BCD':
+                self.FRO_BCD_update(self.W_update, itr=self.params.itr)
+            else:
+                raise Exception('Not a valid method: Choose (mu/hals/bcd)')
+        elif self.norm.upper() == 'KL':
+            if self.method.upper() == 'MU':
+                self.KL_MU_update(self.W_update)
+            else:
+                raise Exception('Not a valid method: Choose (mu)')
+        else:
+            raise Exception('Not a valid norm: Choose (fro/kl)')
+        return self.W_i, self.H_j
+
+    @comm_timing()
+    def global_gram(self, A, p=1):
+        r""" Distributed gram computation
+
+        Computes the global gram operation of matrix A
+        .. math:: A^TA
+
+        Parameters
+        ----------
+        A  :  ndarray
+        p  : Processor count
+
+        Returns
+        -------
+
+        A_TA_glob  : ndarray
+        """
+        A_TA_loc = np.matmul(A.T, A)
+        if p != 1:
+            A_TA_glob = self.comm1.allreduce(A_TA_loc, op=MPI.SUM)
+            self.comm1.barrier()
+        else:
+            A_TA_glob = A_TA_loc
+        return A_TA_glob
+
+    @comm_timing()
+    def global_mm(self, A, B, p=-1):
+        r""" Distributed matrix multiplication
+
+        Computes the global matrix multiplication of matrix A and B
+        .. math:: AB
+
+        Parameters
+        ----------
+        A  :  ndarray
+        B  :  ndarray
+        p  : processor count
+        Returns
+        -------
+
+        AB_glob  : ndarray
+        """
+        AB_loc = np.matmul(A, B)
+        if p != 1:
+            AB_glob = self.comm1.allreduce(AB_loc, op=MPI.SUM)
+            self.comm1.barrier()
+        else:
+            AB_glob = AB_loc
+        return AB_glob
+
+    '''Functions for Fro MU NMF update'''
+
+    @comm_timing()
+    def Fro_MU_update_W(self):
+        r"""
+         Frobenius norm based multiplicative update of W parameter
+         Function computes updated H parameter for each mpi rank
+
+         Parameters
+         ----------
+         self : object
+
+         Returns
+         -------
+         self.W_i : ndarray
+         """
+
+        W_TW = self.global_gram(self.W_i, p=self.p_r)
+        AtW = self.global_mm(self.W_i.T, self.A_ij, p=self.p_r)
+        HWtW = np.matmul(self.H_j.T, W_TW) + self.eps
+        self.H_j *= AtW / HWtW.T
+
+    @comm_timing()
+    def Fro_MU_update_H(self):
+        r"""
+        Frobenius norm based multiplicative update of H parameter
+        Function computes updated H parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.H_j : ndarray"""
+
+        HH_T = self.global_gram(self.H_j.T, p=self.p_c)
+        AH = self.global_mm(self.A_ij, self.H_j.T, p=self.p_c)
+        WHTH = np.matmul(self.W_i, HH_T) + self.eps
+        self.W_i *= AH / WHTH
+
+    @comm_timing()
+    def Fro_MU_update(self, W_update=True):
+        r"""
+        Frobenius norm based multiplicative update of W and H parameter
+        Function computes updated W and H parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.H_ij : ndarray
+        self.W_ij : ndarray"""
+
+        if W_update == True:
+            self.Fro_MU_update_W()
+        self.Fro_MU_update_H()
+
+    '''Functions for KL MU NMF update'''
+
+    @comm_timing()
+    def sum_along_axis(self, X, p=1, axis=0):
+        r"""
+        Performs sum of the matrix along given axis
+
+        Parameters
+        ----------
+        X : ndarray
+            Data
+        p : int
+            Processor count
+        axis : int
+            Axis along which the sum is to be performed
+
+        Returns
+        -------
+        global_axis_sum : ndarray
+            Vector array after summation operation along axis"""
+        loc_axis_sum = X.sum(axis=axis)
+        if axis == 1:
+            loc_axis_sum = loc_axis_sum.T
+        if p != 1:
+            glob_axis_sum = self.comm1.allreduce(loc_axis_sum, op=MPI.SUM)
+            self.comm1.barrier()
+        else:
+            glob_axis_sum = loc_axis_sum
+        return glob_axis_sum
+
+    @comm_timing()
+    def glob_UX(self, axis):
+        """Perform a global operation UX for W and H update with KL"""
+        UX = self.A_ij / (self.W_i @ self.H_j + self.eps)
+        if axis == 1:
+            UX = self.global_mm(self.W_i.T, UX, p=self.p_r)
+        elif axis == 0:
+            UX = self.global_mm(UX, self.H_j.T, p=self.p_c)
+        return UX
+
+    def KL_MU_update_W(self):
+        r"""
+        KL divergence based multiplicative update of W parameter
+        Function computes updated W parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.W_i : ndarray
+            Distributed factor W of shape m/p_r X k
+        """
+        x2 = self.sum_along_axis(self.H_j, p=self.p_c, axis=1)
+        X2 = matlib.repmat(x2, self.local_W_m, 1)
+        sk = self.glob_UX(axis=0)
+        self.W_i *= sk / (X2 + self.eps)
+
+    def KL_MU_update_H(self):
+        r"""
+        KL divergence based multiplicative update of H parameter
+        Function computes updated H parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.H_j : ndarray
+            Distributed factor H of shape  k X n/p_c
+        """
+        x2 = self.sum_along_axis(self.W_i, p=self.p_r, axis=0)
+        X2 = matlib.repmat(x2, self.local_H_n, 1).T
+        sk = self.glob_UX(axis=1)
+        self.H_j *= sk / (X2 + self.eps)
+
+    def KL_MU_update(self, W_update=True):
+        r"""
+        KL divergence based multiplicative update of W and H parameter
+        Function computes updated W and H parameter for each mpi rank
+
+        Parameters
+        ----------
+        W_update : bool
+            Flag to enable/disable W_update
+
+
+        Returns
+        -------
+        self.H_j : ndarray (k X n/p_r)
+        self.W_i : ndarray (m/p_c X k)
+        """
+        if W_update == True:
+            self.KL_MU_update_W()
+        self.KL_MU_update_H()
+
+    '''Functions for FRO HALS NMF update'''
+
+    def FRO_HALS_update_W(self):
+        r"""
+        Frobenius norm minimization based HALS update of W  parameter
+        Function computes updated W parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.W_i : ndarray (m/p_r X k)
+        """
+        HHT = self.global_gram(self.H_j.T, p=self.p_c)
+        AH = self.global_mm(self.A_ij, self.H_j.T, p=self.p_c)
+        for kk in iter(range(0, self.k)):
+            temp_vec = self.W_i[:, kk] * HHT[kk, kk] + AH[:, kk] - self.W_i.dot(HHT[:, kk])
+            self.W_i[:, kk] = np.maximum(temp_vec, self.eps)
+            ss = norm(self.W_i[:, kk], self.comm1, norm=2, p=self.p_r)
+            if ss > 0:
+                self.W_i[:, kk] /= ss
+
+    def FRO_HALS_update_H(self):
+        r"""
+        Frobenius norm minimization based HALS update of H  parameter
+        Function computes updated H parameter for each mpi rank
+
+        Parameters
+        ----------
+        self : object
+
+        Returns
+        -------
+        self.H_j : ndarray ( k X n/p_c)
+        """
+        WTW = self.global_gram(self.W_i, p=self.p_r)
+        AtW = self.global_mm(self.W_i.T, self.A_ij, p=self.p_r)
+        # self.H_j = self.H_j.T
+        for kk in iter(range(0, self.k)):
+            temp_vec = self.H_j[kk, :] + AtW[kk, :] - WTW[kk, :].dot(self.H_j)
+            self.H_j[kk, :] = np.maximum(temp_vec, self.eps)
+        # self.H_j = self.H_j.T
+
+    def FRO_HALS_update(self, W_update=True):
+        r"""
+        Frobenius norm minimizatio based HALS update of W and H parameter
+        Function computes updated W and H parameter for each mpi rank
+
+        Parameters
+        ----------
+        W_update : bool
+            Flag to enable/disable W_update
+
+
+        Returns
+        -------
+        self.H_j : ndarray (k X n/p_r)
+        self.W_i : ndarray (m/p_c X k)
+        """
+        if W_update == True:
+            self.FRO_HALS_update_W()
+        self.FRO_HALS_update_H()
+
+
+    '''Functions for FRO BCD NMF update'''
+
+    @comm_timing()
+    def globalSqNorm(self, X, p=-1):
+        """ Calc global squared norm of any matrix"""
+        normX = np.linalg.norm(X)
+        sqnormX = normX * normX
+        if p != 1:
+            Xnorm = self.comm1.allreduce(sqnormX, op=MPI.SUM)
+            self.comm1.barrier()
+        else:
+            Xnorm = sqnormX
+        return Xnorm
+
+    @comm_timing()
+    def initWandH(self):
+        """ Initialize the parameters for BCD updates"""
+
+        # global Frobenius norm u calculated before
+        Xnorm = self.globalSqNorm(self.A_ij)
+        # Norm of W0 per processor
+        globalsqnormW = self.globalSqNorm(self.W_i, p=self.p_r)
+        # Norm of H0 per processor
+        globalsqnormH = self.globalSqNorm(self.H_j, p=self.p_c)
+        # Now normalize the initial W and H
+        W_old = self.W_i / np.sqrt(globalsqnormW) * np.sqrt(np.sqrt(Xnorm))
+        H_old = self.H_j / np.sqrt(globalsqnormH) * np.sqrt(np.sqrt(Xnorm))
+        Wm = W_old.copy()
+        Hm = H_old.copy()
+        HHT = self.global_gram(H_old.T, p=self.p_c)
+        AHT = self.global_mm(self.A_ij, H_old.T, p=self.p_c)
+        obj_old = 0.5 * Xnorm  # This is correct, already a squared norm
+        return Wm, Hm, HHT, AHT, W_old, H_old, obj_old, Xnorm
+
+    def FRO_BCD_update(self, W_update=True, itr=1000):
+        r"""
+        Frobenius norm minimization based BCD update of W  and H parameter
+        Function computes updated W and H parameter for each mpi rank
+
+        Parameters
+        ----------
+        W_update: bool
+            flag to enable/disable W update
+
+        Returns
+        -------
+        self.W_i : ndarray (m/p_r X k)
+        self.H_j : ndarray (k X n/p_c)
+        """
+        Wm, Hm, HHT, AHT, W_old, H_old, obj_old, Xnorm = self.initWandH()
+        self.params.rw = 1
+        nstall = 0
+        t_old = 1
+        HHTnorm = 1
+        WTWnorm = 1
+        opts = {'rel_err': [], 'obj': []}
+        max_iters = itr  # Read it from the arguments or somewhere
+        # relerr1 = relerr2 = []
+        # Iterate for max iterations:
+        for i in range(max_iters):
+            """
+            W update
+            """
+            HHTnorm_old = HHTnorm  #
+            HHTnorm = np.linalg.norm(HHT)  # save and update Lipschitz bound for W
+            WmHHT = Wm @ HHT  # No need of dist multiplication
+            GW = WmHHT - AHT  # gradient at X=Xm
+            self.W_i = np.maximum(0, Wm - GW / HHTnorm)
+            # L1 norm of Each column in W
+            localWsum = np.sum(self.W_i, 0, keepdims=True)
+            if self.p_r != 1:
+                globalWSum = self.comm1.allreduce(localWsum, op=MPI.SUM)
+                self.comm1.barrier()
+            if self.p_r == 1: globalWSum = localWsum
+            self.W_i /= globalWSum
+            WTW = self.global_gram(self.W_i, p=self.p_r)
+            """
+            H update
+            """
+            WTWnorm_old = WTWnorm
+            WTWnorm = np.linalg.norm(WTW)  # save and update Lipschitz bound for H
+            WTWHm = WTW @ Hm  # No need of dist multiplication
+            WTA = self.global_mm(self.W_i.T, self.A_ij, p=self.p_r)
+            GH = WTWHm - WTA  # gradient at Y=Ym
+            self.H_j = np.maximum(0, Hm - GH / WTWnorm)
+            HHT = self.global_gram(self.H_j.T, p=self.p_c)
+            AHT = self.global_mm(self.A_ij, self.H_j.T, p=self.p_c)
+            glob_jt = self.globalSqNorm(self.A_ij - self.W_i @ self.H_j)
+            obj = 0.5 * glob_jt  #
+            rel_err = np.sqrt(2 * obj / Xnorm)
+            opts['obj'].append(obj)
+            opts['rel_err'].append(rel_err)
+            # --- correction and extrapolation ---
+            t = (1 + np.sqrt(1 + 4 * t_old ** 2)) / 2
+            if obj >= obj_old:
+                # restore to previous W,H, and cached quantities for nonincreasing objective
+                Wm = W_old.copy()
+                Hm = H_old.copy()
+                HHT = self.global_gram(H_old.T, p=self.p_c)
+                AHT = self.global_mm(self.A_ij, H_old.T, p=self.p_c)
+            else:
+                # extrapolation
+                w = (t_old - 1) / t  # extrapolation weight
+                ww = np.min([w, self.params.rw * np.sqrt(HHTnorm_old / HHTnorm)])  # choose smaller one for convergence
+                wh = min([w, self.params.rw * np.sqrt(WTWnorm_old / WTWnorm)])
+                Wm = self.W_i + ww * (self.W_i - W_old)
+                Hm = self.H_j + wh * (self.H_j - H_old)  # extrapolation
+                W_old = self.W_i.copy()
+                H_old = self.H_j.copy()
+                t_old = t
+                obj_old = obj (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==pyDNMFk.utils:1
+==pyDNMFk.utils:1
+import copy
+from collections import Counter
+
+from . import config
+config.init(0)
+import numpy
+import numpy as np
+from mpi4py import MPI
+
+
+class determine_block_params():
+    """Computes the parameters  for each chunk to be read by MPI process
+
+    Parameters
+    ----------
+    comm : object
+       MPI communicator object
+    pgrid : tuple
+       Cartesian grid configuration
+    shape : tuple
+        Data shape
+    """
+    def __init__(self, comm, pgrid, shape):
+        if type(comm) == int:
+            self.rank = comm
+        else:
+            self.rank = comm.rank
+        self.pgrid = pgrid
+        self.shape = shape
+
+    def determine_block_index_range_asymm(self):
+        '''Determines the start and end indices for the Data block for each rank'''
+        chunk_ind = np.unravel_index(self.rank, self.pgrid)
+        start_inds = [i * (n // k) + min(i, n % k) for n, k, i in zip(self.shape, self.pgrid, chunk_ind)]
+        end_inds = [(i + 1) * (n // k) + min((i + 1), n % k) - 1 for n, k, i in zip(self.shape, self.pgrid, chunk_ind)]
+        return start_inds, end_inds
+
+    def determine_block_shape_asymm(self):
+        '''Determines the shape for the Data block for each rank'''
+        start_inds, end_inds = self.determine_block_index_range_asymm()
+        return [(j - i + 1) for (i, j) in zip(start_inds, end_inds)]
+
+
+class data_operations():
+    """Performs various operations on the data
+
+    Parameters
+    ----------
+    data : ndarray
+       Data to operate on"""
+    def __init__(self, data):
+        self.ten = data
+
+    def cutZero(self, thresh=1e-8):
+        """Prunes zero columns from the data"""
+        tenS = list(self.ten.shape)
+        dim = len(tenS)
+        axSum = []
+        axSel = []
+        axInd = []
+        for curD in range(dim):
+            axisList = list(range(len(self.ten.shape)))
+            axisList.pop(curD)
+            axSum.append(numpy.sum(self.ten, axis=tuple(axisList)))
+            axSel.append(axSum[-1] > thresh)
+
+            # Move Axis to front and index
+            self.ten = self.ten.swapaxes(curD, 0)
+            self.ten = self.ten[axSel[-1]]
+            self.ten = self.ten.swapaxes(0, curD)
+
+            # Build Reconstruction Index
+            axInd.append(list(numpy.nonzero(axSel[-1])[0]))
+            axInd[-1].append(tenS[curD])
+
+        return (self.ten, axInd)
+
+    def recZero(self, indexList):
+        # Note indexList is partially destroyed
+        tenS = []
+        sliceList = []
+        for curI, curList in enumerate(indexList):
+            tenS.append(curList.pop(-1))
+            sliceList.append(slice(0, ten.shape[curI], 1))
+        sliceObj = tuple(sliceList)
+        tenR = numpy.zeros(tenS, dtype=self.ten.dtype)
+        tenR[sliceObj] = self.ten
+        # Now the input tensor resides in upper block of reconstruction tensor
+
+        for curI, curList in enumerate(indexList):
+            # Move proper axis to zero
+            tenR = tenR.swapaxes(0, curI)
+            # Determine list of zero slices
+            zeroSlice = list(set(range(tenS[curI])) - set(curList))
+            if zeroSlice != []:
+                for iS, iR in enumerate(curList):
+                    tenR[iR] = tenR[iS]
+                tenR[zeroSlice] = 0
+            tenR = tenR.swapaxes(0, curI)
+
+        return (tenR)
+
+    def desampleT(self, factor, axis=0):
+        if axis != 0:
+            data = self.ten.swapaxis(0, axis)
+        origShape = list(self.ten.shape)
+        newDim = int((origShape[0] - origShape[0] % 3) / 3)
+        self.ten = self.ten[:newDim * factor]
+        del (origShape[0])
+        newShape = [newDim] + [factor] + origShape
+        self.ten = numpy.sum(self.ten.reshape(newShape), axis=1)
+        if axis != 0:
+            self.ten.swapaxis(axis, 0)
+        return (self.ten)
+
+    def remove_bad_factors(self, Wall, Hall, ErrTol, features_k):
+        sorted_idx = sorted(range(len(ErrTol)), key=lambda k: ErrTol[k])
+        to_keep_length = int(np.round(.9 * len(ErrTol)))
+        sorted_idx_keep = sorted_idx[:to_keep_length]
+        flattened_Wall = Wall.reshape(-1, len(ErrTol))
+        flattened_Hall = Hall.reshape(len(ErrTol), -1)
+        mod_flattened_Wall = flattened_Wall[:, sorted_idx_keep]
+        mod_flattened_Hall = flattened_Hall[sorted_idx_keep, :]
+        mod_Wall = mod_flattened_Wall.reshape(-1, len(sorted_idx_keep) * features_k)
+        mod_Hall = mod_flattened_Hall.reshape(len(sorted_idx_keep) * features_k, -1)
+        mod_ErrTol = ErrTol[sorted_idx_keep]
+        return mod_Wall, mod_Hall, mod_ErrTol
+
+    def matSplit(self, name, p_r, p_c, format='npy'):
+        if format.lower() == 'npy':
+            curMat = numpy.load(name + '.npy')
+        else:
+            raise ('unknown format')
+        try:
+            os.mkdir(name)
+        except:
+            pass
+
+        if curMat.shape[0] % p_r != 0:
+            raise ('matrix row dimention not evenly divisible by row processors')
+        else:
+            rstride = int(curMat.shape[0] / p_r)
+        if curMat.shape[1] % p_c != 0:
+            raise ('matrix column dimention not evenly divisible by column processors')
+        else:
+            cstride = int(curMat.shape[1] / p_c)
+
+        indCounter = 0
+        for ri in range(p_r):
+            for ci in range(p_c):
+                outMat = curMat[ri * rstride:(ri + 1) * rstride, ci * cstride:(ci + 1) * cstride]
+                numpy.save(name + '/' + name + '_{}.npy'.format(indCounter), outMat)
+                indCounter = indCounter + 1
+
+    def primeFactors(self, n):
+        i = 2
+        factors = []
+        while i * i <= n:
+            if n % i:
+                i += 1
+            else:
+                n //= i
+                factors.append(i)
+        if n > 1:
+            factors.append(n)
+        return factors
+
+    def commonFactors(self, intList):
+        factorsList = []
+        for curInt in intList:
+            factorsList.append(Counter(self.primeFactors(curInt)))
+        outCounter = factorsList[0]
+        for curI in range(1, len(intList)):
+            outCounter = outCounter & factorsList[curI]
+        return (list(outCounter.elements()))
+
+
+class transform_H_index():
+    """Collected H factors after MPI operation aren't aligned. This operation performs careful reordering of H factors
+    such that the collected factors are aligned"""
+    def __init__(self, grid):
+        self.p_r = grid[0]
+        self.p_c = grid[1]
+
+    def rankidx2blkidx(self):
+        """This is to transform the column index to rank index for H"""
+        f_idx = []
+        for j in range(self.p_c):
+            for i in range(self.p_n):
+                f_idx.append(i * self.p_n + j)
+        return f_idx
+
+    def transform_H_idx(self, rank):
+        """This is to transform H based on new index"""
+        new_idx_list = self.rankidx2blkidx()
+        mod_idx = new_idx_list[rank]
+        return mod_idx
+
+
+def norm(X, comm, norm=2, axis=None, p=-1):
+    """Compute the data norm
+
+    Parameters
+    ----------
+    X : ndarray
+       Data to operate on
+    comm : object
+        MPI communicator object
+    norm : int
+        type of norm to be computed
+    axis : int
+        axis of array for the norm to be computed along
+    p: int
+        Processor count
+
+    Returns
+    ----------
+    norm : float
+        Norm of the given data X
+    """
+    nm = np.linalg.norm(X, ord=norm, axis=axis) ** 2
+    if p != 1:
+        nm = comm.allreduce(nm)
+    return np.sqrt(nm)
+
+
+def str2bool(v):
+    """Returns instance of string parameter to bool type"""
+    if isinstance(v, bool):
+        return v
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
+
+def var_init(clas,var,default):
+    """Checks if class attribute is present and if not, intializes the attribute with given default value"""
+    if not hasattr(clas,var):
+       setattr(clas, var, default)
+    return clas.__getattribute__(var)
+
+
+class parse():
+    """Define a class parse which is used for adding attributes """
+    def __init__(self):
+        pass
+
+class comm_timing(object):
+    """
+    Decorator class for computing timing for MPI operations. The class uses the global
+    variables flag and time initialized in config file and updates them for each call dynamically.
+
+    Parameters
+    ----------
+    flag: bool
+        if Set true, enables the decorator to compute the timings.
+    time: dict
+        Dictionary to store timing for each function calls
+    """
+    def __init__(self):
+        self.flag = config.flag
+        self.time = copy.copy(config.time)
+
+    def __call__(self, original_function):
+        if not self.flag: return original_function
+
+        def wrapper_timer(*args, **kwargs):
+            start_time = MPI.Wtime()  # 1
+            value = original_function(*args, **kwargs)
+            end_time = MPI.Wtime()  # 2
+            run_time = end_time - start_time  # 3
+            self.time[original_function.__name__] = self.time.get(original_function.__name__, 0) + run_time
+            config.time.update(self.time)
+            return value
+
+        return wrapper_timer (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==pyDNMFk.dist_svd:1
+==pyDNMFk.dist_svd:1
+from datetime import datetime
+from math import sqrt
+from random import normalvariate
+
+from .utils import *
+
+
+class DistSVD():
+    r"""
+    Distributed Computation of SVD along 1D distribution of the data. Only U or V is distributed based on data size.
+
+    Parameters:
+        A (ndarray) : Distributed Data
+        args (class): Class which comprises following attributes
+        args.globalm (int): Global row dimensions of A
+        args.globaln (int): Global column dimension of A
+        args.k (int) , optional: Rank for decomposition
+        args.p_r  (int): Cartesian grid row count
+        args.p_c  (int): Cartesian grid column count
+        args.seed (int), optional: Set the random seed
+        args.comm (object): comm object for distributed read
+        args.eps (float) : Epsilon value"""
+
+    @comm_timing()
+    def __init__(self, args, A):
+        super(DistSVD, self).__init__()
+        self.args = args
+        self.globalm = self.args.m  # ['globalm']
+        self.globaln = self.args.n  # ['globaln']
+        # SVD inits
+        self.k = self.args.k if self.args.k else min(self.globalm, self.globaln)
+        self.svdSoFar = []
+
+        # MPI inits
+        self.comm = args.comm  # ['comm']
+        self.rank = self.comm.rank
+        self.p = self.comm.size
+        self.grid_comm = self.comm.cartesian2d
+        self.coords = self.comm.coord2d
+        self.proc_rows = self.args.p_r  # num_row_ranks()
+        self.proc_cols = self.args.p_c
+        if self.globalm > self.globaln:
+            assert self.proc_rows > self.proc_cols, "m>n , ensure p_r>p_c"
+        elif self.globalm < self.globaln:
+            assert self.proc_rows < self.proc_cols, "m<n , ensure p_r<p_c"
+        self.eps = self.args.eps
+        self.A = A
+        self.mat_for_1D = self.A.copy()
+        # seed
+        try: self.seed = self.args.seed
+        except: self.seed = datetime.now().timestamp()
+
+        # precision
+        # self._tensor_type = torch.FloatTensor # For some reason torch.cat doesn't accept double tensors
+
+    @comm_timing()
+    def normalize_by_W(self, Wall, Hall, comm1):
+        """Normalize the factors W and H"""
+        Wall_norm = Wall.sum(axis=0, keepdims=True)
+        if self.proc_rows != 1:
+            Wall_norm = comm1.allreduce(Wall_norm, op=MPI.SUM)
+        Wall_norm += self.eps
+        # temp = np.sqrt(Wall_norm)
+        Wall /= Wall_norm
+        Hall *= Wall_norm.T
+        return Wall, Hall
+
+    @comm_timing()
+    def randomUnitVector(self, d):
+        """
+        Construnct a rondom unit vector
+        """
+        unnormalized = [normalvariate(0, 1) for _ in range(d)]
+        theNorm = sqrt(sum(x * x for x in unnormalized))
+        return np.asarray([x / theNorm for x in unnormalized], dtype='float64')
+
+    @comm_timing()
+    def globalGram(self, X, Y):
+        """Compute the global gram betwee X and Y"""
+        B = X @ Y
+        B = self.grid_comm.allreduce(B)
+        return B
+
+    @comm_timing()
+    def svd1D(self):
+        """
+        One dimensional SVD
+        """
+        buf = self.randomUnitVector(min(self.globalm, self.globaln))
+        self.lastV = None
+        if self.rank == 0: buf += np.zeros(buf.shape)
+        self.grid_comm.Bcast(buf, 0)
+        # self.currV = torch.from_numpy(buf).type(self._tensor_type)
+        self.currV = buf
+        # print("current Vector {}".format(self.currV))
+
+        # self.At = self.mat_for_1D.t() # Transpose current A
+        self.At = self.mat_for_1D.T
+        # print("At rank {} A.t() \n{}".format(self.rank, self.At))
+        if self.globalm >= self.globaln:
+            self.B = self.globalGram(self.At, self.mat_for_1D)
+        else:
+            self.B = self.globalGram(self.mat_for_1D, self.A.T)
+        if self.rank != 0:
+            del self.B
+        b = np.zeros(self.currV.shape)
+        if self.rank == 0:
+            iteration = 0
+            while True:
+                lastV = self.currV
+                self.currV = self.B @ self.currV
+                # self.currV = self.currV / torch.norm(self.currV)
+                self.currV = self.currV / np.linalg.norm(self.currV)
+                r = np.dot(self.currV, lastV)
+                iteration += 1
+                # if abs(r.item()) > 1. - eps:
+                if abs(r.item()) > 1. - self.eps:
+                    # print("Converged in {}".format(iteration))
+                    # b = self.currV.numpy()
+                    b += self.currV
+                    # self.currV = torch.from_numpy(b)
+                    self.currV = b
+                    # return self.currV
+                    break
+        self.grid_comm.Bcast(self.currV, 0)
+
+    @comm_timing()
+    def calc_norm(self, vec):
+        """Compute the norm of vector"""
+        partial_sq_sum = sum(vec * vec)
+        global_sq_sum = self.grid_comm.allreduce(partial_sq_sum)
+        # norm = torch.sqrt(global_sq_sum)
+        norm = np.sqrt(global_sq_sum)
+        return norm
+
+    @comm_timing()
+    def svd(self):
+        """
+        Computes the SVD for a given matrix
+
+        Returns
+        -------
+        singularValues : list
+           List of singular values of length k
+        Us :ndarray
+           Factor Us of shape (m/p_r,k)
+        Vs : ndarray
+           Factor Vs of shape (k,n/p_c)"""
+
+        for i in range(self.k):
+            self.mat_for_1D = self.A.copy()
+
+            for sigma, u, v in self.svdSoFar[:i]:
+                # outer = torch.ger(u, v)
+                outer = np.outer(u, v)
+                self.mat_for_1D -= sigma * (outer)  # Need to fix this
+
+            if self.globalm > self.globaln:
+                self.svd1D()
+                v = self.currV
+                u_unnorm = self.A @ v
+                sig = self.calc_norm(u_unnorm)  # next singular value
+                u = u_unnorm / sig
+            else:
+                self.svd1D()
+                u = self.currV
+                v_unnorm = self.A.T @ u
+                sig = self.calc_norm(v_unnorm)  # next singular value
+                v = v_unnorm / sig
+            # if self.rank==0: print(sig)
+            self.svdSoFar.append([sig, u, v])
+        singularValues, us, vs = [np.asarray(x) for x in zip(*self.svdSoFar)]
+        # if self.rank==0: print("Rank ", self.rank, singularValues, us.shape, vs.shape)
+        return singularValues, us.T, vs
+
+    @comm_timing()
+    def rel_error(self, U, S, V):
+        """Computes the relative error between the reconstructed data with factors vs original data"""
+        X_recon = U @ S @ V
+        err_num = np.sum((self.A - X_recon) ** 2)
+        norm_deno = np.sum(self.A ** 2)
+        err_num = self.grid_comm.allreduce(err_num)
+        norm_deno = self.grid_comm.allreduce(norm_deno)
+        err = np.sqrt(err_num) / np.sqrt(norm_deno)
+        return err
+
+    @comm_timing()
+    def nnsvd(self, flag=1, verbose=1):
+        r"""
+        Computes the distributed Non-Negative SVD(NNSVD) components from the computed SVD factors.
+
+        Parameters
+        ----------
+        flag : bool, optional
+           Computes nnSVD factors with different configurations
+        verbose : bool, optional
+           Verbose to set returned errors. If true returns SVD and NNSVD reconstruction errors.
+
+        Returns
+        -------
+        W :ndarray
+           Non-negative factor W  of shape (m/p_r,k)
+        H : ndarray
+           Non-negative factor H  of shape (k,n/p_c)
+        error : dictionary (optional)
+           Dictinoary of reconstruction error for svd and nnsvd
+        """
+        singularValues, U, V = self.svd()
+        if verbose == 1:
+            recon_err_svd = self.rel_error(U, np.diag(singularValues), V)
+            if self.rank == 0:
+                print('Reconstruction error for SVD is :', recon_err_svd)
+        if flag == 0:
+            S = np.diag(singularValues)
+            W = U
+            H = S @ V
+            W[W < 0] = 0
+            H[H < 0] = 0
+            # return W,H
+
+        elif flag == 1:
+            S = singularValues.copy()
+            U, S, V = U[:, :self.k], S[:self.k], V[:self.k, :]
+            V = V.T
+            UP = np.where(U > 0, U, 0)
+            UN = np.where(U < 0, -U, 0)
+            VP = np.where(V > 0, V, 0)
+            VN = np.where(V < 0, -V, 0)
+
+            UP_norm = np.sum(np.square(UP), 0)
+            UP_norm = np.sqrt(self.grid_comm.allreduce(UP_norm))
+            UN_norm = np.sum(np.square(UN), 0)
+            UN_norm = np.sqrt(self.grid_comm.allreduce(UN_norm))
+            VP_norm = np.sum(np.square(VP), 0)
+            VP_norm = np.sqrt(VP_norm)
+            VN_norm = np.sum(np.square(VN), 0)
+            VN_norm = np.sqrt(VN_norm)
+            if self.globalm > self.globaln:
+                UP_norm, UN_norm = UP_norm / self.p, UN_norm / self.p
+            mp = np.sqrt(UP_norm * VP_norm * S)
+            mn = np.sqrt(UN_norm * VN_norm * S)
+
+            W = np.where(mp > mn, mp * UP / (UP_norm + self.eps), mn * UN / (UN_norm + self.eps))
+            H = np.where(mp > mn, mp * VP / (VP_norm + self.eps), mn * VN / (VN_norm + self.eps)).T
+
+        if verbose == 1:
+            # print(W.shape,H.shape)
+            recon_err_nnsvd = self.rel_error(W, np.eye(self.k), H)
+            if self.rank == 0:
+                print('Reconstruction error for nnSVD is :', recon_err_nnsvd)
+        if verbose == 1:
+            return self.normalize_by_W(W, H, self.grid_comm), {'recon_err_svd': recon_err_svd,
+                                                               'recon_err_nnsvd': recon_err_nnsvd}
+        else:
+            return self.normalize_by_W(W, H, self.grid_comm) (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==pyDNMFk.data_io:1
+==pyDNMFk.data_io:1
+import glob
+import os
+
+import h5py
+import pandas as pd
+from scipy.io import loadmat
+
+from .utils import *
+
+
+class data_read():
+    r"""Class for reading data.
+
+    Parameters:
+        args (class): Class which comprises following attributes
+        fpath (str): Directory path of file to be read
+        pgrid (tuple): Cartesian grid configuration
+        ftype (str): Type of data to read(mat/npy/csv/folder)
+        fname (str): Name of the file to read
+        comm (object): comm object for distributed read
+
+        """
+    @comm_timing()
+    def __init__(self, args):
+
+        self.fpath = args.fpath
+        self.pgrid = [args.p_r, args.p_c]
+        self.ftype = args.ftype
+        self.fname = args.fname
+        self.comm = args.comm1
+        self.rank = self.comm.rank
+        self.data = 0
+        if self.ftype == 'folder':
+            self.file_path = self.fpath + self.fname + str(self.comm.rank) + '.npy'
+        else:
+            self.file_path = self.fpath + self.fname + '.' + self.ftype
+
+    @comm_timing()
+    def read(self):
+        r"""Data read function"""
+        return self.read_dat()
+
+    @comm_timing()
+    def read_file_npy(self):
+        r"""Numpy data read function"""
+        self.data = np.load(self.file_path)
+
+    @comm_timing()
+    def read_file_csv(self):
+        r"""CSV data read function"""
+        self.data = pd.read_csv(self.file_path, header=None).values
+
+    @comm_timing()
+    def read_file_mat(self):
+        r"""mat file read function"""
+        self.data = loadmat(self.file_path)['X']
+
+    @comm_timing()
+    def data_partition(
+            self):
+        r"""
+        This function divides the input matrix into chunks as specified by grid configuration.
+
+        Return n array of shape (nrows_i, ncols_i) where i is the index of each chunk.
+        \Sum_i^n ( nrows_i * ncols_i )  = arr.size
+
+        If arr is a 2D array, the returned array should look like n subblocks with
+        each subblock preserving the "physical" layout of arr.
+        """
+        dtr_blk_shp = determine_block_params(self.rank, self.pgrid, self.data.shape)
+        blk_indices = dtr_blk_shp.determine_block_index_range_asymm()
+        self.data = self.data[blk_indices[0][0]:blk_indices[1][0] + 1, blk_indices[0][1]:blk_indices[1][1] + 1]
+
+    @comm_timing()
+    def save_data_to_file(self, fpath):
+        r"""This function saves the splitted data to numpy array indexed with chunk number"""
+        fname = fpath + 'A_' + self.comm.rank + '.npy'
+        np.save(fname, self.data)
+
+    @comm_timing()
+    def read_dat(self):
+        r"""Function for reading the data and split into  chunks to be reach by each MPI rank"""
+        if self.ftype == 'npy':
+            self.read_file_npy()
+            self.data_partition()
+        elif self.ftype == 'csv' or self.ftype == 'txt':
+            self.read_file_csv()
+            self.data_partition()
+        elif self.ftype == 'mat':
+            self.read_file_mat()
+            self.data_partition()
+        if self.ftype == 'folder':
+            self.read_file_npy()
+        return self.data
+
+
+class split_files_save():
+    r"""Rank 0 based data read, split and save"""
+
+    @comm_timing()
+    def __init__(self, data, pgrid, fpath):
+        self.data = data
+        self.pgrid = pgrid
+        self.p_r = pgrid[0]
+        self.p_c = pgrid[1]
+        self.fpath = fpath
+
+    @comm_timing()
+    def split_files(self):
+        r"""Compute the index range for each block and partition the data as per the chunk"""
+        dtr_blk_idx = [determine_block_params(rank, self.pgrid, self.data.shape).determine_block_index_range_asymm() for
+                       rank in range(np.product(self.pgrid))]
+        self.split = [self.data[i[0][0]:i[1][0] + 1, i[0][1]:i[1][1] + 1] for i in dtr_blk_idx]
+
+    @comm_timing()
+    def save_data_to_file(self):
+        r"""Function to save the chunks into numpy files"""
+        s = 0
+        self.split = self.split_files()
+        for i in range(self.p_r * self.p_c):
+            name = 'A_' + str(s) + '.npy'
+            fname = self.fpath + name
+            arr = self.split[s - 1]
+            np.save(fname, self.data)
+            s += 1
+
+
+class data_write():
+    r"""Class for writing data/results.
+
+    Parameters:
+        args (class): class which comprises following attributes
+        results_path (str): Directory path of file to write
+        pgrid (tuple): Cartesian grid configuration
+        ftype (str): Type of data to read(mat/npy/csv/folder)
+        comm (object): comm object for distributed read
+
+        """
+    @comm_timing()
+    def __init__(self, args):
+
+        self.p_r, self.p_c = args.p_r, args.p_c
+        self.pgrid = [self.p_r, self.p_c]
+        self.ftype = args.ftype
+        self.comm = args.comm1
+        self.params = args
+        self.fpath = self.params.results_paths
+        self.rank = self.comm.rank
+
+    @comm_timing()
+    def create_folder_dir(self, fpath):
+        r"""Create directory if not present"""
+        try:
+            os.mkdir(fpath)
+        except:
+            pass
+
+    @comm_timing()
+    def save_factors(self, factors, reg=False):
+        r"""Save the W and H factors for each MPI process"""
+        self.create_folder_dir(self.fpath)
+        if reg == True:
+            W_factors_pth = self.fpath + 'W_reg_factors/'
+            H_factors_pth = self.fpath + 'H_reg_factors/'
+        else:
+            W_factors_pth = self.fpath + 'W_factors/'
+            H_factors_pth = self.fpath + 'H_factors/'
+        self.create_folder_dir(W_factors_pth)
+        self.create_folder_dir(H_factors_pth)
+        if self.p_r == 1 and self.p_c != 1:
+            if self.rank == 0:
+                np.save(W_factors_pth + 'W.npy', factors[0])
+            np.save(H_factors_pth + 'H_' + str(self.rank) + '.npy', factors[1])
+        elif self.p_c == 1 and self.p_r != 1:  # Saving results for each K
+            if self.rank == 0:
+                np.save(H_factors_pth + 'H.npy', factors[1])
+            np.save(W_factors_pth + 'W_' + str(self.rank) + '.npy', factors[0])
+        else:
+            np.save(H_factors_pth + 'H_' + str(self.rank) + '.npy', factors[1])
+            np.save(W_factors_pth + 'W_' + str(self.rank) + '.npy', factors[0])
+
+    @comm_timing()
+    def save_cluster_results(self, params):
+        r"""Save cluster results to a h5 file with rank 0"""
+        if self.rank == 0:
+            with h5py.File(self.fpath + 'results.h5', 'w') as hf:
+                hf.create_dataset('clusterSilhouetteCoefficients', data=params['clusterSilhouetteCoefficients'])
+                hf.create_dataset('avgSilhouetteCoefficients', data=params['avgSilhouetteCoefficients'])
+                hf.create_dataset('L_err', data=params['L_err'])
+                hf.create_dataset('L_errDist', data=params['L_errDist'])
+                hf.create_dataset('avgErr', data=params['avgErr'])
+                hf.create_dataset('ErrTol', data=params['recon_err'])
+
+
+class read_factors():
+    r"""Class for reading saved factors.
+
+    Args:
+        factors_path (str): Directory path of factors to read from
+        pgrid (tuple): Cartesian grid configuration
+
+        """
+    @comm_timing()
+    def __init__(self, factors_path, pgrid):
+        self.factors_path = factors_path
+        self.W_path = self.factors_path + 'W/*'
+        self.H_path = self.factors_path + 'H/*'
+        self.p_grid = pgrid
+        self.load_factors()
+
+    @comm_timing()
+    def custom_read_npy(self, fpath):
+        r"""Read numpy files"""
+        data = np.load(fpath)
+        return data
+
+    @comm_timing()
+    def read_factor(self, fpath):
+        """Read factors as chunks and stack them"""
+        files = glob.glob(fpath)
+        data = []
+        if len(files) == 1:
+            data = self.custom_read_npy(files)
+        else:
+            for file in np.sort(files):
+                data.append(self.custom_read_npy(file))
+        return data, len(files)
+
+    @comm_timing()
+    def load_factors(self):
+        r"""Load the final stacked factors for visualization"""
+        W_data, ct_W = self.read_factor(self.W_path)
+        H_data, ct_H = self.read_factor(self.H_path)
+        if ct_W > 1: W_data = np.vstack((W_data))
+        if ct_H > 1:
+            if ct_W > 1:
+                H_idxs = transform_H_index(self.p_grid).rankidx2blkidx()
+                H_data = np.hstack(([H_data[i] for i in H_idxs]))
+            else:
+                H_data = np.hstack((H_data))
+        return W_data, H_data (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==pyDNMFk.pyDNMFk:1
+==pyDNMFk.pyDNMFk:1
+from scipy.stats import wilcoxon
+from . import config
+from .dist_clustering import *
+from .pyDNMF import *
+from .plot_results import *
+
+class sample():
+    """
+    Generates perturbed version of data based on sampling distribution.
+
+    Args:
+        data (ndarray, sparse matrix): Array of which to find a perturbation.
+        noise_var (float): The perturbation amount.
+        method (str) : Method for sampling (uniform/poisson)
+        seed (float),optional : Set seed for random data generation
+    """
+
+
+    @comm_timing()
+    def __init__(self, data, noise_var, method, seed=None):
+
+        self.X = data
+        self.noise_var = noise_var
+        self.seed = seed
+        if self.seed != None:
+            np.random.seed(self.seed)
+        self.method = method
+        self.X_per = 0
+
+    @comm_timing()
+    def randM(self):
+        """
+        Multiplies each element of X by a uniform random number in (1-epsilon, 1+epsilon).
+        """
+
+        M = 2 * self.noise_var * np.random.random_sample(self.X.shape).astype(self.X.dtype) + self.noise_var
+        M = M + 1
+        self.X_per = np.multiply(self.X, M)
+
+    @comm_timing()
+    def poisson(self):
+        """Resamples each element of a matrix from a Poisson distribution with the mean set by that element. Y_{i,j} = Poisson(X_{i,j}"""
+
+        self.X_per = np.random.poisson(self.X).astype(self.X.dtype)
+
+    @comm_timing()
+    def fit(self):
+        r"""
+        Calls the sub routines to perform resampling on data
+
+        Returns
+        -------
+        X_per : ndarry
+           Perturbed version of data
+        """
+
+        if self.method == 'uniform':
+            self.randM()
+        elif self.method == 'poisson':
+            self.poisson()
+        return self.X_per
+
+
+class PyNMFk():
+    r"""
+    Performs the distributed NMF decomposition with custom clustering for estimating hidden factors k
+
+    Parameters:
+        A_ij (ndarray) : Distributed Data
+        factors (tuple), optional : Distributed factors W and H
+        params (class): Class which comprises following attributes
+        params.init (str) : NMF initialization(rand/nnsvd)
+        params.comm1 (object): Global Communicator
+        params.comm (object): Modified communicator object
+        params.k (int) : Rank for decomposition
+        params.m (int) : Global dimensions m
+        params.n (int) : Global dimensions n
+        params.p_r  (int): Cartesian grid row count
+        params.p_c  (int): Cartesian grid column count
+        params.row_comm (object) : Sub communicator along row
+        params.col_comm (object) : Sub communicator along columns
+        params.W_update (bool) : flag to set W update True/False
+        params.norm (str): NMF norm to be minimized
+        params.method(str): NMF optimization method
+        params.eps (float) : Epsilon value
+        params.verbose (bool) : Flag to enable/disable display results
+        params.save_factors (bool) : Flag to enable/disable saving computed factors
+        params.perturbations (int) : Number of Perturbations for clustering
+        params.noise_var (float) : Set noise variance for perturbing the data
+        params.sill_thr (float) : Set the sillhouette threshold for estimating K with p-test
+        params.start_k (int) : Starting range for Feature search K
+        params.end_k (int) : Ending range for Feature search K"""
+
+    @comm_timing()
+    def __init__(self, A_ij, factors=None, params=None):
+        self.A_ij = A_ij
+        self.local_m, self.local_n = self.A_ij.shape
+        self.params = params
+        self.comm1 = self.params.comm1
+        self.rank = self.comm1.rank
+        self.p_r, self.p_c = self.params.p_r, self.params.p_c
+        self.fpath = self.params.fpath
+        self.fname = self.params.fname
+        self.p = self.p_r * self.p_c
+        if self.p_r != 1 and self.p_c != 1:
+            self.topo = '2d'
+        else:
+            self.topo = '1d'
+        self.sampling = var_init(self.params,'sampling',default='uniform')
+        self.perturbations = var_init(self.params,'perturbations',default=20)
+        self.noise_var = var_init(self.params,'noise_var',default=.03)
+        self.Hall = 0
+        self.Wall = 0
+        self.recon_err = 0
+        self.AvgH = 0
+        self.AvgG = 0
+        self.col_err = 0
+        self.clusterSilhouetteCoefficients, self.avgSilhouetteCoefficients = 0, 0
+        self.L_errDist = 0
+        self.avgErr = 0
+        self.start_k = self.params.start_k  # ['start_k']
+        self.end_k = self.params.end_k  # ['end_k']
+        self.sill_thr = var_init(params,'sill_thr',default=0.9)
+        self.verbose = var_init(params,'verbose',default=False)
+
+
+    @comm_timing()
+    def fit(self):
+        r"""
+        Calls the sub routines to perform distributed NMF decomposition and then custom clustering to estimate k
+
+        Returns
+        -------
+        nopt : int
+           Estimated value of latent features
+        """
+        SILL_MIN = []
+        errRegres = []
+        errRegresTol = []
+        RECON = []
+        RECON1 = []
+        self.params.results_path = self.params.results_path + self.params.fname + '/'
+        if self.rank == 0:
+            try: os.makedirs(self.params.results_paths)
+            except: pass
+        for self.k in range(self.start_k, self.end_k + 1):
+            self.params.k = self.k
+            self.pynmfk_per_k()
+            SILL_MIN.append(round(np.min(self.clusterSilhouetteCoefficients), 2))
+            errRegres.append([self.col_err])
+            errRegresTol.append([self.recon_err])
+            RECON.append(self.L_errDist)
+            RECON1.append(self.avgErr)
+        if self.rank == 0:
+            nopt1, pvalue1 = self.pvalueAnalysis(errRegres, SILL_MIN)
+            print('Rank estimated by NMFk = ', nopt1)
+            plot_results(self.start_k, self.end_k, RECON, RECON1, SILL_MIN, self.params.results_path, self.fname)
+        else:
+            nopt1 = None
+        nopt1 = self.comm1.bcast(nopt1, root=0)
+        self.comm1.barrier()
+        return nopt1
+
+    @comm_timing()
+    def pynmfk_per_k(self):
+        """Performs NMF decomposition and clustering for each k to estimate silhouette statistics"""
+        self.params.results_paths = self.params.results_path+ str(self.k) + '/'
+        if self.rank == 0:
+            try: os.makedirs(self.params.results_paths)
+            except: pass
+        results = []
+        if self.rank == 0: print('*************Computing for k=', self.k, '************')
+        for i in range(self.perturbations):
+            if self.rank == 0: print('Current perturbation =', i)
+            data = sample(data=self.A_ij, noise_var=self.noise_var, method=self.sampling, seed=i * 1000).fit()
+            self.params.W_update = True
+            results.append(PyNMF(data, factors=None, params=self.params).fit())
+        self.Wall = np.hstack(([results[i][0] for i in range(self.perturbations)]))
+        self.Wall = self.Wall.reshape(self.Wall.shape[0], self.k, self.perturbations, order='F')
+        self.Hall = np.vstack(([results[i][1] for i in range(self.perturbations)]))
+        self.Hall = self.Hall.reshape(self.k, self.Hall.shape[1], self.perturbations)
+        self.recon_err = [results[i][2] for i in range(self.perturbations)]
+        [processAvg, processSTD, self.Hall, self.clusterSilhouetteCoefficients, self.avgSilhouetteCoefficients,
+         idx] = custom_clustering(self.Wall, self.Hall, self.params).fit()
+        self.AvgH = np.median(self.Hall, axis=-1)
+        self.AvgW = processAvg
+        self.params.W_update = False
+        regressH = PyNMF(self.A_ij, factors=[self.AvgW, self.AvgH], params=self.params)
+        self.AvgW, self.AvgH, self.L_errDist = regressH.fit()
+        self.col_err = regressH.column_err()
+        self.avgErr = np.mean(self.recon_err)
+        cluster_stats = {'clusterSilhouetteCoefficients': self.clusterSilhouetteCoefficients,
+                         'avgSilhouetteCoefficients': self.avgSilhouetteCoefficients, 'L_errDist': self.L_errDist, \
+                         'L_err': self.col_err, 'avgErr': self.avgErr, 'recon_err': self.recon_err}
+        data_writer = data_write(self.params)
+        data_writer.save_factors([self.AvgW, self.AvgH], reg=True)
+        data_writer.save_cluster_results(cluster_stats)
+
+    @comm_timing()
+    def pvalueAnalysis(self, errRegres, SILL_MIN):
+        """
+        Calculates nopt by analysing the errors distributions
+
+        Parameters
+        ----------
+        errRegres : array
+             array for storing the distributions of errors
+        SILL_MIN : float
+            Minimum of silhouette score
+        """
+        pvalue = np.ones(self.end_k - self.start_k + 1)
+        oneDistrErr = errRegres[0][0];
+        i = 1
+        i_old = 0
+        nopt = 1
+
+        while i < (self.end_k - self.start_k + 1):
+            i_next = i
+            if SILL_MIN[i - 1] > self.sill_thr:  # 0.75:
+                pvalue[i] = wilcoxon(oneDistrErr, errRegres[i][0])[1]
+                if pvalue[i] < 0.05:
+                    i_old = i
+                    nopt = i
+                    oneDistrErr = np.copy(errRegres[i][0])
+                    i = i + 1
+                else:
+                    i = i + 1
+            else:
+                i = i + 1
+        # print('nopt=', nopt)
+        return nopt + self.start_k - 1, pvalue (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==pyDNMFk.pyDNMF:2
+==pyDNMFk.pyDNMF:2
+from .data_io import *
+from .dist_nmf import *
+from .dist_svd import *
+from .utils import *
+
+
+class PyNMF():
+    r"""
+    Performs the distributed NMF decomposition of given matrix X into factors W and H
+
+    Parameters:
+        A_ij (ndarray) : Distributed Data
+        factors (tuple), optional : Distributed factors W and H
+        params (class): Class which comprises following attributes
+        params.init (str) : NMF initialization(rand/nnsvd)
+        params.comm1 (object): Global Communicator
+        params.comm (object): Modified communicator object
+        params.k (int) : Rank for decomposition
+        params.m (int) : Global dimensions m
+        params.n (int) : Global dimensions n
+        params.p_r  (int): Cartesian grid row count
+        params.p_c  (int): Cartesian grid column count
+        params.row_comm (object) : Sub communicator along row
+        params.col_comm (object) : Sub communicator along columns
+        params.W_update (bool) : flag to set W update True/False
+        params.norm (str): NMF norm to be minimized
+        params.method(str): NMF optimization method
+        params.eps (float) : Epsilon value
+        params.verbose(bool) : Flag to enable/disable display results
+        params.save_factors(bool) : Flag to enable/disable saving computed factors"""
+
+    @comm_timing()
+    def __init__(self, A_ij, factors=None, save_factors=False, params=None):
+        self.A_ij = A_ij
+        self.params = params
+        self.m_loc, self.n_loc = self.A_ij.shape
+        self.init = self.params.init if self.params.init else 'rand'
+        self.p_r, self.p_c, self.k = self.params.p_r, self.params.p_c, self.params.k  # params['m'], params['n'], params['p_r'], params['p_c'], params['k']
+        self.comm1 = self.params.comm1  # params['comm1']
+        self.cart_1d_row, self.cart_1d_column, self.comm = self.params.row_comm, self.params.col_comm, self.params.comm  # params['row_comm'],params['col_comm'],params['main_comm']
+        self.verbose = self.params.verbose if self.params.verbose else False
+        self.rank = self.comm1.rank
+        self.eps = np.finfo(A_ij.dtype).eps
+        self.params.eps = self.eps
+        self.norm = var_init(self.params,'norm',default='kl')
+        self.method = var_init(self.params,'method',default='mu')
+        self.save_factors = save_factors
+        self.params.itr = var_init(self.params,'itr',default=5000)
+        self.itr = self.params.itr
+        try:
+            self.W_update = self.params.W_update
+        except:
+            self.params.W_update = True
+        self.p = self.p_r * self.p_c
+        if self.p_r != 1 and self.p_c != 1:
+            self.topo = '2d'
+        else:
+            self.topo = '1d'
+        self.compute_global_dim()
+        if factors is not None:
+            if self.topo == '1d':
+                self.W_i = factors[0].astype(self.A_ij.dtype)
+                self.H_j = factors[1].astype(self.A_ij.dtype)
+            elif self.topo == '2d':
+                self.W_ij = factors[0].astype(self.A_ij.dtype)
+                self.H_ij = factors[1].astype(self.A_ij.dtype)
+        else:
+            self.init_factors()
+
+
+    @comm_timing()
+    def compute_global_dim(self):
+        """Computes global dimensions m and n from given chunk sizes for any grid configuration"""
+        self.loc_m, self.loc_n = self.A_ij.shape
+        if self.p_r != 1 and self.p_c == 1:
+            self.params.n = self.loc_n
+            self.params.m = self.comm1.allreduce(self.loc_m)
+        elif self.p_c != 1 and self.p_r == 1:
+            self.params.n = self.comm1.allreduce(self.loc_n)
+            self.params.m = self.loc_m
+        else:
+            if self.rank % self.p_c == 0:
+                self.params.m = self.loc_m
+            else:
+                self.params.m = 0
+            self.params.m = self.comm1.allreduce(self.params.m)
+            if self.rank // self.p_c == 0:
+                self.params.n = self.loc_n
+            else:
+                self.params.n = 0
+            self.params.n = self.comm1.allreduce(self.params.n)
+        self.comm1.barrier()
+        # if self.rank == 0: print('Data dimensions=(', self.params.m, self.params.n, ')')
+
+    @comm_timing()
+    def init_factors(self):
+        """Initializes NMF factors with rand/nnsvd method"""
+
+        if self.init == 'rand':
+            if self.topo == '2d':
+                dtr_blk_m = determine_block_params(self.cart_1d_column, (self.p_c, 1), (self.A_ij.shape[0], self.k))
+                m_loc = dtr_blk_m.determine_block_shape_asymm()[0]
+                dtr_blk_n = determine_block_params(self.cart_1d_row, (1, self.p_r), (self.k, self.A_ij.shape[1]))
+                n_loc = dtr_blk_n.determine_block_shape_asymm()[1]
+                self.W_ij = np.random.rand(m_loc, self.k).astype(self.A_ij.dtype)
+                self.H_ij = np.random.rand(self.k, n_loc).astype(self.A_ij.dtype)
+            elif self.topo == '1d':
+                if self.p_c == 1:
+                    self.W_i = np.random.rand(self.m_loc, self.k).astype(self.A_ij.dtype)
+                    if self.rank == 0:
+                        self.H_j = np.random.rand(self.k, self.n_loc).astype(self.A_ij.dtype)
+                    else:
+                        self.H_j = None
+                    self.H_j = self.comm1.bcast(self.H_j, root=0)
+
+                elif self.p_r == 1:
+                    self.H_j = np.random.rand(self.k, self.n_loc).astype(self.A_ij.dtype)
+                    if self.rank == 0:
+                        self.W_i = np.random.rand(self.m_loc, self.k).astype(self.A_ij.dtype)
+                    else:
+                        self.W_i = None
+                    self.W_i = self.comm1.bcast(self.W_i, root=0)
+        elif self.init == 'nnsvd':
+            if self.topo == '1d':
+                dsvd = DistSVD(self.params, self.A_ij)
+                self.W_i, self.H_j = dsvd.nnsvd(flag=1, verbose=0)
+            elif self.topo == '2d':
+                raise Exception('NNSVD init only available for 1D topology, please try with 1d topo.')
+
+    @comm_timing()
+    def fit(self):
+        r"""
+        Calls the sub routines to perform distributed NMF decomposition with initialization for a given norm minimization and update method
+
+        Returns
+        -------
+        W_i : ndarray
+            Factor W of shape m/p_r * k
+        H_j : ndarray
+           Factor H of shape k * n/p_c
+        recon_err : float
+            Reconstruction error for NMF decomposition
+        """
+        for i in range(self.itr):
+            if self.method.lower() == 'bcd': i = self.itr - 1
+            if self.topo == '2d':
+                self.W_ij, self.H_ij = nmf_algorithms_2D(self.A_ij, self.W_ij, self.H_ij, params=self.params).update()
+                if i % 10 == 0:
+                    self.H_ij = np.maximum(self.H_ij, self.eps)
+                    self.W_ij = np.maximum(self.W_ij, self.eps)
+                if i == self.itr - 1:
+                    self.W_ij, self.H_ij = self.normalize_features(self.W_ij, self.H_ij)
+                    self.relative_err()
+                    if self.verbose == True:
+                        if self.rank == 0: print('relative error is:', self.recon_err)
+                    if self.save_factors:
+                        data_write(self.params).save_factors([self.W_ij, self.H_ij])
+                    self.comm.Free()
+                    return self.W_ij, self.H_ij, self.recon_err
+            elif self.topo == '1d':
+                self.W_i, self.H_j = nmf_algorithms_1D(self.A_ij, self.W_i, self.H_j, params=self.params).update()
+                if i % 10 == 0:
+                    self.H_j = np.maximum(self.H_j, self.eps)
+                    self.W_i = np.maximum(self.W_i, self.eps)
+                if i == self.itr - 1:
+                    self.W_i, self.H_j = self.normalize_features(self.W_i, self.H_j)
+                    self.relative_err()
+                    if self.verbose == True:
+                        if self.rank == 0: print('\nrelative error is:', self.recon_err)
+                    if self.save_factors:
+                        data_write(self.params).save_factors([self.W_i, self.H_j])
+                    return self.W_i, self.H_j, self.recon_err
+
+    @comm_timing()
+    def normalize_features(self, Wall, Hall):
+        """Normalizes features Wall and Hall"""
+        Wall_norm = Wall.sum(axis=0, keepdims=True) + self.eps
+        if self.topo == '2d':
+            Wall_norm = self.comm1.allreduce(Wall_norm, op=MPI.SUM)
+        elif self.topo == '1d':
+            if self.p_r != 1: Wall_norm = self.comm1.allreduce(Wall_norm, op=MPI.SUM)
+        Wall /= Wall_norm
+        Hall *= Wall_norm.T
+        return Wall, Hall
+
+    @comm_timing()
+    def cart_2d_collect_factors(self):
+        """Collects factors along each sub communicators"""
+        self.H_j = self.cart_1d_row.allgather(self.H_ij)
+        self.H_j = np.hstack((self.H_j))
+        self.W_i = self.cart_1d_column.allgather(self.W_ij)
+        self.W_i = np.vstack((self.W_i))
+
+    @comm_timing()
+    def relative_err(self):
+        """Computes the relative error for NMF decomposition"""
+        if self.topo == '2d': self.cart_2d_collect_factors()
+        self.glob_norm_err = self.dist_norm(self.A_ij - self.W_i @ self.H_j)
+        self.glob_norm_A = self.dist_norm(self.A_ij)
+        self.recon_err = self.glob_norm_err / self.glob_norm_A
+
+    @comm_timing()
+    def dist_norm(self, X, proc=-1, norm='fro', axis=None):
+        """Computes the distributed norm"""
+        nm = np.linalg.norm(X, axis=axis, ord=norm)
+        if proc != 1:
+            nm = self.comm1.allreduce(nm ** 2)
+        return np.sqrt(nm)
+
+    @comm_timing()
+    def column_err(self):
+        """Computes the distributed column wise norm"""
+        dtr_blk = determine_block_params(self.comm1, (self.p_r, self.p_c), (self.params.m, self.params.n))
+        dtr_blk_idx = dtr_blk.determine_block_index_range_asymm()
+        dtr_blk_shp = dtr_blk.determine_block_shape_asymm()
+        col_err_num = np.zeros(self.params.n)
+        col_err_deno = np.zeros(self.params.n)
+        L_errDist_num = np.zeros(self.n_loc)
+        L_errDist_deno = np.zeros(self.n_loc)
+        Arecon = self.W_i @ self.H_j
+        for q in range(self.A_ij.shape[1]):
+            L_errDist_num[q] = np.sum((self.A_ij[:, q] - Arecon[:, q]) ** 2)
+            L_errDist_deno[q] = np.sum(self.A_ij[:, q] ** 2)
+        col_err_num[dtr_blk_idx[0][1]:dtr_blk_idx[0][1] + dtr_blk_shp[1]] = L_errDist_num
+        col_err_deno[dtr_blk_idx[0][1]:dtr_blk_idx[0][1] + dtr_blk_shp[1]] = L_errDist_deno
+        col_err_num = self.comm1.allreduce(col_err_num)
+        col_err_deno = self.comm1.allreduce(col_err_deno)
+        col_err = np.sqrt(col_err_num / col_err_deno)
+        return col_err (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==pyDNMFk.plot_results:1
+==pyDNMFk.plot_results:1
+import matplotlib
+from matplotlib import pyplot as plt
+from .data_io import *
+
+
+def plot_err(err):
+    """Plots the relative error for NMF decomposition as a function of number of iterations"""
+    idx = np.linspace(1, len(err), len(err))
+    plt.plot(idx, err)
+    plt.xlabel('Iterations')
+    plt.ylabel('Relative error')
+    plt.title('Relative error vs Iterations')
+    plt.savefig('Error_plot.png')
+    plt.show()
+
+
+def read_plot_factors(factors_path, pgrid):
+    """Reads the factors W and H and Plots them"""
+    W, H = read_factors(factors_path, pgrid)
+    plot_W(W)
+    plt.savefig(factors_path + 'W.png')
+    plot_W(H.T)
+    plt.savefig(factors_path + 'H.png')
+
+
+def plot_W(W):
+    """Reads a factor and plots into subplots for each component"""
+    m, k = W.shape
+
+    params = {'legend.fontsize': 60,
+              'axes.labelsize': 60,
+              'axes.titlesize': 60,
+              'xtick.labelsize': 60,
+              'mathtext.fontset': 'cm',
+              'mathtext.rm': 'serif',
+              "xtick.bottom": False,
+              "ytick.left": False,
+              }
+    matplotlib.rcParams.update(params)
+
+    f, axes = plt.subplots(nrows=k, sharex=True, figsize=(60, 40))
+
+    plt.subplots_adjust(hspace=0.001, bottom=0.2)
+
+    # colors=["blue", "red"]
+    colors = plt.rcParams["axes.prop_cycle"]()
+    W = W.T
+    for i in range(k):
+        c = next(colors)["color"]
+        axes[i].plot(W[i], label="W[{}]".format(i), color=c, linewidth=5.0)
+        axes[i].legend(loc=4, prop={'size': 50})
+        axes[i].tick_params(axis="y", labelsize=30)
+
+    plt.xlabel('Features')
+
+    # create subplot just for placing the ylabel centered on all plots
+    shadowaxes = f.add_subplot(111, xticks=[], yticks=[], frame_on=False)
+    shadowaxes.set_ylabel('W Components')
+    shadowaxes.yaxis.set_label_coords(-0.05, 0.5)
+    plt.savefig('Results_W.png', bbox_inches='tight')
+    plt.show()
+
+
+def plot_results(startProcess, endProcess, RECON, RECON1, SILL_MIN, out_put, name):
+    """Plots the relative error and Silhouette results for estimation of k"""
+    ######################################## Plotting ####################################################
+    t = range(startProcess, endProcess + 1)
+    fig, ax1 = plt.subplots(num=None, figsize=(10, 6), dpi=300, facecolor='w', edgecolor='k')
+    title = 'Num'
+    color = 'tab:red'
+    ax1.set_xlabel('Total Signatures')
+    ax1.set_ylabel('Mean L2 %', color=color)
+    ax1.set_title(title)
+    lns1 = ax1.plot(t, RECON, marker='o', linestyle=':', color=color, label='Mean L2 %')
+    lns3 = ax1.plot(t, RECON1, marker='X', linestyle=':', color='tab:green', label="Relative error %")
+
+    ax1.tick_params(axis='y', labelcolor=color)
+    ax1.xaxis.set_ticks(np.arange(min(t), max(t) + 1, 1))
+    # ax1.axvspan(shadow_start, shadow_end, alpha=0.20, color='#ADD8E6')
+    # ax1.axvspan(shadow_alternative_start,  shadow_alternative_end, alpha=0.20, color='#696969')
+    # manipulate the y-axis values into percentage
+    vals = ax1.get_yticks()
+    ax1.set_yticklabels(['{:,.0%}'.format(x) for x in vals])
+
+    # ax1.legend(loc=0)
+
+    ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+    color = 'tab:blue'
+    ax2.set_ylabel('Minimum Stability', color=color)  # we already handled the x-label with ax1
+    lns2 = ax2.plot(t, SILL_MIN, marker='s', linestyle="-.", color=color, label='Minimum Stability')
+    ax2.tick_params(axis='y', labelcolor=color)
+    # ax2.legend(loc=1)
+    fig.tight_layout()  # otherwise the right y-label is slightly clipped
+    # plt.show()
+
+    # added these three lines
+    lns = lns1 + lns2 + lns3
+    labs = [l.get_label() for l in lns]
+    ax1.legend(lns, labs, loc=0)
+
+    plt.savefig(out_put + '/' + name + '_selection_plot.pdf')
+
+    plt.close()
+
+
+def box_plot(dat, respath):
+    """Plots the boxplot from the given data and saves the results"""
+    dat.plot.bar()
+    plt.xlabel('operation')
+    plt.ylabel('timing(sec)')
+    plt.savefig(respath + 'timing.png')
+
+    # plt.show()
+
+
+def timing_stats(fpath):
+    """Reads the timing stats dictionary from the stored file and parses the data. """
+    import copy
+    data = pd.read_csv(fpath).iloc[0, 1:]
+    breakdown_level_2 = {'init': ['__init__', 'init_factors'],
+                         'data_io': ['read', 'create_folder_dir', 'save_factors', 'save_cluster_results'],
+                         'sample': ['randM'], 'dist_compute': ['compute_global_dim', \
+                                                               'global_gram', 'AH_glob', 'ATW_glob',
+                                                               'normalize_features', 'dist_norm', 'relative_err',
+                                                               'sum_axis', 'UHT_glob', 'WTU_glob'],
+                         'dist_comm': ['cart_2d_collect_factors', 'gather_W_H'], \
+                         'clustering': ['normalize_by_W', 'greedy_lsa', 'change_order', 'dist_feature_ordering', 'mad',
+                                        'dist_silhouettes', 'column_err', 'pvalueAnalysis']}
+    breakdown_level_1 = {'init': 'init_factors', 'dist_io': ['read', 'save_factors', 'save_cluster_results'],
+                         'sampling': 'randM',
+                         'clustering': ['dist_custom_clustering', 'mad', 'dist_silhouettes', 'pvalueAnalysis'],
+                         'compute': 'fit'}
+    results = {}
+
+    ''''Data parsing'''
+    breakdown_level_1_dat = copy.deepcopy(breakdown_level_1)
+    breakdown_level_2_dat = copy.deepcopy(breakdown_level_2)
+
+    for key, val in data.to_dict().items():
+        for keys, vals in breakdown_level_1.items():
+            try:
+                if type(vals) == str:  # Only one val
+                    if vals == key:
+                        breakdown_level_1_dat[keys] = val
+                else:  # Multiple val
+                    idx = [key == v for v in vals].index(1)
+                    breakdown_level_1_dat[keys][idx] = val
+            except:
+                continue
+        for keys, vals in breakdown_level_2.items():
+            try:
+                if type(vals) == str:
+                    if vals == key:
+                        breakdown_level_2_dat[keys] = val
+                else:
+                    idx = [key == v for v in vals].index(1)
+                    breakdown_level_2_dat[keys][idx] = val
+            except:
+                continue
+    return breakdown_level_1_dat, breakdown_level_2_dat
+
+
+def plot_timing_stats(fpath, respath):
+    ''' Plots the timing stats for the MPI operation.
+    fpath: Stats data path
+    respath: Path to save graph'''
+    res1, res2 = timing_stats(fpath)
+    # print('res1',res1)
+    for i, j in res1.items():
+        if type(j) == float:
+            res1[i] = [j]
+    tmp = dict([(i, sum(j)) for i, j in res1.items()])
+    box_plot(pd.DataFrame([tmp]).loc[0, :], respath) (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==pyDNMFk.data_generator:1
+==pyDNMFk.data_generator:1
+import argparse
+import os
+
+import numpy as np
+from mpi4py import MPI
+
+
+def parser():
+    r"""
+    Reads the input arguments from the user and parses the parameters to the data generator module.
+    """
+    parser = argparse.ArgumentParser(description='Data generator arguments')
+    parser.add_argument('--p_r', type=int, help='Now of row processors')
+    parser.add_argument('--p_c', type=int, help='Now of column processors')
+    parser.add_argument('--m', type=int, help='Global m')
+    parser.add_argument('--n', type=int, help='Global n')
+    parser.add_argument('--k', type=int, help='factors')
+    parser.add_argument('--fpath', default='../Data/tmp/', type=str, help='data path to store(eg: tmp/)')
+    args = parser.parse_args()
+    return args
+
+
+class data_generator():
+    r"""
+    Generates synthetic data in distributed manner where each MPI process generates a chunk from the data parallelly.
+    The W matrix is generated with gaussian distribution whereas the H matrix is random.
+
+    Parameters:
+        args (class): Class which comprises following attributes
+        fpath (str): Directory path of file to be stored
+        p_r (int): Count of row processor in the cartesian grid
+        p_c (int): Count of column processor in the cartesian grid
+        m (int):  row dimension of the data
+        n (int):  Column dimension of the data
+        k (int): Feature count
+
+    """
+    def __init__(self, args):
+
+        self.rank = args.rank
+        self.pgrid = [args.p_r, args.p_c]
+        self.shape = [args.m, args.n]
+        self.p_r = args.p_r
+        self.p_c = args.p_c
+        self.m = args.m
+        self.n = args.n
+        self.fpath = args.fpath
+        self.k = args.k
+        # self.factor = k
+
+    def gauss_matrix_generator(self, n, k):
+        r"""
+        Construct a matrix of dimensions n by k where the ith column is a Gaussian kernel corresponding to approximately N(i*n/k, 0.01*n^2)
+
+        Parameters
+        ----------
+          n : int
+            the ambient space dimension
+          k :int
+            the latent space diemnsion
+
+
+        Returns
+        ----------
+          W : ndarray
+             A matrix with Gaussian kernel columns of size n x k.
+        """
+
+        offset = n / k / 2 - 0.5
+        noverk = n / k
+        coeff = -k / (.01 * n ** 2)
+        return lambda i, j: np.exp(coeff * (i - (j * noverk + offset)) ** 2)
+
+    def determine_block_index_range_asymm(self):
+        '''Determines the start and end indices for the Data block for each rank'''
+        chunk_ind = np.unravel_index(self.rank, self.pgrid)
+        start_inds = [i * (n // k) + min(i, n % k) for n, k, i in zip(self.shape, self.pgrid, chunk_ind)]
+        end_inds = [(i + 1) * (n // k) + min((i + 1), n % k) - 1 for n, k, i in zip(self.shape, self.pgrid, chunk_ind)]
+        return start_inds, end_inds
+
+    def determine_block_shape_asymm(self):
+        '''Determines the shape for the Data block for each rank'''
+        start_inds, end_inds = self.determine_block_index_range_asymm()
+        return [(j - i + 1) for (i, j) in zip(start_inds, end_inds)]
+
+    def random_matrix_generator(self, n, k, seed):
+        '''Generator for random matric with given seed'''
+        np.random.seed(seed)
+        return np.random.rand(n, k)
+
+    def dist_fromfunction(self, func, shape, pgrid, *args, unravel_index=np.unravel_index, **kwargs):
+        """
+        produces X_{i,j} = func(i,j) in a distributed manner, so that each processor has an array_split section of X according to the grid.
+        """
+        grid_index = unravel_index()
+        block_shape = [(n // k) + (i < (n % k)) * 1 for n, k, i in zip(shape, pgrid, grid_index)]
+        start_index = [i * (n // k) + min(i, n % k) for n, k, i in zip(shape, pgrid, grid_index)]
+        return np.fromfunction(lambda *x: func(*[a + b for a, b in zip(x, start_index)]), block_shape, *args, **kwargs)
+
+    def unravel_column(self):
+        '''finds the column rank for 2d grid'''
+
+        def wrapper(*args, **kwargs):
+            row, col = np.unravel_index(self.rank, self.pgrid)
+            return (row, col // self.pgrid[1])
+
+        return wrapper
+
+    def unravel_row(self):  # ,ind, shape):
+        '''finds the row rank for 2d grid'''
+        row, col = np.unravel_index(self.rank, self.pgrid)
+        return (row // self.pgrid[0], col)
+
+    def create_folder_dir(self, fpath):
+        '''Create a folder if doesn't exist'''
+        try:
+            os.mkdir(fpath)
+        except:
+            pass
+
+    def generate_factors_data(self):
+        """Generates the chunk of factors W,H and data X for each MPI process"""
+        W_gen = self.dist_fromfunction(self.gauss_matrix_generator(self.m, self.k), (self.m, self.k), (self.p_r, 1),
+                                       unravel_index=self.unravel_column())
+        H_gen = self.random_matrix_generator(self.k, self.determine_block_shape_asymm()[1],
+                                             self.unravel_row()[1])
+        X_gen = W_gen @ H_gen
+        print('For rank=', self.rank, ' dimensions of W,H and X are ', W_gen.shape, H_gen.shape, X_gen.shape)
+        return W_gen, H_gen, X_gen
+
+    def fit(self):
+        '''generates and save factors'''
+        W_gen, H_gen, X_gen = self.generate_factors_data()
+        self.create_folder_dir(self.fpath)
+        self.create_folder_dir(self.fpath + 'W_factors')
+        self.create_folder_dir(self.fpath + 'H_factors')
+        self.create_folder_dir(self.fpath + 'X')
+        np.save(self.fpath + 'W_factors/W_' + str(self.rank), W_gen)
+        np.save(self.fpath + 'H_factors/H_' + str(self.rank), H_gen)
+        np.save(self.fpath + 'X/X_' + str(self.rank), X_gen)
+        print('File successfully created and saved')
+
+
+if __name__ == '__main__':
+    main_comm = MPI.COMM_WORLD
+    args = parser()
+    args.rank = main_comm.rank
+    data_gen = data_generator(args)
+    data_gen.fit() (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==pyDNMFk.dist_comm:1
+==pyDNMFk.dist_comm:1
+class MPI_comm():
+    """Initialization of MPI communicator to construct the cartesian topology and sub communicators
+
+    Parameters
+    ----------
+    comm : object
+        MPI communicator object
+    p_r : int
+        row processors count
+    p_c : int
+        column processors count"""
+
+
+    # MPI Initialization here
+    def __init__(self, comm, p_r, p_c):
+        self.comm = comm
+        self.rank = self.comm.Get_rank()
+        self.size = self.comm.Get_size()
+        self.p_r = p_r
+        self.p_c = p_c
+        self.cartesian2d = self.comm.Create_cart(dims=[self.p_r, self.p_c], periods=[False, False], reorder=False)
+        self.coord2d = self.cartesian2d.Get_coords(self.rank)
+
+    def cart_1d_row(self):
+        """
+        Constructs a cartesian row communicator through construction of a sub communicator across rows
+
+        Returns
+        -------
+        cartesian1d_row : object
+            Sub Communicator object
+        """
+        self.cartesian1d_row = self.cartesian2d.Sub(remain_dims=[True, False])
+        self.rank1d_row = self.cartesian1d_row.Get_rank()
+        self.coord1d_row = self.cartesian1d_row.Get_coords(self.rank1d_row)
+        return self.cartesian1d_row
+
+    def cart_1d_column(self):
+        """
+        Constructs a cartesian column communicator through construction of a sub communicator across columns
+
+        Returns
+        -------
+        cartesian1d_column : object
+            Sub Communicator object
+        """
+        self.cartesian1d_column = self.cartesian2d.Sub(remain_dims=[False, True])
+        self.rank1d_column = self.cartesian1d_column.Get_rank()
+        self.coord1d_column = self.cartesian1d_column.Get_coords(self.rank1d_column)
+        return self.cartesian1d_column
+
+    def Free(self):
+        """ Frees the sub communicators"""
+        self.cart_1d_row().Free()
+        self.cart_1d_column().Free() (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==tests.test_dist_nmf_1d:23
+==tests.test_dist_nmf_2d:24
+        p_r, p_c = grid[0], grid[1]
+        comms = MPI_comm(comm, p_r, p_c)
+        comm1 = comms.comm
+        rank = comm.rank
+        size = comm.size
+        args = parse()
+        args.size, args.rank, args.comm1, args.comm, args.p_r, args.p_c = size, rank, comm1, comms, p_r, p_c
+        args.m, args.n, args.k = m, n, k
+        args.itr, args.init = 2000, 'rand'
+        args.row_comm, args.col_comm, args.comm1 = comms.cart_1d_row(), comms.cart_1d_column(), comm1
+        args.verbose = True
+        dtr_blk_shp = determine_block_params(rank, (p_r, p_c), A.shape)
+        blk_indices = dtr_blk_shp.determine_block_index_range_asymm()
+        A_ij = A[blk_indices[0][0]:blk_indices[1][0] + 1, blk_indices[0][1]:blk_indices[1][1] + 1]
+        for mthd in ['mu', 'bcd', 'hals']:  # Frobenius norm, KL divergence,  and BCD implementation
+            for norm in ['fro', 'kl']:
+                args.method, args.norm = mthd, norm
+                if norm == 'kl' and mthd != 'mu':
+                    continue
+                W_ij, H_ij, rel_error = PyNMF(A_ij, factors=None, params=args).fit()
+                if rank == 0: print('working on grid=', grid, 'with norm = ', norm, ' method= ', mthd, 'rel error=',
+                                    rel_error) (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==tests.test_dist_nmf_1d:2
+==tests.test_dist_nmf_1d_nnsvd_init:3
+import os
+os.environ["OMP_NUM_THREADS"] = "1"
+import pyDNMFk.config as config
+
+config.init(0)
+from pyDNMFk.pyDNMF import *
+from pyDNMFk.dist_comm import *
+
+
+@pytest.mark.mpi
+def test_dist_nmf_1d():
+    np.random.seed(100)
+    comm = MPI.COMM_WORLD (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==dist_pynmfk_1d_wtsi:3
+==dist_pynmfk_2d_Swim:5
+import sys
+
+
+import pyDNMFk.config as config
+
+config.init(0)
+from pyDNMFk.pyDNMFk import *
+from pyDNMFk.utils import *
+from pyDNMFk.dist_comm import *
+from scipy.io import loadmat
+ (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==dist_pynmfk_1d_wtsi:18
+==dist_pynmfk_2d_Swim:24
+    comms = MPI_comm(comm, p_r, p_c)
+    comm1 = comms.comm
+    rank = comm.rank
+    size = comm.size
+    args = parse()
+    args.size, args.rank, args.comm, args.p_r, args.p_c = size, rank, comms, p_r, p_c
+    args.row_comm, args.col_comm, args.comm1 = comms.cart_1d_row(), comms.cart_1d_column(), comm1
+    rank = comms.rank
+    args.fpath = '../data/' (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 2 files
+==tests.test_dist_nmf_1d:13
+==tests.test_dist_nmf_2d:14
+    np.random.seed(100)
+    comm = MPI.COMM_WORLD
+    m, k, n = 24, 2, 12
+    W = np.random.rand(m, k)
+    H = np.random.rand(k, n)
+
+    A = W @ H
+ (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 3 files
+==tests.test_dist_nmf_1d:23
+==tests.test_dist_nmf_1d_nnsvd_init:19
+==tests.test_dist_nmf_2d:24
+        p_r, p_c = grid[0], grid[1]
+        comms = MPI_comm(comm, p_r, p_c)
+        comm1 = comms.comm
+        rank = comm.rank
+        size = comm.size
+        args = parse()
+        args.size, args.rank, args.comm1, args.comm, args.p_r, args.p_c = size, rank, comm1, comms, p_r, p_c
+        args.m, args.n, args.k = m, n, k (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 3 files
+==tests.test_dist_nmf_1d:38
+==tests.test_dist_nmf_1d_nnsvd_init:38
+==tests.test_dist_nmf_2d:39
+            for norm in ['fro', 'kl']:
+                args.method, args.norm = mthd, norm
+                if norm == 'kl' and mthd != 'mu':
+                    continue
+                W_ij, H_ij, rel_error = PyNMF(A_ij, factors=None, params=args).fit()
+                if rank == 0: print('working on grid=', grid, 'with norm = ', norm, ' method= ', mthd, 'rel error=',
+                                    rel_error) (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 5 files
+==dist_pynmfk_1d_wtsi:18
+==dist_pynmfk_2d_Swim:24
+==tests.test_dist_nmf_1d:24
+==tests.test_dist_nmf_1d_nnsvd_init:20
+==tests.test_dist_nmf_2d:25
+    comms = MPI_comm(comm, p_r, p_c)
+    comm1 = comms.comm
+    rank = comm.rank
+    size = comm.size
+    args = parse() (duplicate-code)
+build/lib/pyDNMFk/pyDNMF.py:1:0: R0801: Similar lines in 3 files
+==tests.test_dist_nmf_1d:32
+==tests.test_dist_nmf_1d_nnsvd_init:32
+==tests.test_dist_nmf_2d:33
+        args.row_comm, args.col_comm, args.comm1 = comms.cart_1d_row(), comms.cart_1d_column(), comm1
+        args.verbose = True
+        dtr_blk_shp = determine_block_params(rank, (p_r, p_c), A.shape)
+        blk_indices = dtr_blk_shp.determine_block_index_range_asymm()
+        A_ij = A[blk_indices[0][0]:blk_indices[1][0] + 1, blk_indices[0][1]:blk_indices[1][1] + 1] (duplicate-code)
+
+------------------------------------------------------------------
+Your code has been rated at 7.37/10 (previous run: 6.02/10, +1.35)
+

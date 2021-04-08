@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>pyDNMFk.data_io &mdash; pyDNMFk 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> pyDNMFk
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">pyDNMFk</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">pyDNMFk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>pyDNMFk.data_io</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for pyDNMFk.data_io</h1><div class="highlight"><pre>
+<span></span><span class="c1"># @author: Manish Bhattarai</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">h5py</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">loadmat</span>
+
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<div class="viewcode-block" id="data_read"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.data_read">[docs]</a><span class="k">class</span> <span class="nc">data_read</span><span class="p">():</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Class for reading data.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        args : class</span>
+<span class="sd">            Class which comprises following attributes</span>
+<span class="sd">        fpath : str</span>
+<span class="sd">            Directory path of file to be read</span>
+<span class="sd">        pgrid : tuple</span>
+<span class="sd">            Cartesian grid configuration</span>
+<span class="sd">        ftype : str</span>
+<span class="sd">            Type of data to read(mat/npy/csv/folder)</span>
+<span class="sd">        fname : str</span>
+<span class="sd">            Name of the file to read</span>
+<span class="sd">        comm (object): comm object for distributed read</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">fpath</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span> <span class="o">=</span> <span class="p">[</span><span class="n">args</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">p_c</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ftype</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">ftype</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fname</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">fname</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">comm1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">rank</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftype</span> <span class="o">==</span> <span class="s1">&#39;folder&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">fname</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.npy&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">fname</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftype</span>
+
+<div class="viewcode-block" id="data_read.read"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.data_read.read">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Data read function&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_dat</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="data_read.read_file_npy"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.data_read.read_file_npy">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">read_file_npy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Numpy data read function&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="data_read.read_file_csv"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.data_read.read_file_csv">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">read_file_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;CSV data read function&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">values</span></div>
+
+<div class="viewcode-block" id="data_read.read_file_mat"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.data_read.read_file_mat">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">read_file_mat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;mat file read function&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">loadmat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_path</span><span class="p">)[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="data_read.data_partition"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.data_read.data_partition">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">data_partition</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This function divides the input matrix into chunks as specified by grid configuration.</span>
+
+<span class="sd">        Return n array of shape (nrows_i, ncols_i) where i is the index of each chunk.</span>
+<span class="sd">        \Sum_i^n ( nrows_i * ncols_i )  = arr.size</span>
+
+<span class="sd">        If arr is a 2D array, the returned array should look like n subblocks with</span>
+<span class="sd">        each subblock preserving the &quot;physical&quot; layout of arr.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dtr_blk_shp</span> <span class="o">=</span> <span class="n">determine_block_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">blk_indices</span> <span class="o">=</span> <span class="n">dtr_blk_shp</span><span class="o">.</span><span class="n">determine_block_index_range_asymm</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">blk_indices</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span><span class="n">blk_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">blk_indices</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span><span class="n">blk_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="data_read.save_data_to_file"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.data_read.save_data_to_file">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">save_data_to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fpath</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This function saves the splitted data to numpy array indexed with chunk number&quot;&quot;&quot;</span>
+        <span class="n">fname</span> <span class="o">=</span> <span class="n">fpath</span> <span class="o">+</span> <span class="s1">&#39;A_&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">rank</span> <span class="o">+</span> <span class="s1">&#39;.npy&#39;</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="data_read.read_dat"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.data_read.read_dat">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">read_dat</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function for reading the data and split into  chunks to be reach by each MPI rank&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftype</span> <span class="o">==</span> <span class="s1">&#39;npy&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_file_npy</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data_partition</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftype</span> <span class="o">==</span> <span class="s1">&#39;csv&#39;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftype</span> <span class="o">==</span> <span class="s1">&#39;txt&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_file_csv</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data_partition</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftype</span> <span class="o">==</span> <span class="s1">&#39;mat&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_file_mat</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data_partition</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ftype</span> <span class="o">==</span> <span class="s1">&#39;folder&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_file_npy</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span></div></div>
+
+
+<div class="viewcode-block" id="split_files_save"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.split_files_save">[docs]</a><span class="k">class</span> <span class="nc">split_files_save</span><span class="p">():</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rank 0 based data read, split and save&quot;&quot;&quot;</span>
+
+    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">pgrid</span><span class="p">,</span> <span class="n">fpath</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span> <span class="o">=</span> <span class="n">pgrid</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">=</span> <span class="n">pgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">=</span> <span class="n">pgrid</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">=</span> <span class="n">fpath</span>
+
+<div class="viewcode-block" id="split_files_save.split_files"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.split_files_save.split_files">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">split_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the index range for each block and partition the data as per the chunk&quot;&quot;&quot;</span>
+        <span class="n">dtr_blk_idx</span> <span class="o">=</span> <span class="p">[</span><span class="n">determine_block_params</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">determine_block_index_range_asymm</span><span class="p">()</span> <span class="k">for</span>
+                       <span class="n">rank</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span><span class="p">))]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">split</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dtr_blk_idx</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="split_files_save.save_data_to_file"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.split_files_save.save_data_to_file">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">save_data_to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function to save the chunks into numpy files&quot;&quot;&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">split</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">split_files</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;A_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.npy&#39;</span>
+            <span class="n">fname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">+</span> <span class="n">name</span>
+            <span class="n">arr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">split</span><span class="p">[</span><span class="n">s</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="mi">1</span></div></div>
+
+
+<div class="viewcode-block" id="data_write"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.data_write">[docs]</a><span class="k">class</span> <span class="nc">data_write</span><span class="p">():</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Class for writing data/results.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        args (class): class which comprises following attributes</span>
+<span class="sd">        results_path (str): Directory path of file to write</span>
+<span class="sd">        pgrid (tuple): Cartesian grid configuration</span>
+<span class="sd">        ftype (str): Type of data to read(mat/npy/csv/folder)</span>
+<span class="sd">        comm (object): comm object for distributed read</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">p_c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ftype</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">ftype</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">comm1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_paths</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">rank</span>
+
+<div class="viewcode-block" id="data_write.create_folder_dir"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.data_write.create_folder_dir">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">create_folder_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fpath</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Create directory if not present&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="data_write.save_factors"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.data_write.save_factors">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">save_factors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factors</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Save the W and H factors for each MPI process&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_folder_dir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fpath</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">reg</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">W_factors_pth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">+</span> <span class="s1">&#39;W_reg_factors/&#39;</span>
+            <span class="n">H_factors_pth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">+</span> <span class="s1">&#39;H_reg_factors/&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">W_factors_pth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">+</span> <span class="s1">&#39;W_factors/&#39;</span>
+            <span class="n">H_factors_pth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">+</span> <span class="s1">&#39;H_factors/&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_folder_dir</span><span class="p">(</span><span class="n">W_factors_pth</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_folder_dir</span><span class="p">(</span><span class="n">H_factors_pth</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">W_factors_pth</span> <span class="o">+</span> <span class="s1">&#39;W.npy&#39;</span><span class="p">,</span> <span class="n">factors</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">H_factors_pth</span> <span class="o">+</span> <span class="s1">&#39;H_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.npy&#39;</span><span class="p">,</span> <span class="n">factors</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Saving results for each K</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">H_factors_pth</span> <span class="o">+</span> <span class="s1">&#39;H.npy&#39;</span><span class="p">,</span> <span class="n">factors</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">W_factors_pth</span> <span class="o">+</span> <span class="s1">&#39;W_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.npy&#39;</span><span class="p">,</span> <span class="n">factors</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">H_factors_pth</span> <span class="o">+</span> <span class="s1">&#39;H_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.npy&#39;</span><span class="p">,</span> <span class="n">factors</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">W_factors_pth</span> <span class="o">+</span> <span class="s1">&#39;W_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.npy&#39;</span><span class="p">,</span> <span class="n">factors</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="data_write.save_cluster_results"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.data_write.save_cluster_results">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">save_cluster_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Save cluster results to a h5 file with rank 0&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">+</span> <span class="s1">&#39;results.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">hf</span><span class="p">:</span>
+                <span class="n">hf</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s1">&#39;clusterSilhouetteCoefficients&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;clusterSilhouetteCoefficients&#39;</span><span class="p">])</span>
+                <span class="n">hf</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s1">&#39;avgSilhouetteCoefficients&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;avgSilhouetteCoefficients&#39;</span><span class="p">])</span>
+                <span class="n">hf</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s1">&#39;L_err&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;L_err&#39;</span><span class="p">])</span>
+                <span class="n">hf</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s1">&#39;L_errDist&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;L_errDist&#39;</span><span class="p">])</span>
+                <span class="n">hf</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s1">&#39;avgErr&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;avgErr&#39;</span><span class="p">])</span>
+                <span class="n">hf</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s1">&#39;ErrTol&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;recon_err&#39;</span><span class="p">])</span></div></div>
+
+
+<div class="viewcode-block" id="read_factors"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.read_factors">[docs]</a><span class="k">class</span> <span class="nc">read_factors</span><span class="p">():</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Class for reading saved factors.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        factors_path : str</span>
+<span class="sd">            Directory path of factors to read from</span>
+<span class="sd">        pgrid : tuple</span>
+<span class="sd">            Cartesian grid configuration</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">factors_path</span><span class="p">,</span> <span class="n">pgrid</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">factors_path</span> <span class="o">=</span> <span class="n">factors_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">W_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">factors_path</span> <span class="o">+</span> <span class="s1">&#39;W/*&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">H_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">factors_path</span> <span class="o">+</span> <span class="s1">&#39;H/*&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_grid</span> <span class="o">=</span> <span class="n">pgrid</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_factors</span><span class="p">()</span>
+
+<div class="viewcode-block" id="read_factors.custom_read_npy"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.read_factors.custom_read_npy">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">custom_read_npy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fpath</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Read numpy files&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+<div class="viewcode-block" id="read_factors.read_factor"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.read_factors.read_factor">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">read_factor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fpath</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Read factors as chunks and stack them&quot;&quot;&quot;</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">custom_read_npy</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_read_npy</span><span class="p">(</span><span class="n">file</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="read_factors.load_factors"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_io.read_factors.load_factors">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">load_factors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Load the final stacked factors for visualization&quot;&quot;&quot;</span>
+        <span class="n">W_data</span><span class="p">,</span> <span class="n">ct_W</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_factor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">W_path</span><span class="p">)</span>
+        <span class="n">H_data</span><span class="p">,</span> <span class="n">ct_H</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_factor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">H_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ct_W</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> <span class="n">W_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">W_data</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">ct_H</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ct_W</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">H_idxs</span> <span class="o">=</span> <span class="n">transform_H_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_grid</span><span class="p">)</span><span class="o">.</span><span class="n">rankidx2blkidx</span><span class="p">()</span>
+                <span class="n">H_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(([</span><span class="n">H_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">H_idxs</span><span class="p">]))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">H_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">H_data</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">W_data</span><span class="p">,</span> <span class="n">H_data</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, LANL.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
