@@ -43,7 +43,7 @@ def test_dist_nmf_1d():
                 W_ij, H_ij, rel_error = PyNMF(A_ij, factors=None, params=args).fit()
                 if rank == 0: print('working on grid=', grid, 'with norm = ', norm, ' method= ', mthd, 'rel error=',
                                     rel_error)
-                assert rel_error < 0
+                assert rel_error < 1e-3
 
 
 def main():
