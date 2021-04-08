@@ -1,6 +1,6 @@
 # [pyDNMFk: Python Distributed Non Negative Matrix Factorization with determination of hidden features](https://github.com/lanl/pyDNMFk)
 
-[![Build Status](https://github.com/lanl/pyDNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main)](https://github.com/lanl/Distributed_pyNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main) [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg) [![Python Version](https://img.shields.io/badge/python-v3.7.1-blue)](https://img.shields.io/badge/python-v3.7.1-blue) [![Python Version](https://img.shields.io/github/downloads/lanl/pyDNMFk/total)](https://img.shields.io/github/downloads/lanl/pyDNMFk/total)
+[![Build Status](https://github.com/lanl/pyDNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main)](https://github.com/lanl/Distributed_pyNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main) [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg) [![Python Version](https://img.shields.io/badge/python-v3.7.1-blue)](https://img.shields.io/badge/python-v3.7.1-blue)
 
 
 
@@ -49,6 +49,11 @@ python setup.py install
 * MPI4py
 * scipy
 * h5py
+
+## Documentation
+
+You can find the documentation [here](https://lanl.github.io/pyDNMFk/). 
+
 
 ## Usage
 We provide a sample dataset that can be used for estimation of k:
