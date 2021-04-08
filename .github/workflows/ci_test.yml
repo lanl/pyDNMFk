@@ -28,29 +28,53 @@ jobs:
           conda install mpi4py
           python setup.py install
       
-      - name: Test test_dist_nmf_1d_nnsvd_init
-        run: |
-          cd tests && mpirun -n 2 python -m pytest test_dist_nmf_1d_nnsvd_init.py --with-mpi
-      
-      - name: Test test_dist_nmf_2d
-        run: |
-          cd tests && mpirun -n 2 python -m pytest test_dist_nmf_2d.py --with-mpi
+      # Test test_dist_nmf_1d_nnsvd_init
+      - uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 2
+          max_attempts: 3
+          retry_on: timeout
+          command: cd tests && mpirun -n 2 python -m pytest test_dist_nmf_1d_nnsvd_init.py --with-mpi
           
-      - name: Test test_dist_nmf_1d
-        run: |
-          cd tests && mpirun -n 2 python -m pytest test_dist_nmf_1d.py --with-mpi
+      # Test test_dist_nmf_2d
+      - uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 2
+          max_attempts: 3
+          retry_on: timeout
+          command: cd tests && mpirun -n 2 python -m pytest test_dist_nmf_2d.py --with-mpi
+
+      # Test test_dist_nmf_1d
+      - uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 2
+          max_attempts: 3
+          retry_on: timeout
+          command: cd tests && mpirun -n 2 python -m pytest test_dist_nmf_1d.py --with-mpi
           
-      - name: Test test_dist_nnsvd
-        run: |
-          cd tests && mpirun -n 2 python -m pytest test_dist_nnsvd.py --with-mpi
-      
-      - name: Test test_dist_clustering
-        run: |
-          cd tests && mpirun -n 2 python -m pytest test_dist_clustering.py --with-mpi
-          
-      - name: Test test_dist_file_split
-        run: |
-          cd tests && mpirun -n 2 python -m pytest test_dist_file_split.py --with-mpi
+      # Test test_dist_nnsvd
+      - uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 2
+          max_attempts: 3
+          retry_on: timeout
+          command: cd tests && mpirun -n 2 python -m pytest test_dist_nnsvd.py --with-mpi
+
+      # Test test_dist_clustering
+      - uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 2
+          max_attempts: 3
+          retry_on: timeout
+          command: cd tests && mpirun -n 2 python -m pytest test_dist_clustering.py --with-mpi
+ 
+       # Test test_dist_file_split
+      - uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 2
+          max_attempts: 3
+          retry_on: timeout
+          command: cd tests && mpirun -n 2 python -m pytest test_dist_file_split.py --with-mpi
       
         env:
           OMPI_ALLOW_RUN_AS_ROOT: '1'
