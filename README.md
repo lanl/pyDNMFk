@@ -20,10 +20,22 @@
 
 ## Installation:
 
+On a desktop machine
 ```
 git clone https://github.com/lanl/pyDNMFk.git
 cd pyDNMFk
 conda create --name pyDNMFk python=3.7.1 openmpi mpi4py
+source activate pyDNMFk
+python setup.py install
+```
+<hr/>
+On a server
+```
+git clone https://github.com/lanl/pyDNMFk.git
+cd pyDNMFk
+conda create --name pyDNMFk python=3.7.1 
+module load <openmpi>
+pip install mpi4py
 source activate pyDNMFk
 python setup.py install
 ```
@@ -102,9 +114,9 @@ See the resources for more use cases.
 
 * [Manish Bhattarai](mailto:ceodspspectrum@lanl.gov) - Los Alamos National Laboratory
 * [Ben Nebgen](mailto:bnebgen@lanl.gov) - Los Alamos National Laboratory
-* [Erik Skau](mailto:ewskau@lanl.gov) - Los Alamos Natioanl Laboratory
-* [Maksim Eren](mailto:maksim@lanl.gov) - Los Alamos Natioanl Laboratory
-* [Boian Alexandrov](mailto:boian@lanl.gov) - Los Alamos Natioanl Laboratory
+* [Erik Skau](mailto:ewskau@lanl.gov) - Los Alamos National Laboratory
+* [Maksim Eren](mailto:maksim@lanl.gov) - Los Alamos National Laboratory
+* [Boian Alexandrov](mailto:boian@lanl.gov) - Los Alamos National Laboratory
 
 ## Citation:
 ```@inproceedings{bhattarai2020distributed,
