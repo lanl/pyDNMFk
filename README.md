@@ -36,9 +36,9 @@ On a server
 git clone https://github.com/lanl/pyDNMFk.git
 cd pyDNMFk
 conda create --name pyDNMFk python=3.7.1 
+source activate pyDNMFk
 module load <openmpi>
 pip install mpi4py
-source activate pyDNMFk
 python setup.py install
 ```
 
