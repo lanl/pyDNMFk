@@ -21,6 +21,9 @@
 * Objective of minimization of KL divergence/Frobenius norm. 
 * Optimization with multiplicative updates, BCD, and HALS. 
 
+![plot](./docs/pyDNMFk.png)
+
+Overview of the pyDNMFk workflow implementation.
 ## Installation:
 
 On a desktop machine
@@ -119,6 +122,16 @@ print('Estimated k with NMFk is ',nopt)
 ```
 See the resources for more use cases.
 <hr/>
+
+## Benchmarking
+
+![plot](./docs/benchmark.png)
+Figure: Scaling benchmarks for 10 iterations for Frobenius norm based MU updates with MPI
+ operations for i) strong and ii) weak scaling and  Communication vs computation 
+operations for iii) strong and iv) weak scaling. 
+
+## Scalability
+![plot](./docs/scalability.png)
 
 ## Authors:
 
