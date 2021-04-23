@@ -10,6 +10,9 @@
 
 <hr/>
 
+
+![plot](./docs/pyDNMFk_RD500.png)
+
 ## Features:
 
 * Utilization of MPI4py for distributed operation.
