@@ -16,15 +16,15 @@ def parser_pyNMF(parser):
     parser.add_argument('--p_r', type=int, required=True, help='Now of row processors')
     parser.add_argument('--p_c', type=int, required=True, help='Now of column processors')
     parser.add_argument('--k', type=int, required=True, help='feature count')
-    parser.add_argument('--fpath', type=str, default='../Data/tmp/', help='data path to read(eg: tmp/)')
-    parser.add_argument('--ftype', type=str, default='npy', help='data type : mat/folder/h5')
+    parser.add_argument('--fpath', type=str, default='../data/', help='data path to read(eg: tmp/)')
+    parser.add_argument('--ftype', type=str, default='mat', help='data type : mat/folder/h5')
     parser.add_argument('--fname', type=str, default='A_', help='File name')
     parser.add_argument('--init', type=str, default='rand', help='NMF initializations: rand/nnsvd')
     parser.add_argument('--itr', type=int, default=5000, help='NMF iterations, default:1000')
     parser.add_argument('--norm', type=str, default='kl', help='Reconstruction Norm for NMF to optimize:KL/FRO')
     parser.add_argument('--method', type=str, default='mu', help='NMF update method:MU/BCD/HALS')
     parser.add_argument('--verbose', type=str2bool, default=False)
-    parser.add_argument('--results_path', type=str, default='../Results/', help='Path for saving results')
+    parser.add_argument('--results_path', type=str, default='../results/', help='Path for saving results')
     parser.add_argument('--timing_stats', type=str2bool, default=False, help='Switch to turn on/off benchmarking.')
     return parser
 
@@ -43,8 +43,8 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(
         description='Arguments for pyDNMF/pyDNMFk'
-                    'To run the code for pyDNMF: mpirun -n 4 python main.py --p_r=2 --p_c=2 --k=4 -fpath=../Data/')  # ArgumentParser(description='Arguments for pyNMF/pyNMFk')
-    parser.add_argument('--process', type=str, default='pyNMF', help='pyDNMF/pyDNMFk')
+                    'To run the code for pyDNMF: mpirun -n 4 python main.py --p_r=2 --p_c=2 --k=4 -fpath=../data/')  # ArgumentParser(description='Arguments for pyNMF/pyNMFk')
+    parser.add_argument('--process', type=str, default='pyDNMF', help='pyDNMF/pyDNMFk')
     '''if parser.parse_args().process=='pyDNMF':
         parser = parser_pyNMF(parser)
     elif parser.parse_args().process=='pyDNMFk':'''
