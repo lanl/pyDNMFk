@@ -120,6 +120,12 @@ A_ij = data_read(args).read().astype(args.precision)
 nopt = PyNMFk(A_ij, factors=None, params=args).fit()
 print('Estimated k with NMFk is ',nopt)
 ```
+
+Alternately, you can also run from test folder in command line as:
+```bash
+mpirun -n 4 python main.py --p_r=2 --p_c=2 --process='pyDNMFk' --k=2 --fpath='../data/' --ftype='mat' --fname='swim' --init='rand' --itr=5000 --norm='kl' --method='mu' --results_path='../results/' --perturbations=20 --noise_var=0.015 --start_k=2 --end_k=18 --sill_thr=.6 --sampling='uniform'
+```
+
 See the resources for more use cases.
 <hr/>
 
