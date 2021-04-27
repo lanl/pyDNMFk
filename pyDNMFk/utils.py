@@ -187,8 +187,8 @@ class transform_H_index():
         """This is to transform the column index to rank index for H"""
         f_idx = []
         for j in range(self.p_c):
-            for i in range(self.p_n):
-                f_idx.append(i * self.p_n + j)
+            for i in range(self.p_r):
+                f_idx.append(i * self.p_r + j)
         return f_idx
 
     def transform_H_idx(self, rank):
