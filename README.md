@@ -1,13 +1,13 @@
 # [pyDNMFk: Python Distributed Non Negative Matrix Factorization with determination of hidden features](https://github.com/lanl/pyDNMFk)
 
-[![Build Status](https://github.com/lanl/pyDNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main)](https://github.com/lanl/Distributed_pyNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main) [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg) [![Python Version](https://img.shields.io/badge/python-v3.7.1-blue)](https://img.shields.io/badge/python-v3.7.1-blue) [![DOI](https://zenodo.org/badge/355419372.svg)](https://zenodo.org/badge/latestdoi/355419372)
 
+<div align="center", style="font-size: 50px">
 
+[![Build Status](https://github.com/lanl/pyDNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main)](https://github.com/lanl/Distributed_pyNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main) [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg) [![Python Version](https://img.shields.io/badge/python-v3.7.1-blue)](https://img.shields.io/badge/python-v3.7.1-blue) [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.4722448-blue.svg)](https://doi.org/10.5281/zenodo.4722448)
 
+</div>
 
-
-
-
+<br>
 
 [pyDNMFk](https://github.com/lanl/pyDNMFk) is a software package for applying non-negative matrix factorization in a distrubuted fashion to large datasets. It has the ability to minimize the difference between reconstructed data and the original data through various norms (Frobenious, KL-divergence).  Additionally, the Custom Clustering algorithm allows for automated determination for the number of Latent features 
 
@@ -68,8 +68,6 @@ You can find the documentation [here](https://lanl.github.io/pyDNMFk/).
 We provide a sample dataset that can be used for estimation of k:
 ```python
 '''Imports block'''
-
-import sys
 import pyDNMFk.config as config
 config.init(0)
 from pyDNMFk.pyDNMFk import *
@@ -82,7 +80,6 @@ args = parse()
 
 
 '''parameters initialization block'''
-
 
 # Data Read here
 args.fpath = 'data/'
@@ -110,8 +107,6 @@ args.results_path = 'results/'
 
 
 '''Parameters prep block'''
-
-
 comms = MPI_comm(comm, p_r, p_c)
 comm1 = comms.comm
 rank = comm.rank
