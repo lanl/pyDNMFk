@@ -153,6 +153,17 @@ operations for iii) strong and iv) weak scaling.
 * [Boian Alexandrov](mailto:boian@lanl.gov) - Los Alamos National Laboratory
 
 ## Citation:
+
+```@misc{rw2019timm,
+  author = {Manish Bhattarai,Ben Nebgen,Erik Skau,Maksim Eren,Gopinath Chennupati,Raviteja Vangara,Hristo Djidjev,John Patchett,Jim Ahrens,Boian ALexandrov},
+  title = {pyDNMFk: Python Distributed Non Negative Matrix Factorization},
+  year = {2021},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  doi = {10.5281/zenodo.4722448},
+  howpublished = {\url{https://github.com/lanl/pyDNMFk}}
+}```
+
 ```@inproceedings{bhattarai2020distributed,
   title={Distributed Non-Negative Tensor Train Decomposition},
   author={Bhattarai, Manish and Chennupati, Gopinath and Skau, Erik and Vangara, Raviteja and Djidjev, Hristo and Alexandrov, Boian S},
