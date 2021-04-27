@@ -62,10 +62,10 @@ def plot_W(W):
     plt.show()
 
 
-def plot_results(startProcess, endProcess, RECON, RECON1, SILL_MIN, out_put, name):
+def plot_results(startProcess, endProcess, stepProcess,RECON, RECON1, SILL_MIN, out_put, name):
     """Plots the relative error and Silhouette results for estimation of k"""
     ######################################## Plotting ####################################################
-    t = range(startProcess, endProcess + 1)
+    t = range(startProcess, endProcess + 1,stepProcess)
     fig, ax1 = plt.subplots(num=None, figsize=(10, 6), dpi=300, facecolor='w', edgecolor='k')
     title = 'Num'
     color = 'tab:red'

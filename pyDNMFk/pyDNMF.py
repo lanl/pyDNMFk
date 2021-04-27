@@ -196,12 +196,12 @@ class PyNMF():
     @comm_timing()
     def normalize_features(self, Wall, Hall):
         """Normalizes features Wall and Hall"""
-        Wall_norm = Wall.sum(axis=0, keepdims=True) + self.eps
+        Wall_norm = Wall.sum(axis=0, keepdims=True)
         if self.topo == '2d':
             Wall_norm = self.comm1.allreduce(Wall_norm, op=MPI.SUM)
         elif self.topo == '1d':
             if self.p_r != 1: Wall_norm = self.comm1.allreduce(Wall_norm, op=MPI.SUM)
-        Wall /= Wall_norm
+        Wall /= Wall_norm+ self.eps
         Hall *= Wall_norm.T
         return Wall, Hall
 

@@ -140,6 +140,7 @@ class PyNMFk():
         self.sampling = var_init(self.params,'sampling',default='uniform')
         self.perturbations = var_init(self.params,'perturbations',default=20)
         self.noise_var = var_init(self.params,'noise_var',default=.03)
+        self.step_k = var_init(self.params, 'step', default=1)
         self.Hall = 0
         self.Wall = 0
         self.recon_err = 0
@@ -174,7 +175,7 @@ class PyNMFk():
         if self.rank == 0:
             try: os.makedirs(self.params.results_paths)
             except: pass
-        for self.k in range(self.start_k, self.end_k + 1):
+        for self.k in range(self.start_k, self.end_k + 1,self.step_k):
             self.params.k = self.k
             self.pynmfk_per_k()
             SILL_MIN.append(round(np.min(self.clusterSilhouetteCoefficients), 2))
@@ -185,7 +186,7 @@ class PyNMFk():
         if self.rank == 0:
             nopt1, pvalue1 = self.pvalueAnalysis(errRegres, SILL_MIN)
             print('Rank estimated by NMFk = ', nopt1)
-            plot_results(self.start_k, self.end_k, RECON, RECON1, SILL_MIN, self.params.results_path, self.fname)
+            plot_results(self.start_k, self.end_k,self.step_k, RECON, RECON1, SILL_MIN, self.params.results_path, self.fname)
         else:
             nopt1 = None
         nopt1 = self.comm1.bcast(nopt1, root=0)
@@ -244,8 +245,8 @@ class PyNMFk():
         i = 1
         i_old = 0
         nopt = 1
-
-        while i < (self.end_k - self.start_k + 1):
+        k_swap_range = range(self.start_k, self.end_k + 1,self.step_k)
+        while i < len(k_swap_range): #(self.end_k - self.start_k + 1):
             i_next = i
             if SILL_MIN[i - 1] > self.sill_thr:  # 0.75:
                 pvalue[i] = wilcoxon(oneDistrErr, errRegres[i][0])[1]
@@ -259,4 +260,5 @@ class PyNMFk():
             else:
                 i = i + 1
         # print('nopt=', nopt)
-        return nopt + self.start_k - 1, pvalue
+        return k_swap_range[nopt-1],pvalue
+        #return nopt + self.start_k - 1, pvalue

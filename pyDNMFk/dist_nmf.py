@@ -726,11 +726,11 @@ class nmf_algorithms_1D():
          -------
          self.W_i : ndarray
          """
+        HH_T = self.global_gram(self.H_j.T, p=self.p_c)
+        AH = self.global_mm(self.A_ij, self.H_j.T, p=self.p_c)
+        WHTH = np.matmul(self.W_i, HH_T) + self.eps
+        self.W_i *= AH / WHTH
 
-        W_TW = self.global_gram(self.W_i, p=self.p_r)
-        AtW = self.global_mm(self.W_i.T, self.A_ij, p=self.p_r)
-        HWtW = np.matmul(self.H_j.T, W_TW) + self.eps
-        self.H_j *= AtW / HWtW.T
 
     @comm_timing()
     def Fro_MU_update_H(self):
@@ -745,11 +745,11 @@ class nmf_algorithms_1D():
         Returns
         -------
         self.H_j : ndarray"""
+        W_TW = self.global_gram(self.W_i, p=self.p_r)
+        AtW = self.global_mm(self.W_i.T, self.A_ij, p=self.p_r)
+        HWtW = np.matmul(self.H_j.T, W_TW) + self.eps
+        self.H_j *= AtW / HWtW.T
 
-        HH_T = self.global_gram(self.H_j.T, p=self.p_c)
-        AH = self.global_mm(self.A_ij, self.H_j.T, p=self.p_c)
-        WHTH = np.matmul(self.W_i, HH_T) + self.eps
-        self.W_i *= AH / WHTH
 
     @comm_timing()
     def Fro_MU_update(self, W_update=True):

@@ -34,6 +34,7 @@ def parser_pyNMFk(parser):
     parser.add_argument('--noise_var', type=float, default=0.015, help='Noise variance for NMFk')
     parser.add_argument('--start_k', type=int, default=1, help='Start index of K for NMFk')
     parser.add_argument('--end_k', type=int, default=10, help='End index of K for NMFk')
+    parser.add_argument('--step_k', type=int, default=1, help='step for K search')
     parser.add_argument('--sill_thr', type=float, default=0.6, help='SIll Threshold for K estimation')
     parser.add_argument('--sampling', type=str, default='uniform', help='Sampling noise for NMFk i.e uniform/poisson')
     return parser

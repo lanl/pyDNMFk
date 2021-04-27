@@ -28,13 +28,14 @@ def dist_nmfk_1d_nnsvd_init_wtsi():
     args.fname = 'wtsi'
     args.ftype = 'mat'
     args.start_k = 2
-    args.end_k = 5
-    args.sill_thr = 0.9
+    args.end_k = 6
+    args.step = 1
+    args.sill_thr = 0.6
     args.itr = 1000
     args.init = 'nnsvd'
     args.verbose = True
     args.norm = 'fro'
-    args.method = 'hals'
+    args.method = 'mu'
     args.precision = np.float32
     A_ij = data_read(args).read().astype(args.precision)
     args.results_path = '../Results/'
