@@ -162,8 +162,8 @@ operations for iii) strong and iv) weak scaling.
   journal = {GitHub repository},
   doi = {10.5281/zenodo.4722448},
   howpublished = {\url{https://github.com/lanl/pyDNMFk}}
-}```
-
+}
+```
 ```@inproceedings{bhattarai2020distributed,
   title={Distributed Non-Negative Tensor Train Decomposition},
   author={Bhattarai, Manish and Chennupati, Gopinath and Skau, Erik and Vangara, Raviteja and Djidjev, Hristo and Alexandrov, Boian S},
