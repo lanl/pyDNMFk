@@ -15,7 +15,7 @@ import pandas as pd
 def parser_pyNMF(parser):
     parser.add_argument('--p_r', type=int, required=True, help='Now of row processors')
     parser.add_argument('--p_c', type=int, required=True, help='Now of column processors')
-    parser.add_argument('--k', type=int, required=True, help='feature count')
+    parser.add_argument('--k', type=int, default=4, help='feature count')
     parser.add_argument('--fpath', type=str, default='../data/', help='data path to read(eg: tmp/)')
     parser.add_argument('--ftype', type=str, default='mat', help='data type : mat/folder/h5')
     parser.add_argument('--fname', type=str, default='A_', help='File name')
@@ -25,7 +25,11 @@ def parser_pyNMF(parser):
     parser.add_argument('--method', type=str, default='mu', help='NMF update method:MU/BCD/HALS')
     parser.add_argument('--verbose', type=str2bool, default=False)
     parser.add_argument('--results_path', type=str, default='../results/', help='Path for saving results')
+    parser.add_argument('--checkpoint',type=str2bool,default=True,help='Enable checkpoint to track the pyNMFk state')
     parser.add_argument('--timing_stats', type=str2bool, default=False, help='Switch to turn on/off benchmarking.')
+    parser.add_argument('--prune', type=str2bool, default=False, help='Prune zero row/column.')
+    parser.add_argument('--precision', type=str, default='float32', help='Precision of the data(float32/float64/float16.')
+
     return parser
 
 
@@ -46,9 +50,6 @@ if __name__ == '__main__':
         description='Arguments for pyDNMF/pyDNMFk'
                     'To run the code for pyDNMF: mpirun -n 4 python main.py --p_r=2 --p_c=2 --k=4 -fpath=../data/')  # ArgumentParser(description='Arguments for pyNMF/pyNMFk')
     parser.add_argument('--process', type=str, default='pyDNMF', help='pyDNMF/pyDNMFk')
-    '''if parser.parse_args().process=='pyDNMF':
-        parser = parser_pyNMF(parser)
-    elif parser.parse_args().process=='pyDNMFk':'''
     parser = parser_pyNMF(parser)
     parser = parser_pyNMFk(parser)
     try:

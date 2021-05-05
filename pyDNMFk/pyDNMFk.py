@@ -154,7 +154,9 @@ class PyNMFk():
         self.end_k = self.params.end_k  # ['end_k']
         self.sill_thr = var_init(params,'sill_thr',default=0.9)
         self.verbose = var_init(params,'verbose',default=False)
-
+        self.params.checkpoint = var_init(params, 'checkpoint', default=True)
+        self.params.flag = 0 #flag to track state (i.e 1 for completion of pyNMF for all perturbations, 2 for clustering,3 for results saved)
+        self.cp = Checkpoint(checkpoint_save=self.params.checkpoint, params=self.params)
 
     @comm_timing()
     def fit(self):
@@ -175,18 +177,29 @@ class PyNMFk():
         if self.rank == 0:
             try: os.makedirs(self.params.results_paths)
             except: pass
+
+        try:
+            self.cp.load_from_checkpoint()
+            if self.cp.flag>3:
+               self.start_k = self.cp.k+self.step_k
+            else:
+                self.start_k = self.cp.k
+        except:
+            pass
+
         for self.k in range(self.start_k, self.end_k + 1,self.step_k):
             self.params.k = self.k
             self.pynmfk_per_k()
-            SILL_MIN.append(round(np.min(self.clusterSilhouetteCoefficients), 2))
+            '''SILL_MIN.append(round(np.min(self.clusterSilhouetteCoefficients), 2))
             errRegres.append([self.col_err])
             errRegresTol.append([self.recon_err])
             RECON.append(self.L_errDist)
-            RECON1.append(self.avgErr)
+            RECON1.append(self.avgErr)'''
+
         if self.rank == 0:
-            nopt1, pvalue1 = self.pvalueAnalysis(errRegres, SILL_MIN)
+            nopt1, pvalue1 = self.pvalueAnalysis()
             print('Rank estimated by NMFk = ', nopt1)
-            plot_results(self.start_k, self.end_k,self.step_k, RECON, RECON1, SILL_MIN, self.params.results_path, self.fname)
+            plot_results_fpath(self.params)
         else:
             nopt1 = None
         nopt1 = self.comm1.bcast(nopt1, root=0)
@@ -202,11 +215,14 @@ class PyNMFk():
             except: pass
         results = []
         if self.rank == 0: print('*************Computing for k=', self.k, '************')
-        for i in range(self.perturbations):
-            if self.rank == 0: print('Current perturbation =', i)
-            data = sample(data=self.A_ij, noise_var=self.noise_var, method=self.sampling, seed=i * 1000).fit()
+        for perturbation in range(self.perturbations):
+            if self.rank == 0: print('Current perturbation =', perturbation)
+            data = sample(data=self.A_ij, noise_var=self.noise_var, method=self.sampling, seed=perturbation * 1000).fit()
             self.params.W_update = True
             results.append(PyNMF(data, factors=None, params=self.params).fit())
+            self.cp._save_checkpoint(self.params.flag, perturbation, self.k)
+        self.params.flag = 1
+        self.cp._save_checkpoint(self.params.flag, perturbation, self.k)
         self.Wall = np.hstack(([results[i][0] for i in range(self.perturbations)]))
         self.Wall = self.Wall.reshape(self.Wall.shape[0], self.k, self.perturbations, order='F')
         self.Hall = np.vstack(([results[i][1] for i in range(self.perturbations)]))
@@ -214,6 +230,8 @@ class PyNMFk():
         self.recon_err = [results[i][2] for i in range(self.perturbations)]
         [processAvg, processSTD, self.Hall, self.clusterSilhouetteCoefficients, self.avgSilhouetteCoefficients,
          idx] = custom_clustering(self.Wall, self.Hall, self.params).fit()
+        self.params.flag = 2
+        self.cp._save_checkpoint(self.params.flag, perturbation, self.k)
         self.AvgH = np.median(self.Hall, axis=-1)
         self.AvgW = processAvg
         self.params.W_update = False
@@ -227,9 +245,11 @@ class PyNMFk():
         data_writer = data_write(self.params)
         data_writer.save_factors([self.AvgW, self.AvgH], reg=True)
         data_writer.save_cluster_results(cluster_stats)
+        self.params.flag = 3
+        self.cp._save_checkpoint(self.params.flag,perturbation, self.k)
 
     @comm_timing()
-    def pvalueAnalysis(self, errRegres, SILL_MIN):
+    def pvalueAnalysis(self):
         """
         Calculates nopt by analysing the errors distributions
 
@@ -240,12 +260,19 @@ class PyNMFk():
         SILL_MIN : float
             Minimum of silhouette score
         """
-        pvalue = np.ones(self.end_k - self.start_k + 1)
+        k_swap_range = range(self.params.start_k, self.params.end_k + 1, self.step_k)
+        pvalue = np.ones(len(k_swap_range))
+        SILL_MIN = []
+        errRegres = []
+        for k in k_swap_range:
+            results_paths = self.params.results_path + str(k) + '/'
+            data = File(results_paths + '/results.h5', 'r')
+            errRegres.append([np.array(data['L_err'])])
+            SILL_MIN.append(round(np.min(np.array(data['clusterSilhouetteCoefficients'])), 2))
         oneDistrErr = errRegres[0][0];
         i = 1
         i_old = 0
         nopt = 1
-        k_swap_range = range(self.start_k, self.end_k + 1,self.step_k)
         while i < len(k_swap_range): #(self.end_k - self.start_k + 1):
             i_next = i
             if SILL_MIN[i - 1] > self.sill_thr:  # 0.75:

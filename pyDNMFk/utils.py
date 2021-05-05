@@ -7,10 +7,10 @@ config.init(0)
 import numpy
 import numpy as np
 from mpi4py import MPI
-
+import pickle
 
 class determine_block_params():
-    """Computes the parameters  for each chunk to be read by MPI process
+    r"""Computes the parameters  for each chunk to be read by MPI process
 
     Parameters
     ----------
@@ -27,6 +27,7 @@ class determine_block_params():
         else:
             self.rank = comm.rank
         self.pgrid = pgrid
+        self.rank = self.rank if np.product(self.pgrid)>1 else 0
         self.shape = shape
 
     def determine_block_index_range_asymm(self):
@@ -43,14 +44,176 @@ class determine_block_params():
 
 
 class data_operations():
-    """Performs various operations on the data
+    r"""Performs various operations on the data
 
     Parameters
     ----------
     data : ndarray
        Data to operate on"""
-    def __init__(self, data):
+    def __init__(self, data,params):
         self.ten = data
+        self.params = params
+        self.comm1 = self.params.comm1
+        self.cart_1d_row = self.params.row_comm
+        self.cart_1d_column = self.params.col_comm
+        self.rank = self.comm1.rank
+        self.p_r = self.params.p_r
+        self.p_c = self.params.p_c
+        self.topo  = self.params.topo
+        self.k = self.params.k
+        self.compute_global_dim()
+        self.compute_local_dim()
+        (self.A_ij_m,self.A_ij_n) = self.ten.shape
+        self.m = self.params.m
+        self.n = self.params.n
+
+    def compute_global_dim(self):
+        """Computes global dimensions m and n from given chunk sizes for any grid configuration"""
+        self.loc_m, self.loc_n = self.ten.shape
+        if self.p_r != 1 and self.p_c == 1:
+            self.params.n = self.loc_n
+            self.params.m = self.comm1.allreduce(self.loc_m)
+        elif self.p_c != 1 and self.p_r == 1:
+            self.params.n = self.comm1.allreduce(self.loc_n)
+            self.params.m = self.loc_m
+        else:
+            if self.rank % self.p_c == 0:
+                self.params.m = self.loc_m
+            else:
+                self.params.m = 0
+            self.params.m = self.comm1.allreduce(self.params.m)
+            if self.rank // self.p_c == 0:
+                self.params.n = self.loc_n
+            else:
+                self.params.n = 0
+            self.params.n = self.comm1.allreduce(self.params.n)
+            self.comm1.barrier()
+
+        # if self.rank == 0: print('Data dimensions=(', self.params.m, self.params.n, ')')
+
+    def compute_local_dim(self):
+        r"""Computes local dimensions for factors from given chunk sizes for any grid configuration"""
+        if self.topo == '2d':
+            dtr_blk_m = determine_block_params(self.cart_1d_column, (self.p_c, 1), (self.ten.shape[0], self.k))
+            m_loc = dtr_blk_m.determine_block_shape_asymm()[0]
+            dtr_blk_n = determine_block_params(self.cart_1d_row, (1, self.p_r), (self.k, self.ten.shape[1]))
+            n_loc = dtr_blk_n.determine_block_shape_asymm()[1]
+        elif self.topo== '1d':
+            dtr_blk_m = determine_block_params(self.comm1, (self.p_r, 1), (self.params.m, self.k))
+            m_loc = dtr_blk_m.determine_block_shape_asymm()[0]
+            dtr_blk_n = determine_block_params(self.comm1, (1, self.p_c), (self.k, self.params.n))
+            n_loc = dtr_blk_n.determine_block_shape_asymm()[1]
+        w_idx_range = dtr_blk_m.determine_block_index_range_asymm()
+        h_idx_range = dtr_blk_n.determine_block_index_range_asymm()
+        w_start,w_end = w_idx_range[0][0],w_idx_range[1][0]+1
+        h_start,h_end = h_idx_range[0][1], h_idx_range[1][1] + 1
+        self.params.m_loc,self.params.n_loc = m_loc,n_loc
+        self.params.W_start,self.params.W_end = w_start,w_end
+        self.params.H_start,self.params.H_end = h_start,h_end
+
+    def zero_idx_prune(self):
+        r"""Computes the row and columns indices of the data matrix to be pruned"""
+        row_sum = np.sum(self.ten != 0, 1)
+        col_sum = np.sum(self.ten != 0, 0)
+        if self.topo=='2d':
+            row_sum = self.cart_1d_column.allreduce(row_sum)
+            col_sum = self.cart_1d_row.allreduce(col_sum)
+        else:
+            if self.p_c>1:row_sum = self.comm1.allreduce(row_sum)
+            if self.p_r>1:col_sum = self.comm1.allreduce(col_sum)
+        row_zero_idx_x = row_sum > 0
+        col_zero_idx_x = col_sum > 0
+        if self.topo == '2d':
+            col_zero_idx_h = col_sum[self.params.H_start:self.params.H_end] > 0
+            row_zero_idx_w = row_sum[self.params.W_start:self.params.W_end] > 0
+        elif self.topo == '1d':
+            row_zero_idx_w = row_sum > 0
+            col_zero_idx_h = col_sum > 0
+        return row_zero_idx_x,col_zero_idx_x,row_zero_idx_w,col_zero_idx_h
+
+    def prune(self,data,row_zero_idx,col_zero_idx):
+        """Performs pruning of data
+
+        Parameters
+        ----------
+        data : ndarray
+            data to be pruned
+        row_zero_idx : list
+            indices comprising zero/non-zero rows
+        col_zero_idx : list
+            indices comprising zero/non-zero columns
+
+        Returns
+        -------
+        data : ndarray
+            Pruned data
+
+        """
+        data = data[np.ix_(row_zero_idx, col_zero_idx)]
+        return data
+
+    def prune_all(self,W,H):
+        """ Prunes data and factors
+
+        Parameters
+        ----------
+        W : ndarray
+        H : ndarray
+
+        Returns
+        -------
+        X : ndarray
+        W : ndarray
+        H : ndarray
+        """
+        self.params.row_zero_idx_x,self.params.col_zero_idx_x,self.params.row_zero_idx_w,self.params.col_zero_idx_h = self.zero_idx_prune()
+        self.ten = self.prune(self.ten,self.params.row_zero_idx_x,self.params.col_zero_idx_x)
+        W = self.prune(W,self.params.row_zero_idx_w,[True]*W.shape[1])
+        H = self.prune(H,[True]*H.shape[0],self.params.col_zero_idx_h)
+        return self.ten,W,H
+
+    def unprune(self,data,row_zero_idx,col_zero_idx):
+        """ Unprunes data
+
+        Parameters
+        ----------
+        data : ndarray
+            Data to be unpruned
+        row_zero_idx : list
+            indices comprising zero/non-zero rows
+        col_zero_idx : list
+            indices comprising zero/non-zero cols
+
+        Returns
+        -------
+
+        """
+        if len(row_zero_idx)>1:
+            B = np.zeros((len(row_zero_idx),data.shape[1]))
+            B[row_zero_idx,:] = data
+        elif len(col_zero_idx)>1:
+            B = np.zeros((data.shape[0],len(col_zero_idx)))
+            B[:,col_zero_idx] = data
+        return B
+
+    def unprune_factors(self,W,H):
+        """ Unprunes the factors
+
+        Parameters
+        ----------
+        W : ndarray
+        H : ndarray
+
+        Returns
+        -------
+        W : ndarray
+        H : ndarray
+        """
+        W = self.unprune(W,self.params.row_zero_idx_w,[])
+        H = self.unprune(H,[],self.params.col_zero_idx_h)
+        return W,H
+
+
 
     def cutZero(self, thresh=1e-8):
         """Prunes zero columns from the data"""
@@ -247,6 +410,60 @@ class parse():
     """Define a class parse which is used for adding attributes """
     def __init__(self):
         pass
+
+
+class Checkpoint():
+
+    def __init__(self, checkpoint_save, params):
+        """
+        Class to demo checkpoint saving and continuing from checkpoint
+
+        Parameters
+        ----------
+        checkpoint_save : bool, optional
+            Enable/disable checkpoint
+        max_iters : TYPE, optional
+            maximum number of iterations (epoch). The default is 50.
+
+        Returns
+        -------
+        None.
+
+        """
+        self.checkpoint_save = checkpoint_save if checkpoint_save else False
+        self.params = params
+        self.perturbation = 0
+        self.k = 0
+        self.flag = 0
+
+
+    def load_from_checkpoint(self):
+        """run from checkpoint instead"""
+        if self.checkpoint_save:
+            saved_class = pickle.load(open(self.params.results_path+"/checkpoint.p", "rb"))
+            if self.params.rank == 0:print("Checkpoint loaded")
+            # copy the saved state to the class
+            if self.params.rank == 0:print("Loading saved object state...")
+            self._set_params(vars(saved_class))
+            if self.params.rank == 0:print("Continuing from checkpoint for k=", self.k,'perturbation=',self.perturbation)
+
+
+    def _save_checkpoint(self,flag,perturbation,k):
+        args = parse()
+        """Saves the class at checkpoint number"""
+        args.flag = flag
+        args.perturbation = perturbation
+        args.k = k
+        # save the class object
+        if self.checkpoint_save and self.params.rank==0:
+           pickle.dump(args, open(self.params.results_path+"checkpoint.p", "wb"))
+           print('checkpoint saved')
+
+    def _set_params(self, class_parameters):
+        """Sets class variables from the loaded checkpoint"""
+        for parameter, value in class_parameters.items():
+            setattr(self, parameter, value)
+
 
 class comm_timing(object):
     """

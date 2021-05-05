@@ -36,6 +36,7 @@ class data_read():
         self.fname = args.fname
         self.comm = args.comm1
         self.rank = self.comm.rank
+        self.precision = args.precision if args.precision else 'float32'
         self.data = 0
         if self.ftype == 'folder':
             self.file_path = self.fpath + self.fname + str(self.comm.rank) + '.npy'
@@ -98,7 +99,7 @@ class data_read():
             self.data_partition()
         if self.ftype == 'folder':
             self.read_file_npy()
-        return self.data
+        return self.data.astype(self.precision)
 
 
 class split_files_save():
@@ -214,8 +215,8 @@ class read_factors():
     @comm_timing()
     def __init__(self, factors_path, pgrid):
         self.factors_path = factors_path
-        self.W_path = self.factors_path + 'W/*'
-        self.H_path = self.factors_path + 'H/*'
+        self.W_path = self.factors_path + 'W_reg_factors/*'
+        self.H_path = self.factors_path + 'H_reg_factors/*'
         self.p_grid = pgrid
         self.load_factors()
 

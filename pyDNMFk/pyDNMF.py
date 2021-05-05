@@ -66,9 +66,12 @@ class PyNMF():
         self.params.eps = self.eps
         self.norm = var_init(self.params,'norm',default='kl')
         self.method = var_init(self.params,'method',default='mu')
+        self.prune = var_init(self.params, 'prune', default=True)
         self.save_factors = save_factors
         self.params.itr = var_init(self.params,'itr',default=5000)
         self.itr = self.params.itr
+        self.W_start, self.W_end = 0,0
+        self.H_start, self.H_end = 0, 0
         try:
             self.W_update = self.params.W_update
         except:
@@ -78,7 +81,9 @@ class PyNMF():
             self.topo = '2d'
         else:
             self.topo = '1d'
-        self.compute_global_dim()
+        self.params.topo = self.topo
+        self.data_op = data_operations(self.A_ij, self.params)
+        self.params = self.data_op.params
         if factors is not None:
             if self.topo == '1d':
                 self.W_i = factors[0].astype(self.A_ij.dtype)
@@ -88,44 +93,21 @@ class PyNMF():
                 self.H_ij = factors[1].astype(self.A_ij.dtype)
         else:
             self.init_factors()
+        if self.prune:
+            if self.topo=='2d': self.A_ij,self.W_ij,self.H_ij = self.data_op.prune_all(self.W_ij,self.H_ij)
+            elif self.topo == '1d': self.A_ij,self.W_i,self.H_j = self.data_op.prune_all(self.W_i, self.H_j)
 
 
-    @comm_timing()
-    def compute_global_dim(self):
-        """Computes global dimensions m and n from given chunk sizes for any grid configuration"""
-        self.loc_m, self.loc_n = self.A_ij.shape
-        if self.p_r != 1 and self.p_c == 1:
-            self.params.n = self.loc_n
-            self.params.m = self.comm1.allreduce(self.loc_m)
-        elif self.p_c != 1 and self.p_r == 1:
-            self.params.n = self.comm1.allreduce(self.loc_n)
-            self.params.m = self.loc_m
-        else:
-            if self.rank % self.p_c == 0:
-                self.params.m = self.loc_m
-            else:
-                self.params.m = 0
-            self.params.m = self.comm1.allreduce(self.params.m)
-            if self.rank // self.p_c == 0:
-                self.params.n = self.loc_n
-            else:
-                self.params.n = 0
-            self.params.n = self.comm1.allreduce(self.params.n)
-        self.comm1.barrier()
-        # if self.rank == 0: print('Data dimensions=(', self.params.m, self.params.n, ')')
+
 
     @comm_timing()
     def init_factors(self):
         """Initializes NMF factors with rand/nnsvd method"""
 
         if self.init == 'rand':
-            if self.topo == '2d':
-                dtr_blk_m = determine_block_params(self.cart_1d_column, (self.p_c, 1), (self.A_ij.shape[0], self.k))
-                m_loc = dtr_blk_m.determine_block_shape_asymm()[0]
-                dtr_blk_n = determine_block_params(self.cart_1d_row, (1, self.p_r), (self.k, self.A_ij.shape[1]))
-                n_loc = dtr_blk_n.determine_block_shape_asymm()[1]
-                self.W_ij = np.random.rand(m_loc, self.k).astype(self.A_ij.dtype)
-                self.H_ij = np.random.rand(self.k, n_loc).astype(self.A_ij.dtype)
+            if self.topo=='2d':
+                self.W_ij = np.random.rand(self.params.m_loc, self.k).astype(self.A_ij.dtype)
+                self.H_ij = np.random.rand(self.k, self.params.n_loc).astype(self.A_ij.dtype)
             elif self.topo == '1d':
                 if self.p_c == 1:
                     self.W_i = np.random.rand(self.m_loc, self.k).astype(self.A_ij.dtype)
@@ -178,6 +160,7 @@ class PyNMF():
                     if self.save_factors:
                         data_write(self.params).save_factors([self.W_ij, self.H_ij])
                     self.comm.Free()
+                    if self.prune: self.W_ij,self.H_ij = self.data_op.unprune_factors(self.W_ij, self.H_ij)
                     return self.W_ij, self.H_ij, self.recon_err
             elif self.topo == '1d':
                 self.W_i, self.H_j = nmf_algorithms_1D(self.A_ij, self.W_i, self.H_j, params=self.params).update()
@@ -191,6 +174,8 @@ class PyNMF():
                         if self.rank == 0: print('\nrelative error is:', self.recon_err)
                     if self.save_factors:
                         data_write(self.params).save_factors([self.W_i, self.H_j])
+                    if self.prune:
+                        self.W_i, self.H_j = self.data_op.unprune_factors(self.W_i, self.H_j)
                     return self.W_i, self.H_j, self.recon_err
 
     @comm_timing()

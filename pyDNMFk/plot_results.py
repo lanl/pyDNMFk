@@ -2,7 +2,7 @@
 import matplotlib
 from matplotlib import pyplot as plt
 from .data_io import *
-
+from h5py import File
 
 def plot_err(err):
     """Plots the relative error for NMF decomposition as a function of number of iterations"""
@@ -82,9 +82,7 @@ def plot_results(startProcess, endProcess, stepProcess,RECON, RECON1, SILL_MIN, 
     # manipulate the y-axis values into percentage 
     vals = ax1.get_yticks()
     ax1.set_yticklabels(['{:,.0%}'.format(x) for x in vals])
-
     # ax1.legend(loc=0)
-
     ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
     color = 'tab:blue'
     ax2.set_ylabel('Minimum Stability', color=color)  # we already handled the x-label with ax1
@@ -93,16 +91,58 @@ def plot_results(startProcess, endProcess, stepProcess,RECON, RECON1, SILL_MIN, 
     # ax2.legend(loc=1)
     fig.tight_layout()  # otherwise the right y-label is slightly clipped
     # plt.show()
-
     # added these three lines
     lns = lns1 + lns2 + lns3
     labs = [l.get_label() for l in lns]
     ax1.legend(lns, labs, loc=0)
-
     plt.savefig(out_put + '/' + name + '_selection_plot.pdf')
-
     plt.close()
 
+
+def plot_results_fpath(params):
+    """Plots the relative error and Silhouette results for estimation of k from given folder location"""
+    ######################################## Plotting ####################################################
+    t = range(params.start_k,params.end_k + 1,params.step)
+    fig, ax1 = plt.subplots(num=None, figsize=(10, 6), dpi=300, facecolor='w', edgecolor='k')
+    title = 'Num'
+    color = 'tab:red'
+    ax1.set_xlabel('Total Signatures')
+    ax1.set_ylabel('Mean L2 %', color=color)
+    ax1.set_title(title)
+    RECON = []
+    RECON1 = []
+    SILL_MIN = []
+    for k in t:
+         results_paths = params.results_path + str(k) + '/'
+         data = File(results_paths+'/results.h5','r')
+         RECON.append(np.array(data['L_errDist']))
+         RECON1.append(np.array(data['avgErr']))
+         SILL_MIN.append(round(np.min(np.array(data['clusterSilhouetteCoefficients'])), 2))
+
+    lns1 = ax1.plot(t, RECON, marker='o', linestyle=':', color=color, label='Mean L2 %')
+    lns3 = ax1.plot(t, RECON1, marker='X', linestyle=':', color='tab:green', label="Relative error %")
+    ax1.tick_params(axis='y', labelcolor=color)
+    ax1.xaxis.set_ticks(np.arange(min(t), max(t) + 1, 1))
+    # ax1.axvspan(shadow_start, shadow_end, alpha=0.20, color='#ADD8E6')
+    # ax1.axvspan(shadow_alternative_start,  shadow_alternative_end, alpha=0.20, color='#696969')
+    # manipulate the y-axis values into percentage
+    vals = ax1.get_yticks()
+    ax1.set_yticklabels(['{:,.0%}'.format(x) for x in vals])
+    # ax1.legend(loc=0)
+    ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+    color = 'tab:blue'
+    ax2.set_ylabel('Minimum Stability', color=color)  # we already handled the x-label with ax1
+    lns2 = ax2.plot(t, SILL_MIN, marker='s', linestyle="-.", color=color, label='Minimum Stability')
+    ax2.tick_params(axis='y', labelcolor=color)
+    # ax2.legend(loc=1)
+    fig.tight_layout()  # otherwise the right y-label is slightly clipped
+    # plt.show()
+    # added these three lines
+    lns = lns1 + lns2 + lns3
+    labs = [l.get_label() for l in lns]
+    ax1.legend(lns, labs, loc=0)
+    plt.savefig(params.results_path + '/' + params.fname + '_selection_plot.pdf')
+    plt.close()
 
 def box_plot(dat, respath):
     """Plots the boxplot from the given data and saves the results"""
