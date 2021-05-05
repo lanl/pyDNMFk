@@ -23,6 +23,8 @@
 * Distributed Custom Clustering algorithm for estimating automated latent feature number (k) determination.
 * Objective of minimization of KL divergence/Frobenius norm. 
 * Optimization with multiplicative updates, BCD, and HALS. 
+* Checkpoints for tracking runtime status enabling restart from saved state.
+* Distributed Pruning of zero row and zero columns of the data. 
 
 ![plot](./docs/pyDNMFk.png)
 
