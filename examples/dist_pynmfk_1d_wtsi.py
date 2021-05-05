@@ -38,7 +38,7 @@ def dist_nmfk_1d_nnsvd_init_wtsi():
     args.method = 'mu'
     args.precision = np.float32
     A_ij = data_read(args).read().astype(args.precision)
-    args.results_path = '../Results/'
+    args.results_path = '../results/'
     nopt = PyNMFk(A_ij, factors=None, params=args).fit()
     assert nopt == 4
 
