@@ -67,6 +67,51 @@ You can find the documentation [here](https://lanl.github.io/pyDNMFk/).
 
 
 ## Usage
+```bash
+mpirun -n <procs> python main.py [-h] [--process PROCESS] --p_r P_R --p_c P_C [--k K]
+               [--fpath FPATH] [--ftype FTYPE] [--fname FNAME] [--init INIT]
+               [--itr ITR] [--norm NORM] [--method METHOD] [--verbose VERBOSE]
+               [--results_path RESULTS_PATH] [--checkpoint CHECKPOINT]
+               [--timing_stats TIMING_STATS] [--prune PRUNE]
+               [--precision PRECISION] [--perturbations PERTURBATIONS]
+               [--noise_var NOISE_VAR] [--start_k START_K] [--end_k END_K]
+               [--step_k STEP_K] [--sill_thr SILL_THR] [--sampling SAMPLING]
+
+
+arguments:
+  -h, --help            show this help message and exit
+  --process PROCESS     pyDNMF/pyDNMFk
+  --p_r P_R             Now of row processors
+  --p_c P_C             Now of column processors
+  --k K                 feature count
+  --fpath FPATH         data path to read(eg: tmp/)
+  --ftype FTYPE         data type : mat/folder/h5
+  --fname FNAME         File name
+  --init INIT           NMF initializations: rand/nnsvd
+  --itr ITR             NMF iterations, default:1000
+  --norm NORM           Reconstruction Norm for NMF to optimize:KL/FRO
+  --method METHOD       NMF update method:MU/BCD/HALS
+  --verbose VERBOSE
+  --results_path RESULTS_PATH
+                        Path for saving results
+  --checkpoint CHECKPOINT
+                        Enable checkpoint to track the pyNMFk state
+  --timing_stats TIMING_STATS
+                        Switch to turn on/off benchmarking.
+  --prune PRUNE         Prune zero row/column.
+  --precision PRECISION
+                        Precision of the data(float32/float64/float16.
+  --perturbations PERTURBATIONS
+                        perturbation for NMFk
+  --noise_var NOISE_VAR
+                        Noise variance for NMFk
+  --start_k START_K     Start index of K for NMFk
+  --end_k END_K         End index of K for NMFk
+  --step_k STEP_K       step for K search
+  --sill_thr SILL_THR   SIll Threshold for K estimation
+  --sampling SAMPLING   Sampling noise for NMFk i.e uniform/poisson
+```
+
 We provide a sample dataset that can be used for estimation of k:
 ```python
 '''Imports block'''
