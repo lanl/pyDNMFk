@@ -62,6 +62,7 @@ if __name__ == '__main__':
     main_comm = MPI.COMM_WORLD
     rank = main_comm.rank
     comm = MPI_comm(main_comm, args.p_r, args.p_c)
+    args.rank = rank
     args.comm1 = comm.comm
     args.comm = comm
     args.col_comm = comm.cart_1d_column()
