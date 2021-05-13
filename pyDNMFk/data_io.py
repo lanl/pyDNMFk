@@ -232,7 +232,7 @@ class read_factors():
         files = glob.glob(fpath)
         data = []
         if len(files) == 1:
-            data = self.custom_read_npy(files)
+            data = self.custom_read_npy(files[0])
         else:
             for file in np.sort(files):
                 data.append(self.custom_read_npy(file))
