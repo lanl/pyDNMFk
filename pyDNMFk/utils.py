@@ -8,6 +8,9 @@ import numpy
 import numpy as np
 from mpi4py import MPI
 import pickle
+from sklearn.preprocessing import LabelBinarizer
+import json
+from sklearn.neural_network import MLPClassifier
 
 class determine_block_params():
     r"""Computes the parameters  for each chunk to be read by MPI process
@@ -387,6 +390,74 @@ def norm(X, comm, norm=2, axis=None, p=-1):
         nm = comm.allreduce(nm)
     return np.sqrt(nm)
 
+class serialize_deserialize_mlp():
+    """Returns model/parameters of the model in dictionary format"""
+    def __init__(self,model_name = None,model=None):
+        self.model_name = model_name
+        self.model = model
+
+    def from_json(self):
+        """Load the model from JSON"""
+        with open(self.model_name, 'r') as model_json:
+            model_dict = json.load(model_json)
+            self.model = self.deserialize(model_dict)
+        return self.model
+
+    def to_json(self):
+        """Write the model paramters to JSON"""
+        with open(self.model_name, 'w') as model_json:
+            json.dump(self.serialize(), model_json)
+
+    def serialize(self):
+        """Convert the model  into a a dictionary of parameters"""
+        serialized_label_binarizer = {
+            'neg_label':self.model._label_binarizer.neg_label,
+            'pos_label':self.model._label_binarizer.pos_label,
+            'sparse_output':self.model._label_binarizer.sparse_output,
+            'y_type_':self.model._label_binarizer.y_type_,
+            'sparse_input_':self.model._label_binarizer.sparse_input_,
+            'classes_':self.model._label_binarizer.classes_.tolist()
+        }
+        serialized_model = {
+            'meta': 'mlp',
+            'coefs_': [array.tolist() for array in self.model.coefs_],
+            'loss_': self.model.loss_,
+            'intercepts_': [array.tolist() for array in self.model.intercepts_],
+            'n_iter_': self.model.n_iter_,
+            'n_layers_': self.model.n_layers_,
+            'n_outputs_': self.model.n_outputs_,
+            'out_activation_': self.model.out_activation_,
+            '_label_binarizer': serialized_label_binarizer,
+            'params': self.model.get_params()
+        }
+        if isinstance(self.model.classes_, list):
+            serialized_model['classes_'] = [array.tolist() for array in self.model.classes_]
+        else:
+            serialized_model['classes_'] = self.model.classes_.tolist()
+        return serialized_model
+
+
+    def deserialize(self,model_dict):
+        """Convert the dictionary of parameters into model"""
+        model = MLPClassifier(**model_dict['params'])
+        model.coefs_ = numpy.array([numpy.array(i) for i in model_dict['coefs_']],dtype='object')
+        model.loss_ = model_dict['loss_']
+        model.intercepts_ = numpy.array([numpy.array(i) for i in model_dict['intercepts_']],dtype='object')
+        model.n_iter_ = model_dict['n_iter_']
+        model.n_layers_ = model_dict['n_layers_']
+        model.n_outputs_ = model_dict['n_outputs_']
+        model.out_activation_ = model_dict['out_activation_']
+        label_binarizer = LabelBinarizer()
+        label_binarizer_dict = model_dict['_label_binarizer']
+        label_binarizer.neg_label = label_binarizer_dict['neg_label']
+        label_binarizer.pos_label = label_binarizer_dict['pos_label']
+        label_binarizer.sparse_output = label_binarizer_dict['sparse_output']
+        label_binarizer.y_type_ = label_binarizer_dict['y_type_']
+        label_binarizer.sparse_input_ = label_binarizer_dict['sparse_input_']
+        label_binarizer.classes_ = numpy.array(label_binarizer_dict['classes_'])
+        model._label_binarizer = label_binarizer
+        model.classes_ = numpy.array(model_dict['classes_'])
+        return model
 
 def str2bool(v):
     """Returns instance of string parameter to bool type"""
@@ -397,7 +468,7 @@ def str2bool(v):
     elif v.lower() in ('no', 'false', 'f', 'n', '0'):
         return False
     else:
-        raise argparse.ArgumentTypeError('Boolean value expected.')
+        raise NameError('Boolean value expected.')
 
 def var_init(clas,var,default):
     """Checks if class attribute is present and if not, intializes the attribute with given default value"""

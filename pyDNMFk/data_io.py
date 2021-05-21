@@ -199,6 +199,7 @@ class data_write():
                 hf.create_dataset('L_errDist', data=params['L_errDist'])
                 hf.create_dataset('avgErr', data=params['avgErr'])
                 hf.create_dataset('ErrTol', data=params['recon_err'])
+                hf.create_dataset('AIC', data=params['AIC'])
 
 
 class read_factors():

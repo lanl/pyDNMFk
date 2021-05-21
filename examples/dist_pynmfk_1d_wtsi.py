@@ -27,8 +27,8 @@ def dist_nmfk_1d_nnsvd_init_wtsi():
     args.fpath = '../data/'
     args.fname = 'wtsi'
     args.ftype = 'mat'
-    args.start_k = 2
-    args.end_k = 6
+    args.start_k = 1
+    args.end_k = 8
     args.step = 1
     args.sill_thr = 0.6
     args.itr = 1000
@@ -37,6 +37,7 @@ def dist_nmfk_1d_nnsvd_init_wtsi():
     args.norm = 'fro'
     args.method = 'mu'
     args.precision = np.float32
+    args.checkpoint = False
     A_ij = data_read(args).read().astype(args.precision)
     args.results_path = '../results/'
     nopt = PyNMFk(A_ij, factors=None, params=args).fit()

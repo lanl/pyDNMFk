@@ -25,7 +25,7 @@ def parser_pyNMF(parser):
     parser.add_argument('--method', type=str, default='mu', help='NMF update method:MU/BCD/HALS')
     parser.add_argument('--verbose', type=str2bool, default=False)
     parser.add_argument('--results_path', type=str, default='../results/', help='Path for saving results')
-    parser.add_argument('--checkpoint',type=str2bool,default=True,help='Enable checkpoint to track the pyNMFk state')
+    parser.add_argument('--checkpoint',type=str2bool,default=False,help='Enable checkpoint to track the pyNMFk state')
     parser.add_argument('--timing_stats', type=str2bool, default=False, help='Switch to turn on/off benchmarking.')
     parser.add_argument('--prune', type=str2bool, default=False, help='Prune zero row/column.')
     parser.add_argument('--precision', type=str, default='float32', help='Precision of the data(float32/float64/float16.')

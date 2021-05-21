@@ -42,6 +42,7 @@ def dist_nmfk_2d_rand_init_swim():
     args.verbose = True
     args.norm = 'kl'
     args.method = 'mu'
+    args.checkpoint = True
     args.precision = np.float32
     A_ij = data_read(args).read().astype(args.precision)
     args.results_path = '../Results/'

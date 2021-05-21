@@ -178,14 +178,15 @@ class PyNMFk():
             try: os.makedirs(self.params.results_paths)
             except: pass
 
-        try:
-            self.cp.load_from_checkpoint()
-            if self.cp.flag>3:
-               self.start_k = self.cp.k+self.step_k
-            else:
-                self.start_k = self.cp.k
-        except:
-            pass
+        if self.params.checkpoint:
+            try:
+                self.cp.load_from_checkpoint()
+                if self.cp.flag>3:
+                   self.start_k = self.cp.k+self.step_k
+                else:
+                    self.start_k = self.cp.k
+            except:
+                pass
 
         for self.k in range(self.start_k, self.end_k + 1,self.step_k):
             self.params.k = self.k
@@ -239,9 +240,10 @@ class PyNMFk():
         self.AvgW, self.AvgH, self.L_errDist = regressH.fit()
         self.col_err = regressH.column_err()
         self.avgErr = np.mean(self.recon_err)
+        self.AIC = 2 * self.k + self.params.m * self.params.n * numpy.log(self.avgErr / (self.params.m * self.params.n))
         cluster_stats = {'clusterSilhouetteCoefficients': self.clusterSilhouetteCoefficients,
                          'avgSilhouetteCoefficients': self.avgSilhouetteCoefficients, 'L_errDist': self.L_errDist, \
-                         'L_err': self.col_err, 'avgErr': self.avgErr, 'recon_err': self.recon_err}
+                         'L_err': self.col_err, 'avgErr': self.avgErr, 'recon_err': self.recon_err, 'AIC':self.AIC}
         data_writer = data_write(self.params)
         data_writer.save_factors([self.AvgW, self.AvgH], reg=True)
         data_writer.save_cluster_results(cluster_stats)
