@@ -22,7 +22,7 @@ setup(
     long_description=LONG_DESCRIPTION,
     url='https://github.com/lanl/pyDNMFk',  # change this to GitHub once published
     description='Distributed Nonnegative Matrix Factorization with Custom Clustering',
-    setup_requires=['numpy', 'scipy', 'matplotlib', 'h5py', 'mpi4py', 'pytest-mpi', 'pytest'],
+    setup_requires=['numpy', 'scipy', 'matplotlib', 'h5py', 'mpi4py', 'pytest-mpi','scikit-learn', 'pytest'],
     install_requires=INSTALL_REQUIRES,
     packages=['pyDNMFk'],
     python_requires='>=3.7.1',
