@@ -199,7 +199,8 @@ operations for iii) strong and iv) weak scaling.
 
 ## Citation:
 
-```@misc{rw2019timm,
+```latex
+  @misc{rw2019timm,
   author = {Manish Bhattarai,Ben Nebgen,Erik Skau,Maksim Eren,Gopinath Chennupati,Raviteja Vangara,Hristo Djidjev,John Patchett,Jim Ahrens,Boian ALexandrov},
   title = {pyDNMFk: Python Distributed Non Negative Matrix Factorization},
   year = {2021},
@@ -208,8 +209,8 @@ operations for iii) strong and iv) weak scaling.
   doi = {10.5281/zenodo.4722448},
   howpublished = {\url{https://github.com/lanl/pyDNMFk}}
 }
-```
-```@inproceedings{bhattarai2020distributed,
+
+ @inproceedings{bhattarai2020distributed,
   title={Distributed Non-Negative Tensor Train Decomposition},
   author={Bhattarai, Manish and Chennupati, Gopinath and Skau, Erik and Vangara, Raviteja and Djidjev, Hristo and Alexandrov, Boian S},
   booktitle={2020 IEEE High Performance Extreme Computing Conference (HPEC)},
@@ -217,8 +218,8 @@ operations for iii) strong and iv) weak scaling.
   year={2020},
   organization={IEEE}
 }
-```
-```@article{chennupati2020distributed,
+
+@article{chennupati2020distributed,
   title={Distributed non-negative matrix factorization with determination of the number of latent features},
   author={Chennupati, Gopinath and Vangara, Raviteja and Skau, Erik and Djidjev, Hristo and Alexandrov, Boian},
   journal={The Journal of Supercomputing},
@@ -226,7 +227,7 @@ operations for iii) strong and iv) weak scaling.
   year={2020},
   publisher={Springer}
 }
-```
+
 ## Acknowledgments:
 Los Alamos National Lab (LANL), T-1
 
