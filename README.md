@@ -227,6 +227,7 @@ operations for iii) strong and iv) weak scaling.
   year={2020},
   publisher={Springer}
 }
+```
 
 ## Acknowledgments:
 Los Alamos National Lab (LANL), T-1
