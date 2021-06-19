@@ -218,7 +218,16 @@ operations for iii) strong and iv) weak scaling.
   year={2020},
   organization={IEEE}
 }
-
+@inproceedings {s.20211055,
+booktitle = {EuroVis 2021 - Short Papers},
+editor = {Agus, Marco and Garth, Christoph and Kerren, Andreas},
+title = {{Selection of Optimal Salient Time Steps by Non-negative Tucker Tensor Decomposition}},
+author = {Pulido, Jesus and Patchett, John and Bhattarai, Manish and Alexandrov, Boian and Ahrens, James},
+year = {2021},
+publisher = {The Eurographics Association},
+ISBN = {978-3-03868-143-4},
+DOI = {10.2312/evs.20211055}
+}
 @article{chennupati2020distributed,
   title={Distributed non-negative matrix factorization with determination of the number of latent features},
   author={Chennupati, Gopinath and Vangara, Raviteja and Skau, Erik and Djidjev, Hristo and Alexandrov, Boian},
