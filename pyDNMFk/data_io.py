@@ -119,6 +119,7 @@ class split_files_save():
         dtr_blk_idx = [determine_block_params(rank, self.pgrid, self.data.shape).determine_block_index_range_asymm() for
                        rank in range(np.product(self.pgrid))]
         self.split = [self.data[i[0][0]:i[1][0] + 1, i[0][1]:i[1][1] + 1] for i in dtr_blk_idx]
+        return self.split
 
     @comm_timing()
     def save_data_to_file(self):
