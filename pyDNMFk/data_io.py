@@ -123,14 +123,13 @@ class split_files_save():
     @comm_timing()
     def save_data_to_file(self):
         r"""Function to save the chunks into numpy files"""
-        s = 0
         self.split = self.split_files()
         for i in range(self.p_r * self.p_c):
-            name = 'A_' + str(s) + '.npy'
+            name = 'A_' + str(i) + '.npy'
             fname = self.fpath + name
-            arr = self.split[s - 1]
+            arr = self.split[i]
             np.save(fname, self.data)
-            s += 1
+           
 
 
 class data_write():
