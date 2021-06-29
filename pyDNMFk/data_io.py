@@ -113,7 +113,7 @@ class split_files_save():
         self.p_c = pgrid[1]
         self.fpath = fpath
         try:
-            os.makedirs(path, exist_ok=True)
+            os.makedirs(self.fpath, exist_ok=True)
         except:
             pass
 
