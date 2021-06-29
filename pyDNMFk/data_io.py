@@ -112,6 +112,10 @@ class split_files_save():
         self.p_r = pgrid[0]
         self.p_c = pgrid[1]
         self.fpath = fpath
+        try:
+            os.makedirs(path, exist_ok=True)
+        except:
+            pass
 
     @comm_timing()
     def split_files(self):
