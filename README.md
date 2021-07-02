@@ -9,7 +9,7 @@
 
 <br>
 
-[pyDNMFk](https://github.com/lanl/pyDNMFk) is a software package for applying non-negative matrix factorization in a distributed fashion to large datasets. It has the ability to minimize the difference between reconstructed data and the original data through various norms (Frobenious, KL-divergence).  Additionally, the Custom Clustering algorithm allows for automated determination for the number of Latent features 
+[pyDNMFk](https://github.com/lanl/pyDNMFk) is a software package for applying non-negative matrix factorization in a distributed fashion to large datasets. It can minimize the difference between reconstructed data and the original data through various norms (Frobenius, KL-divergence).  Additionally, the Custom Clustering algorithm allows for automated determination for the number of Latent features.
 
 <div align="center", style="font-size: 50px">
 
@@ -122,7 +122,7 @@ arguments:
 
 **Example on running  pyDNMFk using [main.py](main.py):**
 ```bash
-mpirun -n 4 python main.py --p_r=4 --p_c=1 --process='pyDNMFk'  --fpath='../data/' --ftype='mat' --fname='swim' --init='nnsvd' --itr=5000 --norm='kl' --method='mu' --results_path='../results/' --perturbations=20 --noise_var=0.015 --start_k=2 --end_k=5 --sill_thr=.9 --sampling='uniform'
+mpirun -n 4 python main.py --p_r=4 --p_c=1 --process='pyDNMFk'  --fpath='data/' --ftype='mat' --fname='swim' --init='nnsvd' --itr=5000 --norm='kl' --method='mu' --results_path='results/' --perturbations=20 --noise_var=0.015 --start_k=2 --end_k=5 --sill_thr=.9 --sampling='uniform'
 ```
 
 **Example estimation of k using the provided sample dataset:**
@@ -203,7 +203,7 @@ H = results["H"]
 
 ![plot](./docs/benchmark.png)
 Figure: Scaling benchmarks for 10 iterations for Frobenius norm based MU updates with MPI
- operations for i) strong and ii) weak scaling and  Communication vs computation 
+operations for i) strong and ii) weak scaling and  Communication vs computation 
 operations for iii) strong and iv) weak scaling. 
 
 ## Scalability
