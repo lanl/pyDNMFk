@@ -57,7 +57,10 @@ class PyNMF():
         self.params = params
         self.m_loc, self.n_loc = self.A_ij.shape
         self.init = self.params.init if self.params.init else 'rand'
-        self.p_r, self.p_c, self.k = self.params.p_r, self.params.p_c, self.params.k  # params['m'], params['n'], params['p_r'], params['p_c'], params['k']
+        if "grid" in vars(self.params) and self.params.grid:
+            self.p_r, self.p_c, self.k = self.params.grid[0], self.params.grid[1], self.params.k
+        else:
+            self.p_r, self.p_c, self.k = self.params.p_r, self.params.p_c, self.params.k
         self.comm1 = self.params.comm1  # params['comm1']
         self.cart_1d_row, self.cart_1d_column, self.comm = self.params.row_comm, self.params.col_comm, self.params.comm  # params['row_comm'],params['col_comm'],params['main_comm']
         self.verbose = self.params.verbose if self.params.verbose else False

@@ -9,7 +9,13 @@
 
 <br>
 
-[pyDNMFk](https://github.com/lanl/pyDNMFk) is a software package for applying non-negative matrix factorization in a distrubuted fashion to large datasets. It has the ability to minimize the difference between reconstructed data and the original data through various norms (Frobenious, KL-divergence).  Additionally, the Custom Clustering algorithm allows for automated determination for the number of Latent features 
+[pyDNMFk](https://github.com/lanl/pyDNMFk) is a software package for applying non-negative matrix factorization in a distributed fashion to large datasets. It can minimize the difference between reconstructed data and the original data through various norms (Frobenius, KL-divergence).  Additionally, the Custom Clustering algorithm allows for automated determination for the number of Latent features.
+
+<div align="center", style="font-size: 50px">
+
+### [:information_source: Documentation](https://lanl.github.io/pyDNMFk/) &emsp; [:orange_book: Examples](examples/) &emsp; [:bar_chart: Datasets](data/) &emsp; [:page_facing_up: Paper](https://ieeexplore.ieee.org/abstract/document/9286234)
+
+</div>
 
 <hr/>
 
@@ -19,19 +25,19 @@
 ## Features:
 
 * Utilization of MPI4py for distributed operation.
-* Distributed NNSVD and SVD initiaizations.
+* Distributed NNSVD and SVD initializations.
 * Distributed Custom Clustering algorithm for estimating automated latent feature number (k) determination.
 * Objective of minimization of KL divergence/Frobenius norm. 
 * Optimization with multiplicative updates, BCD, and HALS. 
 * Checkpoints for tracking runtime status enabling restart from saved state.
-* Distributed Pruning of zero row and zero columns of the data. 
+* Distributed Pruning of zero rows and zero columns of the data. 
 
 ![plot](./docs/pyDNMFk.png)
 
 Overview of the pyDNMFk workflow implementation.
 ## Installation:
 
-On a desktop machine
+On a desktop machine:
 ```
 git clone https://github.com/lanl/pyDNMFk.git
 cd pyDNMFk
@@ -42,7 +48,7 @@ python setup.py install
 
 <hr/>
 
-On a server
+On a HPC server:
 ```
 git clone https://github.com/lanl/pyDNMFk.git
 cd pyDNMFk
@@ -53,7 +59,7 @@ pip install mpi4py
 python setup.py install
 ```
 
-## Prerequisites:
+## Prerequisites
 * conda
 * numpy>=1.2
 * matplotlib
@@ -67,6 +73,8 @@ You can find the documentation [here](https://lanl.github.io/pyDNMFk/).
 
 
 ## Usage
+**[main.py](main.py) can be used to run the software on command line:**
+
 ```bash
 mpirun -n <procs> python main.py [-h] [--process PROCESS] --p_r P_R --p_c P_C [--k K]
                [--fpath FPATH] [--ftype FTYPE] [--fname FNAME] [--init INIT]
@@ -100,7 +108,7 @@ arguments:
                         Switch to turn on/off benchmarking.
   --prune PRUNE         Prune zero row/column.
   --precision PRECISION
-                        Precision of the data(float32/float64/float16.
+                        Precision of the data(float32/float64/float16).
   --perturbations PERTURBATIONS
                         perturbation for NMFk
   --noise_var NOISE_VAR
@@ -112,7 +120,12 @@ arguments:
   --sampling SAMPLING   Sampling noise for NMFk i.e uniform/poisson
 ```
 
-We provide a sample dataset that can be used for estimation of k:
+**Example on running  pyDNMFk using [main.py](main.py):**
+```bash
+mpirun -n 4 python main.py --p_r=4 --p_c=1 --process='pyDNMFk'  --fpath='data/' --ftype='mat' --fname='swim' --init='nnsvd' --itr=5000 --norm='kl' --method='mu' --results_path='results/' --perturbations=20 --noise_var=0.015 --start_k=2 --end_k=5 --sill_thr=.9 --sampling='uniform'
+```
+
+**Example estimation of k using the provided sample dataset:**
 ```python
 '''Imports block'''
 import pyDNMFk.config as config
@@ -166,25 +179,38 @@ nopt = PyNMFk(A_ij, factors=None, params=args).fit()
 print('Estimated k with NMFk is ',nopt)
 ```
 
-Alternately, you can also run from test folder in command line as:
-```bash
-mpirun -n 4 python main.py --p_r=4 --p_c=1 --process='pyDNMFk'  --fpath='../data/' --ftype='mat' --fname='swim' --init='nnsvd' --itr=5000 --norm='kl' --method='mu' --results_path='../results/' --perturbations=20 --noise_var=0.015 --start_k=2 --end_k=5 --sill_thr=.9 --sampling='uniform'
+**Example on running pyDNMFk to get the W and H matrices:**
+```python
+# Use "mpirun -n 4 python -m code.py" to run this example
+from pyDNMFk.runner import pyDNMFk_Runner
+import numpy as np
+
+runner = pyDNMFk_Runner(itr=100, init='nnsvd', verbose=True, 
+                        norm='fro', method='mu', precision=np.float32,
+                        checkpoint=False, sill_thr=0.6)
+
+results = runner.run(grid=[4,1], fpath='data/', fname='wtsi', 
+                     ftype='mat', results_path='results/',
+                     k_range=[1,3], step_k=1)
+
+W = results["W"]
+H = results["H"]
 ```
 
-See the resources for more use cases.
+**See the [examples](examples/) or [tests](tests/) for more use cases.**
 <hr/>
 
 ## Benchmarking
 
 ![plot](./docs/benchmark.png)
 Figure: Scaling benchmarks for 10 iterations for Frobenius norm based MU updates with MPI
- operations for i) strong and ii) weak scaling and  Communication vs computation 
+operations for i) strong and ii) weak scaling and  Communication vs computation 
 operations for iii) strong and iv) weak scaling. 
 
 ## Scalability
 ![plot](./docs/scalability.png)
 
-## Authors:
+## Authors
 
 * [Manish Bhattarai](mailto:ceodspspectrum@lanl.gov) - Los Alamos National Laboratory
 * [Ben Nebgen](mailto:bnebgen@lanl.gov) - Los Alamos National Laboratory
@@ -197,7 +223,7 @@ operations for iii) strong and iv) weak scaling.
 * [Jim Ahrens](mailto:ahrens@lanl.gov) - Los Alamos National Laboratory
 * [Boian Alexandrov](mailto:boian@lanl.gov) - Los Alamos National Laboratory
 
-## Citation:
+## How to cite pyDNMFk?
 
 ```latex
   @misc{rw2019timm,
@@ -238,12 +264,11 @@ DOI = {10.2312/evs.20211055}
 }
 ```
 
-## Acknowledgments:
+## Acknowledgments
 Los Alamos National Lab (LANL), T-1
 
-## Copyright Notice:
-
-© (or copyright) 2020. Triad National Security, LLC. All rights reserved.
+## Copyright Notice
+>© (or copyright) 2020. Triad National Security, LLC. All rights reserved.
 This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
 National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
 Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -253,7 +278,8 @@ nonexclusive, paid-up, irrevocable worldwide license in this material to reprodu
 derivative works, distribute copies to the public, perform publicly and display publicly, and to permit
 others to do so.
 
-## License:
+
+## License
 
 This program is open source under the BSD-3 License.
 Redistribution and use in source and binary forms, with or without

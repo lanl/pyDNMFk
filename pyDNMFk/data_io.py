@@ -31,7 +31,10 @@ class data_read():
     def __init__(self, args):
 
         self.fpath = args.fpath
-        self.pgrid = [args.p_r, args.p_c]
+        if "grid" in vars(args) and args.grid:
+            self.pgrid = args.grid
+        else:
+            self.pgrid = [args.p_r, args.p_c]
         self.ftype = args.ftype
         self.fname = args.fname
         self.comm = args.comm1
