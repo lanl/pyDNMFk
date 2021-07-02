@@ -181,6 +181,7 @@ print('Estimated k with NMFk is ',nopt)
 
 **Example on running pyDNMFk to get the W and H matrices:**
 ```python
+# Use "mpirun -n 4 python -m code.py" to run this example
 from pyDNMFk.runner import pyDNMFk_Runner
 import numpy as np
 
