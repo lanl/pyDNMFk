@@ -129,7 +129,10 @@ class PyNMFk():
         self.params = params
         self.comm1 = self.params.comm1
         self.rank = self.comm1.rank
-        self.p_r, self.p_c = self.params.p_r, self.params.p_c
+        if "grid" in vars(self.params) and self.params.grid:
+            self.p_r, self.p_c = self.params.grid[0], self.params.grid[1]
+        else:
+            self.p_r, self.p_c = self.params.p_r, self.params.p_c
         self.fpath = self.params.fpath
         self.fname = self.params.fname
         self.p = self.p_r * self.p_c
@@ -150,8 +153,12 @@ class PyNMFk():
         self.clusterSilhouetteCoefficients, self.avgSilhouetteCoefficients = 0, 0
         self.L_errDist = 0
         self.avgErr = 0
-        self.start_k = self.params.start_k  # ['start_k']
-        self.end_k = self.params.end_k  # ['end_k']
+        if "k_range" in vars(self.params) and self.params.grid:
+            self.start_k = self.params.k_range[0]  # ['start_k']
+            self.end_k = self.params.k_range[1]  # ['end_k']
+        else:
+            self.start_k = self.params.start_k[0]  # ['start_k']
+            self.end_k = self.params.end_k[1]  # ['end_k']
         self.sill_thr = var_init(params,'sill_thr',default=0.9)
         self.verbose = var_init(params,'verbose',default=False)
         self.params.checkpoint = var_init(params, 'checkpoint', default=True)

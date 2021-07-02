@@ -1,9 +1,7 @@
 import sys
 import os
 os.environ["OMP_NUM_THREADS"] = "1"
-import pyDNMFk.config as config
-
-config.init(0)
+import pyDNMFk.config as config;config.init(0)
 import argparse
 from pyDNMFk.utils import *
 from pyDNMFk.pyDNMFk import *
@@ -16,7 +14,7 @@ def parser_pyNMF(parser):
     parser.add_argument('--p_r', type=int, required=True, help='Now of row processors')
     parser.add_argument('--p_c', type=int, required=True, help='Now of column processors')
     parser.add_argument('--k', type=int, default=4, help='feature count')
-    parser.add_argument('--fpath', type=str, default='../data/', help='data path to read(eg: tmp/)')
+    parser.add_argument('--fpath', type=str, default='data/', help='data path to read(eg: tmp/)')
     parser.add_argument('--ftype', type=str, default='mat', help='data type : mat/folder/h5')
     parser.add_argument('--fname', type=str, default='A_', help='File name')
     parser.add_argument('--init', type=str, default='rand', help='NMF initializations: rand/nnsvd')
@@ -24,11 +22,11 @@ def parser_pyNMF(parser):
     parser.add_argument('--norm', type=str, default='kl', help='Reconstruction Norm for NMF to optimize:KL/FRO')
     parser.add_argument('--method', type=str, default='mu', help='NMF update method:MU/BCD/HALS')
     parser.add_argument('--verbose', type=str2bool, default=False)
-    parser.add_argument('--results_path', type=str, default='../results/', help='Path for saving results')
+    parser.add_argument('--results_path', type=str, default='results/', help='Path for saving results')
     parser.add_argument('--checkpoint',type=str2bool,default=False,help='Enable checkpoint to track the pyNMFk state')
     parser.add_argument('--timing_stats', type=str2bool, default=False, help='Switch to turn on/off benchmarking.')
     parser.add_argument('--prune', type=str2bool, default=False, help='Prune zero row/column.')
-    parser.add_argument('--precision', type=str, default='float32', help='Precision of the data(float32/float64/float16.')
+    parser.add_argument('--precision', type=str, default='float32', help='Precision of the data(float32/float64/float16).')
 
     return parser
 
