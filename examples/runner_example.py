@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+Run with: mpirun -n 4 python -m runner_example
+"""
 from pyDNMFk.runner import pyDNMFk_Runner
 import numpy as np
 
