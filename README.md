@@ -114,8 +114,7 @@ arguments:
   --sampling SAMPLING   Sampling noise for NMFk i.e uniform/poisson
 ```
 
-<br>
-
+**Example on running  pyDNMFk using [main.py](main.py):**
 ```bash
 mpirun -n 4 python main.py --p_r=4 --p_c=1 --process='pyDNMFk'  --fpath='../data/' --ftype='mat' --fname='swim' --init='nnsvd' --itr=5000 --norm='kl' --method='mu' --results_path='../results/' --perturbations=20 --noise_var=0.015 --start_k=2 --end_k=5 --sill_thr=.9 --sampling='uniform'
 ```
@@ -174,7 +173,7 @@ nopt = PyNMFk(A_ij, factors=None, params=args).fit()
 print('Estimated k with NMFk is ',nopt)
 ```
 
-**Example on running pyDNMF to get W and H matrices:**
+**Example on running pyDNMFk to get W and H matrices:**
 ```python
 from pyDNMFk.runner import pyDNMFk_Runner
 import numpy as np
