@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Jul  1 22:10:42 2021
-
-Run with: mpirun -n 4 python -m runner_example
-
-@author: maksimekineren
-"""
 from pyDNMFk.runner import pyDNMFk_Runner
 import numpy as np
 

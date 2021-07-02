@@ -9,7 +9,7 @@
 
 <br>
 
-[pyDNMFk](https://github.com/lanl/pyDNMFk) is a software package for applying non-negative matrix factorization in a distrubuted fashion to large datasets. It has the ability to minimize the difference between reconstructed data and the original data through various norms (Frobenious, KL-divergence).  Additionally, the Custom Clustering algorithm allows for automated determination for the number of Latent features 
+[pyDNMFk](https://github.com/lanl/pyDNMFk) is a software package for applying non-negative matrix factorization in a distributed fashion to large datasets. It has the ability to minimize the difference between reconstructed data and the original data through various norms (Frobenious, KL-divergence).  Additionally, the Custom Clustering algorithm allows for automated determination for the number of Latent features 
 
 <hr/>
 
@@ -42,7 +42,7 @@ python setup.py install
 
 <hr/>
 
-On a server
+On a HPC server
 ```
 git clone https://github.com/lanl/pyDNMFk.git
 cd pyDNMFk
@@ -67,6 +67,8 @@ You can find the documentation [here](https://lanl.github.io/pyDNMFk/).
 
 
 ## Usage
+[main.py](main.py) can be used to run the software.
+
 ```bash
 mpirun -n <procs> python main.py [-h] [--process PROCESS] --p_r P_R --p_c P_C [--k K]
                [--fpath FPATH] [--ftype FTYPE] [--fname FNAME] [--init INIT]
@@ -113,6 +115,8 @@ arguments:
 ```
 
 We provide a sample dataset that can be used for estimation of k:
+
+**Example 1:**
 ```python
 '''Imports block'''
 import pyDNMFk.config as config
@@ -166,7 +170,24 @@ nopt = PyNMFk(A_ij, factors=None, params=args).fit()
 print('Estimated k with NMFk is ',nopt)
 ```
 
-Alternately, you can also run from test folder in command line as:
+**Example 2:**
+```python
+from pyDNMFk.runner import pyDNMFk_Runner
+import numpy as np
+
+runner = pyDNMFk_Runner(itr=100, init='nnsvd', verbose=True, 
+                        norm='fro', method='mu', precision=np.float32,
+                        checkpoint=False, sill_thr=0.6)
+
+results = runner.run(grid=[4,1], fpath='../data/', fname='wtsi', 
+                     ftype='mat', results_path='../results/',
+                     k_range=[1,3], step_k=1)
+
+W = results["W"]
+H = results["H"]
+```
+
+**Alternately, you can also run using [main.py](main.py) from command line:**
 ```bash
 mpirun -n 4 python main.py --p_r=4 --p_c=1 --process='pyDNMFk'  --fpath='../data/' --ftype='mat' --fname='swim' --init='nnsvd' --itr=5000 --norm='kl' --method='mu' --results_path='../results/' --perturbations=20 --noise_var=0.015 --start_k=2 --end_k=5 --sill_thr=.9 --sampling='uniform'
 ```
