@@ -11,6 +11,12 @@
 
 [pyDNMFk](https://github.com/lanl/pyDNMFk) is a software package for applying non-negative matrix factorization in a distributed fashion to large datasets. It has the ability to minimize the difference between reconstructed data and the original data through various norms (Frobenious, KL-divergence).  Additionally, the Custom Clustering algorithm allows for automated determination for the number of Latent features 
 
+<div align="center", style="font-size: 50px">
+
+### [:information_source: Documentation](https://lanl.github.io/pyDNMFk/) &emsp; [:orange_book: Examples](examples/) &emsp; [:bar_chart: Datasets](data/) &emsp; [:page_facing_up: Paper](https://ieeexplore.ieee.org/abstract/document/9286234)
+
+</div>
+
 <hr/>
 
 
@@ -31,7 +37,7 @@
 Overview of the pyDNMFk workflow implementation.
 ## Installation:
 
-On a desktop machine
+On a desktop machine:
 ```
 git clone https://github.com/lanl/pyDNMFk.git
 cd pyDNMFk
@@ -42,7 +48,7 @@ python setup.py install
 
 <hr/>
 
-On a HPC server
+On a HPC server:
 ```
 git clone https://github.com/lanl/pyDNMFk.git
 cd pyDNMFk
@@ -53,7 +59,7 @@ pip install mpi4py
 python setup.py install
 ```
 
-## Prerequisites:
+## Prerequisites
 * conda
 * numpy>=1.2
 * matplotlib
@@ -203,7 +209,7 @@ operations for iii) strong and iv) weak scaling.
 ## Scalability
 ![plot](./docs/scalability.png)
 
-## Authors:
+## Authors
 
 * [Manish Bhattarai](mailto:ceodspspectrum@lanl.gov) - Los Alamos National Laboratory
 * [Ben Nebgen](mailto:bnebgen@lanl.gov) - Los Alamos National Laboratory
@@ -216,7 +222,7 @@ operations for iii) strong and iv) weak scaling.
 * [Jim Ahrens](mailto:ahrens@lanl.gov) - Los Alamos National Laboratory
 * [Boian Alexandrov](mailto:boian@lanl.gov) - Los Alamos National Laboratory
 
-## Citation:
+## How to cite pyDNMFk?
 
 ```latex
   @misc{rw2019timm,
@@ -257,12 +263,11 @@ DOI = {10.2312/evs.20211055}
 }
 ```
 
-## Acknowledgments:
+## Acknowledgments
 Los Alamos National Lab (LANL), T-1
 
-## Copyright Notice:
-
-© (or copyright) 2020. Triad National Security, LLC. All rights reserved.
+## Copyright Notice
+>© (or copyright) 2020. Triad National Security, LLC. All rights reserved.
 This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
 National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
 Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -272,7 +277,8 @@ nonexclusive, paid-up, irrevocable worldwide license in this material to reprodu
 derivative works, distribute copies to the public, perform publicly and display publicly, and to permit
 others to do so.
 
-## License:
+
+## License
 
 This program is open source under the BSD-3 License.
 Redistribution and use in source and binary forms, with or without
