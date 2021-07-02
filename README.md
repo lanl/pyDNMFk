@@ -108,7 +108,7 @@ arguments:
                         Switch to turn on/off benchmarking.
   --prune PRUNE         Prune zero row/column.
   --precision PRECISION
-                        Precision of the data(float32/float64/float16.
+                        Precision of the data(float32/float64/float16).
   --perturbations PERTURBATIONS
                         perturbation for NMFk
   --noise_var NOISE_VAR
