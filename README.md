@@ -25,12 +25,12 @@
 ## Features:
 
 * Utilization of MPI4py for distributed operation.
-* Distributed NNSVD and SVD initiaizations.
+* Distributed NNSVD and SVD initializations.
 * Distributed Custom Clustering algorithm for estimating automated latent feature number (k) determination.
 * Objective of minimization of KL divergence/Frobenius norm. 
 * Optimization with multiplicative updates, BCD, and HALS. 
 * Checkpoints for tracking runtime status enabling restart from saved state.
-* Distributed Pruning of zero row and zero columns of the data. 
+* Distributed Pruning of zero rows and zero columns of the data. 
 
 ![plot](./docs/pyDNMFk.png)
 
@@ -179,7 +179,7 @@ nopt = PyNMFk(A_ij, factors=None, params=args).fit()
 print('Estimated k with NMFk is ',nopt)
 ```
 
-**Example on running pyDNMFk to get W and H matrices:**
+**Example on running pyDNMFk to get the W and H matrices:**
 ```python
 from pyDNMFk.runner import pyDNMFk_Runner
 import numpy as np
