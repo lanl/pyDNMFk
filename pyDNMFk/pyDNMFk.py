@@ -157,8 +157,8 @@ class PyNMFk():
             self.start_k = self.params.k_range[0]  # ['start_k']
             self.end_k = self.params.k_range[1]  # ['end_k']
         else:
-            self.start_k = self.params.start_k[0]  # ['start_k']
-            self.end_k = self.params.end_k[1]  # ['end_k']
+            self.start_k = self.params.start_k  # ['start_k']
+            self.end_k = self.params.end_k  # ['end_k']
         self.sill_thr = var_init(params,'sill_thr',default=0.9)
         self.verbose = var_init(params,'verbose',default=False)
         self.params.checkpoint = var_init(params, 'checkpoint', default=True)
