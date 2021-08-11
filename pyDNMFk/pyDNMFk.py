@@ -143,7 +143,7 @@ class PyNMFk():
         self.sampling = var_init(self.params,'sampling',default='uniform')
         self.perturbations = var_init(self.params,'perturbations',default=20)
         self.noise_var = var_init(self.params,'noise_var',default=.03)
-        self.step_k = var_init(self.params, 'step', default=1)
+        self.step_k = var_init(self.params, 'step_k', default=1)
         self.Hall = 0
         self.Wall = 0
         self.recon_err = 0
