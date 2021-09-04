@@ -102,7 +102,7 @@ def plot_results(startProcess, endProcess, stepProcess,RECON, RECON1, SILL_MIN, 
 def plot_results_fpath(params):
     """Plots the relative error and Silhouette results for estimation of k from given folder location"""
     ######################################## Plotting ####################################################
-    t = range(params.start_k,params.end_k + 1,params.step)
+    t = range(params.start_k,params.end_k + 1,params.step_k)
     fig, ax1 = plt.subplots(num=None, figsize=(10, 6), dpi=300, facecolor='w', edgecolor='k')
     title = 'Num'
     color = 'tab:red'
