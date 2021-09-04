@@ -29,7 +29,7 @@ def dist_nmfk_1d_nnsvd_init_wtsi():
     args.ftype = 'mat'
     args.start_k = 1
     args.end_k = 8
-    args.step = 1
+    args.step_k = 1
     args.sill_thr = 0.6
     args.itr = 1000
     args.init = 'nnsvd'
