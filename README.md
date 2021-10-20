@@ -7,6 +7,11 @@
 
 </div>
 
+<p align="center">
+  <img width="160" height="200" src="docs/RD100.png">
+</p>
+
+
 <br>
 
 [pyDNMFk](https://github.com/lanl/pyDNMFk) is a software package for applying non-negative matrix factorization in a distributed fashion to large datasets. It can minimize the difference between reconstructed data and the original data through various norms (Frobenius, KL-divergence).  Additionally, the Custom Clustering algorithm allows for automated determination for the number of Latent features.
