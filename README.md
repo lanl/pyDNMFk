@@ -231,14 +231,25 @@ operations for iii) strong and iv) weak scaling.
 ## How to cite pyDNMFk?
 
 ```latex
-  @misc{rw2019timm,
-  author = {Manish Bhattarai,Ben Nebgen,Erik Skau,Maksim Eren,Gopinath Chennupati,Raviteja Vangara,Hristo Djidjev,John Patchett,Jim Ahrens,Boian ALexandrov},
+  @misc{pyDNMFk,
+  author = {Bhattarai, Manish and Nebgen, Ben and Skau, Erik and Eren, Maksim and Chennupati, Gopinath and Vangara, Raviteja and Djidjev, Hristo and Patchett, John and Ahrens, Jim and ALexandrov, Boian},
   title = {pyDNMFk: Python Distributed Non Negative Matrix Factorization},
   year = {2021},
   publisher = {GitHub},
   journal = {GitHub repository},
   doi = {10.5281/zenodo.4722448},
   howpublished = {\url{https://github.com/lanl/pyDNMFk}}
+}
+
+
+@article{vangara2021finding,
+  title={Finding the Number of Latent Topics With Semantic Non-Negative Matrix Factorization},
+  author={Vangara, Raviteja and Bhattarai, Manish and Skau, Erik and Chennupati, Gopinath and Djidjev, Hristo and Tierney, Tom and Smith, James P and Stanev, Valentin G and Alexandrov, Boian S},
+  journal={IEEE Access},
+  volume={9},
+  pages={117217--117231},
+  year={2021},
+  publisher={IEEE}
 }
 
  @inproceedings{bhattarai2020distributed,
