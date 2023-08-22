@@ -1,7 +1,7 @@
 # @author: Manish Bhattarai
 import glob
 import os
-
+import scipy
 import h5py
 import pandas as pd
 from scipy.io import loadmat
@@ -31,10 +31,7 @@ class data_read():
     def __init__(self, args):
 
         self.fpath = args.fpath
-        if "grid" in vars(args) and args.grid:
-            self.pgrid = args.grid
-        else:
-            self.pgrid = [args.p_r, args.p_c]
+        self.pgrid = [args.p_r, args.p_c]
         self.ftype = args.ftype
         self.fname = args.fname
         self.comm = args.comm1
@@ -67,6 +64,12 @@ class data_read():
         self.data = loadmat(self.file_path)['X']
 
     @comm_timing()
+    def read_file_npz(self):
+        r"""mat file read function"""
+        self.data = scipy.sparse.load_npz(self.file_path)
+        #self.data = loadmat(self.file_path)['X']
+
+    @comm_timing()
     def data_partition(
             self):
         r"""
@@ -94,6 +97,9 @@ class data_read():
         if self.ftype == 'npy':
             self.read_file_npy()
             self.data_partition()
+        elif self.ftype == "npz":
+            self.read_file_npz()
+            self.data_partition()
         elif self.ftype == 'csv' or self.ftype == 'txt':
             self.read_file_csv()
             self.data_partition()
@@ -115,10 +121,6 @@ class split_files_save():
         self.p_r = pgrid[0]
         self.p_c = pgrid[1]
         self.fpath = fpath
-        try:
-            os.makedirs(self.fpath, exist_ok=True)
-        except:
-            pass
 
     @comm_timing()
     def split_files(self):
@@ -126,18 +128,18 @@ class split_files_save():
         dtr_blk_idx = [determine_block_params(rank, self.pgrid, self.data.shape).determine_block_index_range_asymm() for
                        rank in range(np.product(self.pgrid))]
         self.split = [self.data[i[0][0]:i[1][0] + 1, i[0][1]:i[1][1] + 1] for i in dtr_blk_idx]
-        return self.split
 
     @comm_timing()
     def save_data_to_file(self):
         r"""Function to save the chunks into numpy files"""
+        s = 0
         self.split = self.split_files()
         for i in range(self.p_r * self.p_c):
-            name = 'A_' + str(i) + '.npy'
+            name = 'A_' + str(s) + '.npy'
             fname = self.fpath + name
-            arr = self.split[i]
+            arr = self.split[s - 1]
             np.save(fname, self.data)
-           
+            s += 1
 
 
 class data_write():

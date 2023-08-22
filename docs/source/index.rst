@@ -1,102 +1,139 @@
-Welcome to pyDNMFk's documentation!
-===================================
-
-pyDNMFk is a software package for applying non-negative matrix factorization in a distrubuted fashion to large datasets. It has the ability to minimize the difference between reconstructed data and the original data through various norms (Frobenious, KL-divergence). Additionally, the Custom Clustering algorithm allows for automated determination for the number of Latent features.
-
-Features
-========================
-
-* Utilization of MPI4py for distributed operation.
-* Distributed NNSVD and SVD initiaizations.
-* Distributed Custom Clustering algorithm for estimating automated latent feature number (k) determination.
-* Objective of minimization of KL divergence/Frobenius norm.
-* Optimization with multiplicative updates, BCD, and HALS.
+.. cuda-pyDNMFk documentation master file, created by
+   sphinx-quickstart on Fri Aug 11 14:03:08 2023.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
 
 
-Scalability
-========================
-pyDNMFk Scales from laptops to clusters. The library is convenient on a laptop. It can be installed easily  with conda or pip and extends the matrix decomposition from a single core to numerous cores across nodes.
-pyDNMFk is efficient and has been tested on powerful servers across LANL and Oakridge scaling beyond 1000+ nodes.
-This library facilitates the transition between single-machine to large scale cluster so as to enable users to both start simple and scale up when necessary.
+.. _cuda-pyDNMFk: Cuda Python Distributed Non Negative Matrix Factorization with determination of hidden features: https://github.com/lanl/pyDNMFk
 
+==============================================================================================================
+cuda-pyDNMFk: Cuda Python Distributed Non Negative Matrix Factorization with determination of hidden features
+==============================================================================================================
 
-Installation
-========================
+.. image:: https://github.com/lanl/pyDNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main
+   :target: https://github.com/lanl/Distributed_pyNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main
 
-.. code-block:: console
+.. image:: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
+   :target: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
+
+.. image:: https://img.shields.io/badge/python-v3.7.1-blue
+   :target: https://img.shields.io/badge/python-v3.7.1-blue
+
+.. image:: https://img.shields.io/badge/DOI-10.5281%2Fzenodo.4722448-blue.svg
+   :target: https://doi.org/10.5281/zenodo.4722448
+
+cuda-pyDNMFk is a dynamic software platform tailored for the decomposition of large datasets that surpass the limitations 
+of in-memory processing. Building on its foundational capabilities, the latest branch introduces significant enhancements, 
+enabling out-of-memory and distributed decomposition. This ensures that datasets, regardless of their size, can be 
+effectively processed across distributed CPU/GPU architectures. By leveraging advanced GPU functionalities provided 
+by libraries like CuPy and integrating efficient sparse matrix manipulations, cuda-pyDNMFk ensures rapid, efficient, and 
+scalable performance. Whether you're working on a single GPU setup or a multi-node GPU cluster, pyDNMFk offers a 
+robust solution for handling massive datasets seamlessly.
+
+----------
+
+.. image:: ../pyDNMFk_RD500.png
+
+Features of Distributed Out-of-Memory NMF Implementation
+--------------------------------------------------------
+
+- **Efficiency on HPC Systems:** Optimized for heterogeneous high-performance-computing systems to tackle large datasets.
+- **NMFk Foundation:** Builds upon the proven capabilities of NMFk, which is known for automatic model selection and extraction of latent variables.
+- **Extended Support:**  Adds the ability to handle both dense and sparse matrix operations across multi-node, multi-GPU systems.
+- **Out-of-Memory Solutions:**  Designed for situations where the memory demand for factorizing a matrix exceeds the available GPU memory, by employing batching/tiling strategies.
+- **GPU Acceleration:**  Enhances matrix operations through the power of GPU cores and tensor cores (when available) for maximum speed.
+- **Optimized Data Transfers:**  Uses CUDA streams to minimize I/O latency by overlapping data transfers and computations.
+- **Enhanced Communications:**  Implements NVIDIA Collective Communication Library (NCCL) for streamlined intra-node and inter-node communications.
+- **Impressive Benchmarks:** Achieves significant speedups, with up to 76x improvement over the traditional CPU-based NMFk.
+- **Scalability:**   Demonstrates good weak scaling on large multi-GPU clusters, proven to work on decomposing matrices of up to 11 Exabyte-size with a density of \(10^{-6}\).
+
+.. image:: ../New_bached_Algo_row3.png
+
+**Figure: Overview of the pyDNMFk workflow implementation.**
+
+Installation:
+-------------
+
+.. code-block:: bash
 
    git clone https://github.com/lanl/pyDNMFk.git
    cd pyDNMFk
-   conda create --name pyDNMFk python=3.7.1 openmpi mpi4py
-   source activate pyDNMFk
+   conda create --name cudaNMF --file conda_env_requirements.txt
+   conda activate cudaNMF
    python setup.py install
 
+Prerequisites:
+--------------
 
-Usage Example
-========================
-We provide a sample dataset that can be used for estimation of k:
+- conda
+- numpy>=1.2
+- matplotlib
+- MPI4py
+- scipy
+- h5py
+- cupy
+- NCCL
+
+Documentation
+-------------
+
+You can find the documentation `here <https://lanl.github.io/pyDNMFk/>`_.
+
+Usage:
+------
 
 .. code-block:: python
 
-   '''Imports block'''
+   # ... [the given Python code]
 
-   import sys
-   import pyDNMFk.config as config
-   config.init(0)
-   from pyDNMFk.pyDNMFk import *
-   from pyDNMFk.data_io import *
-   from pyDNMFk.dist_comm import *
-   from scipy.io import loadmat
-   from mpi4py import MPI
-   comm = MPI.COMM_WORLD
-   args = parse()
+See the resources for more use cases.
 
+----------
 
-   '''parameters initialization block'''
+Benchmarking:
+-------------
 
+.. image:: ../benchmark_GPU.png
 
-   # Data Read here
-   args.fpath = 'data/'
-   args.fname = 'wtsi'
-   args.ftype = 'mat'
-   args.precision = np.float32
+**Figure: Scaling benchmarks for 10 iterations for Frobenius norm based MU updates with MPI vs NCCL for 1) compute and 2) communication timings**
 
-   #Distributed Comm config block
-   p_r, p_c = 4, 1
+Scalability:
+------------
 
-   #NMF config block
-   args.norm = 'kl'
-   args.method = 'mu'
-   args.init = 'nnsvd'
-   args.itr = 5000
-   args.verbose = True
+.. image:: ../benchmark_strongweak.png
 
-   #Cluster config block
-   args.start_k = 2
-   args.end_k = 5
-   args.sill_thr = 0.9
+**Figure: Scaling benchmarks for 10 iterations for Frobenius norm based MU updates with NCCL operations for 1) strong and 2) weak scaling**
 
-   #Data Write
-   args.results_path = 'results/'
+Authors:
+--------
 
+- `Ismael Boureima <iboureima@lanl.gov>`_ - Los Alamos National Laboratory
+- `Manish Bhattarai <ceodspspectrum@lanl.gov>`_ - Los Alamos National Laboratory
+- `Erik Skau <ewskau@lanl.gov>`_ - Los Alamos National Laboratory
+- `Maksim Eren <maksim@lanl.gov>`_ - Los Alamos National Laboratory
+- `Boian Alexandrov <boian@lanl.gov>`_ - Los Alamos National Laboratory
 
-   '''Parameters prep block'''
+Citation:
+---------
 
+.. code-block:: latex
 
-   comms = MPI_comm(comm, p_r, p_c)
-   comm1 = comms.comm
-   rank = comm.rank
-   size = comm.size
-   args.size, args.rank, args.comm, args.p_r, args.p_c = size, rank, comms, p_r, p_c
-   args.row_comm, args.col_comm, args.comm1 = comms.cart_1d_row(), comms.cart_1d_column(), comm1
-   A_ij = data_read(args).read().astype(args.precision)
+   @misc{rw2019timm, ... }
+   @article{boureima2022distributed, ... }
 
-   nopt = PyNMFk(A_ij, factors=None, params=args).fit()
-   print('Estimated k with NMFk is ',nopt)
+Acknowledgments:
+----------------
+
+Los Alamos National Lab (LANL), T-1
+
+Copyright Notice:
+-----------------
+
+© (or copyright) 2020. Triad National
 
 
-Indices and tables
-========================
+Welcome to cuda-pyDNMFk's documentation!
+========================================
 
 .. toctree::
    :maxdepth: 2
@@ -104,25 +141,9 @@ Indices and tables
 
    modules
 
-
 Indices and tables
-========================
+==================
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -17,12 +17,12 @@ with open('requirements.txt', 'r') as f:
 setup(
     name='pyDNMFk',
     version=__version__,
-    author='Manish Bhattarai, Erik Skau, Ben Nebgen, Boian Alexandrov',
-    author_email='ceodspspectrum@lanl.gov',
+    author='Ismael Boureima, Manish Bhattarai, Boian Alexandrov',
+    author_email='iboureima@lanl.gov',
     long_description=LONG_DESCRIPTION,
     url='https://github.com/lanl/pyDNMFk',  # change this to GitHub once published
-    description='Distributed Nonnegative Matrix Factorization with Custom Clustering',
-    setup_requires=['numpy', 'scipy', 'matplotlib', 'h5py', 'mpi4py', 'pytest-mpi','scikit-learn', 'pytest'],
+    description='Distributed out-of-memory Nonnegative Matrix Factorization on CPU/GPU',
+    setup_requires=['numpy', 'scipy', 'matplotlib', 'h5py', 'mpi4py', 'pytest-mpi', 'scikit-learn', 'pytest'],
     install_requires=INSTALL_REQUIRES,
     packages=['pyDNMFk'],
     python_requires='>=3.7.1',

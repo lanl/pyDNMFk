@@ -1,6 +1,6 @@
 import sys
 import os
-os.environ["OMP_NUM_THREADS"] = "1"
+#os.environ["OMP_NUM_THREADS"] = "1"
 import pyDNMFk.config as config;config.init(0)
 import argparse
 from pyDNMFk.utils import *
@@ -13,6 +13,7 @@ import pandas as pd
 def parser_pyNMF(parser):
     parser.add_argument('--p_r', type=int, required=True, help='Now of row processors')
     parser.add_argument('--p_c', type=int, required=True, help='Now of column processors')
+    parser.add_argument('--gpu', type=bool, default=False, help='Use GPU if true')
     parser.add_argument('--k', type=int, default=4, help='feature count')
     parser.add_argument('--fpath', type=str, default='data/', help='data path to read(eg: tmp/)')
     parser.add_argument('--ftype', type=str, default='mat', help='data type : mat/folder/h5')
@@ -33,6 +34,7 @@ def parser_pyNMF(parser):
 
 def parser_pyNMFk(parser):
     parser.add_argument('--perturbations', type=int, default=20, help='perturbation for NMFk')
+    parser.add_argument('--gpu', type=bool, default=False, help='Use GPU if true')
     parser.add_argument('--noise_var', type=float, default=0.015, help='Noise variance for NMFk')
     parser.add_argument('--start_k', type=int, default=1, help='Start index of K for NMFk')
     parser.add_argument('--end_k', type=int, default=10, help='End index of K for NMFk')

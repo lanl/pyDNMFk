@@ -4,10 +4,50 @@ pyDNMFk package
 Submodules
 ----------
 
+pyDNMFk.comm\_utils module
+--------------------------
+
+.. automodule:: pyDNMFk.comm_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyDNMFk.communicators module
+----------------------------
+
+.. automodule:: pyDNMFk.communicators
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pyDNMFk.config module
 ---------------------
 
 .. automodule:: pyDNMFk.config
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyDNMFk.cudaNMF module
+----------------------
+
+.. automodule:: pyDNMFk.cudaNMF
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyDNMFk.cupyCuSPARSELib module
+------------------------------
+
+.. automodule:: pyDNMFk.cupyCuSPARSELib
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyDNMFk.cupy\_utils module
+--------------------------
+
+.. automodule:: pyDNMFk.cupy_utils
    :members:
    :undoc-members:
    :show-inheritance:
@@ -80,6 +120,14 @@ pyDNMFk.pyDNMFk module
 ----------------------
 
 .. automodule:: pyDNMFk.pyDNMFk
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pyDNMFk.toolz module
+--------------------
+
+.. automodule:: pyDNMFk.toolz
    :members:
    :undoc-members:
    :show-inheritance:

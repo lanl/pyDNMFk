@@ -130,9 +130,9 @@ class data_generator():
     def generate_factors_data(self):
         """Generates the chunk of factors W,H and data X for each MPI process"""
         W_gen = self.dist_fromfunction(self.gauss_matrix_generator(self.m, self.k), (self.m, self.k), (self.p_r, 1),
-                                       unravel_index=self.unravel_column())
+                                       unravel_index=self.unravel_column()).astype(np.float32)
         H_gen = self.random_matrix_generator(self.k, self.determine_block_shape_asymm()[1],
-                                             self.unravel_row()[1])
+                                             self.unravel_row()[1]).astype(np.float32)
         X_gen = W_gen @ H_gen
         print('For rank=', self.rank, ' dimensions of W,H and X are ', W_gen.shape, H_gen.shape, X_gen.shape)
         return W_gen, H_gen, X_gen

@@ -702,7 +702,8 @@ class nmf_algorithms_1D():
 
         AB_glob  : ndarray
         """
-        AB_loc = np.matmul(A, B)
+        #AB_loc = np.matmul(A, B)
+        AB_loc = A@B
         if p != 1:
             AB_glob = self.comm1.allreduce(AB_loc, op=MPI.SUM)
             self.comm1.barrier()
@@ -728,7 +729,8 @@ class nmf_algorithms_1D():
          """
         HH_T = self.global_gram(self.H_j.T, p=self.p_c)
         AH = self.global_mm(self.A_ij, self.H_j.T, p=self.p_c)
-        WHTH = np.matmul(self.W_i, HH_T) + self.eps
+        #WHTH = np.matmul(self.W_i, HH_T) + self.eps
+        WHTH = (self.W_i @ HH_T) + self.eps
         self.W_i *= AH / WHTH
 
 
@@ -746,8 +748,14 @@ class nmf_algorithms_1D():
         -------
         self.H_j : ndarray"""
         W_TW = self.global_gram(self.W_i, p=self.p_r)
+        #print(f"[+] WTW = {W_TW}")
         AtW = self.global_mm(self.W_i.T, self.A_ij, p=self.p_r)
-        HWtW = np.matmul(self.H_j.T, W_TW) + self.eps
+        #print(f"[+] ATW = {AtW}")
+        #HWtW = np.matmul(self.H_j.T, W_TW) + self.eps
+        HWtW = (self.H_j.T @ W_TW) + self.eps
+        #print(f"[+] HWTW = {HWtW.T}")
+        h_up = self.H_j*AtW / HWtW.T
+        #print(f"H_UPDATE = {h_up}")
         self.H_j *= AtW / HWtW.T
 
 

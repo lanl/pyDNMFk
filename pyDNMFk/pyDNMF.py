@@ -4,7 +4,9 @@ from .data_io import *
 from .dist_nmf import *
 from .dist_svd import *
 from .utils import *
-
+import scipy
+from scipy.linalg import norm as scipy_norm
+from scipy.sparse.linalg import norm as scipy_sparse_norm
 
 class PyNMF():
     r"""
@@ -57,10 +59,7 @@ class PyNMF():
         self.params = params
         self.m_loc, self.n_loc = self.A_ij.shape
         self.init = self.params.init if self.params.init else 'rand'
-        if "grid" in vars(self.params) and self.params.grid:
-            self.p_r, self.p_c, self.k = self.params.grid[0], self.params.grid[1], self.params.k
-        else:
-            self.p_r, self.p_c, self.k = self.params.p_r, self.params.p_c, self.params.k
+        self.p_r, self.p_c, self.k = self.params.p_r, self.params.p_c, self.params.k  # params['m'], params['n'], params['p_r'], params['p_c'], params['k']
         self.comm1 = self.params.comm1  # params['comm1']
         self.cart_1d_row, self.cart_1d_column, self.comm = self.params.row_comm, self.params.col_comm, self.params.comm  # params['row_comm'],params['col_comm'],params['main_comm']
         self.verbose = self.params.verbose if self.params.verbose else False
@@ -112,6 +111,7 @@ class PyNMF():
                 self.W_ij = np.random.rand(self.params.m_loc, self.k).astype(self.A_ij.dtype)
                 self.H_ij = np.random.rand(self.k, self.params.n_loc).astype(self.A_ij.dtype)
             elif self.topo == '1d':
+                #np.random.seed(0)
                 if self.p_c == 1:
                     self.W_i = np.random.rand(self.m_loc, self.k).astype(self.A_ij.dtype)
                     if self.rank == 0:
@@ -134,6 +134,11 @@ class PyNMF():
             elif self.topo == '2d':
                 raise Exception('NNSVD init only available for 1D topology, please try with 1d topo.')
 
+        #if self.rank == 0:
+        #    print("=============== [iter %04d] =================" %-1)
+        #    print(f'W_gpu = {self.W_i}')
+        #    print(f'H_gpu = {self.H_j}')
+
     @comm_timing()
     def fit(self):
         r"""
@@ -149,6 +154,7 @@ class PyNMF():
             Reconstruction error for NMF decomposition
         """
         for i in range(self.itr):
+            #if self.rank == 0: print("=============== [iter %04d] =================" %i)
             if self.method.lower() == 'bcd': i = self.itr - 1
             if self.topo == '2d':
                 self.W_ij, self.H_ij = nmf_algorithms_2D(self.A_ij, self.W_ij, self.H_ij, params=self.params).update()
@@ -158,8 +164,8 @@ class PyNMF():
                 if i == self.itr - 1:
                     self.W_ij, self.H_ij = self.normalize_features(self.W_ij, self.H_ij)
                     self.relative_err()
-                    if self.verbose == True:
-                        if self.rank == 0: print('relative error is:', self.recon_err)
+                    #if self.verbose == True:
+                    #    #if self.rank == 0: print('relative error is:', self.recon_err)
                     if self.save_factors:
                         data_write(self.params).save_factors([self.W_ij, self.H_ij])
                     self.comm.Free()
@@ -167,14 +173,17 @@ class PyNMF():
                     return self.W_ij, self.H_ij, self.recon_err
             elif self.topo == '1d':
                 self.W_i, self.H_j = nmf_algorithms_1D(self.A_ij, self.W_i, self.H_j, params=self.params).update()
+                #if self.rank == 0:
+                #    print(f'W_gpu = {self.W_i}')
+                #    print(f'H_gpu = {self.H_j}')
                 if i % 10 == 0:
                     self.H_j = np.maximum(self.H_j, self.eps)
                     self.W_i = np.maximum(self.W_i, self.eps)
                 if i == self.itr - 1:
                     self.W_i, self.H_j = self.normalize_features(self.W_i, self.H_j)
                     self.relative_err()
-                    if self.verbose == True:
-                        if self.rank == 0: print('\nrelative error is:', self.recon_err)
+                    #if self.verbose == True: if self.rank == 0: print('\nrelative error is:', self.recon_err)
+                    #    if self.rank == 0: print('\nrelative error is:', self.recon_err)
                     if self.save_factors:
                         data_write(self.params).save_factors([self.W_i, self.H_j])
                     if self.prune:
@@ -212,7 +221,12 @@ class PyNMF():
     @comm_timing()
     def dist_norm(self, X, proc=-1, norm='fro', axis=None):
         """Computes the distributed norm"""
-        nm = np.linalg.norm(X, axis=axis, ord=norm)
+        if type(X) in [numpy.matrix, numpy.ndarray]:
+            nm = np.linalg.norm(X, axis=axis, ord=norm)
+        elif type(X) in [scipy.sparse.coo.coo_matrix, scipy.sparse.csr.csr_matrix, scipy.sparse.csc.csc_matrix]:
+            nm = scipy_sparse_norm(X, ord=norm, axis=axis)
+        else:
+            raise Exception("[!!] type(X): {} is not understaood".format(type(X)))
         if proc != 1:
             nm = self.comm1.allreduce(nm ** 2)
         return np.sqrt(nm)
@@ -229,8 +243,12 @@ class PyNMF():
         L_errDist_deno = np.zeros(self.n_loc)
         Arecon = self.W_i @ self.H_j
         for q in range(self.A_ij.shape[1]):
-            L_errDist_num[q] = np.sum((self.A_ij[:, q] - Arecon[:, q]) ** 2)
-            L_errDist_deno[q] = np.sum(self.A_ij[:, q] ** 2)
+            if scipy.sparse.issparse(self.A_ij):
+                L_errDist_num[q] = (np.square(self.A_ij[:, q] - Arecon[:, q][:,None])).sum()
+                L_errDist_deno[q] = (self.A_ij[:, q].data ** 2).sum()
+            else:
+                L_errDist_num[q] = ((self.A_ij[:, q] - Arecon[:, q]) ** 2).sum()
+                L_errDist_deno[q] = (self.A_ij[:, q] ** 2).sum()
         col_err_num[dtr_blk_idx[0][1]:dtr_blk_idx[0][1] + dtr_blk_shp[1]] = L_errDist_num
         col_err_deno[dtr_blk_idx[0][1]:dtr_blk_idx[0][1] + dtr_blk_shp[1]] = L_errDist_deno
         col_err_num = self.comm1.allreduce(col_err_num)
