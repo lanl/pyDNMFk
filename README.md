@@ -10,13 +10,7 @@
   
 <br>  
   
-cuda-pyDNMFk is a dynamic software platform tailored for the decomposition of large datasets that surpass the limitations  
-of in-memory processing. Building on its foundational capabilities, the latest branch introduces significant enhancements,  
-enabling out-of-memory and distributed decomposition. This ensures that datasets, regardless of their size, can be  
-effectively processed across distributed CPU/GPU architectures. By leveraging advanced GPU functionalities provided   
-by libraries like CuPy and integrating efficient sparse matrix manipulations, cuda-pyDNMFk ensures rapid, efficient, and   
-scalable performance. Whether you're working on a single GPU setup or a multi-node GPU cluster, pyDNMFk offers a   
-robust solution for handling massive datasets seamlessly.  
+cuda-pyDNMFk is a dynamic software platform tailored for the decomposition of large datasets that surpass the limitations of in-memory processing. Building on its foundational capabilities, the latest branch introduces significant enhancements, enabling out-of-memory and distributed decomposition. This ensures that datasets, regardless of their size, can be effectively processed across distributed CPU/GPU architectures. By leveraging advanced GPU functionalities provided by libraries like CuPy and integrating efficient sparse matrix manipulations, cuda-pyDNMFk ensures rapid, efficient, and scalable performance. Whether you're working on a single GPU setup or a multi-node GPU cluster, pyDNMFk offers a robust solution for handling massive datasets seamlessly.  
 <hr/>  
   
   
@@ -46,7 +40,7 @@ robust solution for handling massive datasets seamlessly.
   
 ![plot](./docs/New_bached_Algo_row3.png)  
   
-**Figure: Overview of the pyDNMFk workflow implementation.**  
+**Figure: Overview of the cuda-pyDNMFk out-of-memory and distributed memory algorithm.**  
 ## Installation:  
   
   
@@ -140,10 +134,15 @@ for 1) compute and 2) communication timings**
 ## Citation:  
   
 ```latex  
- @misc{rw2019timm, author = {Ismael Boureima, Manish Bhattarai, Erik Skau,Maksim Eren, Boian ALexandrov}, title = {cuda-pyDNMFk: Cuda Python Distributed Non Negative Matrix Factorization}, year = {2021}, publisher = {GitHub}, journal = {GitHub repository}, doi = {10.5281/zenodo.4722448}, howpublished = {\url{https://github.com/lanl/pyDNMFk}}}  
+ @misc{rw2019timm, author = {Ismael Boureima, Manish Bhattarai, Erik Skau, Maksim Eren, Boian ALexandrov},
+title = {cuda-pyDNMFk: Cuda Python Distributed Non Negative Matrix Factorization}, year = {2021}, publisher
+ = {GitHub}, journal = {GitHub repository}, doi = {10.5281/zenodo.4722448}, howpublished = {\url{https://github.com/lanl/pyDNMFk}}}  
   
 @article{boureima2022distributed,  
- title={Distributed out-of-memory nmf of dense and sparse data on cpu/gpu architectures with automatic model selection for exascale data}, author={Boureima, Ismael and Bhattarai, Manish and Eren, Maksim and Skau, Erik and Romero, Philip and Eidenbenz, Stephan and Alexandrov, Boian}, journal={arXiv preprint arXiv:2202.09518}, year={2022}}  
+ title={Distributed out-of-memory nmf of dense and sparse data on cpu/gpu architectures with automatic model
+ selection for exascale data}, author={Boureima, Ismael and Bhattarai, Manish and Eren, Maksim and Skau,
+Erik and Romero, Philip and Eidenbenz, Stephan and Alexandrov, Boian}, journal={arXiv preprint arXiv:2202.09518},
+ year={2022}}  
   
   ```  
   
