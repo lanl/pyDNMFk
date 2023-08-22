@@ -1,253 +1,408 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="Python" >
-<head>
-  <meta charset="utf-8" />
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>cuda-pyDNMFk: Cuda Python Distributed Non Negative Matrix Factorization with determination of hidden features &#8212; pyDNMFk 0.0.1 documentation</title>
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Welcome to pyDNMFk&#39;s documentation! &mdash; pyDNMFk 1.0.0 documentation</title>
   
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
   
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="pyDNMFk" href="modules.html" /> 
-</head>
-
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="#" class="icon icon-home"> pyDNMFk
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">pyDNMFk</a></li>
-</ul>
-
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">pyDNMFk</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Welcome to pyDNMFk's documentation!</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
+    <link rel="next" title="pyDNMFk" href="modules.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="welcome-to-pydnmfk-s-documentation">
-<h1>Welcome to pyDNMFk's documentation!<a class="headerlink" href="#welcome-to-pydnmfk-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>pyDNMFk is a software package for applying non-negative matrix factorization in a distrubuted fashion to large datasets. It has the ability to minimize the difference between reconstructed data and the original data through various norms (Frobenious, KL-divergence). Additionally, the Custom Clustering algorithm allows for automated determination for the number of Latent features.</p>
-</div>
-<div class="section" id="features">
-<h1>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p>Utilization of MPI4py for distributed operation.</p></li>
-<li><p>Distributed NNSVD and SVD initiaizations.</p></li>
-<li><p>Distributed Custom Clustering algorithm for estimating automated latent feature number (k) determination.</p></li>
-<li><p>Objective of minimization of KL divergence/Frobenius norm.</p></li>
-<li><p>Optimization with multiplicative updates, BCD, and HALS.</p></li>
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pyDNMFk 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">pyDNMFk</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html">pyDNMFk package</a></li>
 </ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
-<div class="section" id="scalability">
-<h1>Scalability<a class="headerlink" href="#scalability" title="Permalink to this headline">¶</a></h1>
-<p>pyDNMFk Scales from laptops to clusters. The library is convenient on a laptop. It can be installed easily  with conda or pip and extends the matrix decomposition from a single core to numerous cores across nodes.
-pyDNMFk is efficient and has been tested on powerful servers across LANL and Oakridge scaling beyond 1000+ nodes.
-This library facilitates the transition between single-machine to large scale cluster so as to enable users to both start simple and scale up when necessary.</p>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
 </div>
-<div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/lanl/pyDNMFk.git</span>
-<span class="go">cd pyDNMFk</span>
-<span class="go">conda create --name pyDNMFk python=3.7.1 openmpi mpi4py</span>
-<span class="go">source activate pyDNMFk</span>
-<span class="go">python setup.py install</span>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>cuda-pyDNMFk: Cuda Python Distributed Non Negative Matrix Factorization with determination of hidden features</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-distributed-out-of-memory-nmf-implementation">Features of Distributed Out-of-Memory NMF Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarking">Benchmarking:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalability">Scalability:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citation">Citation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copyright-notice">Copyright Notice:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-cuda-pydnmfk-s-documentation">Welcome to cuda-pyDNMFk’s documentation!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="cuda-pydnmfk-cuda-python-distributed-non-negative-matrix-factorization-with-determination-of-hidden-features">
+<h1>cuda-pyDNMFk: Cuda Python Distributed Non Negative Matrix Factorization with determination of hidden features<a class="headerlink" href="#cuda-pydnmfk-cuda-python-distributed-non-negative-matrix-factorization-with-determination-of-hidden-features" title="Permalink to this heading">#</a></h1>
+<a class="reference external image-reference" href="https://github.com/lanl/Distributed_pyNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main"><img alt="https://github.com/lanl/pyDNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main" src="https://github.com/lanl/pyDNMFk/actions/workflows/ci_test.yml/badge.svg?branch=main" /></a>
+<a class="reference external image-reference" href="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg"><img alt="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg" src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg" /></a>
+<a class="reference external image-reference" href="https://img.shields.io/badge/python-v3.7.1-blue"><img alt="https://img.shields.io/badge/python-v3.7.1-blue" src="https://img.shields.io/badge/python-v3.7.1-blue" /></a>
+<a class="reference external image-reference" href="https://doi.org/10.5281/zenodo.4722448"><img alt="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.4722448-blue.svg" src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.4722448-blue.svg" /></a>
+<p>cuda-pyDNMFk is a dynamic software platform tailored for the decomposition of large datasets that surpass the limitations
+of in-memory processing. Building on its foundational capabilities, the latest branch introduces significant enhancements,
+enabling out-of-memory and distributed decomposition. This ensures that datasets, regardless of their size, can be
+effectively processed across distributed CPU/GPU architectures. By leveraging advanced GPU functionalities provided
+by libraries like CuPy and integrating efficient sparse matrix manipulations, cuda-pyDNMFk ensures rapid, efficient, and
+scalable performance. Whether you’re working on a single GPU setup or a multi-node GPU cluster, pyDNMFk offers a
+robust solution for handling massive datasets seamlessly.</p>
+<hr class="docutils" />
+<img alt="_images/pyDNMFk_RD500.png" src="_images/pyDNMFk_RD500.png" />
+<section id="features-of-distributed-out-of-memory-nmf-implementation">
+<h2>Features of Distributed Out-of-Memory NMF Implementation<a class="headerlink" href="#features-of-distributed-out-of-memory-nmf-implementation" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Efficiency on HPC Systems:</strong> Optimized for heterogeneous high-performance-computing systems to tackle large datasets.</p></li>
+<li><p><strong>NMFk Foundation:</strong> Builds upon the proven capabilities of NMFk, which is known for automatic model selection and extraction of latent variables.</p></li>
+<li><p><strong>Extended Support:</strong>  Adds the ability to handle both dense and sparse matrix operations across multi-node, multi-GPU systems.</p></li>
+<li><p><strong>Out-of-Memory Solutions:</strong>  Designed for situations where the memory demand for factorizing a matrix exceeds the available GPU memory, by employing batching/tiling strategies.</p></li>
+<li><p><strong>GPU Acceleration:</strong>  Enhances matrix operations through the power of GPU cores and tensor cores (when available) for maximum speed.</p></li>
+<li><p><strong>Optimized Data Transfers:</strong>  Uses CUDA streams to minimize I/O latency by overlapping data transfers and computations.</p></li>
+<li><p><strong>Enhanced Communications:</strong>  Implements NVIDIA Collective Communication Library (NCCL) for streamlined intra-node and inter-node communications.</p></li>
+<li><p><strong>Impressive Benchmarks:</strong> Achieves significant speedups, with up to 76x improvement over the traditional CPU-based NMFk.</p></li>
+<li><p><strong>Scalability:</strong>   Demonstrates good weak scaling on large multi-GPU clusters, proven to work on decomposing matrices of up to 11 Exabyte-size with a density of (10^{-6}).</p></li>
+</ul>
+<img alt="_images/New_bached_Algo_row3.png" src="_images/New_bached_Algo_row3.png" />
+<p><strong>Figure: Overview of the pyDNMFk workflow implementation.</strong></p>
+</section>
+<section id="installation">
+<h2>Installation:<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/lanl/pyDNMFk.git
+<span class="nb">cd</span><span class="w"> </span>pyDNMFk
+conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>cudaNMF<span class="w"> </span>--file<span class="w"> </span>conda_env_requirements.txt
+conda<span class="w"> </span>activate<span class="w"> </span>cudaNMF
+python<span class="w"> </span>setup.py<span class="w"> </span>install
 </pre></div>
 </div>
-</div>
-<div class="section" id="usage-example">
-<h1>Usage Example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h1>
-<p>We provide a sample dataset that can be used for estimation of k:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;Imports block&#39;&#39;&#39;</span>
-
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">pyDNMFk.config</span> <span class="k">as</span> <span class="nn">config</span>
-<span class="n">config</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">pyDNMFk.pyDNMFk</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">pyDNMFk.data_io</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">pyDNMFk.dist_comm</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">loadmat</span>
-<span class="kn">from</span> <span class="nn">mpi4py</span> <span class="kn">import</span> <span class="n">MPI</span>
-<span class="n">comm</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span>
-<span class="n">args</span> <span class="o">=</span> <span class="n">parse</span><span class="p">()</span>
-
-
-<span class="sd">&#39;&#39;&#39;parameters initialization block&#39;&#39;&#39;</span>
-
-
-<span class="c1"># Data Read here</span>
-<span class="n">args</span><span class="o">.</span><span class="n">fpath</span> <span class="o">=</span> <span class="s1">&#39;data/&#39;</span>
-<span class="n">args</span><span class="o">.</span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;wtsi&#39;</span>
-<span class="n">args</span><span class="o">.</span><span class="n">ftype</span> <span class="o">=</span> <span class="s1">&#39;mat&#39;</span>
-<span class="n">args</span><span class="o">.</span><span class="n">precision</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span>
-
-<span class="c1">#Distributed Comm config block</span>
-<span class="n">p_r</span><span class="p">,</span> <span class="n">p_c</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span>
-
-<span class="c1">#NMF config block</span>
-<span class="n">args</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="s1">&#39;kl&#39;</span>
-<span class="n">args</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;mu&#39;</span>
-<span class="n">args</span><span class="o">.</span><span class="n">init</span> <span class="o">=</span> <span class="s1">&#39;nnsvd&#39;</span>
-<span class="n">args</span><span class="o">.</span><span class="n">itr</span> <span class="o">=</span> <span class="mi">5000</span>
-<span class="n">args</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="c1">#Cluster config block</span>
-<span class="n">args</span><span class="o">.</span><span class="n">start_k</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">args</span><span class="o">.</span><span class="n">end_k</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">args</span><span class="o">.</span><span class="n">sill_thr</span> <span class="o">=</span> <span class="mf">0.9</span>
-
-<span class="c1">#Data Write</span>
-<span class="n">args</span><span class="o">.</span><span class="n">results_path</span> <span class="o">=</span> <span class="s1">&#39;results/&#39;</span>
-
-
-<span class="sd">&#39;&#39;&#39;Parameters prep block&#39;&#39;&#39;</span>
-
-
-<span class="n">comms</span> <span class="o">=</span> <span class="n">MPI_comm</span><span class="p">(</span><span class="n">comm</span><span class="p">,</span> <span class="n">p_r</span><span class="p">,</span> <span class="n">p_c</span><span class="p">)</span>
-<span class="n">comm1</span> <span class="o">=</span> <span class="n">comms</span><span class="o">.</span><span class="n">comm</span>
-<span class="n">rank</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">rank</span>
-<span class="n">size</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">size</span>
-<span class="n">args</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">comm</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">p_c</span> <span class="o">=</span> <span class="n">size</span><span class="p">,</span> <span class="n">rank</span><span class="p">,</span> <span class="n">comms</span><span class="p">,</span> <span class="n">p_r</span><span class="p">,</span> <span class="n">p_c</span>
-<span class="n">args</span><span class="o">.</span><span class="n">row_comm</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">col_comm</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">comm1</span> <span class="o">=</span> <span class="n">comms</span><span class="o">.</span><span class="n">cart_1d_row</span><span class="p">(),</span> <span class="n">comms</span><span class="o">.</span><span class="n">cart_1d_column</span><span class="p">(),</span> <span class="n">comm1</span>
-<span class="n">A_ij</span> <span class="o">=</span> <span class="n">data_read</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">precision</span><span class="p">)</span>
-
-<span class="n">nopt</span> <span class="o">=</span> <span class="n">PyNMFk</span><span class="p">(</span><span class="n">A_ij</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">args</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Estimated k with NMFk is &#39;</span><span class="p">,</span><span class="n">nopt</span><span class="p">)</span>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites:<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>conda</p></li>
+<li><p>numpy&gt;=1.2</p></li>
+<li><p>matplotlib</p></li>
+<li><p>MPI4py</p></li>
+<li><p>scipy</p></li>
+<li><p>h5py</p></li>
+<li><p>cupy</p></li>
+<li><p>NCCL</p></li>
+</ul>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h2>
+<p>You can find the documentation <a class="reference external" href="https://lanl.github.io/pyDNMFk/">here</a>.</p>
+</section>
+<section id="usage">
+<h2>Usage:<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ... [the given Python code]</span>
 </pre></div>
 </div>
+<p>See the resources for more use cases.</p>
+</section>
+<hr class="docutils" />
+<section id="benchmarking">
+<h2>Benchmarking:<a class="headerlink" href="#benchmarking" title="Permalink to this heading">#</a></h2>
+<img alt="_images/benchmark_GPU.png" src="_images/benchmark_GPU.png" />
+<p><strong>Figure: Scaling benchmarks for 10 iterations for Frobenius norm based MU updates with MPI vs NCCL for 1) compute and 2) communication timings</strong></p>
+</section>
+<section id="scalability">
+<h2>Scalability:<a class="headerlink" href="#scalability" title="Permalink to this heading">#</a></h2>
+<img alt="_images/benchmark_strongweak.png" src="_images/benchmark_strongweak.png" />
+<p><strong>Figure: Scaling benchmarks for 10 iterations for Frobenius norm based MU updates with NCCL operations for 1) strong and 2) weak scaling</strong></p>
+</section>
+<section id="authors">
+<h2>Authors:<a class="headerlink" href="#authors" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="mailto:iboureima&#37;&#52;&#48;lanl&#46;gov">Ismael Boureima</a> - Los Alamos National Laboratory</p></li>
+<li><p><a class="reference external" href="mailto:ceodspspectrum&#37;&#52;&#48;lanl&#46;gov">Manish Bhattarai</a> - Los Alamos National Laboratory</p></li>
+<li><p><a class="reference external" href="mailto:ewskau&#37;&#52;&#48;lanl&#46;gov">Erik Skau</a> - Los Alamos National Laboratory</p></li>
+<li><p><a class="reference external" href="mailto:maksim&#37;&#52;&#48;lanl&#46;gov">Maksim Eren</a> - Los Alamos National Laboratory</p></li>
+<li><p><a class="reference external" href="mailto:boian&#37;&#52;&#48;lanl&#46;gov">Boian Alexandrov</a> - Los Alamos National Laboratory</p></li>
+</ul>
+</section>
+<section id="citation">
+<h2>Citation:<a class="headerlink" href="#citation" title="Permalink to this heading">#</a></h2>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>@misc<span class="nb">{</span>rw2019timm, ... <span class="nb">}</span>
+@article<span class="nb">{</span>boureima2022distributed, ... <span class="nb">}</span>
+</pre></div>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="acknowledgments">
+<h2>Acknowledgments:<a class="headerlink" href="#acknowledgments" title="Permalink to this heading">#</a></h2>
+<p>Los Alamos National Lab (LANL), T-1</p>
+</section>
+<section id="copyright-notice">
+<h2>Copyright Notice:<a class="headerlink" href="#copyright-notice" title="Permalink to this heading">#</a></h2>
+<p>© (or copyright) 2020. Triad National</p>
+<section id="welcome-to-cuda-pydnmfk-s-documentation">
+<h3>Welcome to cuda-pyDNMFk’s documentation!<a class="headerlink" href="#welcome-to-cuda-pydnmfk-s-documentation" title="Permalink to this heading">#</a></h3>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">pyDNMFk</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html">pyDNMFk package</a></li>
@@ -255,61 +410,123 @@ This library facilitates the transition between single-machine to large scale cl
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="id1">
-<h1>Indices and tables<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="indices-and-tables">
+<h3>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="right-next"
+       href="modules.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">pyDNMFk</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-           </div>
-           
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-distributed-out-of-memory-nmf-implementation">Features of Distributed Out-of-Memory NMF Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarking">Benchmarking:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalability">Scalability:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authors">Authors:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citation">Citation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copyright-notice">Copyright Notice:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-cuda-pydnmfk-s-documentation">Welcome to cuda-pyDNMFk’s documentation!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="modules.html" class="btn btn-neutral float-right" title="pyDNMFk" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ismael Boureima, Manish Bhattarai
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, LANL.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, LANL.
-
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-        </div>
-      </div>
-
-    </section>
-
   </div>
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

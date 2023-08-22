@@ -1,155 +1,230 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="Python" >
-<head>
-  <meta charset="utf-8" />
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyDNMFk.pyDNMFk &#8212; pyDNMFk 0.0.1 documentation</title>
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pyDNMFk.pyDNMFk &mdash; pyDNMFk 1.0.0 documentation</title>
   
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
   
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyDNMFk/pyDNMFk';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
-</head>
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../../index.html" class="icon icon-home"> pyDNMFk
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html">pyDNMFk</a></li>
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pyDNMFk 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules.html">pyDNMFk</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pyDNMFk.html">pyDNMFk package</a></li>
+</ul>
+</li>
 </ul>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">pyDNMFk</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-        
-      <li>pyDNMFk.pyDNMFk</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-      </li>
-    
-  </ul>
-
+    </div>
+</nav></div>
+    </div>
   
-  <hr/>
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <h1>Source code for pyDNMFk.pyDNMFk</h1><div class="highlight"><pre>
 <span></span><span class="c1">#@author: Manish Bhattarai</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">wilcoxon</span>
@@ -158,8 +233,32 @@
 <span class="kn">from</span> <span class="nn">.pyDNMF</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">.plot_results</span> <span class="kn">import</span> <span class="o">*</span>
 
+<span class="kn">import</span> <span class="nn">cupy</span> <span class="k">as</span> <span class="nn">cp</span>
+<span class="kn">from</span> <span class="nn">cupy</span> <span class="kn">import</span> <span class="n">asarray</span>  <span class="k">as</span> <span class="n">_asarray</span>
+<span class="kn">from</span> <span class="nn">cupy</span> <span class="kn">import</span> <span class="n">asnumpy</span>  <span class="k">as</span> <span class="n">_asnumpy</span>
+<span class="kn">from</span> <span class="nn">cupy</span> <span class="kn">import</span> <span class="n">divide</span>   <span class="k">as</span> <span class="n">_divide</span>
+<span class="kn">from</span> <span class="nn">cupy</span> <span class="kn">import</span> <span class="n">matmul</span>   <span class="k">as</span> <span class="n">_matmul</span>
+<span class="kn">from</span> <span class="nn">cupy</span> <span class="kn">import</span> <span class="n">multiply</span> <span class="k">as</span> <span class="n">_multiply</span>
+<span class="kn">from</span> <span class="nn">cupy</span> <span class="kn">import</span> <span class="n">zeros</span>    <span class="k">as</span> <span class="n">_zeros</span>
+<span class="kn">from</span> <span class="nn">.cupyCuSPARSELib</span>  <span class="kn">import</span> <span class="n">spMM</span> <span class="k">as</span> <span class="n">_spMM</span>
+<span class="kn">from</span> <span class="nn">.cupyCuSPARSELib</span>  <span class="kn">import</span> <span class="n">spMat</span><span class="p">,</span> <span class="n">spRandMat</span><span class="p">,</span> <span class="n">spMM</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">coo_matrix</span><span class="p">,</span> <span class="n">csc_matrix</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">,</span> <span class="n">dia_matrix</span><span class="p">,</span> <span class="n">issparse</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="c1">#from .NMF_utils import sparse_NMF_generator</span>
+<span class="kn">from</span> <span class="nn">.cudaNMF</span> <span class="kn">import</span> <span class="n">cudaNMF</span>
+<span class="c1">#from sgemm import sgemm as _sgemm</span>
+
+<span class="kn">from</span> <span class="nn">cupy.cuda</span> <span class="kn">import</span> <span class="n">nccl</span>
+<span class="kn">from</span> <span class="nn">.communicators</span> <span class="kn">import</span> <span class="n">NCCLComm</span>
+<span class="kn">from</span> <span class="nn">.toolz</span> <span class="kn">import</span> <span class="n">log</span><span class="p">,</span> <span class="n">blue</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">red</span><span class="p">,</span> <span class="n">amber</span>
+<span class="kn">from</span> <span class="nn">.comm_utils</span> <span class="kn">import</span> <span class="n">GetTopology</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+
 <div class="viewcode-block" id="sample"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.sample">[docs]</a><span class="k">class</span> <span class="nc">sample</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generates perturbed version of data based on sampling distribution.</span>
 
 <span class="sd">    Parameters</span>
@@ -188,7 +287,7 @@
 
 <div class="viewcode-block" id="sample.randM"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.sample.randM">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">randM</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Multiplies each element of X by a uniform random number in (1-epsilon, 1+epsilon).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -198,13 +297,13 @@
 
 <div class="viewcode-block" id="sample.poisson"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.sample.poisson">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">poisson</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Resamples each element of a matrix from a Poisson distribution with the mean set by that element. Y_{i,j} = Poisson(X_{i,j}&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resamples each element of a matrix from a Poisson distribution with the mean set by that element. Y_{i,j} = Poisson(X_{i,j}&quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">X_per</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="sample.fit"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.sample.fit">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calls the sub routines to perform resampling on data</span>
 
 <span class="sd">        Returns</span>
@@ -221,7 +320,7 @@
 
 
 <div class="viewcode-block" id="PyNMFk"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.PyNMFk">[docs]</a><span class="k">class</span> <span class="nc">PyNMFk</span><span class="p">():</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Performs the distributed NMF decomposition with custom clustering for estimating hidden factors k</span>
 
 <span class="sd">    Parameters</span>
@@ -278,10 +377,21 @@
     <span class="nd">@comm_timing</span><span class="p">()</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A_ij</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span> <span class="o">=</span> <span class="n">A_ij</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">local_m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="o">.</span><span class="n">shape</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="c1">#[IDB000: Switch for use_gpu]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_gpu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">use_gpu</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">use_gpu</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="c1">#[IDB000: END]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="o">.</span><span class="n">shape</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">comm1</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">rank</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">149</span><span class="o">*</span><span class="s1">&#39;#&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">log</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">{}</span><span class="s2">]                                                --[</span><span class="si">{}</span><span class="s2">  comm built </span><span class="si">{}</span><span class="s2">]--&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">green</span><span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">),</span><span class="n">blue</span><span class="p">(</span><span class="s1">&#39;MPI&#39;</span><span class="p">),</span> <span class="n">green</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_gpu</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">149</span><span class="o">*</span><span class="s1">&#39;#&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">log</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">{}</span><span class="s2">]                                                --[Using </span><span class="si">{}</span><span class="s2"> BackEnd]--&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">green</span><span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">),</span> <span class="n">green</span><span class="p">(</span><span class="s2">&quot;CUDA&quot;</span><span class="p">)))</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">149</span><span class="o">*</span><span class="s1">&#39;#&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">p_c</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">fpath</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">fname</span>
@@ -290,9 +400,23 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">topo</span> <span class="o">=</span> <span class="s1">&#39;2d&#39;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">topo</span> <span class="o">=</span> <span class="s1">&#39;1d&#39;</span>
+        <span class="c1">#[IDB001: Passing down useful parameters]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">topo_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">topo</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">coo</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">,</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">csr</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">,</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">csc</span><span class="o">.</span><span class="n">csc_matrix</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A_in_sparse_format</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">149</span><span class="o">*</span><span class="s1">&#39;#&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">log</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">{}</span><span class="s2">]                                          --[Activating </span><span class="si">{}</span><span class="s2"> operations </span><span class="si">{}</span><span class="s2">]--&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">green</span><span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">),</span> <span class="n">blue</span><span class="p">(</span><span class="s2">&quot;SPARSE&quot;</span><span class="p">)</span> <span class="p">,</span><span class="n">green</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)))</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">149</span><span class="o">*</span><span class="s1">&#39;#&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">A_in_sparse_format</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">A_in_sparse_format</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">A_in_sparse_format</span>
+        <span class="c1">#[IDB001: END]</span>
+        
         <span class="bp">self</span><span class="o">.</span><span class="n">sampling</span> <span class="o">=</span> <span class="n">var_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span><span class="s1">&#39;sampling&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;uniform&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span> <span class="o">=</span> <span class="n">var_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span><span class="s1">&#39;perturbations&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">noise_var</span> <span class="o">=</span> <span class="n">var_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span><span class="s1">&#39;noise_var&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=.</span><span class="mi">03</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">noise_var</span> <span class="o">=</span> <span class="n">var_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span><span class="s1">&#39;noise_var&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="mf">.03</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_k</span> <span class="o">=</span> <span class="n">var_init</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Wall</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">recon_err</span> <span class="o">=</span> <span class="mi">0</span>
@@ -306,11 +430,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">end_k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">end_k</span>  <span class="c1"># [&#39;end_k&#39;]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sill_thr</span> <span class="o">=</span> <span class="n">var_init</span><span class="p">(</span><span class="n">params</span><span class="p">,</span><span class="s1">&#39;sill_thr&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">var_init</span><span class="p">(</span><span class="n">params</span><span class="p">,</span><span class="s1">&#39;verbose&#39;</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">checkpoint</span> <span class="o">=</span> <span class="n">var_init</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="s1">&#39;checkpoint&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#flag to track state (i.e 1 for completion of pyNMF for all perturbations, 2 for clustering,3 for results saved)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cp</span> <span class="o">=</span> <span class="n">Checkpoint</span><span class="p">(</span><span class="n">checkpoint_save</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+        <span class="c1">#[IDB003: Construnc GPU NMF object]</span>
+        <span class="c1">#self.use_gpu = self.params.use_gpu if self.params.use_gpu else False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_gpu</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">cudaNMF</span> <span class="o">=</span> <span class="n">cudaNMF</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="c1">#[IDB003: END]</span>
 
 <div class="viewcode-block" id="PyNMFk.fit"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.PyNMFk.fit">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calls the sub routines to perform distributed NMF decomposition and then custom clustering to estimate k</span>
 
 <span class="sd">        Returns</span>
@@ -327,18 +457,30 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_paths</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
-        <span class="k">for</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">checkpoint</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">load_from_checkpoint</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">flag</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">:</span>
+                   <span class="bp">self</span><span class="o">.</span><span class="n">start_k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">k</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">step_k</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">start_k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">k</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="k">for</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">step_k</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pynmfk_per_k</span><span class="p">()</span>
-            <span class="n">SILL_MIN</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clusterSilhouetteCoefficients</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
-            <span class="n">errRegres</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">col_err</span><span class="p">])</span>
-            <span class="n">errRegresTol</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">recon_err</span><span class="p">])</span>
-            <span class="n">RECON</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">L_errDist</span><span class="p">)</span>
-            <span class="n">RECON1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">avgErr</span><span class="p">)</span>
+<span class="w">            </span><span class="sd">&#39;&#39;&#39;SILL_MIN.append(round(np.min(self.clusterSilhouetteCoefficients), 2))</span>
+<span class="sd">            errRegres.append([self.col_err])</span>
+<span class="sd">            errRegresTol.append([self.recon_err])</span>
+<span class="sd">            RECON.append(self.L_errDist)</span>
+<span class="sd">            RECON1.append(self.avgErr)&#39;&#39;&#39;</span>
+
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">nopt1</span><span class="p">,</span> <span class="n">pvalue1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pvalueAnalysis</span><span class="p">(</span><span class="n">errRegres</span><span class="p">,</span> <span class="n">SILL_MIN</span><span class="p">)</span>
+            <span class="n">nopt1</span><span class="p">,</span> <span class="n">pvalue1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pvalueAnalysis</span><span class="p">()</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Rank estimated by NMFk = &#39;</span><span class="p">,</span> <span class="n">nopt1</span><span class="p">)</span>
-            <span class="n">plot_results</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_k</span><span class="p">,</span> <span class="n">RECON</span><span class="p">,</span> <span class="n">RECON1</span><span class="p">,</span> <span class="n">SILL_MIN</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fname</span><span class="p">)</span>
+            <span class="n">plot_results_fpath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">nopt1</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">nopt1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">nopt1</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -347,25 +489,49 @@
 
 <div class="viewcode-block" id="PyNMFk.pynmfk_per_k"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.PyNMFk.pynmfk_per_k">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">pynmfk_per_k</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Performs NMF decomposition and clustering for each k to estimate silhouette statistics&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Performs NMF decomposition and clustering for each k to estimate silhouette statistics&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_paths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_path</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_paths</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
         <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*************Computing for k=&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;************&#39;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">):</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Current perturbation =&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="n">noise_var</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">noise_var</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">i</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">W_update</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PyNMF</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">())</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1">#print(&#39;*************Computing for k=&#39;, self.k, &#39;************&#39;)</span>
+            <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;##########################################################[  </span><span class="si">{</span><span class="n">blue</span><span class="p">(</span><span class="s1">&#39;k=</span><span class="si">%04d</span><span class="s1">&#39;</span><span class="w"> </span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)</span><span class="si">}</span><span class="s2">  ] ###################################################################&quot;</span><span class="p">)</span>
+        <span class="c1">#if self.use_gpu: NMF = cudaNMF(self.A_ij, k=self.k, params=self.params, factors=None)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_gpu</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cudaNMF</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cudaNMF</span><span class="o">.</span><span class="n">allocate_gpu_batch_buffers</span><span class="p">()</span>
+            <span class="c1">#print(&quot;[!!!!!][1] GPU BUFFERS allocated OK: len(H_d) = {}&quot;.format(len(self.cudaNMF.H_d)))</span>
+            <span class="k">for</span> <span class="n">perturbation</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">):</span>
+                 <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">W_update</span> <span class="o">=</span> <span class="kc">True</span>
+                 <span class="bp">self</span><span class="o">.</span><span class="n">cudaNMF</span><span class="o">.</span><span class="n">sampleA</span><span class="p">(</span><span class="n">noise_var</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">noise_var</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">perturbation</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+                 <span class="c1">#print(&quot;[!!!!!] [pert %04d]: A sampled OK: len(H_d) = {}&quot;.format(len(self.cudaNMF.H_d)) %perturbation)</span>
+                 <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cudaNMF</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">factors</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+                 <span class="c1">#print(&quot;[+++++] ERR = {}&quot;.format(results[-1][-1][&#39;err&#39;]) )</span>
+                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[k:%04d/ Pert:%04d]:[</span><span class="si">{</span><span class="n">red</span><span class="p">(</span><span class="s1">&#39;Err&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">] | dt[NMF|H_up|W_up|AR&lt;WTW&gt;|AR&lt;WTX&gt;|AR&lt;XHT&gt;] = [</span><span class="si">{</span><span class="n">red</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;err&#39;</span><span class="p">],</span><span class="w"> </span><span class="mi">8</span><span class="p">))</span><span class="si">}</span><span class="s2">] | [</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;dt&#39;</span><span class="p">][</span><span class="s1">&#39;NMF&#39;</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;dt&#39;</span><span class="p">][</span><span class="s1">&#39;H_up&#39;</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;dt&#39;</span><span class="p">][</span><span class="s1">&#39;W_up&#39;</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;dt&#39;</span><span class="p">][</span><span class="s1">&#39;allRed_WTW&#39;</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;dt&#39;</span><span class="p">][</span><span class="s1">&#39;allRed_WTX&#39;</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;dt&#39;</span><span class="p">][</span><span class="s1">&#39;allRed_XHT&#39;</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">]&quot;</span> <span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="n">perturbation</span><span class="p">))</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">perturbation</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">):</span>
+                <span class="c1">#if self.rank == 0: log(f&quot;[k:  %04d / Pert:  %04d]: Relative Err = {red()}&quot; %(self.k, perturbation))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">W_update</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij</span><span class="p">,</span> <span class="n">noise_var</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">noise_var</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sampling</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">perturbation</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PyNMF</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">())</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[k:%04d/ Pert:%04d]:[</span><span class="si">{</span><span class="n">red</span><span class="p">(</span><span class="s1">&#39;Err&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">] | dt[NMF|H_up|W_up|AR&lt;WTW&gt;|AR&lt;WTX&gt;|AR&lt;XHT&gt;] = [</span><span class="si">{</span><span class="n">red</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;err&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">] | [</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;dt&#39;</span><span class="p">][</span><span class="s1">&#39;NMF&#39;</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;dt&#39;</span><span class="p">][</span><span class="s1">&#39;H_up&#39;</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;dt&#39;</span><span class="p">][</span><span class="s1">&#39;W_up&#39;</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;dt&#39;</span><span class="p">][</span><span class="s1">&#39;allRed_WTW&#39;</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;dt&#39;</span><span class="p">][</span><span class="s1">&#39;allRed_WTX&#39;</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;dt&#39;</span><span class="p">][</span><span class="s1">&#39;allRed_XHT&#39;</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">]&quot;</span> <span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="n">perturbation</span><span class="p">))</span>
+            <span class="c1">#if self.rank == 0: log(f&quot;[k:%04d/ Pert:%04d]: Relative Err = {red(results[-1][-1][&#39;err&#39;])} | dt[NMF|H_up|W_up|AR&lt;WTW&gt;|AR&lt;WTX&gt;|AR&lt;XHT&gt;] = [{results[-1][-1][&#39;dt&#39;][&#39;NMF&#39;]}|{results[-1][-1][&#39;dt&#39;][&#39;H_up&#39;]}|{results[-1][-1][&#39;dt&#39;][&#39;W_up&#39;]}|{results[-1][-1][&#39;dt&#39;][&#39;allRed_WTW&#39;]}|{results[-1][-1][&#39;dt&#39;][&#39;allRed_WTX&#39;]}|{results[-1][-1][&#39;dt&#39;][&#39;allRed_XHT&#39;]}]&quot; %(self.k, perturbation))</span>
+            <span class="c1">#if self.rank == 0: log(f&quot;[+] [Perturbation %04d]: Relative error = {results[-1][-1]} | [NMF dt = {round(self.dt[&#39;NMF&#39;],3)} ms]&quot; %perturbation)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">_save_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">flag</span><span class="p">,</span> <span class="n">perturbation</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">_save_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">flag</span><span class="p">,</span> <span class="n">perturbation</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Wall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(([</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">)]))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Wall</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Wall</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Wall</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(([</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">)]))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">recon_err</span> <span class="o">=</span> <span class="p">[</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">recon_err</span> <span class="o">=</span> <span class="p">[</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;err&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">perturbations</span><span class="p">)]</span>
         <span class="p">[</span><span class="n">processAvg</span><span class="p">,</span> <span class="n">processSTD</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">clusterSilhouetteCoefficients</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgSilhouetteCoefficients</span><span class="p">,</span>
          <span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">custom_clustering</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Wall</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Hall</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">flag</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">_save_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">flag</span><span class="p">,</span> <span class="n">perturbation</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">AvgH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Hall</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">AvgW</span> <span class="o">=</span> <span class="n">processAvg</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">W_update</span> <span class="o">=</span> <span class="kc">False</span>
@@ -373,16 +539,20 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">AvgW</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">AvgH</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">L_errDist</span> <span class="o">=</span> <span class="n">regressH</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">col_err</span> <span class="o">=</span> <span class="n">regressH</span><span class="o">.</span><span class="n">column_err</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">avgErr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">recon_err</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">AIC</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">m</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">n</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">avgErr</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">m</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
         <span class="n">cluster_stats</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;clusterSilhouetteCoefficients&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">clusterSilhouetteCoefficients</span><span class="p">,</span>
                          <span class="s1">&#39;avgSilhouetteCoefficients&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgSilhouetteCoefficients</span><span class="p">,</span> <span class="s1">&#39;L_errDist&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">L_errDist</span><span class="p">,</span> \
-                         <span class="s1">&#39;L_err&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">col_err</span><span class="p">,</span> <span class="s1">&#39;avgErr&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgErr</span><span class="p">,</span> <span class="s1">&#39;recon_err&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">recon_err</span><span class="p">}</span>
+                         <span class="s1">&#39;L_err&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">col_err</span><span class="p">,</span> <span class="s1">&#39;avgErr&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">avgErr</span><span class="p">,</span> <span class="s1">&#39;recon_err&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">recon_err</span><span class="p">,</span> <span class="s1">&#39;AIC&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">AIC</span><span class="p">}</span>
         <span class="n">data_writer</span> <span class="o">=</span> <span class="n">data_write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
         <span class="n">data_writer</span><span class="o">.</span><span class="n">save_factors</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">AvgW</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">AvgH</span><span class="p">],</span> <span class="n">reg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">data_writer</span><span class="o">.</span><span class="n">save_cluster_results</span><span class="p">(</span><span class="n">cluster_stats</span><span class="p">)</span></div>
+        <span class="n">data_writer</span><span class="o">.</span><span class="n">save_cluster_results</span><span class="p">(</span><span class="n">cluster_stats</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">flag</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cp</span><span class="o">.</span><span class="n">_save_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">flag</span><span class="p">,</span><span class="n">perturbation</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">)</span></div>
+        <span class="c1">#if self.use_gpu: self.cudaNMF.PINNEDMEMPOOL.free_all_blocks()</span>
 
 <div class="viewcode-block" id="PyNMFk.pvalueAnalysis"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.pyDNMFk.PyNMFk.pvalueAnalysis">[docs]</a>    <span class="nd">@comm_timing</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">pvalueAnalysis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">errRegres</span><span class="p">,</span> <span class="n">SILL_MIN</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">pvalueAnalysis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates nopt by analysing the errors distributions</span>
 
 <span class="sd">        Parameters</span>
@@ -392,13 +562,20 @@
 <span class="sd">        SILL_MIN : float</span>
 <span class="sd">            Minimum of silhouette score</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">pvalue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end_k</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">k_swap_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">start_k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">end_k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_k</span><span class="p">)</span>
+        <span class="n">pvalue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">k_swap_range</span><span class="p">))</span>
+        <span class="n">SILL_MIN</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">errRegres</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_swap_range</span><span class="p">:</span>
+            <span class="n">results_paths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_path</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">results_paths</span> <span class="o">+</span> <span class="s1">&#39;/results.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+            <span class="n">errRegres</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;L_err&#39;</span><span class="p">])])</span>
+            <span class="n">SILL_MIN</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;clusterSilhouetteCoefficients&#39;</span><span class="p">])),</span> <span class="mi">2</span><span class="p">))</span>
         <span class="n">oneDistrErr</span> <span class="o">=</span> <span class="n">errRegres</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
         <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="n">i_old</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">nopt</span> <span class="o">=</span> <span class="mi">1</span>
-
-        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end_k</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">k_swap_range</span><span class="p">):</span> <span class="c1">#(self.end_k - self.start_k + 1):</span>
             <span class="n">i_next</span> <span class="o">=</span> <span class="n">i</span>
             <span class="k">if</span> <span class="n">SILL_MIN</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">sill_thr</span><span class="p">:</span>  <span class="c1"># 0.75:</span>
                 <span class="n">pvalue</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">wilcoxon</span><span class="p">(</span><span class="n">oneDistrErr</span><span class="p">,</span> <span class="n">errRegres</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
@@ -412,50 +589,78 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="c1"># print(&#39;nopt=&#39;, nopt)</span>
-        <span class="k">return</span> <span class="n">nopt</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pvalue</span></div></div>
+        <span class="k">return</span> <span class="n">k_swap_range</span><span class="p">[</span><span class="n">nopt</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">pvalue</span></div></div>
+        <span class="c1">#return nopt + self.start_k - 1, pvalue</span>
+
 </pre></div>
 
-           </div>
-           
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
           </div>
-          <footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, LANL.
-
-    </p>
-  </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-        </div>
-      </div>
-
-    </section>
+<p class="component-author">
+By Ismael Boureima, Manish Bhattarai
+</p>
 
   </div>
   
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
+  <div class="footer-item">
     
-   
+  <p class="copyright">
+    
+      © Copyright 2023, LANL.
+      <br/>
+    
+  </p>
 
-</body>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

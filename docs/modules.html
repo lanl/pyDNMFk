@@ -1,232 +1,720 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="Python" >
-<head>
-  <meta charset="utf-8" />
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pyDNMFk &#8212; pyDNMFk 0.0.1 documentation</title>
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pyDNMFk &mdash; pyDNMFk 1.0.0 documentation</title>
   
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
   
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pyDNMFk package" href="pyDNMFk.html" />
-    <link rel="prev" title="Welcome to pyDNMFk&#39;s documentation!" href="index.html" /> 
-</head>
+    <link rel="prev" title="cuda-pyDNMFk: Cuda Python Distributed Non Negative Matrix Factorization with determination of hidden features" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="index.html" class="icon icon-home"> pyDNMFk
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">pyDNMFk</a><ul>
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pyDNMFk 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">pyDNMFk</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html">pyDNMFk package</a></li>
 </ul>
 </li>
 </ul>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">pyDNMFk</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>pyDNMFk</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
-
+    </div>
+</nav></div>
+    </div>
   
-  <hr/>
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/modules.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>pyDNMFk</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-  <div class="section" id="pydnmfk">
-<h1>pyDNMFk<a class="headerlink" href="#pydnmfk" title="Permalink to this headline">¶</a></h1>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="pydnmfk">
+<h1>pyDNMFk<a class="headerlink" href="#pydnmfk" title="Permalink to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pyDNMFk.html">pyDNMFk package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.config">pyDNMFk.config module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.data_generator">pyDNMFk.data_generator module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.data_io">pyDNMFk.data_io module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.dist_clustering">pyDNMFk.dist_clustering module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.dist_comm">pyDNMFk.dist_comm module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.dist_nmf">pyDNMFk.dist_nmf module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.dist_svd">pyDNMFk.dist_svd module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.plot_results">pyDNMFk.plot_results module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.pyDNMF">pyDNMFk.pyDNMF module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.pyDNMFk">pyDNMFk.pyDNMFk module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.utils">pyDNMFk.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.comm_utils">pyDNMFk.comm_utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.comm_utils.GetTopology"><code class="docutils literal notranslate"><span class="pre">GetTopology</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.comm_utils.GetTopology.getReduceCommTree"><code class="docutils literal notranslate"><span class="pre">GetTopology.getReduceCommTree()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.comm_utils.GetTopology.showTopology"><code class="docutils literal notranslate"><span class="pre">GetTopology.showTopology()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.comm_utils.NCCL_COMM"><code class="docutils literal notranslate"><span class="pre">NCCL_COMM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.comm_utils.superCommunicator"><code class="docutils literal notranslate"><span class="pre">superCommunicator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.comm_utils.superCommunicator.createComm"><code class="docutils literal notranslate"><span class="pre">superCommunicator.createComm()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.communicators">pyDNMFk.communicators module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.communicators.MPIComm"><code class="docutils literal notranslate"><span class="pre">MPIComm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.communicators.MPIComm.Allreduce"><code class="docutils literal notranslate"><span class="pre">MPIComm.Allreduce()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.communicators.MPIComm.Bcast"><code class="docutils literal notranslate"><span class="pre">MPIComm.Bcast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.communicators.MPIComm.Reduce"><code class="docutils literal notranslate"><span class="pre">MPIComm.Reduce()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.communicators.NCCLComm"><code class="docutils literal notranslate"><span class="pre">NCCLComm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.communicators.NCCLComm.Allreduce"><code class="docutils literal notranslate"><span class="pre">NCCLComm.Allreduce()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.communicators.NCCLComm.Bcast"><code class="docutils literal notranslate"><span class="pre">NCCLComm.Bcast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.communicators.NCCLComm.Reduce"><code class="docutils literal notranslate"><span class="pre">NCCLComm.Reduce()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.communicators.NCCLComm.get_NCCL_count_dtype"><code class="docutils literal notranslate"><span class="pre">NCCLComm.get_NCCL_count_dtype()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.communicators.NCCLComm.get_unique_id"><code class="docutils literal notranslate"><span class="pre">NCCLComm.get_unique_id()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.communicators.SUPER_COMM"><code class="docutils literal notranslate"><span class="pre">SUPER_COMM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.communicators.get_NCCL_unique_id"><code class="docutils literal notranslate"><span class="pre">get_NCCL_unique_id()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.config">pyDNMFk.config module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.config.init"><code class="docutils literal notranslate"><span class="pre">init()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.cudaNMF">pyDNMFk.cudaNMF module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF"><code class="docutils literal notranslate"><span class="pre">cudaNMF</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.FroNMF_1D_col"><code class="docutils literal notranslate"><span class="pre">cudaNMF.FroNMF_1D_col()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.FroNMF_1D_col_partion"><code class="docutils literal notranslate"><span class="pre">cudaNMF.FroNMF_1D_col_partion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.FroNMF_1D_row"><code class="docutils literal notranslate"><span class="pre">cudaNMF.FroNMF_1D_row()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.FroNMF_1D_row_batched"><code class="docutils literal notranslate"><span class="pre">cudaNMF.FroNMF_1D_row_batched()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.FroNMF_1D_row_partion"><code class="docutils literal notranslate"><span class="pre">cudaNMF.FroNMF_1D_row_partion()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.Fro_MU_update"><code class="docutils literal notranslate"><span class="pre">cudaNMF.Fro_MU_update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.allocate_dense_batch_buffers"><code class="docutils literal notranslate"><span class="pre">cudaNMF.allocate_dense_batch_buffers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.allocate_gpu_batch_buffers"><code class="docutils literal notranslate"><span class="pre">cudaNMF.allocate_gpu_batch_buffers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.allocate_sparse_batch_buffers"><code class="docutils literal notranslate"><span class="pre">cudaNMF.allocate_sparse_batch_buffers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.buildNCCLSubCommunicator"><code class="docutils literal notranslate"><span class="pre">cudaNMF.buildNCCLSubCommunicator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.buildSubCommunicators"><code class="docutils literal notranslate"><span class="pre">cudaNMF.buildSubCommunicators()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.cache_A_on_device"><code class="docutils literal notranslate"><span class="pre">cudaNMF.cache_A_on_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.cache_H_on_device"><code class="docutils literal notranslate"><span class="pre">cudaNMF.cache_H_on_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.cache_W_on_device"><code class="docutils literal notranslate"><span class="pre">cudaNMF.cache_W_on_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.checkGPUContext"><code class="docutils literal notranslate"><span class="pre">cudaNMF.checkGPUContext()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.check_A_matrix_format"><code class="docutils literal notranslate"><span class="pre">cudaNMF.check_A_matrix_format()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.compute_global_dim"><code class="docutils literal notranslate"><span class="pre">cudaNMF.compute_global_dim()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.configure_sparse_buffers_pinned_mem_params"><code class="docutils literal notranslate"><span class="pre">cudaNMF.configure_sparse_buffers_pinned_mem_params()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.dist_norm"><code class="docutils literal notranslate"><span class="pre">cudaNMF.dist_norm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.find_optimal_baching_axis"><code class="docutils literal notranslate"><span class="pre">cudaNMF.find_optimal_baching_axis()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.find_optimat_partition_strategy"><code class="docutils literal notranslate"><span class="pre">cudaNMF.find_optimat_partition_strategy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.fit"><code class="docutils literal notranslate"><span class="pre">cudaNMF.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.getArrayType"><code class="docutils literal notranslate"><span class="pre">cudaNMF.getArrayType()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.get_gpu_grid_params"><code class="docutils literal notranslate"><span class="pre">cudaNMF.get_gpu_grid_params()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.get_managed_stream_queue"><code class="docutils literal notranslate"><span class="pre">cudaNMF.get_managed_stream_queue()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.identify_distributed_system_compute_topology"><code class="docutils literal notranslate"><span class="pre">cudaNMF.identify_distributed_system_compute_topology()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.init_factors"><code class="docutils literal notranslate"><span class="pre">cudaNMF.init_factors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.isCupyObject"><code class="docutils literal notranslate"><span class="pre">cudaNMF.isCupyObject()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.log"><code class="docutils literal notranslate"><span class="pre">cudaNMF.log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.normalize_features"><code class="docutils literal notranslate"><span class="pre">cudaNMF.normalize_features()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.randM"><code class="docutils literal notranslate"><span class="pre">cudaNMF.randM()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.relative_err"><code class="docutils literal notranslate"><span class="pre">cudaNMF.relative_err()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.sampleA"><code class="docutils literal notranslate"><span class="pre">cudaNMF.sampleA()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.set_batching_params"><code class="docutils literal notranslate"><span class="pre">cudaNMF.set_batching_params()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.showMemStats"><code class="docutils literal notranslate"><span class="pre">cudaNMF.showMemStats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.show_A_info"><code class="docutils literal notranslate"><span class="pre">cudaNMF.show_A_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.cudaNMF.show_topology"><code class="docutils literal notranslate"><span class="pre">cudaNMF.show_topology()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cudaNMF.noSupportFor"><code class="docutils literal notranslate"><span class="pre">noSupportFor()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.cupyCuSPARSELib">pyDNMFk.cupyCuSPARSELib module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cupyCuSPARSELib.spCu2Sc"><code class="docutils literal notranslate"><span class="pre">spCu2Sc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cupyCuSPARSELib.spMM"><code class="docutils literal notranslate"><span class="pre">spMM()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cupyCuSPARSELib.spMM_with_C"><code class="docutils literal notranslate"><span class="pre">spMM_with_C()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cupyCuSPARSELib.spMat"><code class="docutils literal notranslate"><span class="pre">spMat()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cupyCuSPARSELib.spRandMat"><code class="docutils literal notranslate"><span class="pre">spRandMat()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cupyCuSPARSELib.spSc2Cu"><code class="docutils literal notranslate"><span class="pre">spSc2Cu()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.cupy_utils">pyDNMFk.cupy_utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cupy_utils.benchmark"><code class="docutils literal notranslate"><span class="pre">benchmark()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cupy_utils.pin_memory"><code class="docutils literal notranslate"><span class="pre">pin_memory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cupy_utils.read_code"><code class="docutils literal notranslate"><span class="pre">read_code()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.cupy_utils.timeExecution"><code class="docutils literal notranslate"><span class="pre">timeExecution()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.data_generator">pyDNMFk.data_generator module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_generator.data_generator"><code class="docutils literal notranslate"><span class="pre">data_generator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_generator.data_generator.create_folder_dir"><code class="docutils literal notranslate"><span class="pre">data_generator.create_folder_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_generator.data_generator.determine_block_index_range_asymm"><code class="docutils literal notranslate"><span class="pre">data_generator.determine_block_index_range_asymm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_generator.data_generator.determine_block_shape_asymm"><code class="docutils literal notranslate"><span class="pre">data_generator.determine_block_shape_asymm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_generator.data_generator.dist_fromfunction"><code class="docutils literal notranslate"><span class="pre">data_generator.dist_fromfunction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_generator.data_generator.fit"><code class="docutils literal notranslate"><span class="pre">data_generator.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_generator.data_generator.gauss_matrix_generator"><code class="docutils literal notranslate"><span class="pre">data_generator.gauss_matrix_generator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_generator.data_generator.generate_factors_data"><code class="docutils literal notranslate"><span class="pre">data_generator.generate_factors_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_generator.data_generator.random_matrix_generator"><code class="docutils literal notranslate"><span class="pre">data_generator.random_matrix_generator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_generator.data_generator.unravel_column"><code class="docutils literal notranslate"><span class="pre">data_generator.unravel_column()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_generator.data_generator.unravel_row"><code class="docutils literal notranslate"><span class="pre">data_generator.unravel_row()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_generator.parser"><code class="docutils literal notranslate"><span class="pre">parser()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.data_io">pyDNMFk.data_io module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.data_read"><code class="docutils literal notranslate"><span class="pre">data_read</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.data_read.data_partition"><code class="docutils literal notranslate"><span class="pre">data_read.data_partition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.data_read.read"><code class="docutils literal notranslate"><span class="pre">data_read.read()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.data_read.read_dat"><code class="docutils literal notranslate"><span class="pre">data_read.read_dat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.data_read.read_file_csv"><code class="docutils literal notranslate"><span class="pre">data_read.read_file_csv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.data_read.read_file_mat"><code class="docutils literal notranslate"><span class="pre">data_read.read_file_mat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.data_read.read_file_npy"><code class="docutils literal notranslate"><span class="pre">data_read.read_file_npy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.data_read.read_file_npz"><code class="docutils literal notranslate"><span class="pre">data_read.read_file_npz()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.data_read.save_data_to_file"><code class="docutils literal notranslate"><span class="pre">data_read.save_data_to_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.data_write"><code class="docutils literal notranslate"><span class="pre">data_write</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.data_write.create_folder_dir"><code class="docutils literal notranslate"><span class="pre">data_write.create_folder_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.data_write.save_cluster_results"><code class="docutils literal notranslate"><span class="pre">data_write.save_cluster_results()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.data_write.save_factors"><code class="docutils literal notranslate"><span class="pre">data_write.save_factors()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.read_factors"><code class="docutils literal notranslate"><span class="pre">read_factors</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.read_factors.custom_read_npy"><code class="docutils literal notranslate"><span class="pre">read_factors.custom_read_npy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.read_factors.load_factors"><code class="docutils literal notranslate"><span class="pre">read_factors.load_factors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.read_factors.read_factor"><code class="docutils literal notranslate"><span class="pre">read_factors.read_factor()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.split_files_save"><code class="docutils literal notranslate"><span class="pre">split_files_save</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.split_files_save.save_data_to_file"><code class="docutils literal notranslate"><span class="pre">split_files_save.save_data_to_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.data_io.split_files_save.split_files"><code class="docutils literal notranslate"><span class="pre">split_files_save.split_files()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.dist_clustering">pyDNMFk.dist_clustering module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_clustering.custom_clustering"><code class="docutils literal notranslate"><span class="pre">custom_clustering</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_clustering.custom_clustering.change_order"><code class="docutils literal notranslate"><span class="pre">custom_clustering.change_order()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_clustering.custom_clustering.dist_custom_clustering"><code class="docutils literal notranslate"><span class="pre">custom_clustering.dist_custom_clustering()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_clustering.custom_clustering.dist_feature_ordering"><code class="docutils literal notranslate"><span class="pre">custom_clustering.dist_feature_ordering()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_clustering.custom_clustering.dist_silhouettes"><code class="docutils literal notranslate"><span class="pre">custom_clustering.dist_silhouettes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_clustering.custom_clustering.fit"><code class="docutils literal notranslate"><span class="pre">custom_clustering.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_clustering.custom_clustering.greedy_lsa"><code class="docutils literal notranslate"><span class="pre">custom_clustering.greedy_lsa()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_clustering.custom_clustering.mad"><code class="docutils literal notranslate"><span class="pre">custom_clustering.mad()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_clustering.custom_clustering.normalize_by_W"><code class="docutils literal notranslate"><span class="pre">custom_clustering.normalize_by_W()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.dist_comm">pyDNMFk.dist_comm module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_comm.MPI_comm"><code class="docutils literal notranslate"><span class="pre">MPI_comm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_comm.MPI_comm.Free"><code class="docutils literal notranslate"><span class="pre">MPI_comm.Free()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_comm.MPI_comm.cart_1d_column"><code class="docutils literal notranslate"><span class="pre">MPI_comm.cart_1d_column()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_comm.MPI_comm.cart_1d_row"><code class="docutils literal notranslate"><span class="pre">MPI_comm.cart_1d_row()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.dist_nmf">pyDNMFk.dist_nmf module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_BCD_update"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.FRO_BCD_update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.FRO_HALS_update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update_H"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.FRO_HALS_update_H()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.FRO_HALS_update_W"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.FRO_HALS_update_W()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.Fro_MU_update"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.Fro_MU_update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.Fro_MU_update_H"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.Fro_MU_update_H()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.Fro_MU_update_W"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.Fro_MU_update_W()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.KL_MU_update"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.KL_MU_update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.KL_MU_update_H"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.KL_MU_update_H()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.KL_MU_update_W"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.KL_MU_update_W()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.glob_UX"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.glob_UX()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.globalSqNorm"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.globalSqNorm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.global_gram"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.global_gram()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.global_mm"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.global_mm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.initWandH"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.initWandH()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.sum_along_axis"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.sum_along_axis()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_1D.update"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_1D.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.AH_glob"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.AH_glob()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.ATW_glob"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.ATW_glob()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_BCD_update"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.FRO_BCD_update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.FRO_HALS_update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update_H"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.FRO_HALS_update_H()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.FRO_HALS_update_W"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.FRO_HALS_update_W()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.Fro_MU_update"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.Fro_MU_update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.Fro_MU_update_H"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.Fro_MU_update_H()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.Fro_MU_update_W"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.Fro_MU_update_W()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.KL_MU_update"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.KL_MU_update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.KL_MU_update_H"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.KL_MU_update_H()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.KL_MU_update_W"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.KL_MU_update_W()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.UHT_glob"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.UHT_glob()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.WTU_glob"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.WTU_glob()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.gather_W_H"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.gather_W_H()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.globalSqNorm"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.globalSqNorm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.global_gram"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.global_gram()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.global_mm"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.global_mm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.initWandH"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.initWandH()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.sum_axis"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.sum_axis()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_nmf.nmf_algorithms_2D.update"><code class="docutils literal notranslate"><span class="pre">nmf_algorithms_2D.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.dist_svd">pyDNMFk.dist_svd module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_svd.DistSVD"><code class="docutils literal notranslate"><span class="pre">DistSVD</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.calc_norm"><code class="docutils literal notranslate"><span class="pre">DistSVD.calc_norm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.globalGram"><code class="docutils literal notranslate"><span class="pre">DistSVD.globalGram()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.nnsvd"><code class="docutils literal notranslate"><span class="pre">DistSVD.nnsvd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.normalize_by_W"><code class="docutils literal notranslate"><span class="pre">DistSVD.normalize_by_W()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.randomUnitVector"><code class="docutils literal notranslate"><span class="pre">DistSVD.randomUnitVector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.rel_error"><code class="docutils literal notranslate"><span class="pre">DistSVD.rel_error()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.svd"><code class="docutils literal notranslate"><span class="pre">DistSVD.svd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.dist_svd.DistSVD.svd1D"><code class="docutils literal notranslate"><span class="pre">DistSVD.svd1D()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.plot_results">pyDNMFk.plot_results module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.plot_results.box_plot"><code class="docutils literal notranslate"><span class="pre">box_plot()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.plot_results.plot_W"><code class="docutils literal notranslate"><span class="pre">plot_W()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.plot_results.plot_err"><code class="docutils literal notranslate"><span class="pre">plot_err()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.plot_results.plot_results"><code class="docutils literal notranslate"><span class="pre">plot_results()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.plot_results.plot_results_fpath"><code class="docutils literal notranslate"><span class="pre">plot_results_fpath()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.plot_results.plot_timing_stats"><code class="docutils literal notranslate"><span class="pre">plot_timing_stats()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.plot_results.read_plot_factors"><code class="docutils literal notranslate"><span class="pre">read_plot_factors()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.plot_results.timing_stats"><code class="docutils literal notranslate"><span class="pre">timing_stats()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.pyDNMF">pyDNMFk.pyDNMF module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMF.PyNMF"><code class="docutils literal notranslate"><span class="pre">PyNMF</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMF.PyNMF.cart_2d_collect_factors"><code class="docutils literal notranslate"><span class="pre">PyNMF.cart_2d_collect_factors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMF.PyNMF.column_err"><code class="docutils literal notranslate"><span class="pre">PyNMF.column_err()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMF.PyNMF.dist_norm"><code class="docutils literal notranslate"><span class="pre">PyNMF.dist_norm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMF.PyNMF.fit"><code class="docutils literal notranslate"><span class="pre">PyNMF.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMF.PyNMF.init_factors"><code class="docutils literal notranslate"><span class="pre">PyNMF.init_factors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMF.PyNMF.normalize_features"><code class="docutils literal notranslate"><span class="pre">PyNMF.normalize_features()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMF.PyNMF.relative_err"><code class="docutils literal notranslate"><span class="pre">PyNMF.relative_err()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.pyDNMFk">pyDNMFk.pyDNMFk module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMFk.PyNMFk"><code class="docutils literal notranslate"><span class="pre">PyNMFk</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMFk.PyNMFk.fit"><code class="docutils literal notranslate"><span class="pre">PyNMFk.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMFk.PyNMFk.pvalueAnalysis"><code class="docutils literal notranslate"><span class="pre">PyNMFk.pvalueAnalysis()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMFk.PyNMFk.pynmfk_per_k"><code class="docutils literal notranslate"><span class="pre">PyNMFk.pynmfk_per_k()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMFk.sample"><code class="docutils literal notranslate"><span class="pre">sample</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMFk.sample.fit"><code class="docutils literal notranslate"><span class="pre">sample.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMFk.sample.poisson"><code class="docutils literal notranslate"><span class="pre">sample.poisson()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.pyDNMFk.sample.randM"><code class="docutils literal notranslate"><span class="pre">sample.randM()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.toolz">pyDNMFk.toolz module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.amber"><code class="docutils literal notranslate"><span class="pre">amber()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.bcolors"><code class="docutils literal notranslate"><span class="pre">bcolors</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.bcolors.ENDC"><code class="docutils literal notranslate"><span class="pre">bcolors.ENDC</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.bcolors.FAIL"><code class="docutils literal notranslate"><span class="pre">bcolors.FAIL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.bcolors.HEADER"><code class="docutils literal notranslate"><span class="pre">bcolors.HEADER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.bcolors.OKBLUE"><code class="docutils literal notranslate"><span class="pre">bcolors.OKBLUE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.bcolors.OKGREEN"><code class="docutils literal notranslate"><span class="pre">bcolors.OKGREEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.bcolors.WARNING"><code class="docutils literal notranslate"><span class="pre">bcolors.WARNING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.bcolors.disable"><code class="docutils literal notranslate"><span class="pre">bcolors.disable()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.blue"><code class="docutils literal notranslate"><span class="pre">blue()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.getTerminalSize"><code class="docutils literal notranslate"><span class="pre">getTerminalSize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.get_index"><code class="docutils literal notranslate"><span class="pre">get_index()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.get_loc"><code class="docutils literal notranslate"><span class="pre">get_loc()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.grLog"><code class="docutils literal notranslate"><span class="pre">grLog()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.green"><code class="docutils literal notranslate"><span class="pre">green()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.log"><code class="docutils literal notranslate"><span class="pre">log()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.lrLog"><code class="docutils literal notranslate"><span class="pre">lrLog()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.printRC"><code class="docutils literal notranslate"><span class="pre">printRC()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.printXY"><code class="docutils literal notranslate"><span class="pre">printXY()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.print_there"><code class="docutils literal notranslate"><span class="pre">print_there()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.purple"><code class="docutils literal notranslate"><span class="pre">purple()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.toolz.red"><code class="docutils literal notranslate"><span class="pre">red()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk.utils">pyDNMFk.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.Checkpoint"><code class="docutils literal notranslate"><span class="pre">Checkpoint</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.Checkpoint.load_from_checkpoint"><code class="docutils literal notranslate"><span class="pre">Checkpoint.load_from_checkpoint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.comm_timing"><code class="docutils literal notranslate"><span class="pre">comm_timing</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations"><code class="docutils literal notranslate"><span class="pre">data_operations</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.commonFactors"><code class="docutils literal notranslate"><span class="pre">data_operations.commonFactors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.compute_global_dim"><code class="docutils literal notranslate"><span class="pre">data_operations.compute_global_dim()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.compute_local_dim"><code class="docutils literal notranslate"><span class="pre">data_operations.compute_local_dim()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.cutZero"><code class="docutils literal notranslate"><span class="pre">data_operations.cutZero()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.desampleT"><code class="docutils literal notranslate"><span class="pre">data_operations.desampleT()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.matSplit"><code class="docutils literal notranslate"><span class="pre">data_operations.matSplit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.primeFactors"><code class="docutils literal notranslate"><span class="pre">data_operations.primeFactors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.prune"><code class="docutils literal notranslate"><span class="pre">data_operations.prune()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.prune_all"><code class="docutils literal notranslate"><span class="pre">data_operations.prune_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.recZero"><code class="docutils literal notranslate"><span class="pre">data_operations.recZero()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.remove_bad_factors"><code class="docutils literal notranslate"><span class="pre">data_operations.remove_bad_factors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.unprune"><code class="docutils literal notranslate"><span class="pre">data_operations.unprune()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.unprune_factors"><code class="docutils literal notranslate"><span class="pre">data_operations.unprune_factors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.data_operations.zero_idx_prune"><code class="docutils literal notranslate"><span class="pre">data_operations.zero_idx_prune()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.determine_block_params"><code class="docutils literal notranslate"><span class="pre">determine_block_params</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.determine_block_params.determine_block_index_range_asymm"><code class="docutils literal notranslate"><span class="pre">determine_block_params.determine_block_index_range_asymm()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.determine_block_params.determine_block_shape_asymm"><code class="docutils literal notranslate"><span class="pre">determine_block_params.determine_block_shape_asymm()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.norm"><code class="docutils literal notranslate"><span class="pre">norm()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.parse"><code class="docutils literal notranslate"><span class="pre">parse</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.serialize_deserialize_mlp"><code class="docutils literal notranslate"><span class="pre">serialize_deserialize_mlp</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.serialize_deserialize_mlp.deserialize"><code class="docutils literal notranslate"><span class="pre">serialize_deserialize_mlp.deserialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.serialize_deserialize_mlp.from_json"><code class="docutils literal notranslate"><span class="pre">serialize_deserialize_mlp.from_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.serialize_deserialize_mlp.serialize"><code class="docutils literal notranslate"><span class="pre">serialize_deserialize_mlp.serialize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.serialize_deserialize_mlp.to_json"><code class="docutils literal notranslate"><span class="pre">serialize_deserialize_mlp.to_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.str2bool"><code class="docutils literal notranslate"><span class="pre">str2bool()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.transform_H_index"><code class="docutils literal notranslate"><span class="pre">transform_H_index</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.transform_H_index.rankidx2blkidx"><code class="docutils literal notranslate"><span class="pre">transform_H_index.rankidx2blkidx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.transform_H_index.transform_H_idx"><code class="docutils literal notranslate"><span class="pre">transform_H_index.transform_H_idx()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyDNMFk.html#pyDNMFk.utils.var_init"><code class="docutils literal notranslate"><span class="pre">var_init()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="pyDNMFk.html#module-pyDNMFk">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </div>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">cuda-pyDNMFk: Cuda Python Distributed Non Negative Matrix Factorization with determination of hidden features</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pyDNMFk.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">pyDNMFk package</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
 
-
-           </div>
-           
+                </footer>
+              
+            </div>
+            
+            
+              
+            
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="pyDNMFk.html" class="btn btn-neutral float-right" title="pyDNMFk package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to pyDNMFk&#39;s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ismael Boureima, Manish Bhattarai
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, LANL.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, LANL.
-
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-        </div>
-      </div>
-
-    </section>
-
   </div>
   
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

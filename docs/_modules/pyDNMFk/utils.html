@@ -1,155 +1,230 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="Python" >
-<head>
-  <meta charset="utf-8" />
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyDNMFk.utils &#8212; pyDNMFk 0.0.1 documentation</title>
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pyDNMFk.utils &mdash; pyDNMFk 1.0.0 documentation</title>
   
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
   
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyDNMFk/utils';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
-</head>
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../../index.html" class="icon icon-home"> pyDNMFk
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html">pyDNMFk</a></li>
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pyDNMFk 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules.html">pyDNMFk</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pyDNMFk.html">pyDNMFk package</a></li>
+</ul>
+</li>
 </ul>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">pyDNMFk</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-        
-      <li>pyDNMFk.utils</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-      </li>
-    
-  </ul>
-
+    </div>
+</nav></div>
+    </div>
   
-  <hr/>
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <h1>Source code for pyDNMFk.utils</h1><div class="highlight"><pre>
 <span></span><span class="c1"># @author: Manish Bhattarai, Ben Nebgen, Erik Skau</span>
 <span class="kn">import</span> <span class="nn">copy</span>
@@ -160,10 +235,13 @@
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">mpi4py</span> <span class="kn">import</span> <span class="n">MPI</span>
-
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelBinarizer</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
 
 <div class="viewcode-block" id="determine_block_params"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.determine_block_params">[docs]</a><span class="k">class</span> <span class="nc">determine_block_params</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Computes the parameters  for each chunk to be read by MPI process</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the parameters  for each chunk to be read by MPI process</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -180,33 +258,196 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">rank</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span> <span class="o">=</span> <span class="n">pgrid</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">shape</span>
 
 <div class="viewcode-block" id="determine_block_params.determine_block_index_range_asymm"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.determine_block_params.determine_block_index_range_asymm">[docs]</a>    <span class="k">def</span> <span class="nf">determine_block_index_range_asymm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Determines the start and end indices for the Data block for each rank&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Determines the start and end indices for the Data block for each rank&#39;&#39;&#39;</span>
         <span class="n">chunk_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span><span class="p">)</span>
         <span class="n">start_inds</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="o">%</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span><span class="p">,</span> <span class="n">chunk_ind</span><span class="p">)]</span>
         <span class="n">end_inds</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="nb">min</span><span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">n</span> <span class="o">%</span> <span class="n">k</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span><span class="p">,</span> <span class="n">chunk_ind</span><span class="p">)]</span>
         <span class="k">return</span> <span class="n">start_inds</span><span class="p">,</span> <span class="n">end_inds</span></div>
 
 <div class="viewcode-block" id="determine_block_params.determine_block_shape_asymm"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.determine_block_params.determine_block_shape_asymm">[docs]</a>    <span class="k">def</span> <span class="nf">determine_block_shape_asymm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Determines the shape for the Data block for each rank&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Determines the shape for the Data block for each rank&#39;&#39;&#39;</span>
         <span class="n">start_inds</span><span class="p">,</span> <span class="n">end_inds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">determine_block_index_range_asymm</span><span class="p">()</span>
         <span class="k">return</span> <span class="p">[(</span><span class="n">j</span> <span class="o">-</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">start_inds</span><span class="p">,</span> <span class="n">end_inds</span><span class="p">)]</span></div></div>
 
 
 <div class="viewcode-block" id="data_operations"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.data_operations">[docs]</a><span class="k">class</span> <span class="nc">data_operations</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Performs various operations on the data</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Performs various operations on the data</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    data : ndarray</span>
 <span class="sd">       Data to operate on&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span><span class="n">params</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ten</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">comm1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cart_1d_row</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">row_comm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cart_1d_column</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">col_comm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">rank</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">p_r</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">p_c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">topo</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">topo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">k</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute_global_dim</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compute_local_dim</span><span class="p">()</span>
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij_m</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">A_ij_n</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ten</span><span class="o">.</span><span class="n">shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">m</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">n</span>
+
+<div class="viewcode-block" id="data_operations.compute_global_dim"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.data_operations.compute_global_dim">[docs]</a>    <span class="k">def</span> <span class="nf">compute_global_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes global dimensions m and n from given chunk sizes for any grid configuration&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loc_m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc_n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ten</span><span class="o">.</span><span class="n">shape</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc_n</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loc_m</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">loc_n</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc_m</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc_m</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">m</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loc_n</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span></div>
+
+        <span class="c1"># if self.rank == 0: print(&#39;Data dimensions=(&#39;, self.params.m, self.params.n, &#39;)&#39;)</span>
+
+<div class="viewcode-block" id="data_operations.compute_local_dim"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.data_operations.compute_local_dim">[docs]</a>    <span class="k">def</span> <span class="nf">compute_local_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes local dimensions for factors from given chunk sizes for any grid configuration&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">topo</span> <span class="o">==</span> <span class="s1">&#39;2d&#39;</span><span class="p">:</span>
+            <span class="n">dtr_blk_m</span> <span class="o">=</span> <span class="n">determine_block_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cart_1d_column</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ten</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">))</span>
+            <span class="n">m_loc</span> <span class="o">=</span> <span class="n">dtr_blk_m</span><span class="o">.</span><span class="n">determine_block_shape_asymm</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">dtr_blk_n</span> <span class="o">=</span> <span class="n">determine_block_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cart_1d_row</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ten</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">n_loc</span> <span class="o">=</span> <span class="n">dtr_blk_n</span><span class="o">.</span><span class="n">determine_block_shape_asymm</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">topo</span><span class="o">==</span> <span class="s1">&#39;1d&#39;</span><span class="p">:</span>
+            <span class="n">dtr_blk_m</span> <span class="o">=</span> <span class="n">determine_block_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">))</span>
+            <span class="n">m_loc</span> <span class="o">=</span> <span class="n">dtr_blk_m</span><span class="o">.</span><span class="n">determine_block_shape_asymm</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">dtr_blk_n</span> <span class="o">=</span> <span class="n">determine_block_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
+            <span class="n">n_loc</span> <span class="o">=</span> <span class="n">dtr_blk_n</span><span class="o">.</span><span class="n">determine_block_shape_asymm</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">w_idx_range</span> <span class="o">=</span> <span class="n">dtr_blk_m</span><span class="o">.</span><span class="n">determine_block_index_range_asymm</span><span class="p">()</span>
+        <span class="n">h_idx_range</span> <span class="o">=</span> <span class="n">dtr_blk_n</span><span class="o">.</span><span class="n">determine_block_index_range_asymm</span><span class="p">()</span>
+        <span class="n">w_start</span><span class="p">,</span><span class="n">w_end</span> <span class="o">=</span> <span class="n">w_idx_range</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="n">w_idx_range</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
+        <span class="n">h_start</span><span class="p">,</span><span class="n">h_end</span> <span class="o">=</span> <span class="n">h_idx_range</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">h_idx_range</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">m_loc</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">n_loc</span> <span class="o">=</span> <span class="n">m_loc</span><span class="p">,</span><span class="n">n_loc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">W_start</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">W_end</span> <span class="o">=</span> <span class="n">w_start</span><span class="p">,</span><span class="n">w_end</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">H_start</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">H_end</span> <span class="o">=</span> <span class="n">h_start</span><span class="p">,</span><span class="n">h_end</span></div>
+
+<div class="viewcode-block" id="data_operations.zero_idx_prune"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.data_operations.zero_idx_prune">[docs]</a>    <span class="k">def</span> <span class="nf">zero_idx_prune</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the row and columns indices of the data matrix to be pruned&quot;&quot;&quot;</span>
+        <span class="n">row_sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ten</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">col_sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ten</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">topo</span><span class="o">==</span><span class="s1">&#39;2d&#39;</span><span class="p">:</span>
+            <span class="n">row_sum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cart_1d_column</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">row_sum</span><span class="p">)</span>
+            <span class="n">col_sum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cart_1d_row</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">col_sum</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span><span class="n">row_sum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">row_sum</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span><span class="n">col_sum</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comm1</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">col_sum</span><span class="p">)</span>
+        <span class="n">row_zero_idx_x</span> <span class="o">=</span> <span class="n">row_sum</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="n">col_zero_idx_x</span> <span class="o">=</span> <span class="n">col_sum</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">topo</span> <span class="o">==</span> <span class="s1">&#39;2d&#39;</span><span class="p">:</span>
+            <span class="n">col_zero_idx_h</span> <span class="o">=</span> <span class="n">col_sum</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">H_start</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">H_end</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+            <span class="n">row_zero_idx_w</span> <span class="o">=</span> <span class="n">row_sum</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">W_start</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">W_end</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">topo</span> <span class="o">==</span> <span class="s1">&#39;1d&#39;</span><span class="p">:</span>
+            <span class="n">row_zero_idx_w</span> <span class="o">=</span> <span class="n">row_sum</span> <span class="o">&gt;</span> <span class="mi">0</span>
+            <span class="n">col_zero_idx_h</span> <span class="o">=</span> <span class="n">col_sum</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="n">row_zero_idx_x</span><span class="p">,</span><span class="n">col_zero_idx_x</span><span class="p">,</span><span class="n">row_zero_idx_w</span><span class="p">,</span><span class="n">col_zero_idx_h</span></div>
+
+<div class="viewcode-block" id="data_operations.prune"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.data_operations.prune">[docs]</a>    <span class="k">def</span> <span class="nf">prune</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">row_zero_idx</span><span class="p">,</span><span class="n">col_zero_idx</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Performs pruning of data</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : ndarray</span>
+<span class="sd">            data to be pruned</span>
+<span class="sd">        row_zero_idx : list</span>
+<span class="sd">            indices comprising zero/non-zero rows</span>
+<span class="sd">        col_zero_idx : list</span>
+<span class="sd">            indices comprising zero/non-zero columns</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        data : ndarray</span>
+<span class="sd">            Pruned data</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">row_zero_idx</span><span class="p">,</span> <span class="n">col_zero_idx</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">data</span></div>
+
+<div class="viewcode-block" id="data_operations.prune_all"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.data_operations.prune_all">[docs]</a>    <span class="k">def</span> <span class="nf">prune_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="n">H</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Prunes data and factors</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        W : ndarray</span>
+<span class="sd">        H : ndarray</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        X : ndarray</span>
+<span class="sd">        W : ndarray</span>
+<span class="sd">        H : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">row_zero_idx_x</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">col_zero_idx_x</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">row_zero_idx_w</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">col_zero_idx_h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">zero_idx_prune</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ten</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prune</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ten</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">row_zero_idx_x</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">col_zero_idx_x</span><span class="p">)</span>
+        <span class="n">W</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prune</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">row_zero_idx_w</span><span class="p">,[</span><span class="kc">True</span><span class="p">]</span><span class="o">*</span><span class="n">W</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prune</span><span class="p">(</span><span class="n">H</span><span class="p">,[</span><span class="kc">True</span><span class="p">]</span><span class="o">*</span><span class="n">H</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">col_zero_idx_h</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ten</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="n">H</span></div>
+
+<div class="viewcode-block" id="data_operations.unprune"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.data_operations.unprune">[docs]</a>    <span class="k">def</span> <span class="nf">unprune</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">row_zero_idx</span><span class="p">,</span><span class="n">col_zero_idx</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Unprunes data</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : ndarray</span>
+<span class="sd">            Data to be unpruned</span>
+<span class="sd">        row_zero_idx : list</span>
+<span class="sd">            indices comprising zero/non-zero rows</span>
+<span class="sd">        col_zero_idx : list</span>
+<span class="sd">            indices comprising zero/non-zero cols</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row_zero_idx</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">row_zero_idx</span><span class="p">),</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+            <span class="n">B</span><span class="p">[</span><span class="n">row_zero_idx</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">col_zero_idx</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="nb">len</span><span class="p">(</span><span class="n">col_zero_idx</span><span class="p">)))</span>
+            <span class="n">B</span><span class="p">[:,</span><span class="n">col_zero_idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">return</span> <span class="n">B</span></div>
+
+<div class="viewcode-block" id="data_operations.unprune_factors"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.data_operations.unprune_factors">[docs]</a>    <span class="k">def</span> <span class="nf">unprune_factors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">W</span><span class="p">,</span><span class="n">H</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Unprunes the factors</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        W : ndarray</span>
+<span class="sd">        H : ndarray</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        W : ndarray</span>
+<span class="sd">        H : ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">W</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unprune</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">row_zero_idx_w</span><span class="p">,[])</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unprune</span><span class="p">(</span><span class="n">H</span><span class="p">,[],</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">col_zero_idx_h</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">W</span><span class="p">,</span><span class="n">H</span></div>
+
+
 
 <div class="viewcode-block" id="data_operations.cutZero"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.data_operations.cutZero">[docs]</a>    <span class="k">def</span> <span class="nf">cutZero</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Prunes zero columns from the data&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prunes zero columns from the data&quot;&quot;&quot;</span>
         <span class="n">tenS</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ten</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="n">dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tenS</span><span class="p">)</span>
         <span class="n">axSum</span> <span class="o">=</span> <span class="p">[]</span>
@@ -269,7 +510,7 @@
 
 <div class="viewcode-block" id="data_operations.remove_bad_factors"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.data_operations.remove_bad_factors">[docs]</a>    <span class="k">def</span> <span class="nf">remove_bad_factors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Wall</span><span class="p">,</span> <span class="n">Hall</span><span class="p">,</span> <span class="n">ErrTol</span><span class="p">,</span> <span class="n">features_k</span><span class="p">):</span>
         <span class="n">sorted_idx</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ErrTol</span><span class="p">)),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="n">ErrTol</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
-        <span class="n">to_keep_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="o">.</span><span class="mi">9</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">ErrTol</span><span class="p">)))</span>
+        <span class="n">to_keep_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mf">.9</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">ErrTol</span><span class="p">)))</span>
         <span class="n">sorted_idx_keep</span> <span class="o">=</span> <span class="n">sorted_idx</span><span class="p">[:</span><span class="n">to_keep_length</span><span class="p">]</span>
         <span class="n">flattened_Wall</span> <span class="o">=</span> <span class="n">Wall</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ErrTol</span><span class="p">))</span>
         <span class="n">flattened_Hall</span> <span class="o">=</span> <span class="n">Hall</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ErrTol</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
@@ -330,29 +571,29 @@
 
 
 <div class="viewcode-block" id="transform_H_index"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.transform_H_index">[docs]</a><span class="k">class</span> <span class="nc">transform_H_index</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Collected H factors after MPI operation aren&#39;t aligned. This operation performs careful reordering of H factors</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Collected H factors after MPI operation aren&#39;t aligned. This operation performs careful reordering of H factors</span>
 <span class="sd">    such that the collected factors are aligned&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grid</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p_c</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <div class="viewcode-block" id="transform_H_index.rankidx2blkidx"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.transform_H_index.rankidx2blkidx">[docs]</a>    <span class="k">def</span> <span class="nf">rankidx2blkidx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;This is to transform the column index to rank index for H&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This is to transform the column index to rank index for H&quot;&quot;&quot;</span>
         <span class="n">f_idx</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_c</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_n</span><span class="p">):</span>
-                <span class="n">f_idx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_n</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">):</span>
+                <span class="n">f_idx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_r</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">f_idx</span></div>
 
 <div class="viewcode-block" id="transform_H_index.transform_H_idx"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.transform_H_index.transform_H_idx">[docs]</a>    <span class="k">def</span> <span class="nf">transform_H_idx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;This is to transform H based on new index&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This is to transform H based on new index&quot;&quot;&quot;</span>
         <span class="n">new_idx_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rankidx2blkidx</span><span class="p">()</span>
         <span class="n">mod_idx</span> <span class="o">=</span> <span class="n">new_idx_list</span><span class="p">[</span><span class="n">rank</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">mod_idx</span></div></div>
 
 
 <div class="viewcode-block" id="norm"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.norm">[docs]</a><span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">comm</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">p</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Compute the data norm</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the data norm</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -377,9 +618,77 @@
         <span class="n">nm</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">nm</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">nm</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="serialize_deserialize_mlp"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.serialize_deserialize_mlp">[docs]</a><span class="k">class</span> <span class="nc">serialize_deserialize_mlp</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns model/parameters of the model in dictionary format&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">model_name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="n">model_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+
+<div class="viewcode-block" id="serialize_deserialize_mlp.from_json"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.serialize_deserialize_mlp.from_json">[docs]</a>    <span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load the model from JSON&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">model_json</span><span class="p">:</span>
+            <span class="n">model_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_json</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">deserialize</span><span class="p">(</span><span class="n">model_dict</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span></div>
+
+<div class="viewcode-block" id="serialize_deserialize_mlp.to_json"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.serialize_deserialize_mlp.to_json">[docs]</a>    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write the model paramters to JSON&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">model_json</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">serialize</span><span class="p">(),</span> <span class="n">model_json</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="serialize_deserialize_mlp.serialize"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.serialize_deserialize_mlp.serialize">[docs]</a>    <span class="k">def</span> <span class="nf">serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the model  into a a dictionary of parameters&quot;&quot;&quot;</span>
+        <span class="n">serialized_label_binarizer</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;neg_label&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_label_binarizer</span><span class="o">.</span><span class="n">neg_label</span><span class="p">,</span>
+            <span class="s1">&#39;pos_label&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_label_binarizer</span><span class="o">.</span><span class="n">pos_label</span><span class="p">,</span>
+            <span class="s1">&#39;sparse_output&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_label_binarizer</span><span class="o">.</span><span class="n">sparse_output</span><span class="p">,</span>
+            <span class="s1">&#39;y_type_&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_label_binarizer</span><span class="o">.</span><span class="n">y_type_</span><span class="p">,</span>
+            <span class="s1">&#39;sparse_input_&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_label_binarizer</span><span class="o">.</span><span class="n">sparse_input_</span><span class="p">,</span>
+            <span class="s1">&#39;classes_&#39;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">_label_binarizer</span><span class="o">.</span><span class="n">classes_</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="n">serialized_model</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;meta&#39;</span><span class="p">:</span> <span class="s1">&#39;mlp&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;coefs_&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">array</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="k">for</span> <span class="n">array</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">coefs_</span><span class="p">],</span>
+            <span class="s1">&#39;loss_&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">loss_</span><span class="p">,</span>
+            <span class="s1">&#39;intercepts_&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">array</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="k">for</span> <span class="n">array</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">intercepts_</span><span class="p">],</span>
+            <span class="s1">&#39;n_iter_&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">n_iter_</span><span class="p">,</span>
+            <span class="s1">&#39;n_layers_&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">n_layers_</span><span class="p">,</span>
+            <span class="s1">&#39;n_outputs_&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">n_outputs_</span><span class="p">,</span>
+            <span class="s1">&#39;out_activation_&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">out_activation_</span><span class="p">,</span>
+            <span class="s1">&#39;_label_binarizer&#39;</span><span class="p">:</span> <span class="n">serialized_label_binarizer</span><span class="p">,</span>
+            <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">serialized_model</span><span class="p">[</span><span class="s1">&#39;classes_&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">array</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="k">for</span> <span class="n">array</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">classes_</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">serialized_model</span><span class="p">[</span><span class="s1">&#39;classes_&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">classes_</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">serialized_model</span></div>
+
+
+<div class="viewcode-block" id="serialize_deserialize_mlp.deserialize"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.serialize_deserialize_mlp.deserialize">[docs]</a>    <span class="k">def</span> <span class="nf">deserialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">model_dict</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert the dictionary of parameters into model&quot;&quot;&quot;</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">])</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">coefs_</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;coefs_&#39;</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;object&#39;</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">loss_</span> <span class="o">=</span> <span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;loss_&#39;</span><span class="p">]</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">intercepts_</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;intercepts_&#39;</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;object&#39;</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">n_iter_</span> <span class="o">=</span> <span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;n_iter_&#39;</span><span class="p">]</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">n_layers_</span> <span class="o">=</span> <span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;n_layers_&#39;</span><span class="p">]</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">n_outputs_</span> <span class="o">=</span> <span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;n_outputs_&#39;</span><span class="p">]</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">out_activation_</span> <span class="o">=</span> <span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;out_activation_&#39;</span><span class="p">]</span>
+        <span class="n">label_binarizer</span> <span class="o">=</span> <span class="n">LabelBinarizer</span><span class="p">()</span>
+        <span class="n">label_binarizer_dict</span> <span class="o">=</span> <span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;_label_binarizer&#39;</span><span class="p">]</span>
+        <span class="n">label_binarizer</span><span class="o">.</span><span class="n">neg_label</span> <span class="o">=</span> <span class="n">label_binarizer_dict</span><span class="p">[</span><span class="s1">&#39;neg_label&#39;</span><span class="p">]</span>
+        <span class="n">label_binarizer</span><span class="o">.</span><span class="n">pos_label</span> <span class="o">=</span> <span class="n">label_binarizer_dict</span><span class="p">[</span><span class="s1">&#39;pos_label&#39;</span><span class="p">]</span>
+        <span class="n">label_binarizer</span><span class="o">.</span><span class="n">sparse_output</span> <span class="o">=</span> <span class="n">label_binarizer_dict</span><span class="p">[</span><span class="s1">&#39;sparse_output&#39;</span><span class="p">]</span>
+        <span class="n">label_binarizer</span><span class="o">.</span><span class="n">y_type_</span> <span class="o">=</span> <span class="n">label_binarizer_dict</span><span class="p">[</span><span class="s1">&#39;y_type_&#39;</span><span class="p">]</span>
+        <span class="n">label_binarizer</span><span class="o">.</span><span class="n">sparse_input_</span> <span class="o">=</span> <span class="n">label_binarizer_dict</span><span class="p">[</span><span class="s1">&#39;sparse_input_&#39;</span><span class="p">]</span>
+        <span class="n">label_binarizer</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">label_binarizer_dict</span><span class="p">[</span><span class="s1">&#39;classes_&#39;</span><span class="p">])</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">_label_binarizer</span> <span class="o">=</span> <span class="n">label_binarizer</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">model_dict</span><span class="p">[</span><span class="s1">&#39;classes_&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">model</span></div></div>
 
 <div class="viewcode-block" id="str2bool"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.str2bool">[docs]</a><span class="k">def</span> <span class="nf">str2bool</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns instance of string parameter to bool type&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns instance of string parameter to bool type&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">v</span>
     <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">):</span>
@@ -387,22 +696,76 @@
     <span class="k">elif</span> <span class="n">v</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentTypeError</span><span class="p">(</span><span class="s1">&#39;Boolean value expected.&#39;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;Boolean value expected.&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="var_init"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.var_init">[docs]</a><span class="k">def</span> <span class="nf">var_init</span><span class="p">(</span><span class="n">clas</span><span class="p">,</span><span class="n">var</span><span class="p">,</span><span class="n">default</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Checks if class attribute is present and if not, intializes the attribute with given default value&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks if class attribute is present and if not, intializes the attribute with given default value&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">clas</span><span class="p">,</span><span class="n">var</span><span class="p">):</span>
        <span class="nb">setattr</span><span class="p">(</span><span class="n">clas</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">clas</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">var</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="parse"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.parse">[docs]</a><span class="k">class</span> <span class="nc">parse</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Define a class parse which is used for adding attributes &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Define a class parse which is used for adding attributes &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span></div>
 
+
+<div class="viewcode-block" id="Checkpoint"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.Checkpoint">[docs]</a><span class="k">class</span> <span class="nc">Checkpoint</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoint_save</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Class to demo checkpoint saving and continuing from checkpoint</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        checkpoint_save : bool, optional</span>
+<span class="sd">            Enable/disable checkpoint</span>
+<span class="sd">        max_iters : TYPE, optional</span>
+<span class="sd">            maximum number of iterations (epoch). The default is 50.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checkpoint_save</span> <span class="o">=</span> <span class="n">checkpoint_save</span> <span class="k">if</span> <span class="n">checkpoint_save</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">perturbation</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+<div class="viewcode-block" id="Checkpoint.load_from_checkpoint"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.Checkpoint.load_from_checkpoint">[docs]</a>    <span class="k">def</span> <span class="nf">load_from_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;run from checkpoint instead&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">checkpoint_save</span><span class="p">:</span>
+            <span class="n">saved_class</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_path</span><span class="o">+</span><span class="s2">&quot;/checkpoint.p&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Checkpoint loaded&quot;</span><span class="p">)</span>
+            <span class="c1"># copy the saved state to the class</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading saved object state...&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_params</span><span class="p">(</span><span class="nb">vars</span><span class="p">(</span><span class="n">saved_class</span><span class="p">))</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Continuing from checkpoint for k=&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span><span class="s1">&#39;perturbation=&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">perturbation</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_save_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">flag</span><span class="p">,</span><span class="n">perturbation</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">parse</span><span class="p">()</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Saves the class at checkpoint number&quot;&quot;&quot;</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">flag</span> <span class="o">=</span> <span class="n">flag</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">perturbation</span> <span class="o">=</span> <span class="n">perturbation</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">k</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="c1"># save the class object</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">checkpoint_save</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">rank</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+           <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">results_path</span><span class="o">+</span><span class="s2">&quot;checkpoint.p&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">))</span>
+           <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;checkpoint saved&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">class_parameters</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets class variables from the loaded checkpoint&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">class_parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="comm_timing"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.utils.comm_timing">[docs]</a><span class="k">class</span> <span class="nc">comm_timing</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Decorator class for computing timing for MPI operations. The class uses the global</span>
 <span class="sd">    variables flag and time initialized in config file and updates them for each call dynamically.</span>
 
@@ -432,47 +795,73 @@
         <span class="k">return</span> <span class="n">wrapper_timer</span></div>
 </pre></div>
 
-           </div>
-           
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
           </div>
-          <footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, LANL.
-
-    </p>
-  </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-        </div>
-      </div>
-
-    </section>
+<p class="component-author">
+By Ismael Boureima, Manish Bhattarai
+</p>
 
   </div>
   
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
+  <div class="footer-item">
     
-   
+  <p class="copyright">
+    
+      © Copyright 2023, LANL.
+      <br/>
+    
+  </p>
 
-</body>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

@@ -1,155 +1,230 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="Python" >
-<head>
-  <meta charset="utf-8" />
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyDNMFk.data_generator &#8212; pyDNMFk 0.0.1 documentation</title>
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>pyDNMFk.data_generator &mdash; pyDNMFk 1.0.0 documentation</title>
   
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
   
-  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyDNMFk/data_generator';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
-</head>
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="../../index.html" class="icon icon-home"> pyDNMFk
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html">pyDNMFk</a></li>
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pyDNMFk 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules.html">pyDNMFk</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pyDNMFk.html">pyDNMFk package</a></li>
+</ul>
+</li>
 </ul>
 
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">pyDNMFk</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="../index.html">Module code</a> &raquo;</li>
-        
-      <li>pyDNMFk.data_generator</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-      </li>
-    
-  </ul>
-
+    </div>
+</nav></div>
+    </div>
   
-  <hr/>
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <h1>Source code for pyDNMFk.data_generator</h1><div class="highlight"><pre>
 <span></span><span class="c1"># @Author: Manish Bhattarai, Erik Skau</span>
 <span class="kn">import</span> <span class="nn">argparse</span>
@@ -160,7 +235,7 @@
 
 
 <div class="viewcode-block" id="parser"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_generator.parser">[docs]</a><span class="k">def</span> <span class="nf">parser</span><span class="p">():</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Reads the input arguments from the user and parses the parameters to the data generator module.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Data generator arguments&#39;</span><span class="p">)</span>
@@ -175,7 +250,7 @@
 
 
 <div class="viewcode-block" id="data_generator"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_generator.data_generator">[docs]</a><span class="k">class</span> <span class="nc">data_generator</span><span class="p">():</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generates synthetic data in distributed manner where each MPI process generates a chunk from the data parallelly.</span>
 <span class="sd">    The W matrix is generated with gaussian distribution whereas the H matrix is random.</span>
 
@@ -211,7 +286,7 @@
         <span class="c1"># self.factor = k</span>
 
 <div class="viewcode-block" id="data_generator.gauss_matrix_generator"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_generator.data_generator.gauss_matrix_generator">[docs]</a>    <span class="k">def</span> <span class="nf">gauss_matrix_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct a matrix of dimensions n by k where the ith column is a Gaussian kernel corresponding to approximately N(i*n/k, 0.01*n^2)</span>
 
 <span class="sd">        Parameters</span>
@@ -230,28 +305,28 @@
 
         <span class="n">offset</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="n">k</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mf">0.5</span>
         <span class="n">noverk</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="n">k</span>
-        <span class="n">coeff</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">/</span> <span class="p">(</span><span class="o">.</span><span class="mi">01</span> <span class="o">*</span> <span class="n">n</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">coeff</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">/</span> <span class="p">(</span><span class="mf">.01</span> <span class="o">*</span> <span class="n">n</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
         <span class="k">return</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">coeff</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="p">(</span><span class="n">j</span> <span class="o">*</span> <span class="n">noverk</span> <span class="o">+</span> <span class="n">offset</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="data_generator.determine_block_index_range_asymm"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_generator.data_generator.determine_block_index_range_asymm">[docs]</a>    <span class="k">def</span> <span class="nf">determine_block_index_range_asymm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Determines the start and end indices for the Data block for each rank&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Determines the start and end indices for the Data block for each rank&#39;&#39;&#39;</span>
         <span class="n">chunk_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span><span class="p">)</span>
         <span class="n">start_inds</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="o">%</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span><span class="p">,</span> <span class="n">chunk_ind</span><span class="p">)]</span>
         <span class="n">end_inds</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="nb">min</span><span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">n</span> <span class="o">%</span> <span class="n">k</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span><span class="p">,</span> <span class="n">chunk_ind</span><span class="p">)]</span>
         <span class="k">return</span> <span class="n">start_inds</span><span class="p">,</span> <span class="n">end_inds</span></div>
 
 <div class="viewcode-block" id="data_generator.determine_block_shape_asymm"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_generator.data_generator.determine_block_shape_asymm">[docs]</a>    <span class="k">def</span> <span class="nf">determine_block_shape_asymm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Determines the shape for the Data block for each rank&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Determines the shape for the Data block for each rank&#39;&#39;&#39;</span>
         <span class="n">start_inds</span><span class="p">,</span> <span class="n">end_inds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">determine_block_index_range_asymm</span><span class="p">()</span>
         <span class="k">return</span> <span class="p">[(</span><span class="n">j</span> <span class="o">-</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">start_inds</span><span class="p">,</span> <span class="n">end_inds</span><span class="p">)]</span></div>
 
 <div class="viewcode-block" id="data_generator.random_matrix_generator"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_generator.data_generator.random_matrix_generator">[docs]</a>    <span class="k">def</span> <span class="nf">random_matrix_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Generator for random matric with given seed&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Generator for random matric with given seed&#39;&#39;&#39;</span>
         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="data_generator.dist_fromfunction"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_generator.data_generator.dist_fromfunction">[docs]</a>    <span class="k">def</span> <span class="nf">dist_fromfunction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">pgrid</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">unravel_index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        produces X_{i,j} = func(i,j) in a distributed manner, so that each processor has an array_split section of X according to the grid.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">grid_index</span> <span class="o">=</span> <span class="n">unravel_index</span><span class="p">()</span>
@@ -260,7 +335,7 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">fromfunction</span><span class="p">(</span><span class="k">lambda</span> <span class="o">*</span><span class="n">x</span><span class="p">:</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">start_index</span><span class="p">)]),</span> <span class="n">block_shape</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="data_generator.unravel_column"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_generator.data_generator.unravel_column">[docs]</a>    <span class="k">def</span> <span class="nf">unravel_column</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;finds the column rank for 2d grid&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;finds the column rank for 2d grid&#39;&#39;&#39;</span>
 
         <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
             <span class="n">row</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span><span class="p">)</span>
@@ -269,29 +344,29 @@
         <span class="k">return</span> <span class="n">wrapper</span></div>
 
 <div class="viewcode-block" id="data_generator.unravel_row"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_generator.data_generator.unravel_row">[docs]</a>    <span class="k">def</span> <span class="nf">unravel_row</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># ,ind, shape):</span>
-        <span class="sd">&#39;&#39;&#39;finds the row rank for 2d grid&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;finds the row rank for 2d grid&#39;&#39;&#39;</span>
         <span class="n">row</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">row</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">pgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">col</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="data_generator.create_folder_dir"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_generator.data_generator.create_folder_dir">[docs]</a>    <span class="k">def</span> <span class="nf">create_folder_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fpath</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Create a folder if doesn&#39;t exist&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Create a folder if doesn&#39;t exist&#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">fpath</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="data_generator.generate_factors_data"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_generator.data_generator.generate_factors_data">[docs]</a>    <span class="k">def</span> <span class="nf">generate_factors_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generates the chunk of factors W,H and data X for each MPI process&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generates the chunk of factors W,H and data X for each MPI process&quot;&quot;&quot;</span>
         <span class="n">W_gen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dist_fromfunction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gauss_matrix_generator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p_r</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-                                       <span class="n">unravel_index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">unravel_column</span><span class="p">())</span>
+                                       <span class="n">unravel_index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">unravel_column</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
         <span class="n">H_gen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_matrix_generator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">determine_block_shape_asymm</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span>
-                                             <span class="bp">self</span><span class="o">.</span><span class="n">unravel_row</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+                                             <span class="bp">self</span><span class="o">.</span><span class="n">unravel_row</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
         <span class="n">X_gen</span> <span class="o">=</span> <span class="n">W_gen</span> <span class="o">@</span> <span class="n">H_gen</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For rank=&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="s1">&#39; dimensions of W,H and X are &#39;</span><span class="p">,</span> <span class="n">W_gen</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">H_gen</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_gen</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">W_gen</span><span class="p">,</span> <span class="n">H_gen</span><span class="p">,</span> <span class="n">X_gen</span></div>
 
 <div class="viewcode-block" id="data_generator.fit"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.data_generator.data_generator.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;generates and save factors&#39;&#39;&#39;</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;generates and save factors&#39;&#39;&#39;</span>
         <span class="n">W_gen</span><span class="p">,</span> <span class="n">H_gen</span><span class="p">,</span> <span class="n">X_gen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_factors_data</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">create_folder_dir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fpath</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">create_folder_dir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fpath</span> <span class="o">+</span> <span class="s1">&#39;W_factors&#39;</span><span class="p">)</span>
@@ -311,47 +386,73 @@
     <span class="n">data_gen</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 </pre></div>
 
-           </div>
-           
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
           </div>
-          <footer>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, LANL.
-
-    </p>
-  </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-        </div>
-      </div>
-
-    </section>
+<p class="component-author">
+By Ismael Boureima, Manish Bhattarai
+</p>
 
   </div>
   
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
+  <div class="footer-item">
     
-   
+  <p class="copyright">
+    
+      © Copyright 2023, LANL.
+      <br/>
+    
+  </p>
 
-</body>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

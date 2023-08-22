@@ -1,0 +1,536 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyDNMFk.comm_utils &#8212; pyDNMFk 0.0.1 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyDNMFk/comm_utils';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">pyDNMFk 0.0.1 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules.html">pyDNMFk</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pyDNMFk.html">pyDNMFk package</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for pyDNMFk.comm_utils</h1><div class="highlight"><pre>
+<span></span><span class="c1"># @author: Ismael Boureima</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span><span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">.toolz</span> <span class="kn">import</span> <span class="n">log</span><span class="p">,</span> <span class="n">amber</span><span class="p">,</span> <span class="n">blue</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">purple</span><span class="p">,</span> <span class="n">red</span>
+<span class="kn">import</span> <span class="nn">cupy</span> <span class="k">as</span> <span class="nn">cp</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">cupy.cuda</span> <span class="kn">import</span> <span class="n">nccl</span>
+    <span class="n">NCCL_backend</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">NCCL_backend</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">asyncio</span>
+    <span class="kn">import</span> <span class="nn">ucp</span>
+    <span class="n">UCX_backend</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">UCXL_backend</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pyDNMFk.communicators</span> <span class="kn">import</span> <span class="n">NCCLComm</span>
+<span class="kn">from</span> <span class="nn">mpi4py</span> <span class="kn">import</span> <span class="n">MPI</span>
+<span class="kn">from</span> <span class="nn">pyDNMFk.get_reduce_comm_tree</span> <span class="kn">import</span> <span class="n">getReduceCommTree</span>
+
+
+<div class="viewcode-block" id="GetTopology"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.comm_utils.GetTopology">[docs]</a><span class="k">class</span> <span class="nc">GetTopology</span><span class="p">():</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructor for the GetTopology class.</span>
+
+<span class="sd">    This class is used for identifying the system topology in the context of MPI.</span>
+<span class="sd">    It determines the global and local ranks, identifies the host system, and</span>
+<span class="sd">    determines GPU availability and assignments.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">    - comm (MPI Comm): The MPI communicator. Defaults to MPI.COMM_WORLD.</span>
+<span class="sd">    - gmasterRank (int): Rank of the global master. Defaults to 0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gmasterRank</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">comm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">comm</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span>
+        <span class="n">rank</span>        <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">Get_rank</span><span class="p">()</span>
+        <span class="n">size</span>        <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">Get_size</span><span class="p">()</span>
+        <span class="n">myHost</span>      <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">uname</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">GMASTER</span>     <span class="o">=</span> <span class="p">(</span><span class="n">rank</span><span class="o">==</span><span class="n">gmasterRank</span><span class="p">)</span>
+        <span class="n">nGPUs_local</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">getDeviceCount</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">myHost</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">GMASTER</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nGPU_local</span> <span class="o">=</span> <span class="n">comm</span><span class="p">,</span> <span class="n">rank</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">myHost</span><span class="p">,</span> <span class="n">GMASTER</span><span class="p">,</span> <span class="n">nGPUs_local</span>
+
+        <span class="k">if</span> <span class="n">GMASTER</span><span class="p">:</span>
+            <span class="n">hosts</span><span class="p">,</span> <span class="n">local_size</span><span class="p">,</span> <span class="n">members</span> <span class="o">=</span> <span class="p">[</span><span class="n">myHost</span><span class="p">],</span> <span class="p">{</span><span class="n">myHost</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="n">myHost</span><span class="p">:[</span><span class="n">gmasterRank</span><span class="p">]}</span>
+            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+              <span class="k">if</span> <span class="n">r</span> <span class="o">!=</span> <span class="n">gmasterRank</span><span class="p">:</span>
+                <span class="n">rh</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">r</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">rh</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">hosts</span><span class="p">:</span>
+                    <span class="n">hosts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rh</span><span class="p">)</span>
+                    <span class="n">local_size</span><span class="p">[</span><span class="n">rh</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
+                    <span class="n">members</span><span class="p">[</span><span class="n">rh</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">local_size</span><span class="p">[</span><span class="n">rh</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">r</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">members</span><span class="p">[</span><span class="n">rh</span><span class="p">]:</span> <span class="n">members</span><span class="p">[</span><span class="n">rh</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">hosts</span><span class="p">,</span> <span class="n">local_size</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+            <span class="n">comm</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">myHost</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="n">gmasterRank</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">rank</span><span class="p">)</span>
+        <span class="n">comm</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">GMASTER</span><span class="p">:</span>
+            <span class="c1">#if rank == 0: print(&quot;[+] OK020&quot;)</span>
+            <span class="n">global_uID</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">NCCL_backend</span><span class="p">:</span>
+              <span class="c1">#if rank == 0: print(&quot;[+] OK021&quot;)</span>
+              <span class="k">try</span><span class="p">:</span>
+                <span class="n">global_uID</span> <span class="o">=</span> <span class="n">nccl</span><span class="o">.</span><span class="n">get_unique_id</span><span class="p">()</span>
+                <span class="c1">#if rank == 0: print(&quot;[+] OK022&quot;)</span>
+              <span class="k">except</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[!] UNABLE to get NCCL GLOBAL_UID&quot;</span><span class="p">)</span>
+            <span class="n">nHosts</span>  <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">hosts</span><span class="p">)</span>
+            <span class="n">stride</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">size</span><span class="o">/</span><span class="n">nHosts</span><span class="p">)</span>
+            <span class="n">MPI_TOPO</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;GMASTER&#39;</span><span class="p">:</span><span class="n">rank</span><span class="p">,</span> <span class="s1">&#39;hosts&#39;</span><span class="p">:</span><span class="n">hosts</span><span class="p">,</span> <span class="s1">&#39;nHosts&#39;</span><span class="p">:</span><span class="n">nHosts</span><span class="p">,</span> <span class="s1">&#39;stride&#39;</span><span class="p">:</span><span class="n">stride</span><span class="p">,</span> <span class="s1">&#39;nccl_GUID&#39;</span><span class="p">:</span><span class="n">global_uID</span><span class="p">,</span> <span class="s1">&#39;local_size&#39;</span><span class="p">:</span><span class="n">local_size</span><span class="p">,</span> <span class="s1">&#39;members&#39;</span><span class="p">:</span><span class="n">members</span><span class="p">}</span>
+            <span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;LMASTER&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="c1">#if rank == 0: print(&quot;[+] OK023&quot;)</span>
+            <span class="k">for</span> <span class="n">host</span> <span class="ow">in</span> <span class="n">hosts</span><span class="p">:</span>
+                <span class="n">idx</span>     <span class="o">=</span> <span class="n">hosts</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+                <span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;LMASTER&#39;</span><span class="p">][</span><span class="n">host</span><span class="p">]</span><span class="o">=</span><span class="n">idx</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">MPI_TOPO</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">comm</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+        <span class="n">MPI_TOPO</span>   <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">MPI_TOPO</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c1">#if rank == 0: print(&quot;[+] OK04&quot;)</span>
+        <span class="n">nHosts</span>     <span class="o">=</span> <span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;nHosts&#39;</span><span class="p">]</span>
+        <span class="n">stride</span>     <span class="o">=</span> <span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;stride&#39;</span><span class="p">]</span>
+        <span class="n">hosts</span>      <span class="o">=</span> <span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;hosts&#39;</span><span class="p">]</span>
+        <span class="n">local_size</span> <span class="o">=</span> <span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;local_size&#39;</span><span class="p">]</span>
+        <span class="n">idx</span>        <span class="o">=</span> <span class="n">hosts</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">myHost</span><span class="p">)</span>
+        <span class="n">lrank</span>      <span class="o">=</span> <span class="n">rank</span> <span class="o">//</span> <span class="n">nHosts</span>
+        <span class="n">myMaster</span>   <span class="o">=</span> <span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;LMASTER&#39;</span><span class="p">][</span><span class="n">myHost</span><span class="p">]</span>
+        <span class="n">LMASTER</span>    <span class="o">=</span> <span class="p">(</span><span class="n">lrank</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">topology</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nHost</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hosts</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">host_idx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mpi_stride</span> <span class="o">=</span> <span class="n">MPI_TOPO</span><span class="p">,</span> <span class="n">nHosts</span><span class="p">,</span> <span class="n">hosts</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">stride</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lrank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">myMaster</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">LMASTER</span>              <span class="o">=</span> <span class="n">local_size</span><span class="p">,</span> <span class="n">lrank</span><span class="p">,</span> <span class="n">myMaster</span><span class="p">,</span> <span class="n">LMASTER</span>
+
+        <span class="k">if</span> <span class="n">GMASTER</span><span class="p">:</span>
+            <span class="n">gIDs</span>      <span class="o">=</span> <span class="p">{</span><span class="n">myHost</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nGPUs_local</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)}</span>
+            <span class="n">nGPUs</span>     <span class="o">=</span> <span class="n">nGPUs_local</span>
+            <span class="n">lastID</span>    <span class="o">=</span> <span class="n">gIDs</span><span class="p">[</span><span class="n">myHost</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;LMASTER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                <span class="k">if</span> <span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;LMASTER&#39;</span><span class="p">][</span><span class="n">r</span><span class="p">]</span> <span class="o">!=</span> <span class="n">rank</span><span class="p">:</span>
+                    <span class="n">ng</span>      <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;LMASTER&#39;</span><span class="p">][</span><span class="n">r</span><span class="p">],</span> <span class="n">tag</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;LMASTER&#39;</span><span class="p">][</span><span class="n">r</span><span class="p">])</span>
+                    <span class="n">nGPUs</span>   <span class="o">+=</span> <span class="n">ng</span>
+                    <span class="n">gIDs</span><span class="p">[</span><span class="n">r</span><span class="p">]</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ng</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span><span class="o">+</span><span class="n">lastID</span><span class="o">+</span><span class="mi">1</span>
+                    <span class="n">lastID</span>  <span class="o">=</span> <span class="n">gIDs</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">nGPUs</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">nGPUs</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+            <span class="n">gIDs</span><span class="p">[</span><span class="s1">&#39;nGPUs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">nGPUs</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="p">(</span> <span class="n">LMASTER</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">GMASTER</span><span class="p">)</span> <span class="p">):</span>
+            <span class="n">gIDs</span>   <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">ng</span>     <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">comm</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">nGPUs_local</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;GMASTER&#39;</span><span class="p">],</span> <span class="n">tag</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">rank</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ng</span>     <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">gIDs</span>   <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">comm</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+        <span class="c1">#if rank == 0: print(&quot;[+] OK06&quot;)</span>
+        <span class="n">gIDs</span>   <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">bcast</span><span class="p">(</span><span class="n">gIDs</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;GMASTER&#39;</span><span class="p">])</span>
+        <span class="c1">#if rank == 0: print(&quot;[+] OK07&quot;)</span>
+        <span class="n">nGPUs</span>  <span class="o">=</span> <span class="n">gIDs</span><span class="p">[</span><span class="s1">&#39;nGPUs&#39;</span><span class="p">]</span>
+        <span class="k">del</span> <span class="n">gIDs</span><span class="p">[</span><span class="s1">&#39;nGPUs&#39;</span><span class="p">]</span>
+        <span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;gIDs&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">gIDs</span>
+        <span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;nGPUs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nGPUs</span>
+        <span class="k">if</span> <span class="n">lrank</span> <span class="o">&lt;</span> <span class="n">nGPUs_local</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gID</span> <span class="o">=</span> <span class="n">MPI_TOPO</span><span class="p">[</span><span class="s1">&#39;gIDs&#39;</span><span class="p">][</span><span class="n">myHost</span><span class="p">][</span><span class="n">lrank</span><span class="p">]</span>
+
+<div class="viewcode-block" id="GetTopology.showTopology"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.comm_utils.GetTopology.showTopology">[docs]</a>    <span class="k">def</span> <span class="nf">showTopology</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to display the detected topology for debugging purposes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span>  <span class="bp">self</span><span class="o">.</span><span class="n">GMASTER</span><span class="p">:</span>
+             <span class="n">role</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="n">red</span><span class="p">(</span><span class="s1">&#39;GMASTER&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
+        <span class="k">elif</span>  <span class="bp">self</span><span class="o">.</span><span class="n">LMASTER</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">GMASTER</span><span class="p">):</span>      
+             <span class="n">role</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="n">blue</span><span class="p">(</span><span class="s1">&#39;LMASTER&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+             <span class="n">role</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="n">amber</span><span class="p">(</span><span class="s1">&#39;WORKER&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
+        <span class="n">log</span><span class="p">(</span><span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">role</span><span class="si">}</span><span class="s2"> on host </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">myHost</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="n">lrank</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lrank</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="GetTopology.getReduceCommTree"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.comm_utils.GetTopology.getReduceCommTree">[docs]</a>    <span class="k">def</span> <span class="nf">getReduceCommTree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">VRBZ</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve a communication tree for efficient reduce operations.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">        - VRBZ (bool): Verbosity level for debug outputs. Defaults to False.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">topology</span><span class="p">[</span><span class="s1">&#39;nGPUs&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reduceCommTree</span> <span class="o">=</span> <span class="n">getReduceCommTree</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">VRBZ</span><span class="o">=</span><span class="n">VRBZ</span><span class="p">)</span></div></div>
+        
+    
+
+
+<div class="viewcode-block" id="superCommunicator"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.comm_utils.superCommunicator">[docs]</a><span class="k">class</span> <span class="nc">superCommunicator</span><span class="p">():</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructor for the superCommunicator class.</span>
+
+<span class="sd">    This class acts as a wrapper around the MPI and NCCL communication protocols,</span>
+<span class="sd">    enabling simplified and efficient communication setup based on the detected</span>
+<span class="sd">    system topology.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">    - comm (MPI Comm): The MPI communicator.</span>
+<span class="sd">    - gmasterRank (int): Rank of the global master. Defaults to 0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comm</span><span class="p">,</span> <span class="n">gmasterRank</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">globalComm</span> <span class="o">=</span> <span class="n">comm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">topology</span>   <span class="o">=</span> <span class="n">GetTopology</span><span class="p">(</span><span class="n">comm</span><span class="o">=</span><span class="n">comm</span><span class="p">,</span> <span class="n">gmasterRank</span><span class="o">=</span><span class="n">gmasterRank</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm</span>       <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;GLOBAL&#39;</span><span class="p">:</span><span class="n">comm</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comms</span>      <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;GLOBAL&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rank</span>       <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">rank</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">GMASTER</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">GMASTER</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">LMASTER</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">LMASTER</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">myMaster</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">myMaster</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inContext</span>  <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;GLOBAL&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contexts</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inContext</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<div class="viewcode-block" id="superCommunicator.createComm"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.comm_utils.superCommunicator.createComm">[docs]</a>    <span class="k">def</span> <span class="nf">createComm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">members</span><span class="p">,</span><span class="n">name</span><span class="p">,</span> <span class="n">backEnd</span><span class="o">=</span><span class="s1">&#39;NCCL&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a new communication context based on the provided parameters.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">        - root (int): Root rank for this communicator.</span>
+<span class="sd">        - members (list): List of member ranks included in this communicator.</span>
+<span class="sd">        - name (str): Name for this communicator.</span>
+<span class="sd">        - backEnd (str): Communication backend (e.g., &#39;NCCL&#39;). Defaults to &#39;NCCL&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">comms</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">GMASTER</span><span class="p">:</span> 
+                <span class="n">log</span><span class="p">(</span><span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">red</span><span class="p">(</span><span class="s1">&#39;!&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> ]Communcator </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> existAlready&quot;</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="n">lrank</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lrank</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">NCCL_COMM</span><span class="p">(</span><span class="n">comm</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">globalComm</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">members</span><span class="o">=</span><span class="n">members</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="ow">in</span> <span class="n">members</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inContext</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">=</span><span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inContext</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">=</span><span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contexts</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inContext</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div></div>
+
+
+<div class="viewcode-block" id="NCCL_COMM"><a class="viewcode-back" href="../../pyDNMFk.html#pyDNMFk.comm_utils.NCCL_COMM">[docs]</a><span class="k">class</span> <span class="nc">NCCL_COMM</span><span class="p">():</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constructor for the NCCL_COMM class.</span>
+
+<span class="sd">    This class encapsulates NCCL-specific communication functions, enabling</span>
+<span class="sd">    efficient GPU-to-GPU communications.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">    - comm (MPI Comm): The MPI communicator.</span>
+<span class="sd">    - root (int): Root rank for this communicator.</span>
+<span class="sd">    - members (list): List of member ranks included in this communicator.</span>
+<span class="sd">    - name (str): Name for this communicator.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">comm</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">members</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">comm</span><span class="o">.</span><span class="n">rank</span> <span class="ow">in</span> <span class="n">members</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rank</span>  <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">rank</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lrank</span> <span class="o">=</span> <span class="n">members</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">comm</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">size</span>  <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">members</span><span class="p">)</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">ROOT</span>  <span class="o">=</span> <span class="n">root</span>
+            <span class="n">uID</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">MASTER</span> <span class="o">=</span> <span class="p">(</span><span class="n">comm</span><span class="o">.</span><span class="n">rank</span><span class="o">==</span><span class="n">root</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">MASTER</span><span class="p">:</span>
+                <span class="n">uID</span> <span class="o">=</span> <span class="n">nccl</span><span class="o">.</span><span class="n">get_unique_id</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[+] &lt;LMASTER&gt;[</span><span class="si">{</span><span class="n">comm</span><span class="o">.</span><span class="n">rank</span><span class="si">}</span><span class="s2">]: uID = </span><span class="si">{</span><span class="n">uID</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">members</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">m</span> <span class="o">!=</span> <span class="n">root</span><span class="p">:</span> <span class="n">comm</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">uID</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="mi">1000</span><span class="o">*</span><span class="n">m</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">uID</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="mi">1000</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[+] &lt;WORKER&gt;[</span><span class="si">{</span><span class="n">comm</span><span class="o">.</span><span class="n">rank</span><span class="si">}</span><span class="s2">]: uID = </span><span class="si">{</span><span class="n">uID</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="c1">#comm.barrier()</span>
+            <span class="k">if</span> <span class="n">uID</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+               <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   -&gt;  Building NCCL comm [</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">members</span><span class="p">)</span><span class="si">}</span><span class="s2">, uID:</span><span class="si">{</span><span class="n">uID</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s2">, lrank:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">lrank</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+               <span class="n">comm</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+               <span class="n">ncclcomm</span> <span class="o">=</span> <span class="n">nccl</span><span class="o">.</span><span class="n">NcclCommunicator</span><span class="o">.</span><span class="n">initAll</span><span class="p">(</span><span class="n">members</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">MASTER</span><span class="p">:</span> <span class="n">log</span><span class="p">(</span><span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">green</span><span class="p">(</span><span class="s1">&#39;+&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">] NCCL comm </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> built OK&quot;</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="n">lrank</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lrank</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+             <span class="n">ncclcomm</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comm</span> <span class="o">=</span> <span class="n">ncclcomm</span></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ismael Boureima, Manish Bhattarai
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, LANL.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
